@@ -1,0 +1,4 @@
+res://Scenes/Main.tscn
+res://Scripts/GridManager.cs
+res://Scripts/GameManger.cs
+res://Scenes/Tile.tscn

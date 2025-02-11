@@ -1,0 +1,17 @@
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\bin\Debug\WoolyWay.deps.json
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\bin\Debug\WoolyWay.runtimeconfig.json
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\bin\Debug\WoolyWay.dll
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\bin\Debug\WoolyWay.pdb
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.csproj.AssemblyReference.cache
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.GeneratedMSBuildEditorConfig.editorconfig
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.AssemblyInfoInputs.cache
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.AssemblyInfo.cs
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.csproj.CoreCompileInputs.cache
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.csproj.Up2Date
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.dll
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\refint\WoolyWay.dll
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.pdb
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\WoolyWay.genruntimeconfig.cache
+C:\ISART\GDP1\PROJETS\SOKOBAN\REPO\PROJECT\.godot\mono\temp\obj\Debug\ref\WoolyWay.dll
