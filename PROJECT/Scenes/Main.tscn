@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://owpjl3bk8b33"]
+
+[ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
+[ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
+[ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
+
+[node name="Main" type="Node"]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="GridManager" type="Node" parent="Managers"]
+script = ExtResource("1_jlmcb")
+tileOriginalSize = Vector2i(20, 20)
+tileScale = Vector2(4, 4)
+tileMargin = Vector2(2, 2)
+tileScene = ExtResource("3_0uypt")
+
+[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
+script = ExtResource("2_ov00f")
+GameContainer = NodePath("../../GameContainer")
+
+[node name="GameContainer" type="Node2D" parent="."]
