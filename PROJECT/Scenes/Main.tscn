@@ -8,16 +8,15 @@
 
 [node name="Managers" type="Node" parent="."]
 
+[node name="GridManager" type="Node" parent="Managers"]
+script = ExtResource("1_jlmcb")
+tileOriginalSize = Vector2i(20, 20)
+tileScale = Vector2(4, 4)
+tileMargin = Vector2(2, 2)
+tileScene = ExtResource("3_0uypt")
+
 [node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
 script = ExtResource("2_ov00f")
 GameContainer = NodePath("../../GameContainer")
-TileScene = ExtResource("3_0uypt")
-
-[node name="GridManager" type="Node" parent="Managers"]
-script = ExtResource("1_jlmcb")
-GridSize = Vector2(11, 11)
-TileSize = Vector2(20, 20)
-TileScale = Vector2(5, 5)
-MarginBetweenTiles = 2.0
 
 [node name="GameContainer" type="Node2D" parent="."]
