@@ -10,7 +10,7 @@ namespace Com.IsartDigital.ProjectName {
 		PasswordManager passwordManager;
 
 		[Export] private TextEdit usernameText;
-		[Export] private TextEdit passwordText;
+		[Export] private LineEdit passwordText;
 
 		private string username;
 		private string password;

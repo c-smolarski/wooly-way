@@ -15,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PasswordManager" type="Node" parent="."]
+script = ExtResource("2_5nf3w")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -44,50 +47,48 @@ grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "Username"
 
-[node name="Password" type="TextEdit" parent="."]
+[node name="Password" type="LineEdit" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.63
-anchor_right = 0.502
-anchor_bottom = 0.641
-offset_left = -123.0
-offset_top = -25.24
-offset_right = 124.696
-offset_bottom = 17.632
-grow_horizontal = 2
-grow_vertical = 2
-placeholder_text = "Password"
+anchor_top = 0.631
+anchor_right = 0.5
+anchor_bottom = 0.631
+offset_left = -125.0
+offset_top = -24.888
+offset_right = 125.0
+offset_bottom = 25.112
+placeholder_text = "password"
+secret = true
 
-[node name="Login" type="Button" parent="."]
+[node name="Login" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.505
+anchor_left = 0.502
 anchor_top = 0.787
-anchor_right = 0.505
+anchor_right = 0.502
 anchor_bottom = 0.787
-offset_left = -74.76
+offset_left = -75.304
 offset_top = -24.976
-offset_right = 75.24
+offset_right = 74.696
 offset_bottom = 25.024
 text = "Login"
 script = ExtResource("1_oc6yq")
+usernameText = NodePath("../Username")
+passwordText = NodePath("../Password")
 
 [node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.503
-anchor_top = 0.907
-anchor_right = 0.503
-anchor_bottom = 0.907
-offset_left = -74.4561
-offset_top = -24.736
-offset_right = 75.5439
-offset_bottom = 25.264
+anchor_left = 0.502
+anchor_top = 0.913
+anchor_right = 0.502
+anchor_bottom = 0.913
+offset_left = -75.304
+offset_top = -28.624
+offset_right = 74.696
+offset_bottom = 21.376
 text = "Create User"
 script = ExtResource("1_7hp86")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
-
-[node name="PasswordManager" type="Node" parent="."]
-script = ExtResource("2_5nf3w")

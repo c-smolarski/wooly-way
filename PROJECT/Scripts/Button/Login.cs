@@ -8,7 +8,7 @@ namespace Com.IsartDigital.ProjectName {
 	public partial class Login : Button
 	{
         [Export] private TextEdit usernameText;
-        [Export] private TextEdit passwordText;
+        [Export] private LineEdit passwordText;
 
         private string username;
         private string password;
