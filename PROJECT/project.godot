@@ -17,3 +17,11 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 [dotnet]
 
 project/assembly_name="WoolyWay"
+
+[file_customization]
+
+folder_colors={
+"res://Properties/": "yellow",
+"res://Scenes/": "green",
+"res://Scripts/": "red"
+}
