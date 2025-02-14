@@ -25,14 +25,13 @@ namespace Com.IsartDigital.ProjectName {
 		
 		private void OnPressed()
 		{
-			//TODO verifier si le username existe deja
+			
+
 			username = usernameText.Text;
-			(password, salt) = passwordManager.Crypting(passwordText.Text);
-		}
+            //TODO verifier si le username existe deja 
+            (password, salt) = passwordManager.Crypting(passwordText.Text);
 
-		protected override void Dispose(bool pDisposing)
-		{
-
+			//Todo envoyer le user mdp et salt au data manager
 		}
 	}
 }

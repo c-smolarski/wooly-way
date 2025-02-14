@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Text;
 
+	//Author: Alissa Delattre
 namespace Com.IsartDigital.ProjectName
 {
 	public partial class PasswordManager : Node
@@ -22,11 +23,11 @@ namespace Com.IsartDigital.ProjectName
 		private const string ASCII = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		private const int LENTGH_SALT = 16;
 
-        private RandomNumberGenerator ran = new RandomNumberGenerator();
+        private RandomNumberGenerator rand = new RandomNumberGenerator();
 
         public override void _Ready()
 		{
-            ran.Randomize();
+            rand.Randomize();
 
             #region Singleton
             if (instance != null)
@@ -45,15 +46,24 @@ namespace Com.IsartDigital.ProjectName
 			pPassword = pPassword.Sha256Text();
 			string salt = SaltGenerator();
 			pPassword += salt;
-			return (pPassword, salt);
+			return (pPassword, salt);		
+		}
+
+		public bool CheckPassword(string pPassword, string pPasswordToCheck, string salt)
+		{
+			pPasswordToCheck = pPasswordToCheck.Sha256Text() +salt;
+			if (pPasswordToCheck == pPassword) return true;
+			else return false;
+
 		}
 
 		private string SaltGenerator()
 		{
 			string salt = "";
+			int asciiPossibility = ASCII.Length - 1;
 			for (int i = 0; i < LENTGH_SALT; i++)
 			{
-				salt += ASCII[ran.RandiRange(0, ASCII.Length - 1)];
+				salt += ASCII[rand.RandiRange(0, asciiPossibility)];
 			}
 			return salt.Sha256Text();
         }

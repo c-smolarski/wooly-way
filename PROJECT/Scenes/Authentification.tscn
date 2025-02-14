@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://jx675vga67s0"]
+[gd_scene load_steps=5 format=3 uid="uid://jx675vga67s0"]
 
-[ext_resource type="Script" path="res://Scripts/Create.cs" id="1_7hp86"]
+[ext_resource type="Script" path="res://Scripts/Button/Create.cs" id="1_7hp86"]
+[ext_resource type="Script" path="res://Scripts/Button/Login.cs" id="1_oc6yq"]
 [ext_resource type="Script" path="res://Scripts/PasswordManager.cs" id="2_5nf3w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xwfa"]
@@ -70,6 +71,7 @@ offset_top = -24.976
 offset_right = 75.24
 offset_bottom = 25.024
 text = "Login"
+script = ExtResource("1_oc6yq")
 
 [node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
 layout_mode = 1
