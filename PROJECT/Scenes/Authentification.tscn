@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jx675vga67s0"]
+[gd_scene load_steps=4 format=3 uid="uid://jx675vga67s0"]
+
+[ext_resource type="Script" path="res://Scripts/Create.cs" id="1_7hp86"]
+[ext_resource type="Script" path="res://Scripts/PasswordManager.cs" id="2_5nf3w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xwfa"]
 font_size = 50
@@ -55,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "Password"
 
-[node name="Button" type="Button" parent="."]
+[node name="Login" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.505
@@ -68,7 +71,7 @@ offset_right = 75.24
 offset_bottom = 25.024
 text = "Login"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.503
@@ -80,3 +83,9 @@ offset_top = -24.736
 offset_right = 75.5439
 offset_bottom = 25.264
 text = "Create User"
+script = ExtResource("1_7hp86")
+usernameText = NodePath("../Username")
+passwordText = NodePath("../Password")
+
+[node name="PasswordManager" type="Node" parent="."]
+script = ExtResource("2_5nf3w")

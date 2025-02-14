@@ -1,10 +1,10 @@
 {
   "profiles": {
-    "WoolyWay": {
-      "commandName": "Executable",
-      "executablePath": "$(Godot)",
-      "commandLineArgs": "--path . --verbose",
-      "workingDirectory": "."
-    }
+	"WoolyWay": {
+	  "commandName": "Executable",
+	  "executablePath": "$(Godot)",
+	  "commandLineArgs": "--path . --verbose",
+	  "workingDirectory": "."
+	}
   }
 }
