@@ -1,9 +1,9 @@
+using Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries;
 using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 // Author : Camille Smolarski
 
@@ -21,12 +21,20 @@ namespace Com.IsartDigital.WoolyWay
 		[Export] private PackedScene tileScene;
 		#endregion
 
+		//Max grid size imposed by GDD.
 		public const int MAX_GRID_SIZE = 11;
 
         public static GridManager Instance { get; private set; }
 
+		/// <summary>
+		/// General tile size accounitg scale and margin between tiles.
+		/// </summary>
 		private Vector2 TileSize => (tileOriginalSize + tileMargin) * tileScale;
-		private Vector2 TileMargin
+
+        /// <summary>
+        /// Defines the margin (Little spaces) between each tile. Probably for testing only.
+        /// </summary>
+        private Vector2 TileMargin
 		{
 			get => tileMargin;
 			set
@@ -36,7 +44,7 @@ namespace Com.IsartDigital.WoolyWay
 			}
 		}
 
-		public static Dictionary<Vector2I, Node2D> TileDict { get; private set; } = new();
+		public static ReadOnlyTwoWayDictionary<Vector2I, Node2D> TileDict { get; private set; } = new();
 		private static Vector2I? currentGridSize;
 
 		public override void _Ready()
@@ -53,17 +61,25 @@ namespace Com.IsartDigital.WoolyWay
             GetWindow().SizeChanged += OnWindowSizeChange;
 		}
 
+		//Repositions the grid at window's center when size is changed at runtime.
         private void OnWindowSizeChange()
         {
 			UpdateCurrentGridPos();
         }
 
+		/// <summary>
+		/// Generates a new isometric grid and displays tiles accordingly. If a previous grid existed it will be deleted.
+		/// Grid size must NOT be greater than MAX_GRID_SIZE
+		/// </summary>
+		/// <param name="pGridSize"></param>
+		/// <exception cref="Exception"></exception>
         public void GenerateNewGrid(Vector2I pGridSize)
 		{
 			if (pGridSize.X > MAX_GRID_SIZE || pGridSize.Y > MAX_GRID_SIZE)
 				throw new Exception($"Grid must not be higher than {MAX_GRID_SIZE}");
 
 			DeleteCurrentGrid();
+			TwoWayDictionary<Vector2I, Node2D> lDict = new();
 			currentGridSize = pGridSize;
             for (int i = 0; i < pGridSize.Y; i++)
 				for (int j = 0; j < pGridSize.X; j++)
@@ -74,9 +90,10 @@ namespace Com.IsartDigital.WoolyWay
 						GetTilePos(j, i)
 					);
 					lTile.Scale = tileScale;
-					TileDict.Add(new Vector2I(j, i), lTile);
+					lDict.Add(new Vector2I(j, i), lTile);
 				}
-			TileDict[new Vector2I(5, 5)].Modulate = Colors.Red;
+			TileDict = lDict.ToReadOnly();
+			TileDict[new Vector2I(5, 5)].Modulate = Colors.Red; //For testing only.
         }
 
 		private void DeleteCurrentGrid()
@@ -84,23 +101,48 @@ namespace Com.IsartDigital.WoolyWay
 			currentGridSize = null;
 			foreach (Node lNode in TileDict.Values)
 				lNode.QueueFree();
-			TileDict.Clear();
+			TileDict = new();
 		}
 
+		/// <summary>
+		/// Recalculates each tile's position so that the center of the grid will be at the center of the window.
+		/// </summary>
 		private void UpdateCurrentGridPos()
 		{
             foreach (KeyValuePair<Vector2I, Node2D> lPair in TileDict)
                 lPair.Value.Position = GetTilePos(lPair.Key);
         }
 
-		private Vector2 GetTilePos(Vector2I pIndex)
-		{
-			return GetTilePos(pIndex.X, pIndex.Y);
-        }
+		/// <summary>
+		/// Calculates a tile's position so that it is placed on the grid, with the grid's center at the center of window.
+		/// </summary>
+		/// <param name="pIndexX"></param>
+		/// <param name="pIndexY"></param>
+		/// <returns></returns>
         private Vector2 GetTilePos(int pIndexX, int pIndexY)
         {
             Vector2 lBorder = new Vector2(GetWindow().Size.X - tileOriginalSize.X * tileScale.X, GetWindow().Size.Y - MathS.IndexToPosition(TileSize, currentGridSize ?? Vector2I.Zero).Y) * 0.5f;
             return MathS.IndexToPosition(TileSize, pIndexX, pIndexY) + lBorder;
+        }
+
+        /// <summary>
+        /// Calculates a tile's position so that it is placed on the grid, with the grid's center at the center of window.
+        /// </summary>
+        /// <param name="pIndex"></param>
+        /// <returns></returns>
+        private Vector2 GetTilePos(Vector2I pIndex)
+        {
+            return GetTilePos(pIndex.X, pIndex.Y);
+        }
+
+        /// <summary>
+		/// Calculates a tile's position so that it is placed on the grid, with the grid's center at the center of window.
+        /// </summary>
+        /// <param name="pNode"></param>
+        /// <returns></returns>
+        private Vector2 GetTilePos(Node2D pNode)
+        {
+            return GetTilePos(TileDict[pNode]);
         }
 
         protected override void Dispose(bool pDisposing)
