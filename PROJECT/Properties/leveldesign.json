@@ -1,0 +1,119 @@
+{
+	"tutorial": {
+		"author": "",
+		"par": 10,
+		"sheepDirection": [ "Right" ],
+		"map": [
+			"         ",
+			"     #   ",
+			"   ##@#  ",
+			"  # o  # ",
+			"  # $#.# ",
+			"  #    # ",
+			"   ####  ",
+			"         ",
+			"         "
+		]
+	},
+	"level1": {
+		"author": "Alissa Delattre",
+		"par": 33,
+		"sheepDirection": [ "Up", "Left" ],
+		"map": [
+			"         ",
+			" ### ### ",
+			" #  #  # ",
+			" #$    # ",
+			" #   @ # ",
+			" #o #$ # ",
+			" #. # .# ",
+			" ####### ",
+			"         "
+		]
+	},
+	"level2": {
+		"author": "Tom Bagnara",
+		"par": 5,
+		"sheepDirection": [ "Down", "Left", "Up" ],
+		"map": [
+			"         ",
+			"  ####   ",
+			" ##  ### ",
+			" #@ $#.# ",
+			" #   o # ",
+			" #. # $# ",
+			" ##o   # ",
+			" #. $ ## ",
+			" ####### "
+		]
+	},
+	"level3": {
+		"Author": "Julien Lim",
+		"par": 107,
+		"sheepDirection": [ "Right", "Up", "Left" ],
+		"map": [
+			"      ### ",
+			"    ##.  #",
+			"  ##  #  #",
+			" #    # # ",
+			" #   $o  #",
+			" #.# o   #",
+			"#.#  #  # ",
+			"#   $$$ # ",
+			"#    #  # ",
+			" #### ## #"
+		]
+	},
+
+	"level4": {
+		"author": "Daniel Moussouni-Lepilliez",
+		"par": 89,
+		"sheepDirection": [ "Left", "Up", "Left", "Up", "Up" ],
+		"map": [
+			"##########",
+			"#        #",
+			"#  ## #N##",
+			"# #.     #",
+			"#  #N#N# #",
+			"##   N   #",
+			"#  ##    #",
+			"### $ ####",
+			"# @   #   ",
+			"#######   "
+		]
+	},
+	"level5": {
+		"author": "Clément Ducroquet",
+		"par": 37,
+		"sheepDirection": [ "Up", "Down", "Right", "Left", "Up" ],
+		"map": [
+			"         ",
+			"    #  # ",
+			" ###.## #",
+			"# #@o  o#",
+			"# NN #  #",
+			"#     oo#",
+			"#$#N#oo# ",
+			"# N  ##  ",
+			" ####    "
+		]
+	},
+	"level6": {
+		"author": "Camille Smolarski-Janda",
+		"par": 26,
+		"sheepDirection": [ "Left", "Right", "Right", "Left", "Left", "Left", "Down", "Up", "Left", "Left", "Left", "Up", "Up", "Left", "Up", "Up", "Left", "Up", "Down" ],
+		"map": [
+			" ###       ",
+			"#. ##      ",
+			" #$ N######",
+			" # N N N  #",
+			" #N # N # #",
+			" # N N N  #",
+			"  #oN N N #",
+			"  #N NoN#@#",
+			"  #  ##   #",
+			"  #       #",
+			"  #########"
+		]
+	}
+}

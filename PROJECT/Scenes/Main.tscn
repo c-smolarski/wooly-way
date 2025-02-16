@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=5 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
+[ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
 
 [node name="Main" type="Node"]
 
@@ -18,5 +19,7 @@ tileScene = ExtResource("3_0uypt")
 [node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
 script = ExtResource("2_ov00f")
 GameContainer = NodePath("../../GameContainer")
+
+[node name="MapManager" parent="Managers" instance=ExtResource("4_46173")]
 
 [node name="GameContainer" type="Node2D" parent="."]
