@@ -26,7 +26,7 @@ namespace Com.IsartDigital.WoolyWay
             }
             Instance = this;
             #endregion
-            GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+            //GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
         }
 
         protected override void Dispose(bool pDisposing)
