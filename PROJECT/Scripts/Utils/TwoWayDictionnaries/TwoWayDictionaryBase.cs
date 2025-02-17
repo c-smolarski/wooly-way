@@ -137,7 +137,7 @@ namespace Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries
             private TwoWayDictionaryBase<TKey, TValue> dictionary;
             private int index = -1;
 
-            internal Enumerator(TwoWayDictionaryBase<TKey, TValue> pDictionnary)
+            public Enumerator(TwoWayDictionaryBase<TKey, TValue> pDictionnary)
             {
                 dictionary = pDictionnary;
             }

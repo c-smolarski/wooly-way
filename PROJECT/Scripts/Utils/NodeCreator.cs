@@ -2,7 +2,7 @@
 
 // Author : Camille Smolarski
 
-namespace Com.IsartDigital.WoolyWay.Scripts.Utils
+namespace Com.IsartDigital.WoolyWay.Utils
 {
     public static class NodeCreator
     {

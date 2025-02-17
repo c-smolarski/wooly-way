@@ -1,5 +1,4 @@
 using Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
@@ -44,7 +43,7 @@ namespace Com.IsartDigital.WoolyWay
 			}
 		}
 
-		public static ReadOnlyTwoWayDictionary<Vector2I, Node2D> TileDict { get; private set; } = new();
+		public static ReadOnlyTwoWayDictionary<Vector2I, Tile> TileDict { get; private set; } = new();
 		private static Vector2I? currentGridSize;
 
 		public override void _Ready()
@@ -79,12 +78,12 @@ namespace Com.IsartDigital.WoolyWay
 				throw new Exception($"Grid must not be higher than {MAX_GRID_SIZE}");
 
 			DeleteCurrentGrid();
-			TwoWayDictionary<Vector2I, Node2D> lDict = new();
+			TwoWayDictionary<Vector2I, Tile> lDict = new();
 			currentGridSize = pGridSize;
             for (int i = 0; i < pGridSize.Y; i++)
 				for (int j = 0; j < pGridSize.X; j++)
 				{
-					Node2D lTile = NodeCreator.CreateNode<Node2D>(
+					Tile lTile = NodeCreator.CreateNode<Tile>(
 						tileScene,
 						GameManger.Instance.GameContainer,
 						GetTilePos(j, i)
@@ -93,7 +92,6 @@ namespace Com.IsartDigital.WoolyWay
 					lDict.Add(new Vector2I(j, i), lTile);
 				}
 			TileDict = lDict.ToReadOnly();
-			TileDict[new Vector2I(5, 5)].Modulate = Colors.Red; //For testing only.
         }
 
 		private void DeleteCurrentGrid()
@@ -101,7 +99,7 @@ namespace Com.IsartDigital.WoolyWay
 			currentGridSize = null;
 			foreach (Node lNode in TileDict.Values)
 				lNode.QueueFree();
-			TileDict = new();
+			TileDict = null;
 		}
 
 		/// <summary>
@@ -109,7 +107,7 @@ namespace Com.IsartDigital.WoolyWay
 		/// </summary>
 		private void UpdateCurrentGridPos()
 		{
-            foreach (KeyValuePair<Vector2I, Node2D> lPair in TileDict)
+            foreach (KeyValuePair<Vector2I, Tile> lPair in TileDict)
                 lPair.Value.Position = GetTilePos(lPair.Key);
         }
 
@@ -140,10 +138,50 @@ namespace Com.IsartDigital.WoolyWay
         /// </summary>
         /// <param name="pNode"></param>
         /// <returns></returns>
-        private Vector2 GetTilePos(Node2D pNode)
+        private Vector2 GetTilePos(Tile pNode)
         {
             return GetTilePos(TileDict[pNode]);
         }
+
+        /// <summary>
+        /// DiagonalDirection is based off a standard (Non-isometric) table. Max value on grid for pIndex is (Max(GridSize.X, GridSize.Y) - 1) * 2.
+        /// <para>Ex : For GetTilesDiagonally(BottomRight, 2) it will return tiles at index (0,2), (1,1) and (2,0).</para>
+		/// </summary>
+        /// <param name="pDirection"></param>
+        /// <param name="pIndex"></param>
+        /// <returns>A list of diagonally adjacent tiles at specified index on grid.</returns>
+        /// <exception cref="Exception"></exception>
+        public static List<Tile> GetTilesDiagonally(DiagonalDirection pDirection, int pIndex)
+		{
+			if (currentGridSize == default || currentGridSize == null)
+				throw new Exception("A Grid must be present.");
+
+			List<Tile> lTileList = new();
+			Func<Vector2I, int> lAction = default;
+			Vector2I lGridMaxIndex = (currentGridSize ?? default) - Vector2I.One;
+
+            switch (pDirection)
+			{
+				case DiagonalDirection.TOP_RIGHT:
+					lAction = pVector => pVector.X - pVector.Y + lGridMaxIndex.Y;
+					break;
+				case DiagonalDirection.TOP_LEFT:
+					lAction = pVector => (lGridMaxIndex.X - pVector.X) + (lGridMaxIndex.Y - pVector.Y);
+					break;
+				case DiagonalDirection.BOTTOM_LEFT:
+					lAction = pVector => pVector.Y - pVector.X + lGridMaxIndex.X;
+					break;
+				case DiagonalDirection.BOTTOM_RIGHT:
+					lAction = pVector => pVector.Y - (lGridMaxIndex.X - pVector.X) + lGridMaxIndex.X;
+					break;
+			}
+
+			foreach(Vector2I lIndex in TileDict.Keys)
+				if (lAction(lIndex) == pIndex)
+					lTileList.Add(TileDict[lIndex]);
+
+			return lTileList;
+		}
 
         protected override void Dispose(bool pDisposing)
 		{
