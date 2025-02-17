@@ -1,6 +1,8 @@
 ﻿using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.Utils
 {
     public static class MathS
