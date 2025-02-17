@@ -8,20 +8,20 @@ namespace Com.IsartDigital.ProjectName
 {
     public class MapData
     {
-        public MapInfo tutorial { get; set; }
-        public MapInfo level1 { get; set; }
-        public MapInfo level2 { get; set; }
-        public MapInfo level3 { get; set; }
-        public MapInfo level4 { get; set; }
-        public MapInfo level5 { get; set; }
-        public MapInfo level6 { get; set; }
+        public MapInfo Tutorial { get; set; }
+        public MapInfo Level1 { get; set; }
+        public MapInfo Level2 { get; set; }
+        public MapInfo Level3 { get; set; }
+        public MapInfo Level4 { get; set; }
+        public MapInfo Level5 { get; set; }
+        public MapInfo Level6 { get; set; }
     }
 
     public class MapInfo
     {
-        public string author { get; set; }
-        public int par { get; set; }
-        public List<string> sheepDirection { get; set; }
-        public List<string> map { get; set; }
+        public string Author { get; set; }
+        public int Par { get; set; }
+        public List<string> SheepDirection { get; set; }
+        public List<string> Map { get; set; }
     }
 }
