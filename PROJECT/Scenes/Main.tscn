@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=10 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
-[ext_resource type="Script" path="res://Scripts/HudManager.cs" id="4_5lnpy"]
-[ext_resource type="PackedScene" uid="uid://d4j6mydjrc2bk" path="res://Scenes/HUD.tscn" id="5_qhwti"]
+[ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
+[ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/Wall.tscn" id="5_7tm8l"]
+[ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/Player.tscn" id="6_ewwj7"]
+[ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/Dog.tscn" id="7_l4yf1"]
+[ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/Sheep.tscn" id="8_gvd0m"]
+[ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/Arrival.tscn" id="9_nr5v7"]
 
 [node name="Main" type="Node"]
 
@@ -25,6 +29,14 @@ canvasLayer = NodePath("../../CanvasLayer")
 [node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
 script = ExtResource("2_ov00f")
 GameContainer = NodePath("../../GameContainer")
+
+[node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
+wallPacked = ExtResource("5_7tm8l")
+gameContainer = NodePath("../../GameContainer")
+playerPacked = ExtResource("6_ewwj7")
+dogPacked = ExtResource("7_l4yf1")
+sheepPacked = ExtResource("8_gvd0m")
+arrivalPacked = ExtResource("9_nr5v7")
 
 [node name="GameContainer" type="Node2D" parent="."]
 
