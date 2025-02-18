@@ -1,7 +1,6 @@
-﻿using System;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
-using Com.IsartDigital.WoolyWay.Utils;
-using Godot;
+﻿using Godot;
+
+// Author : Camille Smolarski
 
 namespace Com.IsartDigital.WoolyWay
 {
