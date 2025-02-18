@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dutg5sp0l4kb"]
+[gd_scene load_steps=12 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
-[ext_resource type="PackedScene" path="res://Scenes/MapManager.tscn" id="4_46173"]
+[ext_resource type="Script" path="res://Scripts/HudManager.cs" id="3_5dmvo"]
+[ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
+[ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/HUD.tscn" id="4_ms4ov"]
 [ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/Wall.tscn" id="5_7tm8l"]
 [ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/Player.tscn" id="6_ewwj7"]
 [ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/Dog.tscn" id="7_l4yf1"]
