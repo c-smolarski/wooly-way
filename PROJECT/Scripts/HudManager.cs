@@ -1,7 +1,7 @@
 using Com.IsartDigital.WoolyWay;
 using Godot;
 using System;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
+using Com.IsartDigital.WoolyWay.Utils;
 using Godot.NativeInterop;
 using System.Diagnostics;
 
