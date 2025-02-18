@@ -1,14 +1,10 @@
 using Godot;
-using Godot.Collections;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text.Json;
 
 // Author : Alissa Delattre
 
-namespace Com.IsartDigital.ProjectName {
+namespace Com.IsartDigital.WoolyWay
+{
 	
 	public partial class Create_User_Button : Button
 	{

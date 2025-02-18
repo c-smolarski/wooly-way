@@ -1,10 +1,8 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
-using System.IO;
 
-namespace Com.IsartDigital.ProjectName
+namespace Com.IsartDigital.WoolyWay
 {
     public class MapData
     {

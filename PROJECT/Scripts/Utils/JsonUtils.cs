@@ -1,12 +1,9 @@
 using Godot;
 using Godot.Collections;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata;
-using System.Security.Cryptography;
 
-namespace Com.IsartDigital.WoolyWay.Scripts.Utils
+namespace Com.IsartDigital.WoolyWay.Utils
 {
     public static class JsonUtils
     {

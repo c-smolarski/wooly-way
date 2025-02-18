@@ -1,12 +1,10 @@
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Godot;
-using Godot.Collections;
 using System;
-using System.Text.Json;
 
 // Author : Alissa Delattre
 
-namespace Com.IsartDigital.ProjectName {
+namespace Com.IsartDigital.WoolyWay
+{
 	
 	public partial class Login_Button : Button
 	{

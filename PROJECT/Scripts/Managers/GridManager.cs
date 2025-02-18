@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 // Author : Camille Smolarski
 
-namespace Com.IsartDigital.WoolyWay
+namespace Com.IsartDigital.WoolyWay.Managers
 {
 	
 	public partial class GridManager : Node
@@ -55,14 +55,8 @@ namespace Com.IsartDigital.WoolyWay
             }
 			Instance = this;
             #endregion
-            GetWindow().SizeChanged += OnWindowSizeChange;
+            GetWindow().SizeChanged += UpdateCurrentGridPos;
 		}
-
-		//Repositions the grid at window's center when size is changed at runtime.
-        private void OnWindowSizeChange()
-        {
-			UpdateCurrentGridPos();
-        }
 
 		/// <summary>
 		/// Generates a new isometric grid and displays tiles accordingly. If a previous grid existed it will be deleted.
