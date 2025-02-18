@@ -25,10 +25,10 @@ namespace Com.IsartDigital.WoolyWay.Managers
         public const string MOVE_UNDO = "move_undo";
         public const string MOVE_REDO = "move_redo";
         
-        private const float JOYSTICK_THRESHOLD = 0.95f;
+        private const float JOYSTICK_THRESHOLD = 0.75f;
 
         private static bool isUpPressed, isDownPressed, isLeftPressed, isRightPressed;
-        private Vector2I moveInputDirection;
+        private Vector2I moveInputDirection, lastJoyDir;
 
         public static InputManager Instance { get; private set; }
 
@@ -52,7 +52,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
             if (IsInstanceValid(Player.Instance) &&  Player.Instance.IsProcessing())
             {
                 moveInputDirection = GetMovementDirection();
-                if(moveInputDirection != Vector2I.Zero)
+                if (moveInputDirection != Vector2I.Zero)
                     Instance.EmitSignal(SignalName.MoveInputPressed, moveInputDirection);
             }
         }
@@ -69,18 +69,28 @@ namespace Com.IsartDigital.WoolyWay.Managers
         /// <summary>
         /// Retruns a direction representing the input direction retruned by either keyboard or joypad input.
         /// </summary>
-        private static Vector2I GetMovementDirection()
+        private Vector2I GetMovementDirection()
         {
-            Vector2I lDirection = GetJoyStickDirection(0, JoyAxis.LeftX, JoyAxis.RightX);
-            if (Input.IsJoyKnown(0) && lDirection != Vector2I.Zero)
-                return lDirection;
-            else if (isUpPressed || isDownPressed || isLeftPressed || isRightPressed)
+            Vector2I lDirection = default;
+            if (isUpPressed || isDownPressed || isLeftPressed || isRightPressed)
             {
                 lDirection = GetKeyDirection();
                 isUpPressed = isDownPressed = isLeftPressed = isRightPressed = false;
-                return lDirection;
             }
-            return Vector2I.Zero;
+            else if (Input.IsJoyKnown(0))
+            {
+                lDirection = GetJoyStickDirection(0, JoyAxis.LeftX, JoyAxis.LeftY);
+                if (lastJoyDir == Vector2I.Zero)
+                    lastJoyDir = lDirection;
+                else if (lDirection != default)
+                    lDirection = default;
+                else
+                    lastJoyDir = default;
+            }
+
+            if(lDirection.X != 0 && lDirection.Y != 0)
+                return default;
+            return lDirection;
         }
 
         private static Vector2I GetKeyDirection()
