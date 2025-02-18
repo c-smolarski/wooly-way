@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://Scenes/HUD.gdshader" id="1_x675v"]
 [ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Scenes/HudText.tres" id="2_axtj7"]
-[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Fonts/lumberjack.regular.otf" id="2_kisf5"]
+[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Assets/Fonts/lumberjack.regular.otf" id="2_kisf5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eqrye"]
 shader = ExtResource("1_x675v")
