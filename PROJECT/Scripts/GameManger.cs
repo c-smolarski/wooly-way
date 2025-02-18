@@ -1,7 +1,7 @@
-﻿using System;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
-using Com.IsartDigital.WoolyWay.Utils;
+using Com.IsartDigital.ProjectName;
 using Godot;
+
+// Author : Camille Smolarski
 
 namespace Com.IsartDigital.WoolyWay
 {
@@ -26,7 +26,8 @@ namespace Com.IsartDigital.WoolyWay
             }
             Instance = this;
             #endregion
-            GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+            //GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+            HudManager.Instance.CreateHud();
         }
 
         protected override void Dispose(bool pDisposing)
