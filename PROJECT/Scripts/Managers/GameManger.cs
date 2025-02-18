@@ -2,7 +2,7 @@
 
 // Author : Camille Smolarski
 
-namespace Com.IsartDigital.WoolyWay
+namespace Com.IsartDigital.WoolyWay.Managers
 {
     public partial class GameManger : Node
     {
