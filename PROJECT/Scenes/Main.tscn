@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=13 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/Player.tscn" id="6_ewwj7"]
 [ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/Dog.tscn" id="7_l4yf1"]
 [ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/Sheep.tscn" id="8_gvd0m"]
-[ext_resource type="PackedScene" path="res://Scenes/Arrival.tscn" id="9_nr5v7"]
+[ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/Arrival.tscn" id="9_nr5v7"]
+[ext_resource type="PackedScene" uid="uid://bgo65s6xvkjhe" path="res://Scenes/main_menu.tscn" id="12_eekqv"]
 
 [node name="Main" type="Node"]
 
@@ -43,3 +44,5 @@ arrivalPacked = ExtResource("9_nr5v7")
 [node name="GameContainer" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="." instance=ExtResource("12_eekqv")]
