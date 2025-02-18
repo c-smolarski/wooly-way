@@ -1,16 +1,18 @@
-using Com.IsartDigital.ProjectName;
 using Godot;
 
 // Author : Camille Smolarski
 
-namespace Com.IsartDigital.WoolyWay
+namespace Com.IsartDigital.WoolyWay.Managers
 {
     public partial class GameManger : Node
     {
         #region Exports
         [ExportGroup("Nodes")]
         [ExportSubgroup("Containers")]
+        [Export] public Node2D GridContainer { get; private set; }
         [Export] public Node2D GameContainer { get; private set; }
+        [ExportGroup("PackedScenes")]
+        [Export] public PackedScene TileScene { get; private set; }
         #endregion
 
         public static GameManger Instance { get; private set; }

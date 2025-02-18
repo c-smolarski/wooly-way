@@ -1,13 +1,11 @@
-using Com.IsartDigital.WoolyWay;
+using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
-using Com.IsartDigital.WoolyWay.Utils;
-using Godot.NativeInterop;
-using System.Diagnostics;
 
 // Author : Daniel Moussouni--Lepilliez
 
-namespace Com.IsartDigital.ProjectName {
+namespace Com.IsartDigital.WoolyWay.Managers
+{
 	
 	public partial class HudManager :  Node
 	{

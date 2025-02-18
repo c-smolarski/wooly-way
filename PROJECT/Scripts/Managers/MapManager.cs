@@ -1,5 +1,4 @@
-﻿using Com.IsartDigital.WoolyWay;
-using Com.IsartDigital.WoolyWay.Utils;
+﻿using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Text.Json;
 
 // Author : Alissa Delattre
 
-namespace Com.IsartDigital.ProjectName
+namespace Com.IsartDigital.WoolyWay.Managers
 {
 
     public partial class MapManager : Node2D
@@ -37,12 +36,6 @@ namespace Com.IsartDigital.ProjectName
         [Export] private PackedScene sheepPacked;
         [Export] private PackedScene arrivalPacked;
 
-        //Objects
-        private Node2D wall;
-        private Node2D player;
-        private Node2D dog;
-        private Node2D sheep;
-        private Node2D arrival;
         private Dictionary<Node2D, Node2D> gameObject = new();
 
         private MapData mapData = new MapData();
@@ -61,12 +54,6 @@ namespace Com.IsartDigital.ProjectName
 
             ExtractData();
             GetWindow().SizeChanged += UpdatePos;
-        }
-
-        public override void _Process(double pDelta)
-        {
-            float lDelta = (float)pDelta;
-
         }
 
         private void ExtractData()
@@ -102,36 +89,30 @@ namespace Com.IsartDigital.ProjectName
                     switch (currentLevel[i][j])
                     {
                         case '#':
-                            wall = wallPacked.Instantiate() as Node2D;
-                            CreateObject(wall, i, j);
+                            CreateObject(wallPacked, i, j);
                             break;
 
                         case '@':
-                            player = playerPacked.Instantiate() as Node2D;
-                            CreateObject(player, i, j);
+                            CreateObject(playerPacked, i, j);
                             break ;
 
                         case 'o':
-                            dog = dogPacked.Instantiate() as Node2D;
-                            CreateObject(dog, i, j);
+                            CreateObject(dogPacked, i, j);
                             break;
 
                         case '$':
-                            sheep = sheepPacked.Instantiate() as Node2D;
-                            CreateObject(sheep, i, j);
+                            CreateObject(sheepPacked, i, j);
                             //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
                             break;
 
                         case 'N':
-                            sheep = sheepPacked.Instantiate() as Node2D;
-                            CreateObject(sheep, i, j);
+                            CreateObject(sheepPacked, i, j);
                             //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
                             //ici envoyer un truc au script chevre comme quoi celle la doit pas pouvoir gagner
                             break;
 
                         case '.':
-                            arrival = arrivalPacked.Instantiate() as Node2D;
-                            CreateObject(arrival, i, j);
+                            CreateObject(arrivalPacked, i, j);
                             break;
 
                         default:
@@ -142,11 +123,10 @@ namespace Com.IsartDigital.ProjectName
         }
 
         //instanciates the objects at the right place
-        private void CreateObject(Node2D pObject, int pI, int pJ)
+        private void CreateObject(PackedScene pScene, int pI, int pJ)
         {
-            pObject.GlobalPosition = GridManager.TileDict[new Vector2I(pI, pJ)].GlobalPosition;
-            gameContainer.AddChild(pObject);
-            gameObject[pObject] = GridManager.TileDict[new Vector2I(pI, pJ)];
+            GameObject lObj = NodeCreator.CreateGameObject<GameObject>(pScene, pI, pJ);
+            gameObject[lObj] = GridManager.TileDict[new Vector2I(pI, pJ)];
         }
 
         //Update the position of all gameObject when the screenSize changes
@@ -154,9 +134,10 @@ namespace Com.IsartDigital.ProjectName
         {
             foreach(KeyValuePair<Node2D,Node2D> lPair in gameObject)
             {
-                lPair.Key.GlobalPosition = lPair.Value.GlobalPosition;
+                lPair.Key.Position = lPair.Value.Position;
             }
         }
+
         protected override void Dispose(bool pDisposing)
         {
             instance = null;

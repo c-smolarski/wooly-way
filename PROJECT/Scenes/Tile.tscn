@@ -7,19 +7,20 @@ font_size = 10
 font_color = Color(0, 0, 0, 1)
 
 [node name="Tile" type="Polygon2D"]
+position = Vector2(0, -5)
 color = Color(0, 1, 0.329412, 1)
-offset = Vector2(-10.085, -4.92)
+offset = Vector2(-10, -5)
 polygon = PackedVector2Array(10, 0, 20, 5, 10, 10, 0, 5)
 script = ExtResource("1_ks74t")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-10, -5)
 color = Color(0, 0.556863, 0, 1)
-offset = Vector2(-10.085, -4.92)
 polygon = PackedVector2Array(20, 5, 10, 10, 10, 20, 20, 15)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-10, -5)
 color = Color(0, 0.415686, 0, 1)
-offset = Vector2(-10.085, -4.92)
 polygon = PackedVector2Array(0, 5, 10, 10, 10, 20, 0, 15)
 
 [node name="DebugLabel" type="Label" parent="."]
