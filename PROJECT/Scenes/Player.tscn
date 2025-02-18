@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqkavg4d0hkn4"]
+[gd_scene load_steps=3 format=3 uid="uid://dqkavg4d0hkn4"]
 
 [ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://icon.svg" id="1_nt6mr"]
+[ext_resource type="Script" path="res://Scripts/GameObject.cs" id="1_u2o0s"]
 
 [node name="Player" type="Node2D"]
 scale = Vector2(0.25, 0.25)
+script = ExtResource("1_u2o0s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.223529, 0.196078, 1)

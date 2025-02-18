@@ -21,16 +21,17 @@ script = ExtResource("1_jlmcb")
 tileOriginalSize = Vector2i(20, 20)
 tileScale = Vector2(4, 4)
 tileMargin = Vector2(2, 2)
-tileScene = ExtResource("3_0uypt")
 
 [node name="HudManager" type="Node" parent="Managers" node_paths=PackedStringArray("canvasLayer")]
 script = ExtResource("3_5dmvo")
 hudScene = ExtResource("4_ms4ov")
 canvasLayer = NodePath("../../CanvasLayer")
 
-[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
+[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GridContainer", "GameContainer")]
 script = ExtResource("2_ov00f")
+GridContainer = NodePath("../../GridContainer")
 GameContainer = NodePath("../../GameContainer")
+TileScene = ExtResource("3_0uypt")
 
 [node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
 wallPacked = ExtResource("5_7tm8l")
@@ -39,6 +40,8 @@ playerPacked = ExtResource("6_ewwj7")
 dogPacked = ExtResource("7_l4yf1")
 sheepPacked = ExtResource("8_gvd0m")
 arrivalPacked = ExtResource("9_nr5v7")
+
+[node name="GridContainer" type="Node2D" parent="."]
 
 [node name="GameContainer" type="Node2D" parent="."]
 

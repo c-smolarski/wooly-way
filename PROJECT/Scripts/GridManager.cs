@@ -16,8 +16,6 @@ namespace Com.IsartDigital.WoolyWay
 		[Export] private Vector2I tileOriginalSize;
 		[Export] private Vector2 tileScale;
 		[Export] private Vector2 tileMargin;
-		[ExportGroup("PackedScenes")]
-		[Export] private PackedScene tileScene;
 		#endregion
 
 		//Max grid size imposed by GDD.
@@ -83,11 +81,7 @@ namespace Com.IsartDigital.WoolyWay
             for (int i = 0; i < pGridSize.Y; i++)
 				for (int j = 0; j < pGridSize.X; j++)
 				{
-					Tile lTile = NodeCreator.CreateNode<Tile>(
-						tileScene,
-						GameManger.Instance.GameContainer,
-						GetTilePos(j, i)
-					);
+					Tile lTile = Tile.Create(GetTilePos(j, i));
 					lTile.Scale = tileScale;
 					lDict.Add(new Vector2I(j, i), lTile);
 				}
