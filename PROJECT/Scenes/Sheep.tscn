@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://icon.svg" id="1_y2poq"]
 
 [node name="Sheep" type="Node2D"]
-scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_y2poq")

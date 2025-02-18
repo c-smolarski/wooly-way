@@ -1,6 +1,5 @@
-﻿using Godot;
-
-// Author : Camille Smolarski
+﻿using System;
+using Godot;
 
 namespace Com.IsartDigital.WoolyWay.Utils
 {

@@ -1,33 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://sloiiv0qqxq0"]
-
-[ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_ks74t"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_umbbd"]
-font_size = 10
-font_color = Color(0, 0, 0, 1)
+[gd_scene format=3 uid="uid://sloiiv0qqxq0"]
 
 [node name="Tile" type="Polygon2D"]
 color = Color(0, 1, 0.329412, 1)
-offset = Vector2(-10.085, -4.92)
 polygon = PackedVector2Array(10, 0, 20, 5, 10, 10, 0, 5)
-script = ExtResource("1_ks74t")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 color = Color(0, 0.556863, 0, 1)
-offset = Vector2(-10.085, -4.92)
 polygon = PackedVector2Array(20, 5, 10, 10, 10, 20, 20, 15)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0, 0.415686, 0, 1)
-offset = Vector2(-10.085, -4.92)
 polygon = PackedVector2Array(0, 5, 10, 10, 10, 20, 0, 15)
-
-[node name="DebugLabel" type="Label" parent="."]
-visible = false
-offset_left = 7.0
-offset_top = -2.0
-offset_right = 24.0
-offset_bottom = 21.0
-text = "0
-"
-label_settings = SubResource("LabelSettings_umbbd")
