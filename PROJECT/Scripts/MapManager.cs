@@ -144,7 +144,7 @@ namespace Com.IsartDigital.ProjectName
         //instanciates the objects at the right place
         private void CreateObject(Node2D pObject, int pI, int pJ)
         {
-            pObject.GlobalPosition = GridManager.TileDict[new Vector2I(pI, pJ)].GlobalPosition;
+            pObject.Position = GridManager.TileDict[new Vector2I(pI, pJ)].Position;
             gameContainer.AddChild(pObject);
             gameObject[pObject] = GridManager.TileDict[new Vector2I(pI, pJ)];
         }
@@ -154,9 +154,10 @@ namespace Com.IsartDigital.ProjectName
         {
             foreach(KeyValuePair<Node2D,Node2D> lPair in gameObject)
             {
-                lPair.Key.GlobalPosition = lPair.Value.GlobalPosition;
+                lPair.Key.Position = lPair.Value.Position;
             }
         }
+
         protected override void Dispose(bool pDisposing)
         {
             instance = null;
