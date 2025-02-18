@@ -1,4 +1,5 @@
 ﻿using System;
+using Com.IsartDigital.ProjectName;
 using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
@@ -27,6 +28,7 @@ namespace Com.IsartDigital.WoolyWay
             Instance = this;
             #endregion
             GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+            HudManager.Instance.CreateHud();
         }
 
         protected override void Dispose(bool pDisposing)
