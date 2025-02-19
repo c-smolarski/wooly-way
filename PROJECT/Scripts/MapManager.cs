@@ -26,7 +26,7 @@ namespace Com.IsartDigital.ProjectName
         #endregion
 
 
-        public List<string> currentLevel;
+        public MapInfo currentLevel;
         private string pathJson = "Properties/leveldesign.json";
         
         //Exports
@@ -78,16 +78,19 @@ namespace Com.IsartDigital.ProjectName
         private void GenerateLevel()
         {
             //A changer en fonction du niveau que vous voulez tester, a mettre dans le level selector plus tard
-            currentLevel = mapData.Level6.Map;
+            currentLevel = mapData.Level6;
 
             //Creates grid depending on the size of the level
-            GridManager.Instance.GenerateNewGrid(new Vector2I(currentLevel[1].Length, currentLevel.Count));
-            for (int i = 0; i < currentLevel.Count; i++)
+            GridManager.Instance.GenerateNewGrid(new Vector2I(currentLevel.Map[1].Length, currentLevel.Map.Count));
+            int ySizeLevel = currentLevel.Map.Count;
+            int xSizeLevel = currentLevel.Map[1].Length;
+
+            for (int i = 0; i < ySizeLevel; i++)
             {
-                for (int j = 0; j < currentLevel[i].Length; j++)
+                for (int j = 0; j < xSizeLevel; j++)
                 {
                     //Checks every characters of the strings in the List and instanciate to scene
-                    switch (currentLevel[i][j])
+                    switch (currentLevel.Map[i][j])
                     {
                         case '#':
                             CreateObject(wallPacked, i, j);
