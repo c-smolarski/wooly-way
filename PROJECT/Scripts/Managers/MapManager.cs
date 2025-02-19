@@ -78,6 +78,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         {
             //A changer en fonction du niveau que vous voulez tester, a mettre dans le level selector plus tard
             currentLevel = mapData.Level6;
+            HudManager.Instance.ActualizeHud(); // actualize hud to show level Par
 
             //Creates grid depending on the size of the level
             GridManager.Instance.GenerateNewGrid(new Vector2I(currentLevel.Map[1].Length, currentLevel.Map.Count));

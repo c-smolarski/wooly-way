@@ -16,8 +16,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
         private string pathSteps = "Steps";
 
         private VBoxContainer vBoxContainer;
-        private Label par;
-        private Label steps;
+        private Label parLabel;
+        private Label stepsLabel;
 
         public static HudManager Instance { get; private set; }
         public override void _Ready()
@@ -36,12 +36,16 @@ namespace Com.IsartDigital.WoolyWay.Managers
 		{
 			var lHud = NodeCreator.CreateNode(hudScene, canvasLayer);
             vBoxContainer = lHud.GetChild<VBoxContainer>(0);
-            par = vBoxContainer.GetChild<Label>(0);
-            steps = vBoxContainer.GetNode<Label>(pathSteps);
+            parLabel = vBoxContainer.GetNode<Label>(pathPar);
+            stepsLabel = vBoxContainer.GetNode<Label>(pathSteps);
             vBoxContainer.Position += new Vector2(0, -150);
             Tween lTween = CreateTween();
             lTween.TweenProperty(vBoxContainer, "position", new Vector2(0, 150), 3f).SetTrans(Tween.TransitionType.Back).AsRelative();
 
+        }
+        public void ActualizeHud()
+        {
+            parLabel.Text = "Par : " + MapManager.GetInstance().currentLevel.Par;
         }
 		public override void _Process(double pDelta)
 		{
