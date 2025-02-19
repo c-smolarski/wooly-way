@@ -1,11 +1,10 @@
-﻿using Godot;
-using System;
+﻿using System;
 
 // Author : Camille SMOLARSKI
 
 namespace Com.IsartDigital.WoolyWay.GameObjects
 {
-    public abstract partial class Mobile : GameObject
+    public partial class Obstacle : GameObject
     {
     }
 }

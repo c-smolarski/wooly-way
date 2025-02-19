@@ -1,4 +1,5 @@
-﻿using Com.IsartDigital.WoolyWay.Utils;
+﻿using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
+using Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] private PackedScene sheepPacked;
         [Export] private PackedScene arrivalPacked;
 
-        private Dictionary<Node2D, Node2D> gameObject = new();
+        public static ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
 
         private MapData mapData = new MapData();
         public override void _Ready()
@@ -53,7 +54,6 @@ namespace Com.IsartDigital.WoolyWay.Managers
             #endregion
 
             ExtractData();
-            GetWindow().SizeChanged += UpdatePos;
         }
 
         private void ExtractData()
@@ -81,66 +81,54 @@ namespace Com.IsartDigital.WoolyWay.Managers
 
             //Creates grid depending on the size of the level
             GridManager.Instance.GenerateNewGrid(new Vector2I(currentLevel[1].Length, currentLevel.Count));
-            for (int i = 0; i < currentLevel.Count; i++)
+            TwoWayDictionary<Tile, GameObject> lTempDict = new();
+            GameObject lObj;
+
+            for (int y = 0; y < currentLevel.Count; y++)
             {
-                for (int j = 0; j < currentLevel[i].Length; j++)
+                for (int x = 0; x < currentLevel[y].Length; x++)
                 {
                     //Checks every characters of the strings in the List and instanciate to scene
-                    switch (currentLevel[i][j])
+                    switch (currentLevel[y][x])
                     {
                         case '#':
-                            CreateObject(wallPacked, i, j);
+                            lObj = GameObject.Create(wallPacked, x, y);
                             break;
-
                         case '@':
-                            CreateObject(playerPacked, i, j);
-                            break ;
-
+                            lObj = GameObject.Create(playerPacked, x, y);
+                            break;
                         case 'o':
-                            CreateObject(dogPacked, i, j);
+                            lObj = GameObject.Create(dogPacked, x, y);
                             break;
-
                         case '$':
-                            CreateObject(sheepPacked, i, j);
+                            lObj = Sheep.Create(sheepPacked, new Vector2I(x, y), default);
                             //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
+                            //TODO : Replace default with sheep direction.
                             break;
-
                         case 'N':
-                            CreateObject(sheepPacked, i, j);
+                            lObj = Sheep.Create(sheepPacked, new Vector2I(x, y), default, false);
                             //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
                             //ici envoyer un truc au script chevre comme quoi celle la doit pas pouvoir gagner
+                            //TODO : Replace default with sheep direction.
                             break;
-
                         case '.':
-                            CreateObject(arrivalPacked, i, j);
+                            lObj = GameObject.Create(arrivalPacked, x, y);
                             break;
-
                         default:
+                            lObj = null;
                             break;
-                    }   
+                    }
+
+                    if (lObj is not null)
+                        lTempDict.Add(GridManager.TileDict[new Vector2I(x, y)], lObj);
                 }
             }
-        }
-
-        //instanciates the objects at the right place
-        private void CreateObject(PackedScene pScene, int pI, int pJ)
-        {
-            GameObject lObj = NodeCreator.CreateGameObject<GameObject>(pScene, pI, pJ);
-            gameObject[lObj] = GridManager.TileDict[new Vector2I(pI, pJ)];
-        }
-
-        //Update the position of all gameObject when the screenSize changes
-        private void UpdatePos()
-        {
-            foreach(KeyValuePair<Node2D,Node2D> lPair in gameObject)
-            {
-                lPair.Key.Position = lPair.Value.Position;
-            }
+            ObjectDict = lTempDict.ToReadOnly();
         }
 
         protected override void Dispose(bool pDisposing)
         {
-            instance = null;
+            if(instance == this) instance = null;
             base.Dispose(pDisposing);
         }
     }

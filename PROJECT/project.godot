@@ -26,6 +26,7 @@ project/assembly_name="WoolyWay"
 
 folder_colors={
 "res://Properties/": "yellow",
+"res://Ressources/": "blue",
 "res://Scenes/": "green",
 "res://Scripts/": "red"
 }

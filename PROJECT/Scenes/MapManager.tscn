@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://iv0tptn3q0sw"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/MapManager.cs" id="1_umvtk"]
-[ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/Wall.tscn" id="2_1jpj2"]
-[ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/Player.tscn" id="3_nnm5d"]
-[ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/Dog.tscn" id="4_wm064"]
-[ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/Sheep.tscn" id="5_niqa6"]
-[ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/Arrival.tscn" id="6_ueu18"]
+[ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/GameObjects/Wall.tscn" id="2_1jpj2"]
+[ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/GameObjects/Player.tscn" id="3_nnm5d"]
+[ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/GameObjects/Dog.tscn" id="4_wm064"]
+[ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/GameObjects/Sheep.tscn" id="5_niqa6"]
+[ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/GameObjects/Arrival.tscn" id="6_ueu18"]
 
 [node name="MapManager" type="Node2D"]
 script = ExtResource("1_umvtk")

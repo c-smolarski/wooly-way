@@ -1,6 +1,8 @@
 ﻿using Godot;
 using System;
 
+// Author : Camille SMOLARSKI
+
 namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
 {
     public partial class Player : Mobile
