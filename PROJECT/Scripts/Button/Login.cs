@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Reflection.Emit;
+using System.Xml.Serialization;
 
 // Author : Alissa Delattre
 
@@ -9,6 +11,7 @@ namespace Com.IsartDigital.ProjectName {
 	{
         [Export] private TextEdit usernameText;
         [Export] private LineEdit passwordText;
+		[Export] private AnimationPlayer transition;
 
         private string username;
         private string password;
@@ -27,11 +30,21 @@ namespace Com.IsartDigital.ProjectName {
 			username = usernameText.Text;
 			password = passwordText.Text;
 
-			//(string pass, salt) = DataManager.CheckIfUserExist(username);
-			//if(!pass == null && passwordManager.CheckPassword(pass, password, salt)){
-			//  DataManager.NonDuTrucQuiStockLeCompteDansLequelTesActuellementConnecter = username;
-			//	GetTree().ChangeSceneToFile(chemin vers le level selector)
-			//else GD.Print("wrong username or password")
-		}
-	}
+			transition.Play("fade In");
+            transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
+
+
+            //(string pass, salt) = DataManager.CheckIfUserExist(username);
+            //if(!pass == null && passwordManager.CheckPassword(pass, password, salt)){
+            //  DataManager.NonDuTrucQuiStockLeCompteDansLequelTesActuellementConnecter = username;
+            //	GetTree().ChangeSceneToFile(chemin vers le level selector)
+            //else GD.Print("wrong username or password")
+        }
+
+        private void ChangeScene(string pName)
+        {
+            GetTree().ChangeSceneToFile("res://Scenes/Tile.tscn");
+        }
+
+    }
 }
