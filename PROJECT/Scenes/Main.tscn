@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=8 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/Managers/GameManger.cs" id="2_ov00f"]
 [ext_resource type="Script" path="res://Scripts/Managers/HudManager.cs" id="2_ri03q"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
 [ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
+[ext_resource type="Script" path="res://Scripts/Managers/SoundManager.cs" id="4_m2u61"]
 [ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/UI/HUD.tscn" id="4_ms4ov"]
 
 [node name="Main" type="Node"]
@@ -21,6 +22,12 @@ tileMargin = Vector2(2, 2)
 script = ExtResource("2_ri03q")
 hudScene = ExtResource("4_ms4ov")
 canvasLayer = NodePath("../../CanvasLayer")
+
+[node name="SoundManager" type="Node" parent="Managers" node_paths=PackedStringArray("MusicPlayer")]
+script = ExtResource("4_m2u61")
+MusicPlayer = NodePath("MusicPlayer")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Managers/SoundManager"]
 
 [node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GridContainer", "GameContainer")]
 script = ExtResource("2_ov00f")
