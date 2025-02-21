@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c57d4n01ohi8h"]
+
+[ext_resource type="Shader" path="res://Ressources/Shaders/Water.gdshader" id="1_h40cn"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_lbxeo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5plyy"]
+shader = ExtResource("1_h40cn")
+shader_parameter/TILE_SIZE = 25.0
+shader_parameter/WATER_COLOR = Color(0.094, 0.729, 0.911, 1)
+shader_parameter/DARK_WATER_COLOR = Color(0.066, 0.484, 0.689, 1)
+shader_parameter/FLOW_SPEED = 1.0
+shader_parameter/COLOR_RANGE = 0.7
+shader_parameter/COLOR_THRESHOLD = 0.65
+shader_parameter/LIGHT_LINES_THICKNESS = 1.2
+shader_parameter/FOAM_LINES_THICKNESS = 0.8
+
+[node name="Water" type="Node2D"]
+
+[node name="Sprite2D" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_5plyy")
+scale = Vector2(10, 10)
+offset = Vector2(-10, -5)
+texture = ExtResource("2_lbxeo")
+polygon = PackedVector2Array(10, 0, 20, 5, 10, 10, 0, 5)
