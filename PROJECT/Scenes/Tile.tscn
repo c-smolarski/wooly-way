@@ -1,49 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://sloiiv0qqxq0"]
+[gd_scene format=3 uid="uid://sloiiv0qqxq0"]
 
-[ext_resource type="Script" path="res://Scripts/Test.cs" id="1_2ywjx"]
-[ext_resource type="Texture2D" uid="uid://dtej8j4hejql2" path="res://transition.png" id="2_a65x4"]
-
-[sub_resource type="Animation" id="Animation_ust3v"]
-resource_name = "fadeOut"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(627, 324), Vector2(1782, 324)]
-}
-
-[sub_resource type="Animation" id="Animation_kfvba"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(627, 324)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0p5as"]
-_data = {
-"RESET": SubResource("Animation_kfvba"),
-"fadeOut": SubResource("Animation_ust3v")
-}
-
-[node name="Tile" type="Polygon2D" node_paths=PackedStringArray("transition")]
+[node name="Tile" type="Polygon2D"]
 color = Color(0, 1, 0.329412, 1)
 polygon = PackedVector2Array(10, 0, 20, 5, 10, 10, 0, 5)
-script = ExtResource("1_2ywjx")
-transition = NodePath("AnimationPlayer")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 color = Color(0, 0.556863, 0, 1)
@@ -52,12 +11,3 @@ polygon = PackedVector2Array(20, 5, 10, 10, 10, 20, 20, 15)
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0, 0.415686, 0, 1)
 polygon = PackedVector2Array(0, 5, 10, 10, 10, 20, 0, 15)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0p5as")
-}
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(627, 324)
-texture = ExtResource("2_a65x4")

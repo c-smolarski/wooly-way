@@ -1,52 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://jx675vga67s0"]
+[gd_scene load_steps=7 format=3 uid="uid://jx675vga67s0"]
 
 [ext_resource type="Script" path="res://Scripts/Button/Create.cs" id="1_7hp86"]
 [ext_resource type="Script" path="res://Scripts/Button/Login.cs" id="1_oc6yq"]
 [ext_resource type="Script" path="res://Scripts/PasswordManager.cs" id="2_5nf3w"]
-[ext_resource type="Texture2D" uid="uid://dtej8j4hejql2" path="res://transition.png" id="4_u7k33"]
+[ext_resource type="PackedScene" uid="uid://d4l7vsdirecaf" path="res://Scenes/Transition/transitionIn.tscn" id="4_tyhv3"]
+[ext_resource type="Script" path="res://Scripts/UsernameText.cs" id="5_fye66"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xwfa"]
 font_size = 50
-
-[sub_resource type="Animation" id="Animation_m27w1"]
-resource_name = "fade In"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-629, 324), Vector2(620, 323)]
-}
-
-[sub_resource type="Animation" id="Animation_ukpr3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-629, 324)]
-}
-
-[sub_resource type="Animation" id="Animation_k2cpu"]
-resource_name = "fadeOut"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxnfs"]
-_data = {
-"RESET": SubResource("Animation_ukpr3"),
-"fade In": SubResource("Animation_m27w1"),
-"fadeOut": SubResource("Animation_k2cpu")
-}
 
 [node name="Authentification" type="Control"]
 layout_mode = 3
@@ -75,22 +36,118 @@ offset_bottom = 34.688
 text = "Wooly way"
 label_settings = SubResource("LabelSettings_1xwfa")
 
-[node name="Username" type="TextEdit" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color(0.404844, 0.227407, 0.131668, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.505
+anchor_right = 0.506
+anchor_bottom = 0.505
+offset_left = -143.406
+offset_top = -31.745
+offset_right = 143.594
+offset_bottom = 32.255
+color = Color(0.430167, 0.305519, 0.242316, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.5
+anchor_right = 0.506
+anchor_bottom = 0.5
+offset_left = -143.406
+offset_top = -37.5
+offset_right = 143.595
+offset_bottom = 26.5
+color = Color(0.430167, 0.305519, 0.242316, 1)
+
+[node name="usernameText" type="RichTextLabel" parent="." node_paths=PackedStringArray("textInput")]
+modulate = Color(0.24, 0.14364, 0.0648, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -25.0
-offset_right = 125.0
-offset_bottom = 25.0
+offset_left = -128.5
+offset_top = -30.5
+offset_right = 133.5
+offset_bottom = 29.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Username"
+script = ExtResource("5_fye66")
+textInput = NodePath("../Username")
+
+[node name="Username" type="LineEdit" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.631
+anchor_right = 0.5
+anchor_bottom = 0.631
+offset_left = -128.5
+offset_top = -113.519
+offset_right = 121.5
+offset_bottom = -63.519
+placeholder_text = "password"
+secret = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+modulate = Color(0.404844, 0.227407, 0.131668, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.505
+anchor_right = 0.506
+anchor_bottom = 0.505
+offset_left = -142.406
+offset_top = 58.255
+offset_right = 144.594
+offset_bottom = 122.255
+color = Color(0.430167, 0.305519, 0.242316, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.5
+anchor_right = 0.506
+anchor_bottom = 0.5
+offset_left = -142.406
+offset_top = 52.5
+offset_right = 144.595
+offset_bottom = 116.5
+color = Color(0.430167, 0.305519, 0.242316, 1)
+
+[node name="PasswordText" type="RichTextLabel" parent="." node_paths=PackedStringArray("textInput")]
+modulate = Color(0.24, 0.14364, 0.0648, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.5
+offset_top = 61.5
+offset_right = 135.5
+offset_bottom = 121.5
 grow_horizontal = 2
 grow_vertical = 2
-placeholder_text = "Username"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Password"
+script = ExtResource("5_fye66")
+textInput = NodePath("../Password")
+secret = true
 
 [node name="Password" type="LineEdit" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -119,7 +176,7 @@ text = "Login"
 script = ExtResource("1_oc6yq")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
-transition = NodePath("../Transition")
+transition = NodePath("../TransitionIn")
 
 [node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
 layout_mode = 1
@@ -137,11 +194,4 @@ script = ExtResource("1_7hp86")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
 
-[node name="Transition" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yxnfs")
-}
-
-[node name="Sprite2D" type="Sprite2D" parent="Transition"]
-position = Vector2(-629, 324)
-texture = ExtResource("4_u7k33")
+[node name="TransitionIn" parent="." instance=ExtResource("4_tyhv3")]
