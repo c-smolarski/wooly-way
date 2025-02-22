@@ -25,6 +25,7 @@ project/assembly_name="WoolyWay"
 [file_customization]
 
 folder_colors={
+"res://Audio/": "purple",
 "res://Properties/": "yellow",
 "res://Ressources/": "blue",
 "res://Scenes/": "green",
