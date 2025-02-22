@@ -24,9 +24,9 @@ canvasLayer = NodePath("../../CanvasLayer")
 
 [node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GridContainer", "GameContainer")]
 script = ExtResource("2_ov00f")
+TileScene = ExtResource("3_0uypt")
 GridContainer = NodePath("../../GridContainer")
 GameContainer = NodePath("../../GameContainer")
-TileScene = ExtResource("3_0uypt")
 
 [node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
 gameContainer = NodePath("../../GameContainer")

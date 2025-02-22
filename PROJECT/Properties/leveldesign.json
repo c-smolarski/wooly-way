@@ -1,5 +1,6 @@
 {
 	"Tutorial": {
+		"Title": "Tutorial",
 		"Author": "",
 		"Par": 10,
 		"SheepDirection": [ "Right" ],
@@ -16,6 +17,7 @@
 		]
 	},
 	"Level1": {
+		"Title": "Level 1",
 		"Author": "Alissa Delattre",
 		"Par": 33,
 		"SheepDirection": [ "Up", "Left" ],
@@ -30,6 +32,7 @@
 		]
 	},
 	"Level2": {
+		"Title": "Level 2",
 		"Author": "Tom Bagnara",
 		"Par": 5,
 		"SheepDirection": [ "Down", "Left", "Up" ],
@@ -46,6 +49,7 @@
 		]
 	},
 	"Level3": {
+		"Title": "Level 3",
 		"Author": "Julien Lim",
 		"Par": 107,
 		"SheepDirection": [ "Right", "Up", "Left" ],
@@ -64,6 +68,7 @@
 	},
 
 	"Level4": {
+		"Title": "Level 4",		
 		"Author": "Daniel Moussouni-Lepilliez",
 		"Par": 89,
 		"SheepDirection": [ "Left", "Up", "Left", "Up", "Up" ],
@@ -81,6 +86,7 @@
 		]
 	},
 	"Level5": {
+		"Title": "Level 5",	
 		"Author": "Clément Ducroquet",
 		"Par": 37,
 		"SheepDirection": [ "Up", "Down", "Right", "Left", "Up" ],
@@ -97,6 +103,7 @@
 		]
 	},
 	"Level6": {
+		"Title": "Level 6",	
 		"Author": "Camille Smolarski-Janda",
 		"Par": 26,
 		"SheepDirection": [ "Left", "Right", "Right", "Left", "Left", "Left", "Down", "Up", "Left", "Left", "Left", "Up", "Up", "Left", "Up", "Up", "Left", "Up", "Down" ],
