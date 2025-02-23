@@ -12,6 +12,7 @@ namespace Com.IsartDigital.WoolyWay
     public partial class Tile : Node2D
     {
         public GameObject CurrentObject => MapManager.ObjectDict[this];
+        public Vector2I Index => GridManager.TileDict[this];
 
         public bool IsWalkable()
         {

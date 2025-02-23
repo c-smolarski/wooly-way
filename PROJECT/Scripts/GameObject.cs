@@ -20,7 +20,6 @@ namespace Com.IsartDigital.WoolyWay
 
         private void UpdatePos()
         {
-            GD.Print(CurrentTile);
             Position = CurrentTile.Position;
         }
 

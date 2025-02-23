@@ -63,7 +63,6 @@ namespace Com.IsartDigital.WoolyWay.Managers
             {
                 //Deserialize json data into MapData class
                 mapData = JsonSerializer.Deserialize<MapData>(data)!;
-                GD.Print(mapData.Level1.Map);
 
                 GenerateLevel();
             }
