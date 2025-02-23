@@ -20,9 +20,9 @@ namespace Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries
         /// <exception cref="ArgumentException"></exception>
         public void Add(TKey pKey, TValue pValue)
         {
-            if (Contains(pKey))
+            if (pKey is not null && Contains(pKey))
                 throw new ArgumentException($"{this} already contains {pKey}");
-            else if (Contains(pValue))
+            else if (pValue is not null && Contains(pValue))
                 throw new ArgumentException($"{this} already contains {pValue}");
 
             Array.Resize(ref pairs, pairs.Length + 1);
