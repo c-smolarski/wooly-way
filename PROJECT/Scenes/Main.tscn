@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=8 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/Managers/GameManger.cs" id="2_ov00f"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
 [ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/UI/HUD.tscn" id="4_ms4ov"]
 [ext_resource type="Script" path="res://Scripts/Managers/UserManager.cs" id="7_8spp5"]
-[ext_resource type="JSON" path="res://Ressources/Data/userData.json" id="8_o5jda"]
 
 [node name="Main" type="Node"]
 
@@ -35,7 +34,6 @@ gameContainer = NodePath("../../GameContainer")
 
 [node name="UserManager" type="Node" parent="Managers"]
 script = ExtResource("7_8spp5")
-userDataFile = ExtResource("8_o5jda")
 
 [node name="GridContainer" type="Node2D" parent="."]
 

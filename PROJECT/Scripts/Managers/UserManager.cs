@@ -1,9 +1,12 @@
 using Godot;
 using System;
 using System.IO;
-using System.Collections.Generic;
-using Com.IsartDigital.WoolyWay.Data;
 using System.Text.Json;
+using System.Collections.Generic;
+
+using Com.IsartDigital.WoolyWay.Data;
+using Com.IsartDigital.WoolyWay.Utils.Converters;
+using Com.IsartDigital.WoolyWay.Utils.Data;
 
 // author : DUCROQUET Clément
 
@@ -24,7 +27,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
 
 		#endregion
 
-		[Export] Resource userDataFile;
+		//[Export] Resource userDataFile;
+		private string userDataPath = "../PROJECT/Ressources/Data/userData.json";
 
 		public override void _Ready()
 		{
@@ -38,8 +42,11 @@ namespace Com.IsartDigital.WoolyWay.Managers
 
 			instance = this;
 			#endregion
-			GD.Print("CreateUser");
-			CreateUser(new Dictionary<string, List<string>>() { { "usernameblabla", new List<string>() { "thispassword", "thissalt" } } });
+
+			//userDataPath = userDataFile.ResourcePath; // convert into string -> remove root (as string) -> ../{path}
+
+			/*GD.Print("CreateUser");
+			CreateUser(new Dictionary<string, List<string>>() { { "usernameblabla", new List<string>() { "thispassword", "thissalt" } } });*/
 		}
 
 		public override void _Process(double pDelta)
@@ -49,38 +56,44 @@ namespace Com.IsartDigital.WoolyWay.Managers
 
 		public void CreateUser(Dictionary<string, List<string>> pUserData)
 		{
-			string lUserJsonData;
+			JsonSerializerOptions lJsonOptions;
+			string lUserJsonData; string lJsonData;
+			List<UserData> lAllUsersData;
+			
 			UserData lNewUser = new UserData();
 
-			foreach (KeyValuePair<string, List<string>> data in pUserData)
+            foreach (KeyValuePair<string, List<string>> lData in pUserData)
 			{
-                lNewUser.username = data.Key;
-				lNewUser.hachedPassword = data.Value[0];
-				lNewUser.passwordSalt = data.Value[1];
+                lNewUser.username = lData.Key;
+				lNewUser.hachedPassword = lData.Value[0];
+				lNewUser.passwordSalt = lData.Value[1];
             }
 
-			JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
-			jsonOptions.IncludeFields = true;
+            lJsonOptions = new JsonSerializerOptions();
+            lJsonOptions.IncludeFields = true;
+			lJsonOptions.WriteIndented = true;
 
-            lUserJsonData = JsonSerializer.Serialize(lNewUser, jsonOptions);
-			GD.Print(lUserJsonData);
+			lUserJsonData = JsonSerializer.Serialize(lNewUser, lJsonOptions);
 
-			GD.Print(userDataFile.ResourcePath);
+			lAllUsersData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), lJsonOptions);
+			lAllUsersData.Add(lNewUser);
 
-			//OverwriteJsonFile(userDataFile, lUserJsonData);
+			lJsonData = JsonSerializer.Serialize(lAllUsersData, lJsonOptions);
 
+            OverwriteJsonFile(userDataPath, lJsonData);
+        }
+
+		private string GetAllUsersData(string pPathOfFileToRead)
+		{
+			string lData;
+			lData = File.ReadAllText(pPathOfFileToRead);
+
+			return lData;
 		}
 
-		/*private UserData[] GetAllUsersData(Json pFileToRead)
+		private void OverwriteJsonFile(string pPathOfFileToOverwrite, string pTextToWrite)
 		{
-			File.ReadAllLines();
-			return new UserData[] { };
-		}*/
-
-		private void OverwriteJsonFile(Resource pFileToOverwrite, string pTextToWrite)
-		{
-			//File.WriteAllText(pFileToOverwrite.ResourcePath, pTextToWrite);
-			//File.ReadAllText(@"\Ressources\Data\userData.json");
+			File.WriteAllText(pPathOfFileToOverwrite, pTextToWrite);
         }
 
         protected override void Dispose(bool pDisposing)
