@@ -22,12 +22,14 @@ namespace Com.IsartDigital.ProjectName {
 
 		private void startAnim()
 		{
+			// DU DURE TJ PLUS DE DURE
 			wooly.Play("Title");
 			wooly.AnimationFinished += EndAnim;
 		}
 
         private void EndAnim(StringName animName)
 		{
+			//AAAAAAAAAAAAAAH
 			way.Play("Way");
 		}
 		protected override void Dispose(bool pDisposing)

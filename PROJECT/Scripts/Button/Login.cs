@@ -30,6 +30,7 @@ namespace Com.IsartDigital.ProjectName {
 			username = usernameText.Text;
 			password = passwordText.Text;
 
+            //DU DUUUUUUUUUUURE
 			transition.Play("fade In");
             transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
 
@@ -43,6 +44,7 @@ namespace Com.IsartDigital.ProjectName {
 
         private void ChangeScene(string pName)
         {
+            //DU DUUUUUUUUUURE
             GetTree().ChangeSceneToFile("res://Scenes/Tile.tscn");
         }
 
