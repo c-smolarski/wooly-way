@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=16 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/Sheep.tscn" id="8_gvd0m"]
 [ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/Arrival.tscn" id="9_nr5v7"]
 [ext_resource type="PackedScene" uid="uid://bgo65s6xvkjhe" path="res://Scenes/main_menu.tscn" id="12_eekqv"]
+[ext_resource type="Script" path="res://Scripts/main_menu.cs" id="13_rvh2u"]
+[ext_resource type="PackedScene" uid="uid://t4dbwvcyidyd" path="res://Scenes/settings.tscn" id="13_tq18i"]
+[ext_resource type="PackedScene" uid="uid://cxta5c5yivgqd" path="res://Scenes/pause_menu.tscn" id="14_gcp1u"]
 
 [node name="Main" type="Node"]
 
@@ -34,6 +37,7 @@ script = ExtResource("2_ov00f")
 GameContainer = NodePath("../../GameContainer")
 
 [node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
+visible = false
 wallPacked = ExtResource("5_7tm8l")
 gameContainer = NodePath("../../GameContainer")
 playerPacked = ExtResource("6_ewwj7")
@@ -41,8 +45,16 @@ dogPacked = ExtResource("7_l4yf1")
 sheepPacked = ExtResource("8_gvd0m")
 arrivalPacked = ExtResource("9_nr5v7")
 
-[node name="GameContainer" type="Node2D" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GameContainer" type="Node2D" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_gcp1u")]
+visible = false
+
+[node name="Settings" parent="." instance=ExtResource("13_tq18i")]
 
 [node name="MainMenu" parent="." instance=ExtResource("12_eekqv")]
+script = ExtResource("13_rvh2u")
