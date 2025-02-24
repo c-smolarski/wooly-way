@@ -51,7 +51,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         {
             var lCurrentLevel = MapManager.GetInstance().currentLevel;
             parLabel.Text = "Par : " + lCurrentLevel.Par;
-            levelLabel.Text = lCurrentLevel.ToString();
+            levelLabel.Text = lCurrentLevel.Title;
         }
 		public override void _Process(double pDelta)
 		{
