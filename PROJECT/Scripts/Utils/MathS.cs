@@ -1,7 +1,7 @@
 ﻿using Godot;
 using System;
 
-// Author : Camille Smolarski
+// Author : Camille SMOLARSKI
 
 namespace Com.IsartDigital.WoolyWay.Utils
 {
@@ -11,6 +11,7 @@ namespace Com.IsartDigital.WoolyWay.Utils
 
         public static Vector2 PositionToIsoPosition(Vector2 pPos)
         {
+            pPos = pPos * 0.5f;
             return new Vector2(
                 pPos.X * IsoMatrix.A.X + pPos.Y * IsoMatrix.B.X,
                 pPos.X * IsoMatrix.A.Y + pPos.Y * IsoMatrix.B.Y);

@@ -3,13 +3,11 @@ using System;
 
 // Author : Daniel Moussouni--Lepilliez
 
-namespace Com.IsartDigital.WoolyWay.Utils
+namespace Com.IsartDigital.WoolyWay.Utils.Data
 {
-
-    public static partial class SoundPaths
+    public static class SoundPath
     {
-        public static string
-        mainBusName = "Main";
+        public const string MAIN_SOUND_BUS = "Main";
         //SOUND_EXAMPLE0 = "res://Audio/SFX/SOUND_EXAMPLE0.ogg";
     }
 }

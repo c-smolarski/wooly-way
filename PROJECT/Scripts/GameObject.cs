@@ -9,8 +9,8 @@ namespace Com.IsartDigital.WoolyWay
 {
     public partial class GameObject : Node2D
     {
-        public Tile CurrentTile => MapManager.ObjectDict[this];
-
+        public Grid Grid { get; private set; }
+        public Tile CurrentTile => Grid.ObjectDict[this];
 
         public override void _Ready()
         {
@@ -20,7 +20,6 @@ namespace Com.IsartDigital.WoolyWay
 
         private void UpdatePos()
         {
-            GD.Print(CurrentTile);
             Position = CurrentTile.Position;
         }
 
@@ -29,22 +28,12 @@ namespace Com.IsartDigital.WoolyWay
         {
             return Create<GameObject>(pScene, pTile);
         }
-        public static GameObject Create(PackedScene pScene, int pIndexX, int pIndexY)
-        {
-            return Create<GameObject>(pScene, pIndexX, pIndexY);
-        }
 
         public static T Create<T>(PackedScene pScene, Tile pTile) where T : GameObject
         {
-            return NodeCreator.CreateNode<T>(pScene, GameManger.Instance.GameContainer, pTile.Position);
-        }
-        public static T Create<T>(PackedScene pScene, Vector2I pTileIndex) where T : GameObject
-        {
-            return Create<T>(pScene, GridManager.TileDict[pTileIndex]);
-        }
-        public static T Create<T>(PackedScene pScene, int pIndexX, int pIndexY) where T : GameObject
-        {
-            return Create<T>(pScene, GridManager.TileDict[new Vector2I(pIndexX, pIndexY)]);
+            T lObj = NodeCreator.CreateNode<T>(pScene, pTile.Grid ,pTile.Position);
+            lObj.Grid = pTile.Grid;
+            return lObj;
         }
     }
 }
