@@ -30,7 +30,9 @@ namespace Com.IsartDigital.WoolyWay.Managers
 		//[Export] Resource userDataFile;
 		private string userDataPath = "../PROJECT/Ressources/Data/userData.json";
 
-		public override void _Ready()
+        JsonSerializerOptions globalJsonOptions;
+
+        public override void _Ready()
 		{
 			#region Singleton
 			if (instance != null)
@@ -41,12 +43,19 @@ namespace Com.IsartDigital.WoolyWay.Managers
 			}
 
 			instance = this;
-			#endregion
+            #endregion
 
-			//userDataPath = userDataFile.ResourcePath; // convert into string -> remove root (as string) -> ../{path}
+            //userDataPath = userDataFile.ResourcePath; // convert into string -> remove root (as string) -> ../{path}
+
+            globalJsonOptions = new JsonSerializerOptions();
+            globalJsonOptions.IncludeFields = true; //Default is false. If false, UserData fields are not included into the json serialization and cause the class instance to be empty.
+            globalJsonOptions.WriteIndented = true;
 
 			GD.Print("CreateUser");
 			CreateUser(new Dictionary<string, List<string>>() { { "usernameblabla", new List<string>() { "thispassword", "thissalt" } } });
+
+			GD.Print("GetSecuredDataIfExists");
+			GD.Print(GetSecuredDataIfExists("usernameblabla"));
 		}
 
 		public override void _Process(double pDelta)
@@ -61,12 +70,13 @@ namespace Com.IsartDigital.WoolyWay.Managers
 		public void CreateUser(Dictionary<string, List<string>> pUserData)
 		{
             #region DECLARATIONS
-            JsonSerializerOptions lJsonOptions;
+            
 			string lUserJsonData;
 			string lGlobalJsonData;
-			List<UserData> lAllUsersData;
+			List<UserData> lGlobalData;
 			
 			UserData lNewUser = new UserData();
+
             #endregion
 
             foreach (KeyValuePair<string, List<string>> lData in pUserData)
@@ -76,19 +86,39 @@ namespace Com.IsartDigital.WoolyWay.Managers
 				lNewUser.passwordSalt = lData.Value[1];
             }
 
-            lJsonOptions = new JsonSerializerOptions();
-            lJsonOptions.IncludeFields = true; //Default is false. If false, UserData fields are not included into the json serialization and cause the class instance to be empty.
-            lJsonOptions.WriteIndented = true;
+            lUserJsonData = JsonSerializer.Serialize(lNewUser, globalJsonOptions); //Makes the class instance a json object.
 
-			lUserJsonData = JsonSerializer.Serialize(lNewUser, lJsonOptions); //Makes the class instance a json object.
+			lGlobalData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), globalJsonOptions); //Makes the json object(s) a UserData class instance.
+			lGlobalData.Add(lNewUser);
 
-			lAllUsersData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), lJsonOptions); //Makes the json object(s) a UserData class instance.
-			lAllUsersData.Add(lNewUser);
-
-			lGlobalJsonData = JsonSerializer.Serialize(lAllUsersData, lJsonOptions);
+			lGlobalJsonData = JsonSerializer.Serialize(lGlobalData, globalJsonOptions);
 
             OverwriteJsonFile(userDataPath, lGlobalJsonData);
         }
+
+		/// <summary>
+		/// Checks all usernames stored and returns an array of string containing both hached password and password salt if pUserName exists.
+		/// </summary>
+		/// <param name="pUserName"></param>
+		public string[] GetSecuredDataIfExists(string pUserName)
+		{
+			List<UserData> lGlobalData;
+
+			string[] lSecuredData = new string[2]; //Array supposed to contain both hached password and password salt if they exist.
+
+            lGlobalData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), globalJsonOptions);
+
+			foreach (UserData lData in lGlobalData)
+			{
+				if (lData.username == pUserName)
+				{
+					lSecuredData[0] = lData.hachedPassword;
+					lSecuredData[1] = lData.passwordSalt;
+				}
+			}
+
+            return lSecuredData;
+		}
 
 		/// <summary>
 		/// Returns data from a file according to its path (pPathOfFileToRead) as a json serialized string value.
