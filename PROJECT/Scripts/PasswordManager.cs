@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Formats.Asn1;
 using System.Text;
 
 	//Author: Alissa Delattre
@@ -22,6 +23,8 @@ namespace Com.IsartDigital.ProjectName
 
 		private const string ASCII = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		private const int LENTGH_SALT = 16;
+		private const int LEFT_SHIFT = 5;
+		private const int RIGHT_SHIFT = 27;
 
         private RandomNumberGenerator rand = new RandomNumberGenerator();
 
@@ -41,17 +44,33 @@ namespace Com.IsartDigital.ProjectName
 			#endregion
 		}
 
-		public (string, string) Crypting(string pPassword)
+		public (uint, string) Crypting(string pPassword)
+		{	
+			string lSalt = SaltGenerator();
+			uint lResult = Crypting(pPassword, lSalt);
+            return (lResult, lSalt);
+        }
+
+		private uint Crypting(string pPassword, string pSalt)
 		{
-			pPassword = pPassword.Sha256Text();
-			string salt = SaltGenerator();
-			pPassword += salt;
-			return (pPassword, salt);		
-		}
+			string pResult = pPassword + pSalt;
+			uint lHash = 0x811C9DC5;
+			uint lPrime = 0x01000193;
+
+			foreach(char character in pResult)
+			{
+				lHash ^= character;
+				lHash *= lPrime;
+                lHash = (lHash << LEFT_SHIFT) | (lHash >> RIGHT_SHIFT);
+            }
+
+			return lHash;
+        }
 
 		public bool CheckPassword(string pPassword, string pPasswordToCheck, string salt)
 		{
-			pPasswordToCheck = pPasswordToCheck.Sha256Text() +salt;
+			pPasswordToCheck = pPasswordToCheck +salt;
+			uint lCryptPassword = Crypting(pPasswordToCheck, pPasswordToCheck);
 			if (pPasswordToCheck == pPassword) return true;
 			else return false;
 
@@ -59,13 +78,13 @@ namespace Com.IsartDigital.ProjectName
 
 		private string SaltGenerator()
 		{
-			string salt = "";
-			int asciiPossibility = ASCII.Length - 1;
+			string lSalt = "";
+			int lAsciiPossibility = ASCII.Length - 1;
 			for (int i = 0; i < LENTGH_SALT; i++)
 			{
-				salt += ASCII[rand.RandiRange(0, asciiPossibility)];
+				lSalt += ASCII[rand.RandiRange(0, lAsciiPossibility)];
 			}
-			return salt.Sha256Text();
+			return lSalt;
         }
 
 		protected override void Dispose(bool pdisposing)

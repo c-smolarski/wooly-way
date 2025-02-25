@@ -9,7 +9,11 @@ namespace Com.IsartDigital.ProjectName {
 	{
 		[Export] private AnimationPlayer wooly;
 		[Export] private AnimationPlayer way;
-		public override void _Ready()
+
+		private const string START_ANIM = "Title";
+		private const string END_ANIM = "Way";
+
+        public override void _Ready()
 		{
 			startAnim();
 		}
@@ -23,14 +27,14 @@ namespace Com.IsartDigital.ProjectName {
 		private void startAnim()
 		{
 			// DU DURE TJ PLUS DE DURE
-			wooly.Play("Title");
+			wooly.Play(START_ANIM);
 			wooly.AnimationFinished += EndAnim;
 		}
 
         private void EndAnim(StringName animName)
 		{
 			//AAAAAAAAAAAAAAH
-			way.Play("Way");
+			way.Play(END_ANIM);
 		}
 		protected override void Dispose(bool pDisposing)
 		{

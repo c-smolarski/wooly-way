@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Formats.Asn1;
 
 // Author : Alissa Delattre
 
@@ -13,7 +14,7 @@ namespace Com.IsartDigital.ProjectName {
 		[Export] private LineEdit passwordText;
 
 		private string username;
-		private string password;
+		private uint password;
 		private string salt;
 
 		

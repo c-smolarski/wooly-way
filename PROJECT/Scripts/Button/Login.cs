@@ -17,6 +17,9 @@ namespace Com.IsartDigital.ProjectName {
         private string password;
         private string salt;
 
+        private const string TRANSITION = "fade In";
+        private const string NEXT_SCENE = "res://Scenes/Tile.tscn";
+
         PasswordManager passwordManager;
 
         public override void _Ready()
@@ -30,8 +33,7 @@ namespace Com.IsartDigital.ProjectName {
 			username = usernameText.Text;
 			password = passwordText.Text;
 
-            //DU DUUUUUUUUUUURE
-			transition.Play("fade In");
+			transition.Play(TRANSITION);
             transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
 
 
@@ -44,8 +46,7 @@ namespace Com.IsartDigital.ProjectName {
 
         private void ChangeScene(string pName)
         {
-            //DU DUUUUUUUUUURE
-            GetTree().ChangeSceneToFile("res://Scenes/Tile.tscn");
+            GetTree().ChangeSceneToFile(NEXT_SCENE);
         }
 
     }
