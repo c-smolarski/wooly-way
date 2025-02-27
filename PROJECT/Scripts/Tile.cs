@@ -18,7 +18,7 @@ namespace Com.IsartDigital.WoolyWay
 
         public bool IsWalkable()
         {
-            return CurrentObject is not Obstacle || (CurrentObject is Sheep && ((Sheep)CurrentObject).CanMove());
+            return !Grid.ObjectDict.Contains(this);
         }
 
         /// <summary>

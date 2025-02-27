@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using Com.IsartDigital.WoolyWay.Managers;
+using Godot;
 using System;
 
 // Author : Camille SMOLARSKI
@@ -20,6 +21,8 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             }
             Instance = this;
             #endregion
+
+            InputManager.Instance.MoveInputPressed += Move;
         }
 
         public override void _Process(double delta)
