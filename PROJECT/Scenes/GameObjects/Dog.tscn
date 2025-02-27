@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://5lilnhwf5nb8"]
+
+[ext_resource type="Script" path="res://Scripts/GameObject.cs" id="1_7yxt0"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_mixu5"]
+
+[node name="Dog" type="Node2D"]
+script = ExtResource("1_7yxt0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.921569, 1, 0.454902, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_mixu5")

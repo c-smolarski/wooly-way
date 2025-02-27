@@ -1,16 +1,18 @@
-﻿using System;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
-using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 
-namespace Com.IsartDigital.WoolyWay
+// Author : Camille Smolarski
+
+namespace Com.IsartDigital.WoolyWay.Managers
 {
     public partial class GameManger : Node
     {
         #region Exports
         [ExportGroup("Nodes")]
         [ExportSubgroup("Containers")]
+        [Export] public Node2D GridContainer { get; private set; }
         [Export] public Node2D GameContainer { get; private set; }
+        [ExportGroup("PackedScenes")]
+        [Export] public PackedScene TileScene { get; private set; }
         #endregion
 
         public static GameManger Instance { get; private set; }
@@ -26,7 +28,8 @@ namespace Com.IsartDigital.WoolyWay
             }
             Instance = this;
             #endregion
-            GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+            //GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+            HudManager.Instance.CreateHud();
         }
 
         protected override void Dispose(bool pDisposing)

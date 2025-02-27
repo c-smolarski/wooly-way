@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=8 format=3 uid="uid://owpjl3bk8b33"]
 
-[ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
-[ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
+[ext_resource type="Script" path="res://Scripts/Managers/GridManager.cs" id="1_jlmcb"]
+[ext_resource type="Script" path="res://Scripts/Managers/GameManger.cs" id="2_ov00f"]
+[ext_resource type="Script" path="res://Scripts/Managers/HudManager.cs" id="2_ri03q"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
+[ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
+[ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/UI/HUD.tscn" id="4_ms4ov"]
+[ext_resource type="Script" path="res://Scripts/Managers/UserManager.cs" id="7_8spp5"]
 
 [node name="Main" type="Node"]
 
@@ -13,10 +17,26 @@ script = ExtResource("1_jlmcb")
 tileOriginalSize = Vector2i(20, 20)
 tileScale = Vector2(4, 4)
 tileMargin = Vector2(2, 2)
-tileScene = ExtResource("3_0uypt")
 
-[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
+[node name="HudManager" type="Node" parent="Managers" node_paths=PackedStringArray("canvasLayer")]
+script = ExtResource("2_ri03q")
+hudScene = ExtResource("4_ms4ov")
+canvasLayer = NodePath("../../CanvasLayer")
+
+[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GridContainer", "GameContainer")]
 script = ExtResource("2_ov00f")
+GridContainer = NodePath("../../GridContainer")
 GameContainer = NodePath("../../GameContainer")
+TileScene = ExtResource("3_0uypt")
+
+[node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
+gameContainer = NodePath("../../GameContainer")
+
+[node name="UserManager" type="Node" parent="Managers"]
+script = ExtResource("7_8spp5")
+
+[node name="GridContainer" type="Node2D" parent="."]
 
 [node name="GameContainer" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2s0kgedanrp4"]
 
-[ext_resource type="Texture2D" uid="uid://dtej8j4hejql2" path="res://transition.png" id="1_mjuax"]
+[ext_resource type="Texture2D" uid="uid://dtej8j4hejql2" path="res://Assets/transition.png" id="1_mjuax"]
+
 
 [sub_resource type="Animation" id="Animation_kfvba"]
 length = 0.001
