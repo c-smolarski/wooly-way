@@ -25,15 +25,24 @@ namespace Com.IsartDigital.ProjectName
             showPass.ButtonUp += HidePassword;
         }
 
+        /// <summary>
+        /// Shows the hidden password while the button is pressed
+        /// </summary>
         private void ShowPassword()
         {
             Text = EFFECT + textInput.Text + END_EFFECT;
         }
 
+        /// <summary>
+        /// hides the password once the button is let go
+        /// </summary>
         private void HidePassword()
         {
             Text = EFFECT + currentText + END_EFFECT;
         }
+        /// <summary>
+        /// Takes the input of the LineEdit and adds an effect to it, checks if it needs to add a character or delete one and check if the password is hidden
+        /// </summary>
         private void TextEffect(string pText)
         {
             if (secret)

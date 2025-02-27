@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jx675vga67s0"]
+[gd_scene load_steps=16 format=3 uid="uid://jx675vga67s0"]
 
 [ext_resource type="Script" path="res://Scripts/Button/Create.cs" id="1_7hp86"]
 [ext_resource type="Script" path="res://Scripts/Button/Login.cs" id="1_oc6yq"]
@@ -81,6 +81,9 @@ font_color = Color(0.941239, 0.535332, 0.219012, 1)
 font_size = 50
 font_color = Color(1, 0.330464, 0.310866, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_is1c2"]
+font_color = Color(0.51701, 1.35969e-06, 3.85046e-07, 1)
+
 [node name="Authentification" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -123,7 +126,7 @@ anchor_bottom = 0.269
 offset_left = -104.152
 offset_top = -297.312
 offset_right = 62.845
-offset_bottom = -228.311
+offset_bottom = -228.31
 text = "Wooly"
 label_settings = SubResource("LabelSettings_1xwfa")
 
@@ -265,7 +268,7 @@ offset_bottom = 24.743
 placeholder_text = "password"
 secret = true
 
-[node name="Login" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "transition")]
+[node name="Login" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "transition", "errorMessage")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.502
@@ -281,8 +284,9 @@ script = ExtResource("1_oc6yq")
 usernameText = NodePath("../Usernames/Username")
 passwordText = NodePath("../passwords/Password")
 transition = NodePath("../TransitionIn")
+errorMessage = NodePath("../Error Message")
 
-[node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
+[node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "errorMessage")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.502
@@ -297,6 +301,7 @@ text = "Create User"
 script = ExtResource("1_7hp86")
 usernameText = NodePath("../Usernames/Username")
 passwordText = NodePath("../passwords/Password")
+errorMessage = NodePath("../Error Message")
 
 [node name="ShowPassword" type="Button" parent="."]
 layout_mode = 0
@@ -308,3 +313,17 @@ text = "👁️"
 script = ExtResource("6_vbxud")
 
 [node name="TransitionIn" parent="." instance=ExtResource("4_tyhv3")]
+
+[node name="Error Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.719
+anchor_right = 0.5
+anchor_bottom = 0.719
+offset_left = -134.5
+offset_top = -11.631
+offset_right = 130.5
+offset_bottom = 11.369
+label_settings = SubResource("LabelSettings_is1c2")
+horizontal_alignment = 1

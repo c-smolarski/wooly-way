@@ -15,8 +15,10 @@ namespace Com.IsartDigital.ProjectName {
 
 		[Export] private LineEdit usernameText;
 		[Export] private LineEdit passwordText;
+        [Export] private Label errorMessage;
+		private string error = "Username already exist";
 
-		private string username;
+        private string username;
 		private uint password;
 		private string salt;
 
@@ -27,8 +29,11 @@ namespace Com.IsartDigital.ProjectName {
 			userManager = UserManager.GetInstance();
 			Pressed += OnPressed;
 		}
-		
-		private void OnPressed()
+
+        /// <summary>
+        /// Creates an account based on given info
+        /// </summary>
+        private void OnPressed()
 		{
 			Object[] isConnected;
 			username = usernameText.Text;
@@ -38,7 +43,7 @@ namespace Com.IsartDigital.ProjectName {
 			{
 				GD.Print("account created loading next scene");
 			}
-			else GD.Print(isConnected[1]);
+			else errorMessage.Text = error;
 		}
 	}
 }

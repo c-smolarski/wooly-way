@@ -25,6 +25,8 @@ namespace Com.IsartDigital.ProjectName
 		private const int LENTGH_SALT = 16;
 		private const int LEFT_SHIFT = 5;
 		private const int RIGHT_SHIFT = 27;
+        private uint hashValue = 0x811C9DC5;
+		private uint primeValue = 0x01000193;
 
         private RandomNumberGenerator rand = new RandomNumberGenerator();
 
@@ -44,40 +46,47 @@ namespace Com.IsartDigital.ProjectName
 			#endregion
 		}
 
-		public (uint, string) Crypting(string pPassword)
+        /// <summary>
+        /// call function to crypt a password ans s end it back crypted with its salt
+        /// </summary>
+        public (uint, string) Crypting(string pPassword)
 		{	
 			string lSalt = SaltGenerator();
 			uint lResult = Crypting(pPassword, lSalt);
             return (lResult, lSalt);
         }
 
-		private uint Crypting(string pPassword, string pSalt)
+        /// <summary>
+        /// Crypt the password using a custom hashing method inspired by FNV-1a
+        /// </summary>
+        private uint Crypting(string pPassword, string pSalt)
 		{
-			string pResult = pPassword + pSalt;
-			uint lHash = 0x811C9DC5;
-			uint lPrime = 0x01000193;
-
+			uint lHash = hashValue;
+			uint lPrime = primeValue;
+            string pResult = pPassword + pSalt;
 			foreach(char character in pResult)
 			{
 				lHash ^= character;
 				lHash *= lPrime;
                 lHash = (lHash << LEFT_SHIFT) | (lHash >> RIGHT_SHIFT);
             }
-
 			return lHash;
         }
 
-		public bool CheckPassword(string pPassword, string pPasswordToCheck, string pSalt)
+        /// <summary>
+        /// Checks if a password sent corresponds to the crypted one saved in the dataBase
+        /// </summary>
+        public bool CheckPassword(string pPassword, string pPasswordToCheck, string pSalt)
 		{
-			//	pPasswordToCheck = pPasswordToCheck +pSalt;
 			uint lCryptPassword = Crypting(pPasswordToCheck, pSalt);
-			GD.Print(lCryptPassword.ToString());
-			if (lCryptPassword.ToString() == pPassword) return true;
-			else return false;
-
+			GD.Print(pSalt, pPasswordToCheck);
+			return lCryptPassword.ToString() == pPassword;
 		}
 
-		private string SaltGenerator()
+        /// <summary>
+        /// Generates a random list of asscii characters that are added at the end of the password to add safety
+        /// </summary>
+        private string SaltGenerator()
 		{
 			string lSalt = "";
 			int lAsciiPossibility = ASCII.Length - 1;

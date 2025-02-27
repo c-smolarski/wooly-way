@@ -14,6 +14,10 @@ namespace Com.IsartDigital.ProjectName
         [Export] private LineEdit usernameText;
         [Export] private LineEdit passwordText;
         [Export] private AnimationPlayer transition;
+        [Export] private Godot.Label errorMessage;
+
+        private string errorPassword = "Wrong Password";
+        private string errorUser = "User does not exist";
 
         private string username;
         private string password;
@@ -32,6 +36,9 @@ namespace Com.IsartDigital.ProjectName
             Pressed += OnPressed;
         }
 
+        /// <summary>
+        /// Get the entered user data, checks if the user exist and check if the password is right then logs you in
+        /// </summary>
         private void OnPressed()
         {
             username = usernameText.Text;
@@ -52,13 +59,12 @@ namespace Com.IsartDigital.ProjectName
                 }
                 else
                 {
-                    GD.Print(lProtectedData[0]);
-                    GD.Print("Wrong password");
+                    errorMessage.Text = errorPassword;
                 }
             }
             else
             {
-                GD.Print("wrong password or something");
+                errorMessage.Text = errorUser;
             }
         }
 
