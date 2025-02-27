@@ -67,11 +67,12 @@ namespace Com.IsartDigital.ProjectName
 			return lHash;
         }
 
-		public bool CheckPassword(string pPassword, string pPasswordToCheck, string salt)
+		public bool CheckPassword(string pPassword, string pPasswordToCheck, string pSalt)
 		{
-			pPasswordToCheck = pPasswordToCheck +salt;
-			uint lCryptPassword = Crypting(pPasswordToCheck, pPasswordToCheck);
-			if (pPasswordToCheck == pPassword) return true;
+			//	pPasswordToCheck = pPasswordToCheck +pSalt;
+			uint lCryptPassword = Crypting(pPasswordToCheck, pSalt);
+			GD.Print(lCryptPassword.ToString());
+			if (lCryptPassword.ToString() == pPassword) return true;
 			else return false;
 
 		}

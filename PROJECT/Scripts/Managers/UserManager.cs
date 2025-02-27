@@ -50,14 +50,16 @@ namespace Com.IsartDigital.WoolyWay.Managers
             globalJsonOptions.IncludeFields = true; //Default is false. If false, UserData fields are not included into the json serialization and cause the class instance to be empty.
             globalJsonOptions.WriteIndented = true;
 
-			GD.Print("CreateUser");
-			GD.Print(CreateUser("usernameblabla", "thispassword", "thissalt"));
 
-			GD.Print("GetSecuredDataIfExists");
-			GD.Print((string[])GetSecuredDataIfExists("usernameblabla")[1]);
+            //TODO remove?
+			//GD.Print("CreateUser");
+			//GD.Print(CreateUser("usernameblabla", "thispassword", "thissalt"));
 
-            GD.Print("Log in User");
-            LogIntoUserAccount("unsernameblabla");
+			//GD.Print("GetSecuredDataIfExists");
+			//GD.Print((string[])GetSecuredDataIfExists("usernameblabla")[1]);
+
+   //         GD.Print("Log in User");
+   //         LogIntoUserAccount("unsernameblabla");
 		}
 
 		public override void _Process(double pDelta)

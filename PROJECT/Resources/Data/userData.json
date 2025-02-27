@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": null,
+    "hachedPassword": null,
+    "passwordSalt": null
+  },
+  {
+    "username": "usernameblabla",
+    "hachedPassword": "thispassword",
+    "passwordSalt": "thissalt"
+  },
+  {
+    "username": "az",
+    "hachedPassword": "617714036",
+    "passwordSalt": "UuMB8PSQG5SKvAKq"
+  },
+  {
+    "username": "zae",
+    "hachedPassword": "1638538768",
+    "passwordSalt": "14a19NppMpafOGVQ"
+  },
+  {
+    "username": "zea",
+    "hachedPassword": "1904885243",
+    "passwordSalt": "T5Tznby5jkzSiYDa"
+  },
+  {
+    "username": "azz",
+    "hachedPassword": "720634092",
+    "passwordSalt": "vYxJfRBCuNg1IAlw"
+  }
+]

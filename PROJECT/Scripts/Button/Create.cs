@@ -1,6 +1,8 @@
+using Com.IsartDigital.WoolyWay.Managers;
 using Godot;
 using System;
 using System.Formats.Asn1;
+using System.Security.Principal;
 
 // Author : Alissa Delattre
 
@@ -9,6 +11,7 @@ namespace Com.IsartDigital.ProjectName {
 	public partial class Create : Button
 	{
 		PasswordManager passwordManager;
+		UserManager userManager;
 
 		[Export] private LineEdit usernameText;
 		[Export] private LineEdit passwordText;
@@ -21,18 +24,21 @@ namespace Com.IsartDigital.ProjectName {
 		public override void _Ready()
 		{
 			passwordManager = PasswordManager.GetInstance();
+			userManager = UserManager.GetInstance();
 			Pressed += OnPressed;
 		}
 		
 		private void OnPressed()
 		{
-			
-
+			Object[] isConnected;
 			username = usernameText.Text;
-            //TODO verifier si le username existe deja 
             (password, salt) = passwordManager.Crypting(passwordText.Text);
-
-			//Todo envoyer le user mdp et salt au data manager
+			isConnected = userManager.CreateUser(username, password.ToString(), salt);
+			if ((bool)isConnected[0])
+			{
+				GD.Print("account created loading next scene");
+			}
+			else GD.Print(isConnected[1]);
 		}
 	}
 }
