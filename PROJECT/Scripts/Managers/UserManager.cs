@@ -5,8 +5,6 @@ using System.Text.Json;
 using System.Collections.Generic;
 
 using Com.IsartDigital.WoolyWay.Data;
-using Com.IsartDigital.WoolyWay.Utils.Converters;
-using Com.IsartDigital.WoolyWay.Utils.Data;
 
 // author : DUCROQUET Clément
 
@@ -27,8 +25,11 @@ namespace Com.IsartDigital.WoolyWay.Managers
 
 		#endregion
 
-		//[Export] Resource userDataFile;
-		private string userDataPath = "../PROJECT/Ressources/Data/userData.json";
+		[Export] private string userDataPath = "../PROJECT/Ressources/Data/userData.json";
+		[Export] private string userAlreadyExistsErrorText = "Impossible to perform this action. Username already present in data base.";
+        [Export] private string userNotFoundErrorText = "Impossible to perform this action. Invalid username.";
+
+		public string LoggedUser { get; private set; }
 
         JsonSerializerOptions globalJsonOptions;
 
@@ -43,19 +44,20 @@ namespace Com.IsartDigital.WoolyWay.Managers
 			}
 
 			instance = this;
-            #endregion
-
-            //userDataPath = userDataFile.ResourcePath; // convert into string -> remove root (as string) -> ../{path}
+			#endregion
 
             globalJsonOptions = new JsonSerializerOptions();
             globalJsonOptions.IncludeFields = true; //Default is false. If false, UserData fields are not included into the json serialization and cause the class instance to be empty.
             globalJsonOptions.WriteIndented = true;
 
 			GD.Print("CreateUser");
-			CreateUser(new Dictionary<string, List<string>>() { { "usernameblabla", new List<string>() { "thispassword", "thissalt" } } });
+			GD.Print(CreateUser("usernameblabla", "thispassword", "thissalt"));
 
 			GD.Print("GetSecuredDataIfExists");
-			GD.Print(GetSecuredDataIfExists("usernameblabla"));
+			GD.Print((string[])GetSecuredDataIfExists("usernameblabla")[1]);
+
+            GD.Print("Log in User");
+            LogIntoUserAccount("unsernameblabla");
 		}
 
 		public override void _Process(double pDelta)
@@ -63,48 +65,94 @@ namespace Com.IsartDigital.WoolyWay.Managers
 			float lDelta = (float)pDelta;
 		}
 
-		/// <summary>
-		/// Stores log in information of a user into a json file.
-		/// </summary>
-		/// <param name="pUserData">A dictionary of which the key matches the username, and the value is a List containing both hached password and password salt.</param>
-		public void CreateUser(Dictionary<string, List<string>> pUserData)
+        /// <summary>
+        /// Stores log in information of a user into a json file. Returns an array containing success/failure and an error message if a failure occured.
+        /// </summary>
+        /// <param name="pUserName"></param>
+        /// <param name="pHachedPassword"></param>
+        /// <param name="pPasswordSalt"></param>
+        /// <returns></returns>
+        public object[] CreateUser(string pUserName, string pHachedPassword, string pPasswordSalt)
 		{
-            #region DECLARATIONS
-            
-			string lUserJsonData;
+			#region DECLARATIONS
+
 			string lGlobalJsonData;
 			List<UserData> lGlobalData;
-			
+
+            bool lSuccess = default;
+            object[] lSuccessData; //if lSuccess, contains true, else, contains false and an error message
 			UserData lNewUser = new UserData();
 
             #endregion
 
-            foreach (KeyValuePair<string, List<string>> lData in pUserData)
+            lNewUser.username = pUserName;
+            lNewUser.hachedPassword = pHachedPassword;
+            lNewUser.passwordSalt = pPasswordSalt;
+
+            lGlobalData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), globalJsonOptions); //Makes the json object(s) a UserData class instance (or list of instances).
+
+			if (!CheckIfUserExists(pUserName))
 			{
-                lNewUser.username = lData.Key;
-				lNewUser.hachedPassword = lData.Value[0];
-				lNewUser.passwordSalt = lData.Value[1];
+                lGlobalData.Add(lNewUser);
+                lGlobalJsonData = JsonSerializer.Serialize(lGlobalData, globalJsonOptions);
+
+                OverwriteJsonFile(userDataPath, lGlobalJsonData);
+
+                LogIntoUserAccount(pUserName);
+
+				lSuccess = true;
             }
 
-            lUserJsonData = JsonSerializer.Serialize(lNewUser, globalJsonOptions); //Makes the class instance a json object.
-
-			lGlobalData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), globalJsonOptions); //Makes the json object(s) a UserData class instance.
-			lGlobalData.Add(lNewUser);
-
-			lGlobalJsonData = JsonSerializer.Serialize(lGlobalData, globalJsonOptions);
-
-            OverwriteJsonFile(userDataPath, lGlobalJsonData);
+			lSuccessData = lSuccess ? new object[1] { lSuccess } : new object[2] { lSuccess, userAlreadyExistsErrorText };
+            return lSuccessData;
         }
 
-		/// <summary>
-		/// Checks all usernames stored and returns an array of string containing both hached password and password salt if pUserName exists.
-		/// </summary>
-		/// <param name="pUserName"></param>
-		public string[] GetSecuredDataIfExists(string pUserName)
+        /// <summary>
+        /// Log user by properly setting LoggedUser property. Also starts the user data loading process from DataManager.
+        /// </summary>
+        /// <param name="pUserName"></param>
+        public void LogIntoUserAccount(string pUserName)
+        {
+            LoggedUser = pUserName;
+            GD.Print(LoggedUser);
+            GD.Print("DataManager: Loading user data!"); //Data Manager will then load real user data once implemented.
+        }
+
+        /// <summary>
+        /// Checks if the data (pUserName) is found throughout a group of data and returns a boolean representing the process success or failure.
+        /// </summary>
+        /// <param name="pUserName"></param>
+        private bool CheckIfUserExists(string pUserName)
+        {
+            List<UserData> lGlobalData;
+
+            bool lSuccess = default;
+
+            lGlobalData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), globalJsonOptions);
+
+            foreach (UserData lData in lGlobalData)
+            {
+                if (lData.username == pUserName)
+                {
+                    lSuccess = true;
+                    break;
+                }
+            }
+
+            return lSuccess;
+        }
+
+        /// <summary>
+        /// Checks all usernames stored and returns an array containing both a boolean and (if pUserName exists) another array constituted of both hached password and password salt.
+        /// </summary>
+        /// <param name="pUserName"></param>
+        public object[] GetSecuredDataIfExists(string pUserName)
 		{
 			List<UserData> lGlobalData;
 
-			string[] lSecuredData = new string[2]; //Array supposed to contain both hached password and password salt if they exist.
+            bool lSuccess = default;
+			object[] lUserData; ; //Array supposed to contain lSuccess and an array containing both hached password and password salt if they exist.
+			string[] lSecuredData = new string[] { };
 
             lGlobalData = JsonSerializer.Deserialize<List<UserData>>(GetAllUsersData(userDataPath), globalJsonOptions);
 
@@ -112,20 +160,23 @@ namespace Com.IsartDigital.WoolyWay.Managers
 			{
 				if (lData.username == pUserName)
 				{
-					lSecuredData[0] = lData.hachedPassword;
-					lSecuredData[1] = lData.passwordSalt;
+					lSecuredData = new string[2] { lData.hachedPassword, lData.passwordSalt };
+                    lSuccess = true;
+
+                    break;
 				}
 			}
 
-            return lSecuredData;
+			lUserData = new object[2] { lSuccess, lSuccess ? lSecuredData : userNotFoundErrorText };
+            return lUserData;
 		}
 
-		/// <summary>
-		/// Returns data from a file according to its path (pPathOfFileToRead) as a json serialized string value.
-		/// </summary>
-		/// <param name="pPathOfFileToRead">Path of the file to be open and read. Returned value will be equal to the content of this file.</param>
-		/// <returns></returns>
-		private string GetAllUsersData(string pPathOfFileToRead)
+        /// <summary>
+        /// Returns data from a file according to its path (pPathOfFileToRead) as a json serialized string value.
+        /// </summary>
+        /// <param name="pPathOfFileToRead">Path of the file to be open and read. Returned value will be equal to the content of this file.</param>
+        /// <returns></returns>
+        private string GetAllUsersData(string pPathOfFileToRead)
 		{
 			string lData;
 			lData = File.ReadAllText(pPathOfFileToRead);
