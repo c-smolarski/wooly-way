@@ -12,6 +12,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] public Node2D GameContainer { get; private set; }
         [ExportGroup("PackedScenes")]
         [Export] public PackedScene TileScene { get; private set; }
+        [Export] public PackedScene LevelButtonScene { get; private set; }
         [ExportSubgroup("GameObjects")]
         [Export] public PackedScene WallScene { get; private set; }
         [Export] public PackedScene PlayerScene { get; private set; }
@@ -34,7 +35,6 @@ namespace Com.IsartDigital.WoolyWay.Managers
             Instance = this;
             #endregion
             HudManager.Instance.CreateHud();
-            LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Level6);
         }
 
         protected override void Dispose(bool pDisposing)

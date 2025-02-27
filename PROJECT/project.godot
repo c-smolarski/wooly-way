@@ -19,6 +19,11 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 InputManager="*res://Scripts/Managers/InputManager.cs"
 LevelManager="*res://Scripts/Managers/LevelManager.cs"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="WoolyWay"
@@ -32,6 +37,11 @@ folder_colors={
 "res://Scenes/": "green",
 "res://Scripts/": "red"
 }
+
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
 
 [input]
 

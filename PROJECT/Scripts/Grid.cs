@@ -14,6 +14,8 @@ namespace Com.IsartDigital.WoolyWay
     public partial class Grid : Node2D
     {
         public Vector2I Size { get; private set; }
+        public Vector2 PixelSize => Tile.SIZE * Size * Scale;
+
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
 

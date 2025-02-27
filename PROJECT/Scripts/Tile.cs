@@ -11,7 +11,7 @@ namespace Com.IsartDigital.WoolyWay
 {
     public partial class Tile : Node2D
     {
-        [Export] private Vector2 size;
+        public static readonly Vector2 SIZE = new(88, 88);
 
         public Grid Grid { get; private set; }
         public GameObject CurrentObject => Grid.ObjectDict[this];
@@ -30,8 +30,7 @@ namespace Com.IsartDigital.WoolyWay
         /// <returns></returns>
         private Vector2 GetPosFromIndex(int pIndexX, int pIndexY, Grid pGrid)
         {
-            Vector2 scaledSize = size * Scale;
-            return MathS.IndexToPosition(scaledSize, pIndexX, pIndexY) - 0.5f * MathS.PositionToIsoPosition((pGrid.Size - Vector2I.One) * scaledSize);
+            return MathS.IndexToPosition(SIZE, pIndexX, pIndexY) - 0.5f * MathS.PositionToIsoPosition((pGrid.Size - Vector2I.One) * SIZE);
         }
 
         public static Tile Create(int pIndexX, int pIndexY, Grid pGrid)
