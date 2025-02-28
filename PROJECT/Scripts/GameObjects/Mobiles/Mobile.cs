@@ -1,5 +1,8 @@
-﻿using Godot;
+﻿using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
+using Godot;
 using System;
+
+// Author : Tom BAGNARA
 
 namespace Com.IsartDigital.WoolyWay.GameObjects
 {
@@ -7,24 +10,36 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
     {
 
 
-        protected void Move(Vector2I pMoveDirection)
+        /// <summary>
+        /// Checks if current object can move in the specified direction by verifying if the next tile is walkable.
+        /// If the next tile contains a sheep and is not blocked by another object, it moves it out of the way.
+        /// </summary>
+        /// <param name="pMoveDirection"></param>
+        public virtual void InitMove(Vector2I pMoveDirection)
         {
             Tile lCurrentTile = Grid.ObjectDict[this];
-            GD.Print("Current tile: " + Grid.IndexDict[lCurrentTile]);
+            
             Tile lNextTile = Grid.IndexDict[Grid.IndexDict[lCurrentTile] + pMoveDirection];
-            GD.Print("next tile: " + Grid.IndexDict[lNextTile]);
-
-            if (Grid.ObjectDict.Contains(lNextTile)) GD.Print(Grid.ObjectDict[lNextTile]);
-            else GD.Print("Null");
-
-            if (lNextTile.IsWalkable())
+            
+            if (lNextTile.IsWalkable(pMoveDirection))
             {
-                GD.Print("Condition Passed");
-                Grid.ObjectDict[this] = lNextTile;
-                GD.Print("New current tile: " + Grid.IndexDict[Grid.ObjectDict[this]]);
-                UpdatePos();
+                if (!lNextTile.IsEmpty() && lNextTile.IsSheep())
+                { 
+                    Sheep lSheep = Grid.ObjectDict[lNextTile] as Sheep;
+                    
+                    Move(lNextTile);
+
+                    lSheep.InitMove(pMoveDirection);
+                }
+                else Move(lNextTile);
             }
         }
+
         
+        protected void Move(Tile pTile)
+        {
+            Grid.ObjectDict[this] = pTile;
+            UpdatePos();
+        }
     }
 }

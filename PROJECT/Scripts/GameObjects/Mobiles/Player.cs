@@ -22,7 +22,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             Instance = this;
             #endregion
 
-            InputManager.Instance.MoveInputPressed += Move;
+            InputManager.Instance.MoveInputPressed += InitMove;
         }
 
         public override void _Process(double delta)

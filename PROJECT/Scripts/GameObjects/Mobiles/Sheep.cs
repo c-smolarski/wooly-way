@@ -2,7 +2,7 @@
 using Godot;
 using System;
 
-// Author : Camille SMOLARSKI
+// Author : Camille SMOLARSKI & Tom BAGNARA
 
 namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
 {
@@ -10,12 +10,38 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     {
         public Vector2I Direction { get; private set; }
         public bool IsUseful;
-
-        public bool CanMove()
+        
+        public enum Step
         {
-            //Add movement test logic here. Used in other classes.
-            return true;
+            First,
+            Second,
         }
+        
+        /// <summary>
+        /// Checks if the current Sheep can move onto the next Tile depending on if it's its first or second step and the content of the lNextTile.
+        /// </summary>
+        /// <param name="pMoveDirection"></param>
+        /// <param name="pStep"></param>
+        /// <returns>true if the Sheep can be moved onto the next tile. Otherwise, false.</returns>
+        public bool CanMove(Vector2I pMoveDirection, int pStep)
+        {
+            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[Grid.ObjectDict[this]] + pMoveDirection];
+
+            if (lNextTile.IsEmpty()) return true;
+
+            switch (pStep)
+            {
+                case (int)Step.First:
+                    return false;
+                case (int)Step.Second:
+                    return Grid.ObjectDict[lNextTile] is Sheep && (Grid.ObjectDict[lNextTile] as Sheep).CanMove(pMoveDirection, (int)Step.First);
+
+            }
+            
+            return lNextTile.IsWalkable(pMoveDirection);
+        }
+
+
 
         public static Sheep Create(PackedScene pScene, Tile pTile, Vector2I pDirection, bool pUseful = true)
         {
