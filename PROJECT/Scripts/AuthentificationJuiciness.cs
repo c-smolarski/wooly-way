@@ -7,15 +7,13 @@ namespace Com.IsartDigital.ProjectName {
 	
 	public partial class AuthentificationJuiciness : Node
 	{
-		[Export] private AnimationPlayer wooly;
-		[Export] private AnimationPlayer way;
-
-		private const string START_ANIM = "Title";
-		private const string END_ANIM = "Way";
+		[Export] private Label[] title;
+		private Tween tween;
 
         public override void _Ready()
 		{
-			startAnim();
+			tween = CreateTween();
+			JuicyTitle();
 		}
 
 		public override void _Process(double pDelta)
@@ -24,21 +22,12 @@ namespace Com.IsartDigital.ProjectName {
 
 		}
 
-		private void startAnim()
+		private void JuicyTitle()
 		{
-			// DU DURE TJ PLUS DE DURE
-			wooly.Play(START_ANIM);
-			wooly.AnimationFinished += EndAnim;
-		}
-
-        private void EndAnim(StringName animName)
-		{
-			//AAAAAAAAAAAAAAH
-			way.Play(END_ANIM);
-		}
-		protected override void Dispose(bool pDisposing)
-		{
-
+			foreach (Label lLabel in title)
+			{
+				tween.TweenProperty(lLabel, "scale", Vector2.One, 0.4f).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
+			}
 		}
 	}
 }

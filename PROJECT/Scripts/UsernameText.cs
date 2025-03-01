@@ -38,7 +38,10 @@ namespace Com.IsartDigital.ProjectName
         /// </summary>
         private void HidePassword()
         {
-            Text = EFFECT + currentText + END_EFFECT;
+            if (secret)
+            {
+                Text = EFFECT + currentText + END_EFFECT;
+            }
         }
         /// <summary>
         /// Takes the input of the LineEdit and adds an effect to it, checks if it needs to add a character or delete one and check if the password is hidden
