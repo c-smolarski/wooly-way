@@ -61,16 +61,18 @@ namespace Com.IsartDigital.ProjectName
         /// </summary>
         private uint Crypting(string pPassword, string pSalt)
 		{
-			uint lHash = hashValue;
+            byte[] lResult = System.Text.Encoding.UTF8.GetBytes(pPassword + pSalt);
+
+            uint lHash = hashValue;
 			uint lPrime = primeValue;
-            string pResult = pPassword + pSalt;
-			foreach(char character in pResult)
+			foreach(char character in lResult)
 			{
 				lHash ^= character;
 				lHash *= lPrime;
                 lHash = (lHash << LEFT_SHIFT) | (lHash >> RIGHT_SHIFT);
             }
-			return lHash;
+            GD.Print(lHash);
+            return lHash;
         }
 
         /// <summary>
@@ -79,7 +81,6 @@ namespace Com.IsartDigital.ProjectName
         public bool CheckPassword(string pPassword, string pPasswordToCheck, string pSalt)
 		{
 			uint lCryptPassword = Crypting(pPasswordToCheck, pSalt);
-			GD.Print(pSalt, pPasswordToCheck);
 			return lCryptPassword.ToString() == pPassword;
 		}
 
