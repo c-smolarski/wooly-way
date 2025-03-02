@@ -19,7 +19,7 @@ namespace Com.IsartDigital.ProjectName {
 		private string error = "Username already exist";
 
         private string username;
-		private uint password;
+		private string password;
 		private string salt;
 
 		
@@ -38,7 +38,7 @@ namespace Com.IsartDigital.ProjectName {
 			Object[] isConnected;
 			username = usernameText.Text;
             (password, salt) = passwordManager.Crypting(passwordText.Text);
-			isConnected = userManager.CreateUser(username, password.ToString(), salt);
+			isConnected = userManager.CreateUser(username, password, salt);
 			if ((bool)isConnected[0])
 			{
 				GD.Print("account created loading next scene");

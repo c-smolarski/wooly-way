@@ -44,9 +44,6 @@ namespace Com.IsartDigital.ProjectName
             username = usernameText.Text;
             password = passwordText.Text;
 
-            //transition.Play(TRANSITION);
-            //transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
-
             Object[] lDataUser = userManager.GetSecuredDataIfExists(username);
             if ((bool)lDataUser[0])
             {
@@ -56,6 +53,9 @@ namespace Com.IsartDigital.ProjectName
 
                     userManager.LogIntoUserAccount(username);
                     GD.Print("logged in");
+                    transition.Play(TRANSITION);
+                    Transition.shake = true;
+                    //transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
                 }
                 else
                 {

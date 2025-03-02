@@ -49,30 +49,20 @@ namespace Com.IsartDigital.ProjectName
         /// <summary>
         /// call function to crypt a password ans s end it back crypted with its salt
         /// </summary>
-        public (uint, string) Crypting(string pPassword)
+        public (string, string) Crypting(string pPassword)
 		{	
 			string lSalt = SaltGenerator();
-			uint lResult = Crypting(pPassword, lSalt);
+			string lResult = Crypting(pPassword, lSalt);
             return (lResult, lSalt);
         }
 
         /// <summary>
-        /// Crypt the password using a custom hashing method inspired by FNV-1a
+        /// Crypt the password using SHA256
         /// </summary>
-        private uint Crypting(string pPassword, string pSalt)
+        private string Crypting(string pPassword, string pSalt)
 		{
-            byte[] lResult = System.Text.Encoding.UTF8.GetBytes(pPassword + pSalt);
-
-            uint lHash = hashValue;
-			uint lPrime = primeValue;
-			foreach(char character in lResult)
-			{
-				lHash ^= character;
-				lHash *= lPrime;
-                lHash = (lHash << LEFT_SHIFT) | (lHash >> RIGHT_SHIFT);
-            }
-            GD.Print(lHash);
-            return lHash;
+			pPassword = (pPassword + pSalt).Sha256Text();
+			return pPassword;
         }
 
         /// <summary>
@@ -80,7 +70,7 @@ namespace Com.IsartDigital.ProjectName
         /// </summary>
         public bool CheckPassword(string pPassword, string pPasswordToCheck, string pSalt)
 		{
-			uint lCryptPassword = Crypting(pPasswordToCheck, pSalt);
+			string lCryptPassword = Crypting(pPasswordToCheck, pSalt);
 			return lCryptPassword.ToString() == pPassword;
 		}
 

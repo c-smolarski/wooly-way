@@ -123,5 +123,10 @@
     "username": "zaeza",
     "hachedPassword": "138887861",
     "passwordSalt": "hFM8mxklhz9I68fg"
+  },
+  {
+    "username": "azqs",
+    "hachedPassword": "29e46c0b16d1f70645deaa89e5381bca813726d58f2f717a992b8986a839e01e",
+    "passwordSalt": "xqqsMXWx391GiIIw"
   }
 ]
