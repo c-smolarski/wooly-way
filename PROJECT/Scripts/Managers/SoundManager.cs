@@ -1,6 +1,6 @@
+using Com.IsartDigital.WoolyWay.Utils.Data;
 using Godot;
 using System.Collections.Generic;
-using static Com.IsartDigital.WoolyWay.Utils.SoundPaths;
 
 // author : Moussouni-lepilliez Daniel
 
@@ -20,11 +20,13 @@ namespace Com.IsartDigital.WoolyWay.Managers
         }
 
         #endregion
+
         [Export] AudioStreamPlayer MusicPlayer;
         [Export] AudioStream bossMusic;
         public float percentageVolumeCache = 100f;
 
         private List<AudioStreamPlayer> playersList = new();
+
         public override void _Ready()
         {
             #region Singleton
@@ -39,18 +41,21 @@ namespace Com.IsartDigital.WoolyWay.Managers
             instance = this;
             #endregion
         }
+
         public void StartMusic(string pSoundPath)
         {
             AudioStreamOggVorbis lSound = GD.Load<AudioStreamOggVorbis>(pSoundPath);
             MusicPlayer.Stream = lSound;
             MusicPlayer.Play();
         }
+
         public float GetVolumePercentage(string pBusName)
         {
             int lBusIndex = AudioServer.GetBusIndex(pBusName);
             float lDecibels = AudioServer.GetBusVolumeDb(lBusIndex);
             return Mathf.Pow(10, lDecibels / 20) * 100;
         }
+
         public void SetVolumeFromPercentage(float pPercentage, string pBusName)
         {
             pPercentage = Mathf.Clamp(pPercentage, 0, 100);
@@ -59,13 +64,14 @@ namespace Com.IsartDigital.WoolyWay.Managers
             int lBusIndex = AudioServer.GetBusIndex(pBusName);
             AudioServer.SetBusVolumeDb(lBusIndex, lDecibels);
         }
+
         public AudioStreamPlayer Play(string pSoundPath, bool pIsLooping = false)
         {
             AudioStreamOggVorbis lSound = GD.Load<AudioStreamOggVorbis>(pSoundPath);
             AudioStreamPlayer lPlayer = new();
             lSound.Loop = pIsLooping;
             lPlayer.Stream = lSound;
-            lPlayer.Bus = mainBusName;
+            lPlayer.Bus = SoundPath.MAIN_SOUND_BUS;
             playersList.Add(lPlayer);
             lPlayer.Finished += () => isPlayerFinished(lPlayer);
             lSound.Loop = pIsLooping;
@@ -73,10 +79,12 @@ namespace Com.IsartDigital.WoolyWay.Managers
             lPlayer.Play();
             return lPlayer;
         }
+
         private void isPlayerFinished(AudioStreamPlayer pPlayer)
         {
             pPlayer.QueueFree();
         }
+
         public void PauseAllSounds()
         {
             foreach (AudioStreamPlayer lPlayer in playersList)
@@ -84,6 +92,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
                 lPlayer.StreamPaused = true;
             }
         }
+
         public void ResumeAllSounds()
         {
             foreach (AudioStreamPlayer lPlayer in playersList)
@@ -92,15 +101,9 @@ namespace Com.IsartDigital.WoolyWay.Managers
             }
         }
 
-
-        public override void _Process(double pDelta)
-        {
-            float lDelta = (float)pDelta;
-        }
-
         protected override void Dispose(bool pDisposing)
         {
-            instance = null;
+            if (instance == this) instance = null;
             base.Dispose(pDisposing);
         }
 
