@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
 [ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/HUD.tscn" id="4_ms4ov"]
 [ext_resource type="Script" path="res://Scripts/Pathfinding.cs" id="7_2g3j7"]
+[ext_resource type="Script" path="res://Scripts/Managers/SoundManager.cs" id="4_m2u61"]
+
 
 [node name="Main" type="Node"]
 
@@ -23,11 +25,17 @@ script = ExtResource("2_ri03q")
 hudScene = ExtResource("4_ms4ov")
 canvasLayer = NodePath("../../CanvasLayer")
 
+[node name="SoundManager" type="Node" parent="Managers" node_paths=PackedStringArray("MusicPlayer")]
+script = ExtResource("4_m2u61")
+MusicPlayer = NodePath("MusicPlayer")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Managers/SoundManager"]
+
 [node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GridContainer", "GameContainer")]
 script = ExtResource("2_ov00f")
+TileScene = ExtResource("3_0uypt")
 GridContainer = NodePath("../../GridContainer")
 GameContainer = NodePath("../../GameContainer")
-TileScene = ExtResource("3_0uypt")
 
 [node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
 gameContainer = NodePath("../../GameContainer")

@@ -6,4 +6,10 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>Com.IsartDigital.WoolyWay</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Scripts\Managers\MapManager_BACKUP_356.cs" />
+    <Compile Remove="Scripts\Managers\MapManager_BASE_356.cs" />
+    <Compile Remove="Scripts\Managers\MapManager_LOCAL_356.cs" />
+    <Compile Remove="Scripts\Managers\MapManager_REMOTE_356.cs" />
+  </ItemGroup>
 </Project>

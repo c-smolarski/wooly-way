@@ -52,25 +52,5 @@ namespace Com.IsartDigital.WoolyWay.Utils
         {
             return CreateNode<Node>(pScene, pContainer);
         }
-
-        /// <summary>
-        /// Creates a GameObject on specified tile.
-        /// </summary>
-        /// <param name="pScene"></param>
-        /// <param name="pTile"></param>
-        public static T CreateGameObject<T>(PackedScene pScene, Tile pTile) where T : GameObject
-        {
-            return CreateNode<T>(pScene, GameManger.Instance.GameContainer, pTile.Position);
-        }
-
-        public static T CreateGameObject<T>(PackedScene pScene, Vector2I pTileIndex) where T : GameObject
-        {
-            return CreateGameObject<T>(pScene, GridManager.TileDict[pTileIndex]);
-        }
-        
-        public static T CreateGameObject<T>(PackedScene pScene, int pIndexX, int pIndexY) where T : GameObject
-        {
-            return CreateGameObject<T>(pScene, GridManager.TileDict[new Vector2I(pIndexX, pIndexY)]);
-        }
     }
 }
