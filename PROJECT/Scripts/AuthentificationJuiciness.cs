@@ -9,24 +9,19 @@ namespace Com.IsartDigital.ProjectName {
 	{
 		[Export] private Label[] title;
 		private Tween tween;
-
+		private const string TWEEN_SCALE = "scale";
+		private const float TWEEN_DURATION = 0.4f;
         public override void _Ready()
 		{
 			tween = CreateTween();
 			JuicyTitle();
 		}
 
-		public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-
-		}
-
 		private void JuicyTitle()
 		{
 			foreach (Label lLabel in title)
 			{
-				tween.TweenProperty(lLabel, "scale", Vector2.One, 0.4f).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
+				tween.TweenProperty(lLabel, TWEEN_SCALE, Vector2.One, TWEEN_DURATION).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
 			}
 		}
 	}

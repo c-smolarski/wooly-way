@@ -36,33 +36,24 @@ namespace Com.IsartDigital.ProjectName
         {
             float lDelta = (float)pDelta;
             if (shake) IsShaking();
-
         }
 
         private void IsShaking()
         {
-            if (shake)
+            shakeTime += 1;
+
+            //using shakeTime as a timer to shake every time shakeTime increments of ten, and checks the shake doesnt last longer then the maximum time 
+            if (shakeTime % shakeFactor == 0 && shakeTime < shakeMaxTime)
             {
-                shakeTime += 1;
-
-                //using shakeTime as a timer to shake every time shakeTime increments of ten, and checks the shake doesnt last longer then the maximum time 
-                if (shakeTime % shakeFactor == 0 && shakeTime < shakeMaxTime)
-                {
-                    camera.Position = new Vector2(rand.RandfRange(maxShakeRight, minShakeLeft), rand.RandfRange(minShakeDown, maxShakeUp));
-                }
-                //if the shake is done, all initialiazed settings are reset to their original value
-                else if (shakeTime >= shakeMaxTime)
-                {
-                    camera.Position = posCamera;
-                    shakeTime = 0;
-                    shake = false;
-                }
+                camera.Position = new Vector2(rand.RandfRange(maxShakeRight, minShakeLeft), rand.RandfRange(minShakeDown, maxShakeUp));
             }
-        }
-
-        protected override void Dispose(bool pDisposing)
-        {
-
+            //if the shake is done, all initialiazed settings are reset to their original value
+            else if (shakeTime >= shakeMaxTime)
+            {
+                camera.Position = posCamera;
+                shakeTime = 0;
+                shake = false;
+            }
         }
     }
 }

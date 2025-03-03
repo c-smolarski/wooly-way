@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://jx675vga67s0"]
+[gd_scene load_steps=18 format=3 uid="uid://jx675vga67s0"]
 
 [ext_resource type="Texture2D" uid="uid://ttr1jbxk5fub" path="res://Assets/image.png" id="1_5li4u"]
 [ext_resource type="Script" path="res://Scripts/Button/Create.cs" id="1_7hp86"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/UsernameText.cs" id="5_fye66"]
 [ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Fonts/Straw Milky.otf" id="6_5ob0n"]
 [ext_resource type="Script" path="res://Scripts/AuthentificationJuiciness.cs" id="6_tds27"]
-[ext_resource type="Script" path="res://Scripts/ShowPassword.cs" id="6_vbxud"]
 [ext_resource type="Theme" uid="uid://mehsaxiv283s" path="res://Theme/AuthentificationButton.tres" id="8_gakyl"]
 [ext_resource type="Script" path="res://Scripts/Managers/UserManager.cs" id="8_qp8ly"]
 [ext_resource type="Script" path="res://Scripts/Transition.cs" id="13_arho5"]
@@ -404,7 +403,6 @@ offset_right = -0.529053
 offset_bottom = 0.287964
 theme = ExtResource("8_gakyl")
 text = "👁️"
-script = ExtResource("6_vbxud")
 
 [node name="TransitionIn" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_tyhv3")]
 script = ExtResource("13_arho5")

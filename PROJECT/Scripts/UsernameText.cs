@@ -48,18 +48,16 @@ namespace Com.IsartDigital.ProjectName
         /// </summary>
         private void TextEffect(string pText)
         {
-            if (secret)
+            if (secret && textInput.Text.Length > currentText.Length)
             {
-                if (textInput.Text.Length > currentText.Length)
-                {
-                    currentText += HIDE;
-                    Text = EFFECT + currentText + END_EFFECT;
-                }
-                else
-                {
-                    currentText = currentText.Substr(0, currentText.Length -1);
-                    Text = EFFECT + currentText + END_EFFECT;
-                }
+
+                currentText += HIDE;
+                Text = EFFECT + currentText + END_EFFECT;
+            }
+            else if (secret)
+            {
+                currentText = currentText.Substr(0, currentText.Length - 1);
+                Text = EFFECT + currentText + END_EFFECT;
             }
             else
             {
@@ -68,3 +66,4 @@ namespace Com.IsartDigital.ProjectName
         }
     }
 }
+
