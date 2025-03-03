@@ -1,3 +1,4 @@
+using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Godot;
 
 // Author : Camille Smolarski
@@ -35,6 +36,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
             Instance = this;
             #endregion
             HudManager.Instance.CreateHud();
+            //LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level6"]);
         }
 
         protected override void Dispose(bool pDisposing)

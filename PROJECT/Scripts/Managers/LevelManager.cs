@@ -46,11 +46,11 @@ namespace Com.IsartDigital.WoolyWay.Managers
         private static void ExtractData()
         {
             string data = File.ReadAllText(FilePath.LEVELS_JSON);
+            
             try
             {
                 //Deserialize json data into MapData class
                 MapData = JsonSerializer.Deserialize<MapData>(data)!;
-                GD.Print(MapData.Level1.Map);
             }
             catch (Exception e)
             {

@@ -33,7 +33,7 @@ namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
         public override void _Ready()
         {
             base._Ready();
-            levelInfo = LevelManager.MapData.Level6;
+            levelInfo = LevelManager.MapData.Worlds["World1"]["Level6"];
             circleCenter = Position - new Vector2(0, radius * EllipsisFactor);
             
             mountain.LevelsVisibilityChanged += ChangeVisibilty;
