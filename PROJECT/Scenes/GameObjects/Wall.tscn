@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cug3oea2u0jih"]
 
 [ext_resource type="Script" path="res://Scripts/GameObjects/Obstacle.cs" id="1_0k2js"]
-[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_rvf5w"]
+[ext_resource type="Texture2D" uid="uid://cv3a727dlu7x7" path="res://icon.svg" id="2_8aua1"]
 
 [node name="Wall" type="Node2D"]
 script = ExtResource("1_0k2js")
@@ -9,4 +9,4 @@ script = ExtResource("1_0k2js")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.219501, 0.219501, 0.219501, 1)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_rvf5w")
+texture = ExtResource("2_8aua1")
