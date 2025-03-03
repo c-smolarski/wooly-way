@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 
 InputManager="*res://Scripts/Managers/InputManager.cs"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
 [dotnet]
 
 project/assembly_name="WoolyWay"
