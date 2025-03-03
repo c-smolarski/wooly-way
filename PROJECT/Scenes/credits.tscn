@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://crybx52snntvn"]
+
+[ext_resource type="FontFile" uid="uid://cxtbu58rr8dns" path="res://Fonts/PatrickHand-Regular.ttf" id="1_8d6d1"]
+[ext_resource type="FontFile" uid="uid://cxtbu58rr8dns" path="res://Assets/Fonts/PatrickHand-Regular.ttf" id="2_sdjgo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2w0uq"]
+font = ExtResource("1_8d6d1")
+font_size = 72
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -77.0
+offset_right = 46.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_8d6d1")
+theme_override_font_sizes/font_size = 70
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.0
+offset_right = 135.0
+offset_bottom = 99.0
+grow_horizontal = 2
+text = "Wooly Way"
+label_settings = SubResource("LabelSettings_2w0uq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.5
+offset_top = -167.5
+offset_right = 325.5
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("2_sdjgo")
+theme_override_font_sizes/font_size = 80
+text = "LIM Julien"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("2_sdjgo")
+theme_override_font_sizes/font_size = 80
+text = "Alissa"
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("2_sdjgo")
+theme_override_font_sizes/font_size = 80
+text = "Tom"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("2_sdjgo")
+theme_override_font_sizes/font_size = 80
+text = "Daniel"
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("2_sdjgo")
+theme_override_font_sizes/font_size = 80
+text = "Camille"
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("2_sdjgo")
+theme_override_font_sizes/font_size = 80
+text = "Clément"
