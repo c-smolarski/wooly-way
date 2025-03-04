@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 
 // Author : Alissa Delattre
 
@@ -16,6 +17,7 @@ namespace Com.IsartDigital.ProjectName
         private const string EFFECT = "[shake]";
         private const string END_EFFECT = "[/shake]";
         private const string HIDE = "•";
+        private const string DELETE = "ui_back";
 
         private string currentText = "";
         public override void _Ready()
@@ -23,6 +25,23 @@ namespace Com.IsartDigital.ProjectName
             textInput.TextChanged += TextEffect;
             showPass.ButtonDown += ShowPassword;
             showPass.ButtonUp += HidePassword;
+        }
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+            DeleteChar();
+        }
+
+        /// <summary>
+        /// Deletes the last character when Backspace is pressed
+        /// </summary>
+        private void DeleteChar()
+        {
+            if (Input.IsActionJustPressed(DELETE) && textInput.HasFocus())
+            {
+                textInput.DeleteCharAtCaret();
+            }
         }
 
         /// <summary>

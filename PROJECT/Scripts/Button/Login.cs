@@ -17,7 +17,6 @@ namespace Com.IsartDigital.ProjectName
         [Export] private Godot.Label errorMessage;
 
         private string errorPassword = "Wrong Password";
-        private string errorUser = "User does not exist";
 
         private string username;
         private string password;
@@ -64,7 +63,7 @@ namespace Com.IsartDigital.ProjectName
             }
             else
             {
-                errorMessage.Text = errorUser;
+                errorMessage.Text = (string)lDataUser[1];
             }
         }
 

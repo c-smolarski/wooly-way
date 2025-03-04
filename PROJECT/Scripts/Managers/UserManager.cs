@@ -26,8 +26,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
 		#endregion
 
 		[Export] private string userDataPath = "../PROJECT/Resources/Data/userData.json";
-		[Export] private string userAlreadyExistsErrorText = "Impossible to perform this action. Username already present in data base.";
-        [Export] private string userNotFoundErrorText = "Impossible to perform this action. Invalid username.";
+		[Export] private string userAlreadyExistsErrorText = "Username already exists";
+        [Export] private string userNotFoundErrorText = "Invalid username.";
 
 		public string LoggedUser { get; private set; }
 
