@@ -16,6 +16,13 @@ namespace Com.IsartDigital.WoolyWay
         public Vector2I Size { get; private set; }
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
+        
+        private static Dictionary<string, Vector2I> Directions = new Dictionary<string, Vector2I>(){
+            {"Left", Vector2I.Left},
+            {"Right", Vector2I.Right},
+            {"Up", Vector2I.Up},
+            {"Down", Vector2I.Down},
+        };
 
         /// <summary>
         /// DiagonalDirection is based off a standard (Non-isometric) table. Max value on grid for pIndex is (Max(myGrid.Size.X, myGrid.Size.Y) - 1) * 2.
@@ -88,6 +95,10 @@ namespace Com.IsartDigital.WoolyWay
             int ySizeLevel = pMap.Map.Count;
             int xSizeLevel = pMap.Map[0].Length;
 
+            int lSheepCount = 0;
+            
+            List<string> lDirections = pMap.SheepDirection;
+            
             Grid lGrid = CreateEmpty(new Vector2I(xSizeLevel, ySizeLevel), pContainer, pPos);
 
             TwoWayDictionary<Tile, GameObject> lTempDict = new();
@@ -107,12 +118,14 @@ namespace Com.IsartDigital.WoolyWay
                     switch (lChar)
                     {
                         case LevelChar.SHEEP:
-                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], default);
+                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lDirections[lSheepCount]]);
+                            lSheepCount++;
                             //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
                             //TODO : Replace default with sheep direction.
                             break;
                         case LevelChar.FAKE_SHEEP:
-                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], default, false);
+                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lDirections[lSheepCount]], false);
+                            lSheepCount++;
                             //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
                             //ici envoyer un truc au script chevre comme quoi celle la doit pas pouvoir gagner
                             //TODO : Replace default with sheep direction.

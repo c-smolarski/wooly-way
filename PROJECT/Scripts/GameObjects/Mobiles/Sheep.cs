@@ -16,12 +16,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             First,
             Second,
         }
-
-        public override void _Ready()
-        {
-            base._Ready();
-            Direction = new Vector2I(-1, 0);
-        }
+        
         
         /// <summary>
         /// Checks if the current Sheep can move onto the next Tile depending on if it's its first or second step and the content of the lNextTile.
@@ -91,6 +86,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             Sheep lSheep = Create<Sheep>(pScene, pTile);
             lSheep.Direction = pDirection.Sign();
             lSheep.IsUseful = pUseful;
+            GD.Print(lSheep.Direction.ToString());
             return lSheep;
         }
     }
