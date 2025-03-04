@@ -7,8 +7,8 @@ namespace Com.IsartDigital.ProjectName {
 	
 	public partial class PathFindingCell : Node
 	{
-		int posX;
-		int posY;
+		public int posX;
+		public int posY;
 		int cost;
 		int distance;
 		int costDistance;

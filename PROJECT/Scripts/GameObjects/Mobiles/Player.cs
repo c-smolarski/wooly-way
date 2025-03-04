@@ -1,5 +1,6 @@
 ﻿using Godot;
 using System;
+using System.Collections.Generic;
 
 // Author : Camille SMOLARSKI
 
@@ -8,7 +9,6 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     public partial class Player : Mobile
     {
         public static Player Instance { get; private set; }
-
         public override void _Ready()
         {
             #region Singleton
@@ -19,7 +19,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
                 return;
             }
             Instance = this;
-            #endregion
+            #endregion       
         }
 
         public override void _Process(double delta)

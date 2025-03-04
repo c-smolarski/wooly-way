@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqkavg4d0hkn4"]
 
 [ext_resource type="Script" path="res://Scripts/GameObjects/Mobiles/Player.cs" id="1_oi0go"]
-[ext_resource type="Texture2D" path="res://Assets/icon.svg" id="2_8vldl"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_8vldl"]
 
 [node name="Player" type="Node2D"]
 scale = Vector2(0.25, 0.25)

@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/Buttons/Login_Button.cs" id="1_pfgst"]
 [ext_resource type="Script" path="res://Scripts/UI/Buttons/Create_User_Button.cs" id="2_ff0p4"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_1xwfa"]
 font_size = 50
 

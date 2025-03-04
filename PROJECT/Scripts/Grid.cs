@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils.Data;
+using System.Linq;
 
 // Author : Alissa DELATTRE & Camille SMOLARSKI
 
@@ -127,6 +128,23 @@ namespace Com.IsartDigital.WoolyWay
             }
             lGrid.ObjectDict = lTempDict.ToReadOnly();
             return lGrid;
+        }
+
+        public List<Tile> Neighbors(Tile pCurrentTile)
+        {
+            List<Tile> lNeighbors = new List<Tile>();
+            List<Vector2I> lDirectionPossible = new List<Vector2I> { Vector2I.Up, Vector2I.Down, Vector2I.Left, Vector2I.Right };
+            int lSizeList = lDirectionPossible.Count;
+
+            for (int i = 0; i < lSizeList; i++)
+            {
+                Vector2I lPossibleNeighbor = IndexDict[pCurrentTile] + lDirectionPossible[i];
+                if (lPossibleNeighbor >= Vector2I.Zero && lPossibleNeighbor <= Size - Vector2I.One)
+                {
+                    lNeighbors.Add(IndexDict[lPossibleNeighbor]);
+                }
+            }
+            return lNeighbors;
         }
     }
 }
