@@ -24,6 +24,9 @@ namespace Com.IsartDigital.WoolyWay.Managers
 
         #endregion
 
+        private const string WORLD_KEYWORD = "World";
+        private const string LEVEL_KEYWORD = "Level";
+
         private static Grid currentLevel;
         public static MapData MapData { get; private set; } = new MapData();
 
@@ -66,6 +69,16 @@ namespace Com.IsartDigital.WoolyWay.Managers
                 GameManager.Instance.GameContainer,
                 GetViewport().GetVisibleRect().Size / 2
             );
+        }
+
+        public static MapInfo GetLevel(int pWorld, int pLevel)
+        {
+            return MapData.Worlds[WORLD_KEYWORD + pWorld][LEVEL_KEYWORD + pLevel];
+        }
+
+        public static bool LevelExists(int pWorld, int pLevel)
+        {
+            return MapData.Worlds.ContainsKey(WORLD_KEYWORD + pWorld) && MapData.Worlds[WORLD_KEYWORD + pWorld].ContainsKey(LEVEL_KEYWORD + pLevel);
         }
 
         protected override void Dispose(bool pDisposing)

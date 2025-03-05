@@ -8,62 +8,86 @@ namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
 {
     public partial class LevelButton : ClickableArea
     {
-        [Export] private Mountain mountain;
-        [Export] private int levelNumber;
-        [Export] private int displayFrame;
+        [Export] public Mountain Mountain { get; private set; }
+        [Export(PropertyHint.Range, "1,1000")] public int LevelNumber { get; private set; }
+        [Export] public int DisplayFrame { get; private set; }
         [Export] private float radius = 500f;
         [Export] private float cameraTilt = 75f;
+        [ExportGroup("On focus")]
+        [Export] private float sinusoidFreq = 2.5f;
+        [Export] private float sinusoidIntensity = 0.45f;
 
+        public const int DISPLAY_NO_LEVEL = -1;
+        private const string RIGHT_ARROW_PATH = "rightArrow";
+        private const string LEFT_ARROW_PATH = "leftArrow";
+
+        public Vector2 PosOnMountain => circleCenter + new Vector2(0, radius * EllipsisFactor);
         private float EllipsisFactor => MathF.Cos(Mathf.DegToRad(cameraTilt));
 
         private float FrameAngle
         {
             get => angle + Mathf.Pi * 0.5f;
-            set => angle = Mathf.DegToRad((value - displayFrame) * 360f / mountain.FrameCount);
+            set => angle = Mathf.DegToRad((value - DisplayFrame) * 360f / Mountain.FrameCount);
         }
 
         private static readonly Vector2 levelScale = Vector2.One * 0.3f;
 
-        private float angle;
+        private float angle, elapsedTime;
+        private bool focused, alreadyDisplayed;
         private Vector2 circleCenter;
         private MapInfo levelInfo;
-        private Grid level;
+        private Grid grid;
         private ConvexPolygonShape2D shape;
+        private LevelSelectorArrow leftArrow, rightArrow;
 
         public override void _Ready()
         {
             base._Ready();
-            levelInfo = LevelManager.MapData.Worlds["World1"]["Level6"];
+
+            levelInfo = LevelManager.GetLevel(Mountain.WorldNumber, LevelNumber);
+
             circleCenter = Position - new Vector2(0, radius * EllipsisFactor);
+            Scale *= ScaleModifier;
             
-            mountain.LevelsVisibilityChanged += ChangeVisibilty;
+            Mountain.LevelsVisibilityChanged += DisplayLevel;
+            ScaleModifierChanged += () => Move(Mountain.CurrentFrameIndex);
 
             DisplayGrid();
-            ChangeVisibilty(false);
+            ArrowsInit();
         }
 
-        private void InitMove()
+        public override void _Process(double pDelta)
         {
-            mountain.FrameChanged += Move;
-            Move(mountain.CurrentFrameIndex);
+            base._Process(pDelta);
+            float lDelta = (float)pDelta;
+            if (focused)
+                FocusedAnim(lDelta);
         }
 
-        private void Move(int pFrame)
+        private void ArrowsInit()
         {
-            FrameAngle = pFrame;
-            ZIndex = (int)(Position.Y - circleCenter.Y);
-            Position = circleCenter + (radius * new Vector2(MathF.Cos(FrameAngle), MathF.Sin(FrameAngle) * EllipsisFactor));
+            leftArrow = GetNodeOrNull<LevelSelectorArrow>(LEFT_ARROW_PATH);
+            rightArrow = GetNodeOrNull<LevelSelectorArrow>(RIGHT_ARROW_PATH);
 
-            Scale = levelScale * new Vector2(MathF.Cos(FrameAngle + Mathf.Pi / 2), 1) //Scale adjusted to have 0 on the sides and 1 at center.
-                * (MathF.Sin(FrameAngle) + 2); //Smallest value is 1, largest is 3.
+            foreach (LevelSelectorArrow lArrow in new LevelSelectorArrow[] { leftArrow, rightArrow })
+            {
+                if (!LevelManager.LevelExists(Mountain.WorldNumber, LevelNumber + (lArrow == rightArrow ? 1 : -1)))
+                    lArrow?.QueueFree();
+                if (lArrow == null || lArrow.IsQueuedForDeletion())
+                    continue;
+                lArrow.Position = MathS.PolarToCartesian(
+                    grid.PixelSize.Length() * 0.5f, 
+                    lArrow.Rotation + (lArrow.Scale.Sign().X >= 0 ? 0 : MathF.PI)
+                );
+            }
         }
 
         private void DisplayGrid()
         {
-            level = Grid.GenerateFromFile(levelInfo, this);
-            level.Scale = levelScale;
+            grid = Grid.GenerateFromFile(levelInfo, this);
+            grid.Scale = levelScale;
 
-            Vector2 lSize = level.PixelSize * 0.5f;
+            Vector2 lSize = grid.PixelSize * 0.5f;
             shape = (ConvexPolygonShape2D)Collider.Shape;
             shape.Points = new Vector2[4]{
                 new Vector2(lSize.X, 0),
@@ -73,14 +97,75 @@ namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
             };
         }
 
-        private void ChangeVisibilty(bool pDisplayed)
+        private void DisplayLevel(int pLevelToDisplay)
         {
-            Visible = pDisplayed;
-            Collider.SetDeferred(nameof(Collider.Disabled), !pDisplayed);
+            ChangeVisibilty(IsNeighbour(pLevelToDisplay));
+
+            if (LevelNumber == pLevelToDisplay)
+            {
+                Mountain.RotateToButton(this);
+                focused = true;
+            }
+            else
+            {
+                focused = false;
+                StopFocusedAnim();
+            }
+        }
+
+        private void FocusedAnim(float pDelta)
+        {
+            elapsedTime += pDelta;
+            float lSinusoid, lMaxValue = MathF.Max(grid.Size.X, grid.Size.Y) * 2f - 1;
+            for (int i = 0; i < lMaxValue; i++)
+            {
+                lSinusoid = elapsedTime + (i / lMaxValue);
+                foreach (Tile lTile in grid.GetTilesDiagonally(DiagonalDirection.TOP_RIGHT, i))
+                {
+                    lTile.Position += Vector2.Down * Mathf.Sin(lSinusoid * sinusoidFreq) * sinusoidIntensity;
+                    if (grid.ObjectDict.Contains(lTile))
+                        grid.ObjectDict[lTile].Position = lTile.Position;
+                }
+            }
+        }
+
+        private void StopFocusedAnim()
+        {
+            elapsedTime = default;
+            grid.ResetTilesPos();
+        }
+
+        private void InitMove()
+        {
+            Move(Mountain.CurrentFrameIndex);
+            Mountain.FrameChanged += Move;
+        }
+
+        private void Move(int pFrame)
+        {
+            FrameAngle = pFrame;
+            Position = circleCenter + (radius * new Vector2(MathF.Cos(FrameAngle), MathF.Sin(FrameAngle) * EllipsisFactor));
+            Scale = levelScale * ScaleModifier * new Vector2(MathF.Cos(FrameAngle - Mathf.Pi / 2), 1) //Scale adjusted to have 0 on the sides and 1 at center.
+                * (MathF.Sin(FrameAngle) + 2); //Smallest value is 1, largest is 3.
+            ZIndex = (int)(Position.Y - circleCenter.Y);
+        }
+
+        protected override void ChangeVisibilty(bool pDisplayed)
+        {
             if (pDisplayed)
                 InitMove();
             else
-                mountain.FrameChanged -= Move;
+                Mountain.FrameChanged -= Move;
+
+            if (pDisplayed != alreadyDisplayed)
+                base.ChangeVisibilty(pDisplayed);
+
+            alreadyDisplayed = pDisplayed;
+        }
+
+        private bool IsNeighbour(int pFromLevel)
+        {
+            return LevelNumber >= pFromLevel - 1 && LevelNumber <= pFromLevel + 1;
         }
 
         public static LevelButton Create(MapInfo pLevel)
@@ -91,6 +176,13 @@ namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
             );
             lBtn.levelInfo = pLevel;
             return lBtn;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            Mountain.FrameChanged -= Move;
+            ScaleModifierChanged -= () => Move(Mountain.CurrentFrameIndex);
+            base.Dispose(disposing);
         }
     }
 }

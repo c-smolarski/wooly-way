@@ -21,6 +21,13 @@ namespace Com.IsartDigital.WoolyWay
             return CurrentObject is not Obstacle || (CurrentObject is Sheep && ((Sheep)CurrentObject).CanMove());
         }
 
+
+
+        public Vector2 GetPosFromIndex()
+        {
+            return GetPosFromIndex(Grid.IndexDict[this].X, Grid.IndexDict[this].Y, Grid);
+        }
+
         /// <summary>
         /// Calculates a tile's position so that it is placed on the grid, with the grid's center at the center of the viewport.
         /// </summary>
