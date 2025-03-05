@@ -1,4 +1,4 @@
-﻿using Com.IsartDigital.WoolyWay.Scripts.Utils;
+﻿using Com.IsartDigital.WoolyWay.Utils;
 using Com.IsartDigital.WoolyWay.Utils.Data;
 using Godot;
 using System;

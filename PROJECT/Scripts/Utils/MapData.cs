@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-namespace Com.IsartDigital.WoolyWay.Scripts.Utils
+namespace Com.IsartDigital.WoolyWay.Utils
 {
     public class MapData
     {

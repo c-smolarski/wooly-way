@@ -1,25 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg7grrlqm3cbp"]
+[gd_scene load_steps=4 format=3 uid="uid://dfgpo5q1w422h"]
 
-[ext_resource type="Script" path="res://Scripts/UI/ClickableAreas/LevelButton.cs" id="1_6cgiy"]
-[ext_resource type="PackedScene" uid="uid://dpa0k6yogxm4i" path="res://Scenes/UI/LevelSelector/Arrow.tscn" id="2_42vpa"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/Clickables/LevelButton.cs" id="1_lkma4"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="3_osjjq"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jpyef"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_oe5va"]
 
-[node name="LevelButton" type="Area2D"]
-script = ExtResource("1_6cgiy")
+[node name="levelButton" type="Node2D"]
+script = ExtResource("1_lkma4")
 
-[node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(-3.8147e-06, -1.90735e-06)
-scale = Vector2(1, 0.5)
-shape = SubResource("ConvexPolygonShape2D_jpyef")
+[node name="mouseDetector" type="Area2D" parent="."]
+script = ExtResource("3_osjjq")
 
-[node name="rightArrow" parent="." node_paths=PackedStringArray("levelButton") instance=ExtResource("2_42vpa")]
-position = Vector2(35, -8)
-rotation = -0.174533
-levelButton = NodePath("..")
-right = true
-
-[node name="leftArrow" parent="." node_paths=PackedStringArray("levelButton") instance=ExtResource("2_42vpa")]
-position = Vector2(-37, 7.00001)
-rotation = -0.174533
-levelButton = NodePath("..")
+[node name="collider" type="CollisionShape2D" parent="mouseDetector"]
+shape = SubResource("ConvexPolygonShape2D_oe5va")

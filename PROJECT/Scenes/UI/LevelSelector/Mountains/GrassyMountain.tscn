@@ -1,9 +1,9 @@
-[gd_scene load_steps=125 format=3 uid="uid://b7gladitrornv"]
+[gd_scene load_steps=126 format=3 uid="uid://b7gladitrornv"]
 
-[ext_resource type="Script" path="res://Scripts/UI/ClickableAreas/Mountain.cs" id="1_lux53"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/Clickables/Mountain.cs" id="1_lux53"]
 [ext_resource type="Texture2D" uid="uid://dvrp112xk23ti" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0001.png" id="2_wi76m"]
 [ext_resource type="Texture2D" uid="uid://bkt4glseoofyb" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0002.png" id="3_ergy2"]
-[ext_resource type="PackedScene" uid="uid://dg7grrlqm3cbp" path="res://Scenes/UI/LevelSelector/LevelButton.tscn" id="3_wchr8"]
+[ext_resource type="PackedScene" uid="uid://dg7grrlqm3cbp" path="res://Scenes/UI/LevelSelector/LevelDisplayer.tscn" id="3_wchr8"]
 [ext_resource type="Texture2D" uid="uid://cs3p02f5hv74n" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0003.png" id="4_7rm13"]
 [ext_resource type="Texture2D" uid="uid://cbyn5mtavdvwe" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0004.png" id="5_drmf1"]
 [ext_resource type="Texture2D" uid="uid://dphg0t5lyf2xr" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0005.png" id="6_sqbap"]
@@ -122,9 +122,7 @@
 [ext_resource type="Texture2D" uid="uid://bfgna10drlkst" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0118.png" id="119_1uoy2"]
 [ext_resource type="Texture2D" uid="uid://f7b71xmvijrw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0119.png" id="120_wmmuy"]
 [ext_resource type="Texture2D" uid="uid://ceoc23lbsnd5p" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0120.png" id="121_uurje"]
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_uyqpk"]
-points = PackedVector2Array(380, 327, 299, 423, 55, 462, -221, 423, -381, 353, -357, 200, -203, -18, -150, -80, -3, -215, 160, -80, 250, 50)
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="123_sxxu3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4d7r"]
 animations = [{
@@ -494,57 +492,63 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="Mountain" type="Area2D"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_uyqpk"]
+points = PackedVector2Array(380, 327, 299, 423, 55, 462, -221, 423, -381, 353, -357, 200, -203, -18, -150, -80, -3, -215, 160, -80, 250, 50)
+
+[node name="Mountain" type="Node2D"]
 script = ExtResource("1_lux53")
 WorldNumber = 1
-
-[node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(16, -93)
-scale = Vector2(1.4, 1.4)
-shape = SubResource("ConvexPolygonShape2D_uyqpk")
 
 [node name="renderer" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h4d7r")
 
-[node name="gridContainer" type="Node2D" parent="."]
+[node name="displayerContainer" type="Node2D" parent="."]
 
-[node name="LevelButton6" parent="gridContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer6" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, -90)
-Mountain = NodePath("../..")
 LevelNumber = 6
+Mountain = NodePath("../..")
 DisplayFrame = 200
 radius = 250.0
 
-[node name="LevelButton5" parent="gridContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer5" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, -15)
-Mountain = NodePath("../..")
 LevelNumber = 5
+Mountain = NodePath("../..")
 DisplayFrame = 160
 radius = 320.0
 
-[node name="LevelButton4" parent="gridContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer4" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 60)
-Mountain = NodePath("../..")
 LevelNumber = 4
+Mountain = NodePath("../..")
 DisplayFrame = 120
 radius = 290.0
 
-[node name="LevelButton3" parent="gridContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer3" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 135)
-Mountain = NodePath("../..")
 LevelNumber = 3
+Mountain = NodePath("../..")
 DisplayFrame = 80
 radius = 365.0
 
-[node name="LevelButton2" parent="gridContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer2" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 210)
-Mountain = NodePath("../..")
 LevelNumber = 2
+Mountain = NodePath("../..")
 DisplayFrame = 40
 radius = 420.0
 
-[node name="LevelButton" parent="gridContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 285)
-Mountain = NodePath("../..")
 LevelNumber = 1
+Mountain = NodePath("../..")
 radius = 390.0
+
+[node name="mouseDetector" type="Area2D" parent="."]
+script = ExtResource("123_sxxu3")
+
+[node name="collider" type="CollisionShape2D" parent="mouseDetector"]
+position = Vector2(16, -93)
+scale = Vector2(1.4, 1.4)
+shape = SubResource("ConvexPolygonShape2D_uyqpk")

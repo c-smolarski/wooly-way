@@ -1,11 +1,12 @@
 ﻿using Com.IsartDigital.WoolyWay.Managers;
+using Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements;
 using Com.IsartDigital.WoolyWay.Utils.Tweens;
 using Godot;
 using System;
 
-namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
+namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 {
-    public partial class Mountain : ClickableArea
+    public partial class Mountain : ClickableLevelSelectorElement
     {
         [Signal] public delegate void FrameChangedEventHandler(int pFrame);
         [Signal] public delegate void LevelsVisibilityChangedEventHandler(int pLevelNumber);
@@ -46,32 +47,30 @@ namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
 
         public override void _Ready()
         {
+            base._Ready();
             renderer = GetNode<AnimatedSprite2D>(RENDERER_PATH);
             renderer.FrameChanged += () => EmitSignal(SignalName.FrameChanged, CurrentFrameIndex);
             renderer.Play();
             defaultPos = Position;
             defaulScale = Scale;
-
-            Clicked += OnClick;
-
-            base._Ready();
         }
 
         public override void _Input(InputEvent @event)
         {
             base._Input(@event);
-            if (!IsHovered && focused && Input.IsActionJustPressed(InputManager.UI_CLICK))
+            if (!MouseDetector.IsHovered && focused && Input.IsActionJustPressed(InputManager.UI_CLICK))
                 UnfocusMountain();
         }
 
-        private void OnClick()
+        protected override void OnClick()
         {
-            if (IsHovered && !focused)
+            if (MouseDetector.IsHovered && !focused)
             {
                 focused = true;
                 AnimFrameIndex = CurrentFrameIndex;
                 EmitSignal(SignalName.LevelsVisibilityChanged, defaultDisplayedLevel);
             }
+            base.OnClick();
         }
 
         public void DisplayButton(int pLevelNumber)
@@ -79,7 +78,7 @@ namespace Com.IsartDigital.WoolyWay.UI.ClickableAreas
             EmitSignal(SignalName.LevelsVisibilityChanged, pLevelNumber);
         }
 
-        public void RotateToButton(LevelButton pButton)
+        public void RotateToButton(LevelButtonDisplayer pButton)
         {
             renderer.Pause();
 

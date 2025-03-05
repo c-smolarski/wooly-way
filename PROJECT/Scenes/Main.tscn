@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/GameObjects/Player.tscn" id="8_vlh7r"]
 [ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/GameObjects/Dog.tscn" id="9_cb5no"]
 [ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/GameObjects/Sheep.tscn" id="10_bbdlh"]
-[ext_resource type="PackedScene" uid="uid://dg7grrlqm3cbp" path="res://Scenes/UI/LevelSelector/LevelButton.tscn" id="11_uowpg"]
+[ext_resource type="PackedScene" uid="uid://dg7grrlqm3cbp" path="res://Scenes/UI/LevelSelector/LevelDisplayer.tscn" id="11_uowpg"]
 [ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/GameObjects/Target.tscn" id="11_y7xnn"]
 [ext_resource type="PackedScene" uid="uid://b7gladitrornv" path="res://Scenes/UI/LevelSelector/Mountains/GrassyMountain.tscn" id="12_kmayb"]
 
