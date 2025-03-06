@@ -10,7 +10,7 @@ namespace Com.IsartDigital.ProjectName {
 		[Export] private Label[] title;
 		private Tween tween;
 		private const string TWEEN_SCALE = "scale";
-		private const float TWEEN_DURATION = 0.4f;
+		private const float TWEEN_DURATION = .4f;
         public override void _Ready()
 		{
 			tween = CreateTween();
@@ -19,9 +19,9 @@ namespace Com.IsartDigital.ProjectName {
 
 		private void JuicyTitle()
 		{
-			foreach (Label lLabel in title)
+			foreach (Label label in title)
 			{
-				tween.TweenProperty(lLabel, TWEEN_SCALE, Vector2.One, TWEEN_DURATION).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
+				tween.TweenProperty(label, TWEEN_SCALE, Vector2.One, TWEEN_DURATION).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
 			}
 		}
 	}

@@ -47,7 +47,7 @@ namespace Com.IsartDigital.ProjectName
             {
                 camera.Position = new Vector2(rand.RandfRange(maxShakeRight, minShakeLeft), rand.RandfRange(minShakeDown, maxShakeUp));
             }
-            //if the shake is done, all initialiazed settings are reset to their original value
+            //if the shake is done, all initialized settings are reset to their original value
             else if (shakeTime >= shakeMaxTime)
             {
                 camera.Position = posCamera;

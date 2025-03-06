@@ -38,6 +38,7 @@ TileScene = ExtResource("3_0uypt")
 script = ExtResource("7_8spp5")
 
 [node name="MapManager" type="Node2D" parent="Managers" node_paths=PackedStringArray("gameContainer")]
+position = Vector2(576, 324)
 script = ExtResource("7_g5iif")
 wallPacked = ExtResource("8_bb6ok")
 gameContainer = NodePath("../../GameContainer")
@@ -47,7 +48,9 @@ sheepPacked = ExtResource("11_7mfus")
 arrivalPacked = ExtResource("12_eax2g")
 
 [node name="GridContainer" type="Node2D" parent="."]
+position = Vector2(576, 324)
 
 [node name="GameContainer" type="Node2D" parent="."]
+position = Vector2(576, 324)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

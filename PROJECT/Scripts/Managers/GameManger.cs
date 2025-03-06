@@ -15,7 +15,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] public PackedScene TileScene { get; private set; }
         #endregion
 
-        public static GameManger Instance { get; private set; }
+        public static GameManger Instance { get; private set;}
+
 
         public override void _Ready()
         {
@@ -29,6 +30,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
             Instance = this;
             #endregion
             //GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
+
             HudManager.Instance.CreateHud();
         }
 

@@ -354,7 +354,7 @@ offset_bottom = 0.184967
 placeholder_text = "password"
 secret = true
 
-[node name="Login" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "transition", "errorMessage")]
+[node name="Login" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "errorMessage", "transition")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.441
@@ -370,10 +370,10 @@ text = "Login"
 script = ExtResource("1_oc6yq")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
-transition = NodePath("../TransitionIn")
 errorMessage = NodePath("../Error Message")
+transition = NodePath("../TransitionIn")
 
-[node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "errorMessage")]
+[node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "errorMessage", "transition")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.441
@@ -390,6 +390,7 @@ script = ExtResource("1_7hp86")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
 errorMessage = NodePath("../Error Message")
+transition = NodePath("../TransitionIn")
 
 [node name="ShowPassword" type="Button" parent="."]
 layout_mode = 1

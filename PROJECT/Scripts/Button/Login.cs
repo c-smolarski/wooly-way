@@ -9,36 +9,18 @@ using System.Xml.Serialization;
 namespace Com.IsartDigital.ProjectName
 {
 
-    public partial class Login : Button
+    public partial class Login : UserButton
     {
-        [Export] private LineEdit usernameText;
-        [Export] private LineEdit passwordText;
-        [Export] private AnimationPlayer transition;
-        [Export] private Godot.Label errorMessage;
-
         private string errorPassword = "Wrong Password";
-
-        private string username;
-        private string password;
-        private string salt;
-
-        private const string TRANSITION = "fade In";
-        private const string NEXT_SCENE = "res://Scenes/Tile.tscn";
-
-        PasswordManager passwordManager;
-        UserManager userManager;
-
         public override void _Ready()
         {
-            passwordManager = PasswordManager.GetInstance();
-            userManager = UserManager.GetInstance();
-            Pressed += OnPressed;
+            base._Ready();
         }
 
         /// <summary>
         /// Get the entered user data, checks if the user exist and check if the password is right then logs you in
         /// </summary>
-        private void OnPressed()
+        protected override void OnPressed()
         {
             username = usernameText.Text;
             password = passwordText.Text;
@@ -54,7 +36,7 @@ namespace Com.IsartDigital.ProjectName
                     GD.Print("logged in");
                     transition.Play(TRANSITION);
                     Transition.shake = true;
-                    //transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
+                    transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
                 }
                 else
                 {
@@ -71,6 +53,5 @@ namespace Com.IsartDigital.ProjectName
         {
             GetTree().ChangeSceneToFile(NEXT_SCENE);
         }
-
     }
 }

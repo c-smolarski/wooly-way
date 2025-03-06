@@ -8,41 +8,36 @@ using System.Security.Principal;
 
 namespace Com.IsartDigital.ProjectName {
 	
-	public partial class Create : Button
+	public partial class Create : UserButton
 	{
-		PasswordManager passwordManager;
-		UserManager userManager;
 
-		[Export] private LineEdit usernameText;
-		[Export] private LineEdit passwordText;
-        [Export] private Label errorMessage;
-
-        private string username;
-		private string password;
-		private string salt;
-
-		
-		public override void _Ready()
+        public override void _Ready()
 		{
-			passwordManager = PasswordManager.GetInstance();
-			userManager = UserManager.GetInstance();
-			Pressed += OnPressed;
+			base._Ready();
 		}
 
         /// <summary>
         /// Creates an account based on given info
         /// </summary>
-        private void OnPressed()
+        protected override void OnPressed()
 		{
 			Object[] newUser;
 			username = usernameText.Text;
-            (password, salt) = passwordManager.Crypting(passwordText.Text);
+            (password, salt) = passwordManager.Encryption(passwordText.Text);
 			newUser = userManager.CreateUser(username, password, salt);
 			if ((bool)newUser[0])
 			{
 				GD.Print("account created loading next scene");
+				transition.Play(TRANSITION);
+				Transition.shake = true;
+				transition.AnimationFinished += (StringName pName) => ChangeScene(pName);
 			}
 			else errorMessage.Text = (string)newUser[1];
+		}
+
+		private void ChangeScene(string pName)
+		{
+			GetTree().ChangeSceneToFile(NEXT_SCENE);
 		}
 	}
 }

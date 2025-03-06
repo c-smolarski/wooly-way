@@ -23,10 +23,6 @@ namespace Com.IsartDigital.ProjectName
 
 		private const string ASCII = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		private const int LENTGH_SALT = 16;
-		private const int LEFT_SHIFT = 5;
-		private const int RIGHT_SHIFT = 27;
-        private uint hashValue = 0x811C9DC5;
-		private uint primeValue = 0x01000193;
 
         private RandomNumberGenerator rand = new RandomNumberGenerator();
 
@@ -47,19 +43,19 @@ namespace Com.IsartDigital.ProjectName
 		}
 
         /// <summary>
-        /// call function to crypt a password ans s end it back crypted with its salt
+        /// call function to crypt a password and send it back crypted with its salt
         /// </summary>
-        public (string, string) Crypting(string pPassword)
+        public (string, string) Encryption(string pPassword)
 		{	
 			string lSalt = SaltGenerator();
-			string lResult = Crypting(pPassword, lSalt);
+			string lResult = Hashing(pPassword, lSalt);
             return (lResult, lSalt);
         }
 
         /// <summary>
         /// Crypt the password using SHA256
         /// </summary>
-        private string Crypting(string pPassword, string pSalt)
+        private string Hashing(string pPassword, string pSalt)
 		{
 			pPassword = (pPassword + pSalt).Sha256Text();
 			return pPassword;
@@ -70,7 +66,7 @@ namespace Com.IsartDigital.ProjectName
         /// </summary>
         public bool CheckPassword(string pPassword, string pPasswordToCheck, string pSalt)
 		{
-			string lCryptPassword = Crypting(pPasswordToCheck, pSalt);
+			string lCryptPassword = Hashing(pPasswordToCheck, pSalt);
 			return lCryptPassword.ToString() == pPassword;
 		}
 
@@ -88,10 +84,10 @@ namespace Com.IsartDigital.ProjectName
 			return lSalt;
         }
 
-		protected override void Dispose(bool pdisposing)
+		protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
-			base.Dispose(pdisposing);
+			base.Dispose(pDisposing);
 		}
 	}
 }
