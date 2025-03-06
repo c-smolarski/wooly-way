@@ -65,12 +65,12 @@ namespace Com.IsartDigital.WoolyWay.Managers
         /// <summary>
         /// Returns the total number of level in the game
         /// </summary>
-        public int numLevels()
+        public uint NumLevels()
         {
-            int lNumLevel = 0;
+            uint lNumLevel = 0;
             foreach (KeyValuePair<string, Dictionary<string, MapInfo>> lWorld in MapData.Worlds)
             {
-                lNumLevel += lWorld.Value.Count;
+                lNumLevel += (uint)lWorld.Value.Count;
             }
             return lNumLevel;
         }
