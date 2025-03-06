@@ -85,19 +85,19 @@ namespace Com.IsartDigital.WoolyWay
         public static Grid GenerateFromFile(MapInfo pMap, Node2D pContainer, Vector2 pPos = default)
         {
 
-            int ySizeLevel = pMap.Map.Count;
-            int xSizeLevel = pMap.Map[0].Length;
+            int lYSizeLevel = pMap.Map.Count;
+            int lXSizeLevel = pMap.Map[0].Length;
 
-            Grid lGrid = CreateEmpty(new Vector2I(xSizeLevel, ySizeLevel), pContainer, pPos);
+            Grid lGrid = CreateEmpty(new Vector2I(lXSizeLevel, lYSizeLevel), pContainer, pPos);
 
             TwoWayDictionary<Tile, GameObject> lTempDict = new();
             PackedScene lPacked;
             GameObject lObj;
             char lChar;
 
-            for (int y = 0; y < ySizeLevel; y++)
+            for (int y = 0; y < lYSizeLevel; y++)
             {
-                for (int x = 0; x < xSizeLevel; x++)
+                for (int x = 0; x < lXSizeLevel; x++)
                 {
                     lChar = pMap.Map[y][x];
                     lPacked = LevelChar.ToPackedScene.ContainsKey(lChar) ? LevelChar.ToPackedScene[lChar] : null;
