@@ -21,6 +21,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         public const string MENU_PAUSE = "ui_pause";
 
         public const string UI_BACK = "ui_back";
+        public const string UI_CLICK = "ui_click";
 
         public const string MOVE_UNDO = "move_undo";
         public const string MOVE_REDO = "move_redo";
@@ -49,12 +50,9 @@ namespace Com.IsartDigital.WoolyWay.Managers
         public override void _Process(double pDelta)
         {
             base._Process(pDelta);
-            if (IsInstanceValid(Player.Instance) &&  Player.Instance.IsProcessing())
-            {
-                moveInputDirection = GetMovementDirection();
-                if (moveInputDirection != Vector2I.Zero)
-                    Instance.EmitSignal(SignalName.MoveInputPressed, moveInputDirection);
-            }
+            moveInputDirection = GetMovementDirection();
+            if (moveInputDirection != Vector2I.Zero)
+                Instance.EmitSignal(SignalName.MoveInputPressed, moveInputDirection);
         }
 
         public override void _UnhandledInput(InputEvent @event)

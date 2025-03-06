@@ -3,7 +3,6 @@ using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 using System.Collections.Generic;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils.Data;
 using System.Linq;
@@ -15,11 +14,21 @@ namespace Com.IsartDigital.WoolyWay
     public partial class Grid : Node2D
     {
         public Vector2I Size { get; private set; }
+        public Vector2 PixelSize => Tile.SIZE * Size * Scale;
+
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
 
+        public void ResetTilesPos()
+        {
+            foreach (Tile lTile in IndexDict.Values)
+                lTile.Position = lTile.GetPosFromIndex();
+            foreach (GameObject lObject in ObjectDict.Values)
+                lObject.Position = lObject.CurrentTile.Position;
+        }
+
         /// <summary>
-        /// DiagonalDirection is based off a standard (Non-isometric) table. Max value on grid for pIndex is (Max(myGrid.Size.X, myGrid.Size.Y) - 1) * 2.
+        /// DiagonalDirection is based off a standard (Non-isometric) table. Max value on grid for pIndex is (Max(myGrid.Size.X, myGrid.Size.Y) * 2) - 1.
         /// <para>Ex : For GetTilesDiagonally(BottomRight, 2) it will return tiles at index (0,2), (1,1) and (2,0).</para>
 		/// </summary>
         /// <param name="pDirection"></param>
