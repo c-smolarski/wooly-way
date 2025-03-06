@@ -24,10 +24,5 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             lSheep.IsUseful = pUseful;
             return lSheep;
         }
-
-        public static Sheep Create(PackedScene pScene, Vector2I pTileIndex, Vector2I pDirection, bool pUseful = true)
-        {
-            return Create(pScene, GridManager.TileDict[pTileIndex], pDirection, pUseful);
-        }
     }
 }

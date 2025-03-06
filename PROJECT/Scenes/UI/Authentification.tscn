@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Managers/PasswordManager.cs" id="2_5nf3w"]
 [ext_resource type="PackedScene" uid="uid://d4l7vsdirecaf" path="res://Scenes/Transition/transitionIn.tscn" id="4_tyhv3"]
 [ext_resource type="Script" path="res://Scripts/UsernameText.cs" id="5_fye66"]
-[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Fonts/Straw Milky.otf" id="6_5ob0n"]
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="6_5ob0n"]
 [ext_resource type="Script" path="res://Scripts/AuthentificationJuiciness.cs" id="6_tds27"]
 [ext_resource type="Theme" uid="uid://mehsaxiv283s" path="res://Theme/AuthentificationButton.tres" id="8_gakyl"]
 [ext_resource type="Script" path="res://Scripts/Managers/UserManager.cs" id="8_qp8ly"]

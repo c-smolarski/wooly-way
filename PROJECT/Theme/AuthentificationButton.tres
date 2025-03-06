@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://mehsaxiv283s"]
 
-[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Fonts/Straw Milky.otf" id="1_0d3db"]
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="1_0d3db"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qnuh"]
 

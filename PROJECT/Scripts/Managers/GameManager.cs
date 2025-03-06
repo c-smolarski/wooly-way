@@ -4,34 +4,37 @@ using Godot;
 
 namespace Com.IsartDigital.WoolyWay.Managers
 {
-    public partial class GameManger : Node
+    public partial class GameManager : Node
     {
         #region Exports
         [ExportGroup("Nodes")]
         [ExportSubgroup("Containers")]
-        [Export] public Node2D GridContainer { get; private set; }
         [Export] public Node2D GameContainer { get; private set; }
         [ExportGroup("PackedScenes")]
         [Export] public PackedScene TileScene { get; private set; }
+        [ExportSubgroup("GameObjects")]
+        [Export] public PackedScene WallScene { get; private set; }
+        [Export] public PackedScene PlayerScene { get; private set; }
+        [Export] public PackedScene DogScene { get; private set; }
+        [Export] public PackedScene SheepScene { get; private set; }
+        [Export] public PackedScene TargetScene { get; private set; }
         #endregion
 
-        public static GameManger Instance { get; private set;}
-
+        public static GameManager Instance { get; private set; }
 
         public override void _Ready()
         {
             #region Singleton
             if (Instance != null)
             {
-                GD.Print("Error : " + nameof(GameManger) + " already exists. The new one is being freed...");
+                GD.Print("Error : " + nameof(GameManager) + " already exists. The new one is being freed...");
                 QueueFree();
                 return;
             }
             Instance = this;
             #endregion
-            //GridManager.Instance.GenerateNewGrid(Vector2I.One * GridManager.MAX_GRID_SIZE);
-
             HudManager.Instance.CreateHud();
+            LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Level6);
         }
 
         protected override void Dispose(bool pDisposing)

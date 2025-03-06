@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b8tf37kkqpu3l"
-path="res://.godot/imported/Straw Milky.otf-243853b0936d38b4502bc7e27a8b54e1.fontdata"
+path="res://.godot/imported/Straw Milky.otf-9e8c907bbc1e79a852abca59a59ab133.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Straw Milky.otf"
-dest_files=["res://.godot/imported/Straw Milky.otf-243853b0936d38b4502bc7e27a8b54e1.fontdata"]
+source_file="res://Resources/Fonts/Straw Milky.otf"
+dest_files=["res://.godot/imported/Straw Milky.otf-9e8c907bbc1e79a852abca59a59ab133.fontdata"]
 
 [params]
 

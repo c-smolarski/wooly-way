@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 [autoload]
 
 InputManager="*res://Scripts/Managers/InputManager.cs"
+LevelManager="*res://Scripts/Managers/LevelManager.cs"
 
 [display]
 
@@ -30,6 +31,8 @@ project/assembly_name="WoolyWay"
 [file_customization]
 
 folder_colors={
+"res://Audio/": "purple",
+"res://Data/": "yellow",
 "res://Properties/": "yellow",
 "res://Resources/": "blue",
 "res://Scenes/": "green",
