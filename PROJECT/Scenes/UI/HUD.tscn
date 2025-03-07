@@ -1,26 +1,24 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmfbw723jsxf8"]
 
-[ext_resource type="Shader" path="res://Ressources/HUD.gdshader" id="1_x675v"]
-[ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Ressources/HudText.tres" id="2_axtj7"]
-[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Ressources/Fonts/lumberjack.regular.otf" id="2_kisf5"]
-
-
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqrye"]
-shader = ExtResource("1_x675v")
-shader_parameter/height = 3.0
-shader_parameter/frequency = 20.0
-shader_parameter/speed = 3.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_jyqpm"]
-font = ExtResource("2_kisf5")
-font_size = 33
+[ext_resource type="Shader" path="res://Resources/HUD.gdshader" id="1_x675v"]
+[ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Resources/HudText.tres" id="2_axtj7"]
+[ext_resource type="FontFile" uid="uid://dh6mbm4taom1i" path="res://Resources/Fonts/lumberjack.regular.otf" id="3_sgf7y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y43c2"]
 shader = ExtResource("1_x675v")
 shader_parameter/height = 3.0
 shader_parameter/frequency = 20.0
 shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0wb0"]
+shader = ExtResource("1_x675v")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fcg4h"]
+font = ExtResource("3_sgf7y")
+font_size = 33
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -29,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -38,16 +37,16 @@ offset_right = 147.32
 offset_bottom = 129.105
 pivot_offset = Vector2(58.13, 47.71)
 
-[node name="Par" type="Label" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_eqrye")
-layout_mode = 2
-text = "Steps : 0"
-label_settings = SubResource("LabelSettings_jyqpm")
-language = "English"
-
 [node name="Steps" type="Label" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_y43c2")
 layout_mode = 2
 text = "Par : 0"
 label_settings = ExtResource("2_axtj7")
 language = "en"
+
+[node name="Par" type="Label" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_n0wb0")
+layout_mode = 2
+text = "Steps:"
+label_settings = SubResource("LabelSettings_fcg4h")
+language = "English"

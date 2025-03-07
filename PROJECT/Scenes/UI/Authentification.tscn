@@ -1,92 +1,432 @@
-[gd_scene load_steps=4 format=3 uid="uid://jx675vga67s0"]
+[gd_scene load_steps=18 format=3 uid="uid://jx675vga67s0"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Buttons/Login_Button.cs" id="1_pfgst"]
-[ext_resource type="Script" path="res://Scripts/UI/Buttons/Create_User_Button.cs" id="2_ff0p4"]
+[ext_resource type="Texture2D" uid="uid://ttr1jbxk5fub" path="res://Assets/image.png" id="1_5li4u"]
+[ext_resource type="Script" path="res://Scripts/Button/Create.cs" id="1_7hp86"]
+[ext_resource type="Script" path="res://Scripts/Button/Login.cs" id="1_oc6yq"]
+[ext_resource type="Texture2D" uid="uid://bilqxmsakrt4" path="res://Assets/IMG_1446-removebg-preview.png" id="2_3i84c"]
+[ext_resource type="Script" path="res://Scripts/Managers/PasswordManager.cs" id="2_5nf3w"]
+[ext_resource type="PackedScene" uid="uid://d4l7vsdirecaf" path="res://Scenes/Transition/transitionIn.tscn" id="4_tyhv3"]
+[ext_resource type="Script" path="res://Scripts/UsernameText.cs" id="5_fye66"]
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="6_5ob0n"]
+[ext_resource type="Script" path="res://Scripts/AuthentificationJuiciness.cs" id="6_tds27"]
+[ext_resource type="Theme" uid="uid://mehsaxiv283s" path="res://Theme/AuthentificationButton.tres" id="8_gakyl"]
+[ext_resource type="Script" path="res://Scripts/Managers/UserManager.cs" id="8_qp8ly"]
+[ext_resource type="Script" path="res://Scripts/Transition.cs" id="13_arho5"]
 
-
-[sub_resource type="LabelSettings" id="LabelSettings_1xwfa"]
+[sub_resource type="LabelSettings" id="LabelSettings_aub3m"]
+font = ExtResource("6_5ob0n")
 font_size = 50
+font_color = Color(1, 0.796076, 0.551256, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqit3"]
+font = ExtResource("6_5ob0n")
+font_size = 50
+font_color = Color(1, 0.503165, 0.387758, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ejewq"]
+font = ExtResource("6_5ob0n")
+font_size = 50
+font_color = Color(1, 0.501961, 0.388235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8137c"]
+font = ExtResource("6_5ob0n")
+font_size = 50
+font_color = Color(1, 0.501961, 0.388235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_is1c2"]
+font_color = Color(0.51701, 1.35969e-06, 3.85046e-07, 1)
 
 [node name="Authentification" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0019, 1.00085)
+pivot_offset = Vector2(596, 329)
+texture = ExtResource("1_5li4u")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="InfoCard" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 8.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00078, 0.998335)
+texture = ExtResource("2_3i84c")
+expand_mode = 1
+
+[node name="UserManager" type="Node" parent="."]
+script = ExtResource("8_qp8ly")
+
+[node name="PasswordManager" type="Node" parent="."]
+script = ExtResource("2_5nf3w")
+
+[node name="title" type="Control" parent="." node_paths=PackedStringArray("title")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1151.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_tds27")
+title = [NodePath("W"), NodePath("O"), NodePath("O2"), NodePath("L"), NodePath("Y"), NodePath("W2"), NodePath("A"), NodePath("Y2")]
+
+[node name="W" type="Label" parent="title"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.501
-anchor_top = 0.269
-anchor_right = 0.501
-anchor_bottom = 0.269
-offset_left = -130.152
-offset_top = -34.312
-offset_right = 129.848
-offset_bottom = 34.688
-text = "Wooly way"
-label_settings = SubResource("LabelSettings_1xwfa")
+anchor_left = 0.284
+anchor_top = 0.121
+anchor_right = 0.284
+anchor_bottom = 0.121
+offset_left = 356.0
+offset_top = 36.3854
+offset_right = 428.0
+offset_bottom = 100.385
+rotation = -0.340173
+scale = Vector2(1e-05, 1e-05)
+text = "W"
+label_settings = SubResource("LabelSettings_aub3m")
 
-[node name="Username" type="TextEdit" parent="."]
+[node name="O" type="Label" parent="title"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -122.0
-offset_top = -27.0
-offset_right = 128.0
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_left = 0.332
+anchor_top = 0.104
+anchor_right = 0.332
+anchor_bottom = 0.104
+offset_left = 424.0
+offset_top = 20.3855
+offset_right = 485.0
+offset_bottom = 84.3855
+rotation = -0.27331
+scale = Vector2(1e-05, 1e-05)
+text = "O
+"
+label_settings = SubResource("LabelSettings_aub3m")
+
+[node name="O2" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.371
+anchor_top = 0.089
+anchor_right = 0.371
+anchor_bottom = 0.089
+offset_left = 468.0
+offset_top = 14.3854
+offset_right = 525.0
+offset_bottom = 78.3854
+rotation = -0.27331
+scale = Vector2(1e-05, 1e-05)
+text = "O
+"
+label_settings = SubResource("LabelSettings_aub3m")
+
+[node name="L" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.406
+anchor_top = 0.079
+anchor_right = 0.406
+anchor_bottom = 0.079
+offset_left = 513.0
+offset_top = 8.38545
+offset_right = 570.0
+offset_bottom = 72.3855
+rotation = -0.147879
+scale = Vector2(1e-05, 1e-05)
+text = "L
+"
+label_settings = SubResource("LabelSettings_aub3m")
+
+[node name="Y" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.437
+anchor_top = 0.075
+anchor_right = 0.437
+anchor_bottom = 0.075
+offset_left = 543.0
+offset_top = 2.38545
+offset_right = 600.0
+offset_bottom = 66.3854
+rotation = 0.0566226
+scale = Vector2(1e-05, 1e-05)
+text = "Y
+"
+label_settings = SubResource("LabelSettings_aub3m")
+
+[node name="W2" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.596
+anchor_top = 0.078
+anchor_right = 0.596
+anchor_bottom = 0.078
+offset_left = 660.0
+offset_top = 7.0
+offset_right = 732.0
+offset_bottom = 71.0
+rotation = 0.113736
+scale = Vector2(1e-05, 1e-05)
+text = "W"
+label_settings = SubResource("LabelSettings_aqit3")
+
+[node name="A" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.641
+anchor_top = 0.095
+anchor_right = 0.641
+anchor_bottom = 0.095
+offset_left = 738.0
+offset_top = 14.0
+offset_right = 810.0
+offset_bottom = 78.0
+rotation = 0.323647
+scale = Vector2(1e-05, 1e-05)
+text = "A"
+label_settings = SubResource("LabelSettings_ejewq")
+
+[node name="Y2" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.671
+anchor_top = 0.11
+anchor_right = 0.671
+anchor_bottom = 0.11
+offset_left = 774.0
+offset_top = 25.0
+offset_right = 846.0
+offset_bottom = 89.0
+rotation = 0.323647
+scale = Vector2(1e-05, 1e-05)
+text = "Y"
+label_settings = SubResource("LabelSettings_8137c")
+
+[node name="Shadow1" type="ColorRect" parent="."]
+modulate = Color(0.404844, 0.227407, 0.131668, 1)
+layout_mode = 2
+anchor_left = 0.389
+anchor_top = 0.362
+anchor_right = 0.639
+anchor_bottom = 0.388
+offset_left = 0.260956
+offset_top = 0.0619812
+offset_right = -220.489
+offset_bottom = -3.81201
+scale = Vector2(4.28414, 1.28938)
+color = Color(0.709087, 0.541084, 0.456647, 1)
+
+[node name="UserRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.281
+anchor_right = 0.639
+anchor_bottom = 0.379
+offset_left = 0.260956
+offset_top = -0.297012
+offset_right = -0.488098
+offset_bottom = 0.100998
+color = Color(0.709087, 0.541084, 0.456647, 1)
+
+[node name="UsernameText" type="RichTextLabel" parent="." node_paths=PackedStringArray("textInput", "showPass")]
+modulate = Color(0.24, 0.14364, 0.0648, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.401
+anchor_top = 0.29
+anchor_right = 0.628
+anchor_bottom = 0.382
+offset_left = -0.551025
+offset_top = -0.210007
+offset_right = 0.171997
+offset_bottom = 0.0819855
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Username"
+script = ExtResource("5_fye66")
+textInput = NodePath("../Username")
+showPass = NodePath("../ShowPassword")
+
+[node name="Username" type="LineEdit" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+anchor_left = 0.397
+anchor_top = 0.306
+anchor_right = 0.622
+anchor_bottom = 0.361
+offset_left = 0.0529785
+offset_top = -6.59401
+offset_right = -191.86
+offset_bottom = -11.289
+scale = Vector2(3.86136, 1.37045)
 placeholder_text = "Username"
+secret = true
 
-[node name="Password" type="TextEdit" parent="."]
+[node name="Shadow2" type="ColorRect" parent="."]
+modulate = Color(0.404844, 0.227407, 0.131668, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.63
-anchor_right = 0.502
-anchor_bottom = 0.641
-offset_left = -123.0
-offset_top = -25.24
-offset_right = 124.696
-offset_bottom = 17.632
+anchor_left = 0.392
+anchor_top = 0.493
+anchor_right = 0.641
+anchor_bottom = 0.522
+offset_left = -0.192017
+offset_top = 0.0429688
+offset_right = 0.208984
+offset_bottom = 0.221985
+color = Color(0.709804, 0.541176, 0.454902, 1)
+
+[node name="Passwordrect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.392
+anchor_top = 0.425
+anchor_right = 0.641
+anchor_bottom = 0.513
+offset_left = -0.192017
+offset_top = -6.82501
+offset_right = 0.209961
+offset_bottom = 0.0629883
+color = Color(0.709804, 0.541176, 0.454902, 1)
+
+[node name="PasswordText" type="RichTextLabel" parent="." node_paths=PackedStringArray("textInput", "showPass")]
+modulate = Color(0.24, 0.14364, 0.0648, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.403
+anchor_top = 0.417
+anchor_right = 0.63
+anchor_bottom = 0.51
+offset_left = -0.397034
+offset_top = 0.238983
+offset_right = 0.325928
+offset_bottom = -0.118011
 grow_horizontal = 2
 grow_vertical = 2
-placeholder_text = "Password"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Password"
+script = ExtResource("5_fye66")
+textInput = NodePath("../Password")
+secret = true
+showPass = NodePath("../ShowPassword")
 
-[node name="Login_Button" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
+[node name="Password" type="LineEdit" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.505
-anchor_top = 0.787
-anchor_right = 0.505
-anchor_bottom = 0.787
-offset_left = -74.76
-offset_top = -24.976
-offset_right = 75.24
-offset_bottom = 25.024
+anchor_left = 0.408
+anchor_top = 0.425
+anchor_right = 0.625
+anchor_bottom = 0.502
+offset_left = -0.0440369
+offset_top = 0.15799
+offset_right = 0.189087
+offset_bottom = 0.184967
+placeholder_text = "password"
+secret = true
+
+[node name="Login" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "errorMessage", "transition")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.441
+anchor_top = 0.601
+anchor_right = 0.572
+anchor_bottom = 0.678
+offset_left = 0.408997
+offset_top = -0.0490112
+offset_right = -0.372009
+offset_bottom = -0.0220337
+theme = ExtResource("8_gakyl")
 text = "Login"
-script = ExtResource("1_pfgst")
+script = ExtResource("1_oc6yq")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
+errorMessage = NodePath("../Error Message")
+transition = NodePath("../TransitionIn")
 
-[node name="Create_User_Button" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText")]
+[node name="Create" type="Button" parent="." node_paths=PackedStringArray("usernameText", "passwordText", "errorMessage", "transition")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.503
-anchor_top = 0.907
-anchor_right = 0.503
-anchor_bottom = 0.907
-offset_left = -74.4561
-offset_top = -24.736
-offset_right = 75.5439
-offset_bottom = 25.264
+anchor_left = 0.441
+anchor_top = 0.707
+anchor_right = 0.572
+anchor_bottom = 0.784
+offset_left = 0.408997
+offset_top = 0.156982
+offset_right = -0.372009
+offset_bottom = 0.18396
+theme = ExtResource("8_gakyl")
 text = "Create User"
-script = ExtResource("2_ff0p4")
+script = ExtResource("1_7hp86")
 usernameText = NodePath("../Username")
 passwordText = NodePath("../Password")
+errorMessage = NodePath("../Error Message")
+transition = NodePath("../TransitionIn")
+
+[node name="ShowPassword" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.646
+anchor_top = 0.438
+anchor_right = 0.679
+anchor_bottom = 0.488
+offset_left = -0.546021
+offset_top = -0.262024
+offset_right = -0.529053
+offset_bottom = 0.287964
+theme = ExtResource("8_gakyl")
+text = "👁️"
+
+[node name="TransitionIn" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_tyhv3")]
+script = ExtResource("13_arho5")
+maxShakeRight = 565.0
+minShakeLeft = 580.0
+maxShakeUp = 315.0
+minShakeDown = 330.0
+camera = NodePath("../Camera2D")
+
+[node name="Error Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.519
+anchor_top = 0.551
+anchor_right = 0.519
+anchor_bottom = 0.551
+offset_left = -132.369
+offset_top = -11.599
+offset_right = 132.631
+offset_bottom = 11.401
+label_settings = SubResource("LabelSettings_is1c2")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)

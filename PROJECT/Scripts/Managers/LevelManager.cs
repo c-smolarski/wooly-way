@@ -2,6 +2,7 @@
 using Com.IsartDigital.WoolyWay.Utils.Data;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -43,14 +44,17 @@ namespace Com.IsartDigital.WoolyWay.Managers
             ExtractData();
         }
 
+        /// <summary>
+        /// Extracts all info from the json file to get all the levels and their specifities
+        /// </summary>
         private static void ExtractData()
         {
-            string data = File.ReadAllText(FilePath.LEVELS_JSON);
+            string lData = File.ReadAllText(FilePath.LEVELS_JSON);
+            
             try
             {
                 //Deserialize json data into MapData class
-                MapData = JsonSerializer.Deserialize<MapData>(data)!;
-                GD.Print(MapData.Level1.Map);
+                MapData = JsonSerializer.Deserialize<MapData>(lData);
             }
             catch (Exception e)
             {
@@ -58,13 +62,29 @@ namespace Com.IsartDigital.WoolyWay.Managers
             }
         }
 
+        /// <summary>
+        /// Returns the total number of level in the game
+        /// </summary>
+        public uint NumLevels()
+        {
+            uint lNumLevel = 0;
+            foreach (KeyValuePair<string, Dictionary<string, MapInfo>> lWorld in MapData.Worlds)
+            {
+                lNumLevel += (uint)lWorld.Value.Count;
+            }
+            return lNumLevel;
+        }
+
+        /// <summary>
+        /// Call to generate grid from wanted level
+        /// </summary>
         public void GenerateLevel(MapInfo pMap)
         {
             currentLevel?.QueueFree();
             currentLevel = Grid.GenerateFromFile(
-                pMap, //A changer en fonction du niveau que vous voulez tester, a mettre dans le level selector plus tard
+                pMap,
                 GameManager.Instance.GameContainer,
-                GetViewport().GetVisibleRect().Size / 2
+                GetViewport().GetVisibleRect().Size / 2f
             );
         }
 

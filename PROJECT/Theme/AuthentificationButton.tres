@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://mehsaxiv283s"]
+
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="1_0d3db"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qnuh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j66in"]
+bg_color = Color(0.444872, 0.316654, 0.250464, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.162473, 0.0815407, 0.081708, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ieowg"]
+bg_color = Color(0.709804, 0.541176, 0.454902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.237977, 0.0978577, 0.0466194, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_metc4"]
+bg_color = Color(0.345979, 0.241319, 0.187223, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[resource]
+Button/colors/font_color = Color(0.251671, 0.136605, 0.0578269, 1)
+Button/colors/font_focus_color = Color(0.25098, 0.137255, 0.0588235, 1)
+Button/colors/font_hover_color = Color(0.171753, 0.0873602, 0.0298705, 1)
+Button/colors/font_pressed_color = Color(0.0692388, 0.0248802, 0.00701456, 1)
+Button/fonts/font = ExtResource("1_0d3db")
+Button/styles/focus = SubResource("StyleBoxEmpty_1qnuh")
+Button/styles/hover = SubResource("StyleBoxFlat_j66in")
+Button/styles/normal = SubResource("StyleBoxFlat_ieowg")
+Button/styles/pressed = SubResource("StyleBoxFlat_metc4")
