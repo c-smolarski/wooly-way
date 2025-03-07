@@ -6,8 +6,9 @@ using Com.IsartDigital.WoolyWay.Managers;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
+using System.Collections.Generic;
 
-// Author : Camille SMOLARSKI & Tom BAGNARA
+// Author : Camille SMOLARSKI & Tom BAGNARA && Alissa Delattre
 
 namespace Com.IsartDigital.WoolyWay
 {
@@ -18,10 +19,9 @@ namespace Com.IsartDigital.WoolyWay
         [Export] private ClickableArea clickable;
         [Export] public Label debug;
 
-        private Pathfinding pathfinding;
+        private Pathfinding pathfinding = new Pathfinding();
         public Grid Grid { get; private set; }
         public GameObject CurrentObject => Grid.ObjectDict[this];
-
         public override void _Ready()
         {
             base._Ready();
@@ -54,10 +54,15 @@ namespace Com.IsartDigital.WoolyWay
             return false;
         }
 
+        /// <summary>
+        /// Gets the position of the tile that was clicked on and send it to the pathfinding as the target then calls the function to move the player
+        /// </summary>
         private void SendCoord()
         {
-            Vector2 lTarget = Grid.IndexDict[this];
-            GD.Print(lTarget);
+            Vector2I lTargetPos = Grid.IndexDict[this];
+            Vector2I LStartPos = Grid.IndexDict[Grid.ObjectDict[Player.GetInstance()]];
+            List<Vector2I> lPath = pathfinding.GetPath(LStartPos.X, LStartPos.Y, lTargetPos.X, lTargetPos.Y);
+            Player.GetInstance().MoveStepByStep(lPath);
         }
 
         public Vector2 GetPosFromIndex()

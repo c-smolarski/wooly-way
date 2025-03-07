@@ -1,6 +1,7 @@
 ﻿using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Godot;
 using System;
+using System.Collections.Generic;
 
 // Author : Tom BAGNARA
 
@@ -31,7 +32,6 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
             }
             else Move(lNextTile);
         }
-
         
         protected void Move(Tile pTile)
         {

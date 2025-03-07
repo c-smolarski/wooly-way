@@ -111,7 +111,7 @@
 						"SheepDirection": [
 							"Left", "Right", "Right", "Left", "Left", "Left",
 							"Down", "Up", "Left", "Left", "Left", "Up", "Up",
-							"Left", "Up", "Up", "Left", "Up", "Down"
+							"Left", "Up", "Down"
 						],
 						"DogDirection": ["Right", "Up"],
 						"Map": [

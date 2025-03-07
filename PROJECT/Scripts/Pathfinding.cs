@@ -17,9 +17,9 @@ namespace Com.IsartDigital.ProjectName
             grid = LevelManager.currentLevel;
         }
 
-        private List<Vector2> GetPath(int pStartPosX, int pStartPosY, int pTargetPosX, int pTargetPosY)
+        public List<Vector2I> GetPath(int pStartPosX, int pStartPosY, int pTargetPosX, int pTargetPosY)
         {
-            List<Vector2> lPath = new List<Vector2>();
+            List<Vector2I> lPath = new List<Vector2I>();
             PathFindingCell lStartCell = new PathFindingCell { posX = pStartPosX, posY = pStartPosY };
             PathFindingCell lTargetCell = new PathFindingCell { posX = pTargetPosX, posY = pTargetPosY };
             lStartCell.SetDistance(lTargetCell.posX, lTargetCell.posY);
@@ -37,7 +37,7 @@ namespace Com.IsartDigital.ProjectName
                     PathFindingCell lCell = lCheckCell;
                     while (true)
                     {
-                        lPath.Add(new Vector2(lCell.posX, lCell.posY));
+                        lPath.Add(new Vector2I(lCell.posX, lCell.posY));
                         lCell = lCell.lastCell;
 
                         if (lCell == null) return lPath;
