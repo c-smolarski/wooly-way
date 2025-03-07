@@ -1,4 +1,6 @@
-﻿using Com.IsartDigital.WoolyWay.GameObjects;
+﻿using Com.IsartDigital.ProjectName;
+using Com.IsartDigital.WoolyWay.Components;
+using Com.IsartDigital.WoolyWay.GameObjects;
 using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Managers;
 using Com.IsartDigital.WoolyWay.Utils;
@@ -13,15 +15,28 @@ namespace Com.IsartDigital.WoolyWay
     {
         public static readonly Vector2 SIZE = new(88, 88);
 
+        [Export] private ClickableArea clickable;
+        [Export] public Label debug;
+
+        private Pathfinding pathfinding;
         public Grid Grid { get; private set; }
         public GameObject CurrentObject => Grid.ObjectDict[this];
 
+        public override void _Ready()
+        {
+            base._Ready();
+            clickable.Clicked += SendCoord;
+        }
         public bool IsWalkable()
         {
             return CurrentObject is not Obstacle || (CurrentObject is Sheep && ((Sheep)CurrentObject).CanMove());
         }
 
-
+        private void SendCoord()
+        {
+            Vector2 lTarget = Grid.IndexDict[this];
+            GD.Print(lTarget);
+        }
 
         public Vector2 GetPosFromIndex()
         {

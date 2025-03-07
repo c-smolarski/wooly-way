@@ -83,6 +83,7 @@ namespace Com.IsartDigital.WoolyWay
                 for (int x = 0; x < pGridSize.X; x++)
                 {
                     Tile lTile = Tile.Create(x, y, lGrid);
+                    lTile.debug.Text = x.ToString() + y.ToString();
                     lDict.Add(new Vector2I(x, y), lTile);
                 }
             lGrid.IndexDict = lDict.ToReadOnly();
@@ -133,6 +134,7 @@ namespace Com.IsartDigital.WoolyWay
                     }
 
                     lTempDict.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
+                    GD.Print(lTempDict[lGrid.IndexDict[new Vector2I(x, y)]]);
                 }
             }
             lGrid.ObjectDict = lTempDict.ToReadOnly();

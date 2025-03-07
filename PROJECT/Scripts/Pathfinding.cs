@@ -14,62 +14,113 @@ namespace Com.IsartDigital.ProjectName
         Grid grid;
         public override void _Ready()
         {
+            grid = LevelManager.currentLevel;
         }
 
-        //private float DistanceTo(Tile pTile, Tile pArrivalTile)
-        //{
-        //    float lDistance = MathF.Abs((GridManager.TileDict[pTile].X - GridManager.TileDict[pArrivalTile].X)) + MathF.Abs((GridManager.TileDict[pTile].Y - GridManager.TileDict[pArrivalTile].Y));
-        //    return lDistance;
-        //}
+        private List<Vector2> GetPath(int pStartPosX, int pStartPosY, int pTargetPosX, int pTargetPosY)
+        {
+            List<Vector2> lPath = new List<Vector2>();
+            PathFindingCell lStartCell = new PathFindingCell { posX = pStartPosX, posY = pStartPosY };
+            PathFindingCell lTargetCell = new PathFindingCell { posX = pTargetPosX, posY = pTargetPosY };
+            lStartCell.SetDistance(lTargetCell.posX, lTargetCell.posY);
 
-        //private void Path(Tile pStartPos, Tile pEndPos)
-        //{
-        //    List<Tile> lToSearch = new List<Tile>() { pStartPos };
-        //    List<Tile> lProcessed = new List<Tile>();
+            List<PathFindingCell> lActiveCells = new List<PathFindingCell>();
+            lActiveCells.Add(lStartCell);
+            List<PathFindingCell> lVisitedCells = new List<PathFindingCell>();
+            while (lActiveCells.Count > 0)
+            {
+                lActiveCells.Sort((x, y) => x.costDistance.CompareTo(y.costDistance));
+                PathFindingCell lCheckCell = lActiveCells[0];
 
-        //    while (lToSearch.Any())
-        //    {
-        //        Tile lCurrent = lToSearch[0];
-        //        foreach (Tile lTile in lToSearch)
-        //        {
-        //            float lDistance = DistanceTo(lTile, pEndPos);
-        //            float lCurentDistance = DistanceTo(lCurrent, pStartPos);
-        //            if (lDistance < lCurentDistance || lDistance == lCurentDistance && )
+                if (lCheckCell.posX == lTargetCell.posX && lCheckCell.posY == lTargetCell.posY)
+                {
+                    PathFindingCell lCell = lCheckCell;
+                    while (true)
+                    {
+                        lPath.Add(new Vector2(lCell.posX, lCell.posY));
+                        lCell = lCell.lastCell;
 
-        //        }
+                        if (lCell == null) return lPath;
+                    }
+                }
 
-        //    }
-        //}
+                lVisitedCells.Add(lCheckCell);
+                lActiveCells.Remove(lCheckCell);
 
-        //private List<Vector2> GetPath(ReadOnlyTwoWayDictionary<Vector2I, Tile> pIndexGrid, int pStartPosX, int pStartPosY, int pTargetPosX, int pTargetPosY)
-        //{
-            
-        //}
+                List<PathFindingCell> lWalkableCells = GetWalkableCell(lCheckCell, lTargetCell);
 
-        //private List<PathFindingCell> GetWalkableCell(ReadOnlyTwoWayDictionary<Vector2I, Tile> pIndexGrid, PathFindingCell pCurrentCell, PathFindingCell pTargetCell)
-        //{
-        //    List<PathFindingCell> possibleCells = new List<PathFindingCell>();
-        //    if (pCurrentCell.posX < grid.Size.X-1 && pCurrentCell.posX> 0)
-        //    {
-        //        Tile lTile = grid.IndexDict[new Vector2I(pCurrentCell.posX, pCurrentCell.posY)];
-        //        PathFindingCell lPossibleTile = new PathFindingCell();
-        //        lPossibleTile.posX = pCurrentCell.posX - 1; 
-        //    }
+                for (int i = 0; i < lWalkableCells.Count; i++)
+                {
+                    if (TestVisitedCell(lWalkableCells[i], lVisitedCells)) continue;
 
 
+                    if (IsActiveCellWalkable(lWalkableCells[i], lActiveCells))
+                    {
+                        PathFindingCell lExistingCell = default;
+                        for (int k = 0; k < lActiveCells.Count; k++)
+                        {
+                            if (lActiveCells[k].posX == lWalkableCells[i].posX && lActiveCells[k].posY == lWalkableCells[i].posY)
+                            {
+                                lExistingCell = lActiveCells[k];
+                                break;
+                            }
+                        }
 
-        //    return possibleCells;
-        //}
+                        if (lExistingCell.costDistance > lCheckCell.costDistance)
+                        {
+                            lActiveCells.Remove(lExistingCell);
+                            lActiveCells.Add(lWalkableCells[i]);
+                        }
 
-        //private bool TestVisitedCell(PathFindingCell pWalkableCell, List<PathFindingCell> pVisitedCell)
-        //{
+                    }
+                    else lActiveCells.Add(lWalkableCells[i]);
+                }
+            }
+            return lPath;
+        }
 
-        //}
+        public List<PathFindingCell> GetWalkableCell(PathFindingCell pCurrentCell, PathFindingCell pTargetCell)
+        {
+            List<PathFindingCell> lWalkableCell = new List<PathFindingCell>();
+            List<Tile> lPossibleCells = LevelManager.currentLevel.Neighbors(LevelManager.currentLevel.IndexDict[new Vector2I(pCurrentCell.posX, pCurrentCell.posY)]);
+            int lNumPossibleCells = lPossibleCells.Count;
 
-        //private PathFindingCell IsActiveCellWalkable(PathFindingCell pWalkableCell, List<PathFindingCell> pActiveCells)
-        //{
 
-        //}
+            for (int i = 0; i < lNumPossibleCells; i++)
+            {
+                if (!LevelManager.currentLevel.ObjectDict.Contains(lPossibleCells[i]))
+                {
+                    lWalkableCell.Add(new PathFindingCell { posX = LevelManager.currentLevel.IndexDict[lPossibleCells[i]].X, posY = LevelManager.currentLevel.IndexDict[lPossibleCells[i]].Y, lastCell = pCurrentCell });
+                }
+            }
+            lWalkableCell.ForEach(lCell => lCell.SetDistance(pTargetCell.posX, pTargetCell.posY));
+            return lWalkableCell;
+        }
+
+        private bool TestVisitedCell(PathFindingCell pWalkableCell, List<PathFindingCell> pVisitedCell)
+        {
+            for (int i = 0; i < pVisitedCell.Count; i++)
+            {
+                if (pWalkableCell.posX == pVisitedCell[i].posX && pWalkableCell.posY == pVisitedCell[i].posY)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool IsActiveCellWalkable(PathFindingCell pWalkableCell, List<PathFindingCell> pActiveCells)
+        {
+            for (int i = 0; i < pActiveCells.Count; i++)
+            {
+                if (pWalkableCell.posX == pActiveCells[i].posX && pWalkableCell.posY == pActiveCells[i].posY)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public override void _Process(double delta)
         {
 

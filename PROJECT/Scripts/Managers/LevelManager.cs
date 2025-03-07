@@ -27,7 +27,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         private const string WORLD_KEYWORD = "World";
         private const string LEVEL_KEYWORD = "Level";
 
-        private static Grid currentLevel;
+        public static Grid currentLevel;
         public static MapData MapData { get; private set; } = new MapData();
 
         public override void _Ready()

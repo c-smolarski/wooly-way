@@ -9,22 +9,12 @@ namespace Com.IsartDigital.ProjectName {
 	{
 		public int posX;
 		public int posY;
-		int cost;
-		int distance;
-		int costDistance;
-		PathFindingCell lastCell;
-		public override void _Ready()
-		{
+		public int cost;
+		public int distance;
+		public int costDistance;
+		public PathFindingCell lastCell;
 
-		}
-
-		public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-
-		}
-
-		private void SetDistance(int pTargetX, int pTargetY)
+		public void SetDistance(int pTargetX, int pTargetY)
 		{
 			distance = Mathf.Abs(pTargetX - posX) + Mathf.Abs(pTargetY - posY);
 		}

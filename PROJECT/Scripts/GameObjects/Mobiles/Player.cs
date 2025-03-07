@@ -10,7 +10,6 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     {
         public override void _Ready()
         {
-
         }
 
         public override void _Process(double delta)
