@@ -22,6 +22,8 @@ InputManager="*res://Scripts/Managers/InputManager.cs"
 [display]
 
 window/size/mode=2
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 
 [dotnet]
 
@@ -32,7 +34,8 @@ project/assembly_name="WoolyWay"
 folder_colors={
 "res://Audio/": "purple",
 "res://Data/": "yellow",
-"res://Ressources/": "blue",
+"res://Properties/": "yellow",
+"res://Resources/": "blue",
 "res://Scenes/": "green",
 "res://Scripts/": "red"
 }

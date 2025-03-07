@@ -14,6 +14,7 @@ namespace Com.IsartDigital.WoolyWay.Utils
         public string Author { get; set; }
         public int Par { get; set; }
         public List<string> SheepDirection { get; set; }
+        public List<string> DogDirection { get; set; }
         public List<string> Map { get; set; }
     }
 }

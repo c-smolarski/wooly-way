@@ -18,7 +18,7 @@ namespace Com.IsartDigital.WoolyWay
             GetWindow().SizeChanged += UpdatePos;
         }
 
-        private void UpdatePos()
+        protected void UpdatePos()
         {
             Position = CurrentTile.Position;
         }

@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using Com.IsartDigital.WoolyWay.Managers;
+using Godot;
 using System;
 using System.Collections.Generic;
 
@@ -10,6 +11,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     {
         public override void _Ready()
         {
+            InputManager.Instance.MoveInputPressed += InitMove;
         }
 
         public override void _Process(double delta)

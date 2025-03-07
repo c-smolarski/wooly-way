@@ -7,7 +7,7 @@ using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 
-// Author : Camille SMOLARSKI
+// Author : Camille SMOLARSKI & Tom BAGNARA
 
 namespace Com.IsartDigital.WoolyWay
 {
@@ -27,9 +27,31 @@ namespace Com.IsartDigital.WoolyWay
             base._Ready();
             clickable.Clicked += SendCoord;
         }
-        public bool IsWalkable()
+        /// <summary>
+        /// Checks if an object can move on Tile. If the Tile has a Sheep on it, checks if the Sheep can move out of the Tile.
+        /// </summary>
+        /// <param name="pMoveDirection"></param>
+        /// <returns>Bool</returns>
+        public bool IsWalkable(Vector2I pMoveDirection)
         {
-            return CurrentObject is not Obstacle || (CurrentObject is Sheep && ((Sheep)CurrentObject).CanMove());
+            if (this.IsEmpty()) return true;
+            if (Grid.ObjectDict[this] is Obstacle || Grid.ObjectDict[this] is Player) return false;
+            if (!this.IsSheep()) return true;
+
+            Sheep lSheep = Grid.ObjectDict[this] as Sheep;
+
+            return lSheep != null && lSheep.CanMove(pMoveDirection);
+        }
+        
+        public bool IsEmpty()
+        {
+            return !Grid.ObjectDict.Contains(this);
+        }
+
+		public bool IsSheep()
+        {
+            if (!IsEmpty()) return (Grid.ObjectDict[this] is Sheep);
+            return false;
         }
 
         private void SendCoord()
@@ -62,5 +84,7 @@ namespace Com.IsartDigital.WoolyWay
             lTile.Position = lTile.GetPosFromIndex(pIndexX, pIndexY, pGrid);
             return lTile;
         }
+        
+
     }
 }
