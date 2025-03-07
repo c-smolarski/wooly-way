@@ -17,22 +17,19 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
         /// <param name="pMoveDirection"></param>
         public virtual void InitMove(Vector2I pMoveDirection)
         {
-            Tile lCurrentTile = Grid.ObjectDict[this];
-            
-            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[lCurrentTile] + pMoveDirection];
-            
-            if (lNextTile.IsWalkable(pMoveDirection))
-            {
-                if (!lNextTile.IsEmpty() && lNextTile.IsSheep())
-                { 
-                    Sheep lSheep = Grid.ObjectDict[lNextTile] as Sheep;
-                    
-                    Move(lNextTile);
+            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + pMoveDirection];
 
-                    lSheep.InitMove(pMoveDirection);
-                }
-                else Move(lNextTile);
+            if (!lNextTile.IsWalkable(pMoveDirection)) return;
+
+            if (!lNextTile.IsEmpty() && lNextTile.IsSheep())
+            { 
+                Sheep lSheep = Grid.ObjectDict[lNextTile] as Sheep;
+                    
+                Move(lNextTile);
+
+                lSheep?.InitMove(pMoveDirection);
             }
+            else Move(lNextTile);
         }
 
         

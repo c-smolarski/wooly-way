@@ -21,20 +21,15 @@ namespace Com.IsartDigital.WoolyWay
         /// </summary>
         /// <param name="pMoveDirection"></param>
         /// <returns>Bool</returns>
-        public bool IsWalkable(Vector2I pMoveDirection, int pStep = 0)
+        public bool IsWalkable(Vector2I pMoveDirection)
         {
             if (this.IsEmpty()) return true;
-            else if (Grid.ObjectDict[this] is not Obstacle)
-            {
-                if (this.IsSheep())
-                {
-                    Sheep lSheep = Grid.ObjectDict[this] as Sheep; 
+            if (Grid.ObjectDict[this] is Obstacle || Grid.ObjectDict[this] is Player) return false;
+            if (!this.IsSheep()) return true;
 
-                    return lSheep.CanMove(pMoveDirection, pStep);
-                }
-            }
+            Sheep lSheep = Grid.ObjectDict[this] as Sheep;
 
-            return false;
+            return lSheep != null && lSheep.CanMove(pMoveDirection);
         }
         
         public bool IsEmpty()
@@ -45,7 +40,7 @@ namespace Com.IsartDigital.WoolyWay
         public bool IsSheep()
         {
             if (!IsEmpty()) return (Grid.ObjectDict[this] is Sheep);
-            else return false;
+            return false;
         }
         
         /// <summary>

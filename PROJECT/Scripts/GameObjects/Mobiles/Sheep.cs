@@ -10,74 +10,34 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     {
         public Vector2I Direction { get; private set; }
         public bool IsUseful;
+
         
-        public enum Step
-        {
-            First,
-            Second,
-        }
         
         
         /// <summary>
         /// Checks if the current Sheep can move onto the next Tile depending on if it's its first or second step and the content of the lNextTile.
         /// </summary>
         /// <param name="pMoveDirection"></param>
-        /// <param name="pStep"></param>
         /// <returns>true if the Sheep can be moved onto the next tile. Otherwise, false.</returns>
-        public bool CanMove(Vector2I pMoveDirection, int pStep)
+        public bool CanMove(Vector2I pMoveDirection)
         {
-            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[Grid.ObjectDict[this]] + pMoveDirection];
+            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + pMoveDirection];
 
             if (lNextTile.IsEmpty()) return true;
-
-            switch (pStep)
-            {
-                case (int)Step.First:
-                    return false;
-                case (int)Step.Second:
-                    return Grid.ObjectDict[lNextTile] is Sheep && (Grid.ObjectDict[lNextTile] as Sheep).CanMove(pMoveDirection, (int)Step.First);
-
-            }
             
-            return lNextTile.IsWalkable(pMoveDirection);
+            if (Grid.ObjectDict[lNextTile] is Obstacle || Grid.ObjectDict[lNextTile] is Player) return false;
+            
+            if (Grid.ObjectDict[lNextTile] is not Sheep) return true;
+
+            return false;
         }
 
 
         public override void InitMove(Vector2I pMoveDirection)
         {
-            Step lStep = Step.First;
-            
-            
-            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[Grid.ObjectDict[this]] + pMoveDirection];
-
-            if (CanMove(pMoveDirection, (int)lStep))
-            { 
-                Move(lNextTile);
-                
-                lStep = Step.Second;
-            }
-            else return;
-
-            
-            lNextTile = Grid.IndexDict[Grid.IndexDict[Grid.ObjectDict[this]] + Direction];
-            
-            if (CanMove(Direction, (int)lStep))
-            {
-                if (!lNextTile.IsEmpty() && lNextTile.IsSheep())
-                { 
-                    Sheep lSheep = Grid.ObjectDict[lNextTile] as Sheep;
-                    
-                    Move(lNextTile);
-
-                    lSheep.InitMove(Direction);
-                }
-                else
-                {
-                    Move(lNextTile);
-                }
-            }
-            
-            
+            Tile lNextTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + pMoveDirection];
+            Move(lNextTile);
+            base.InitMove(Direction);
         }
 
 
@@ -86,7 +46,6 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             Sheep lSheep = Create<Sheep>(pScene, pTile);
             lSheep.Direction = pDirection.Sign();
             lSheep.IsUseful = pUseful;
-            GD.Print(lSheep.Direction.ToString());
             return lSheep;
         }
     }
