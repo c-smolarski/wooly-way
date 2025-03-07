@@ -4,8 +4,6 @@
 [ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Ressources/HudText.tres" id="2_axtj7"]
 [ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Ressources/Fonts/lumberjack.regular.otf" id="2_kisf5"]
 
-
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eqrye"]
 shader = ExtResource("1_x675v")
 shader_parameter/height = 3.0
