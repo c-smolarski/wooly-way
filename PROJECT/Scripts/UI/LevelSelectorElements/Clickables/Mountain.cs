@@ -23,10 +23,8 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
         {
             get => renderer.Frame;
             set {
-                if (value < 0)
-                    CurrentFrameIndex = value + FrameCount;
-                else if (value > FrameCount)
-                    CurrentFrameIndex = value - FrameCount;
+                if (value < 0 || value > FrameCount)
+                    CurrentFrameIndex = value % FrameCount;
                 else
                     renderer.Frame = value;
             }

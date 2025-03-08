@@ -13,14 +13,12 @@ script = ExtResource("1_7tu75")
 [node name="rightArrow" parent="." node_paths=PackedStringArray("displayer") instance=ExtResource("2_42vpa")]
 position = Vector2(35, -8)
 rotation = -0.174533
-scale = Vector2(0.8, 0.5)
 displayer = NodePath("..")
 right = true
 
 [node name="leftArrow" parent="." node_paths=PackedStringArray("displayer") instance=ExtResource("2_42vpa")]
 position = Vector2(-37, 7.00001)
 rotation = -0.174533
-scale = Vector2(0.8, 0.5)
 displayer = NodePath("..")
 
 [node name="mouseDetector" type="Area2D" parent="."]

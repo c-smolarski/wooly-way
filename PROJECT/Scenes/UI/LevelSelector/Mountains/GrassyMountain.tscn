@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://b7gladitrornv"]
+[gd_scene load_steps=130 format=3 uid="uid://b7gladitrornv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/Clickables/Mountain.cs" id="1_lux53"]
 [ext_resource type="Texture2D" uid="uid://dvrp112xk23ti" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0001.png" id="2_wi76m"]
@@ -122,7 +122,11 @@
 [ext_resource type="Texture2D" uid="uid://bfgna10drlkst" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0118.png" id="119_1uoy2"]
 [ext_resource type="Texture2D" uid="uid://f7b71xmvijrw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0119.png" id="120_wmmuy"]
 [ext_resource type="Texture2D" uid="uid://ceoc23lbsnd5p" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0120.png" id="121_uurje"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/RotatingElements/AssetDisplayer.cs" id="123_8eysh"]
 [ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="123_sxxu3"]
+[ext_resource type="PackedScene" uid="uid://d02m3fo3e8ktw" path="res://Scenes/Assets/Trees/Tree_A.tscn" id="123_yc1i5"]
+[ext_resource type="PackedScene" uid="uid://ctueiifujue6v" path="res://Scenes/Assets/Trees/Tree_B.tscn" id="124_kdv0r"]
+[ext_resource type="PackedScene" uid="uid://ol43dxbf6fhn" path="res://Scenes/Assets/Trees/Pine_A.tscn" id="125_1234c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4d7r"]
 animations = [{
@@ -502,48 +506,93 @@ WorldNumber = 1
 [node name="renderer" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h4d7r")
 
-[node name="displayerContainer" type="Node2D" parent="."]
+[node name="levelDisplayerContainer" type="Node2D" parent="."]
 
-[node name="LevelDisplayer6" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer6" parent="levelDisplayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, -90)
 LevelNumber = 6
+displayFrame = 200
 Mountain = NodePath("../..")
-DisplayFrame = 200
-radius = 250.0
+Radius = 270.0
 
-[node name="LevelDisplayer5" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer5" parent="levelDisplayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, -15)
 LevelNumber = 5
+displayFrame = 160
 Mountain = NodePath("../..")
-DisplayFrame = 160
-radius = 320.0
+Radius = 270.0
 
-[node name="LevelDisplayer4" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer4" parent="levelDisplayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 60)
 LevelNumber = 4
+displayFrame = 120
 Mountain = NodePath("../..")
-DisplayFrame = 120
-radius = 290.0
+Radius = 320.0
 
-[node name="LevelDisplayer3" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer3" parent="levelDisplayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 135)
 LevelNumber = 3
+displayFrame = 80
 Mountain = NodePath("../..")
-DisplayFrame = 80
-radius = 365.0
+Radius = 350.0
 
-[node name="LevelDisplayer2" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer2" parent="levelDisplayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 210)
 LevelNumber = 2
+displayFrame = 40
 Mountain = NodePath("../..")
-DisplayFrame = 40
-radius = 420.0
+Radius = 380.0
 
-[node name="LevelDisplayer" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+[node name="LevelDisplayer" parent="levelDisplayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
 position = Vector2(0, 285)
 LevelNumber = 1
 Mountain = NodePath("../..")
-radius = 390.0
+Radius = 370.0
+
+[node name="AssetsContainer" type="Node2D" parent="."]
+
+[node name="assetDisplayer" type="Node2D" parent="AssetsContainer" node_paths=PackedStringArray("buttonDisplayer", "assets", "Mountain")]
+position = Vector2(0, 244)
+script = ExtResource("123_8eysh")
+buttonDisplayer = NodePath("../../levelDisplayerContainer/LevelDisplayer")
+assets = [NodePath("TreeA"), NodePath("TreeA2"), NodePath("TreeA3"), NodePath("TreeA4"), NodePath("TreeB"), NodePath("PineA2"), NodePath("PineA")]
+Mountain = NodePath("../..")
+Radius = 320.0
+
+[node name="TreeB" parent="AssetsContainer/assetDisplayer" instance=ExtResource("124_kdv0r")]
+visible = false
+position = Vector2(103, -105)
+scale = Vector2(0.055, 0.055)
+
+[node name="PineA2" parent="AssetsContainer/assetDisplayer" instance=ExtResource("125_1234c")]
+visible = false
+position = Vector2(-161, -26)
+scale = Vector2(0.05, 0.05)
+
+[node name="TreeA" parent="AssetsContainer/assetDisplayer" instance=ExtResource("123_yc1i5")]
+visible = false
+position = Vector2(0, -76)
+scale = Vector2(0.05, 0.05)
+
+[node name="TreeA2" parent="AssetsContainer/assetDisplayer" instance=ExtResource("123_yc1i5")]
+visible = false
+position = Vector2(-184, 24)
+scale = Vector2(0.05, 0.05)
+
+[node name="TreeA3" parent="AssetsContainer/assetDisplayer" instance=ExtResource("123_yc1i5")]
+visible = false
+position = Vector2(-114, -8)
+scale = Vector2(0.05, 0.05)
+
+[node name="TreeA4" parent="AssetsContainer/assetDisplayer" instance=ExtResource("123_yc1i5")]
+visible = false
+position = Vector2(143, -49)
+scale = Vector2(0.05, 0.05)
+
+[node name="PineA" parent="AssetsContainer/assetDisplayer" instance=ExtResource("125_1234c")]
+visible = false
+position = Vector2(-251, 27)
+scale = Vector2(0.05, 0.05)
 
 [node name="mouseDetector" type="Area2D" parent="."]
 script = ExtResource("123_sxxu3")

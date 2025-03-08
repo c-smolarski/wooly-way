@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cxtbu58rr8dns"
-path="res://.godot/imported/PatrickHand-Regular.ttf-6e959ad3c44b0c6c65ffba3c7a7b1c28.fontdata"
+uid="uid://b8ha87l6ot216"
+path="res://.godot/imported/lumberjack.regular.otf-e2442c947cec7c3282107aa4ab463852.fontdata"
 
 [deps]
 
-source_file="res://Ressources/Fonts/PatrickHand-Regular.ttf"
-dest_files=["res://.godot/imported/PatrickHand-Regular.ttf-6e959ad3c44b0c6c65ffba3c7a7b1c28.fontdata"]
+source_file="res://Resources/Fonts/lumberjack.regular.otf"
+dest_files=["res://.godot/imported/lumberjack.regular.otf-e2442c947cec7c3282107aa4ab463852.fontdata"]
 
 [params]
 

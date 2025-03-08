@@ -9,6 +9,7 @@ points = PackedVector2Array(43, 3, 43, -10, -43, -37, -43, 37)
 [node name="Button" type="Node2D"]
 scale = Vector2(0.8, 0.5)
 script = ExtResource("1_4kpo2")
+AppearAnimDuration = 0.25
 
 [node name="shadow" type="Polygon2D" parent="."]
 position = Vector2(7.7, 8)
