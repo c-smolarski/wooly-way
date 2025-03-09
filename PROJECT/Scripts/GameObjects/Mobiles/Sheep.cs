@@ -1,8 +1,10 @@
-﻿using Com.IsartDigital.WoolyWay.Managers;
+using Com.IsartDigital.WoolyWay.Components;
+using Com.IsartDigital.WoolyWay.Managers;
 using Godot;
 using System;
+using System.Collections.Generic;
 
-// Author : Camille SMOLARSKI & Tom BAGNARA
+// Author : Camille SMOLARSKI & Tom BAGNARA & Alissa DELATTRE
 
 namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
 {
@@ -10,10 +12,32 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     {
         public Vector2I Direction { get; private set; }
         public bool IsUseful;
+        [Export] private ClickableArea clickable;
 
-        
-        
-        
+        public override void _Ready()
+        {
+            base._Ready();
+            clickable.Clicked += Clicked;
+        }
+
+        /// <summary>
+        /// Checks a player is next the sheep that was clicked, if yes the sheep moves and the player takes it place
+        /// </summary>
+        private void Clicked()
+        {
+            List<Tile> lNeighbors = Grid.Neighbors(CurrentTile);
+            int lNumNeighbors = lNeighbors.Count;
+            for (int i = 0; i < lNumNeighbors; i++)
+            {
+                if (lNeighbors.Contains(Grid.ObjectDict[Player.GetInstance()]))
+                {
+                    Vector2I lDirection =  Grid.IndexDict[CurrentTile] - Grid.IndexDict[Grid.ObjectDict[Player.GetInstance()]];
+                    Player.GetInstance().InitMove(lDirection);
+                    return;
+                }
+            }
+        }
+
         /// <summary>
         /// Checks if the current Sheep can move onto the next Tile depending on if it's its first or second step and the content of the lNextTile.
         /// </summary>

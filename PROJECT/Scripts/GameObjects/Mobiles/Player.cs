@@ -1,25 +1,39 @@
 ﻿using Com.IsartDigital.WoolyWay.Managers;
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-// Author : Camille SMOLARSKI
+// Author : Camille SMOLARSKI && Alissa DELATTRE
 
 namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
 {
     public partial class Player : Mobile
     {
-        public static Player Instance { get; private set; }
+        #region Singleton
+        static private Player instance;
+        private Player() { }
 
+        static public Player GetInstance()
+        {
+            if (instance == null) instance = new Player();
+            return instance;
+        }
+
+        #endregion
+
+        public List<Vector2I> path = new List<Vector2I>();
         public override void _Ready()
         {
             #region Singleton
-            if (Instance != null)
+            if (instance != null)
             {
-                GD.Print("Error : " + nameof(Player) + " already exists. The new one is being freed...");
                 QueueFree();
+                GD.Print(nameof(Player) + "Instance already exists, destroying the last added");
                 return;
             }
-            Instance = this;
+
+            instance = this;
             #endregion
 
             InputManager.Instance.MoveInputPressed += InitMove;
@@ -30,10 +44,19 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             base._Process(delta);
         }
 
+        /// <summary>
+        ///Moves the player tile by tile until he reaches the target
+        /// </summary>
+        public void MoveStepByStep()
+        {
+            if (path.Count == 0) return;
+            int lIndex = path.Count-1;
+            InitMove(path[lIndex] - Grid.IndexDict[Grid.ObjectDict[this]]);
+            path.RemoveAt(lIndex);
+        }
         protected override void Dispose(bool pDisposing)
         {
-            if (Instance == this)
-                Instance = null;
+            if (instance == this) instance = null;
             base.Dispose(pDisposing);
         }
     }

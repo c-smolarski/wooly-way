@@ -3,9 +3,9 @@ using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 using System.Collections.Generic;
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
 using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils.Data;
+using System.Linq;
 
 // Author : Alissa DELATTRE & Camille SMOLARSKI
 
@@ -14,9 +14,12 @@ namespace Com.IsartDigital.WoolyWay
     public partial class Grid : Node2D
     {
         public Vector2I Size { get; private set; }
+        public Vector2 PixelSize => Tile.SIZE * Size * Scale;
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
-        
+        public ReadOnlyTwoWayDictionary<Tile, Target> IndexTarget { get; private set; } = new();
+
+
         private static Dictionary<string, Vector2I> Directions = new Dictionary<string, Vector2I>(){
             {"Left", Vector2I.Left},
             {"Right", Vector2I.Right},
@@ -24,8 +27,16 @@ namespace Com.IsartDigital.WoolyWay
             {"Down", Vector2I.Down},
         };
 
+        public void ResetTilesPos()
+        {
+            foreach (Tile lTile in IndexDict.Values)
+                lTile.Position = lTile.GetPosFromIndex();
+            foreach (GameObject lObject in ObjectDict.Values)
+                lObject.Position = lObject.CurrentTile.Position;
+        }
+
         /// <summary>
-        /// DiagonalDirection is based off a standard (Non-isometric) table. Max value on grid for pIndex is (Max(myGrid.Size.X, myGrid.Size.Y) - 1) * 2.
+        /// DiagonalDirection is based off a standard (Non-isometric) table. Max value on grid for pIndex is (Max(myGrid.Size.X, myGrid.Size.Y) * 2) - 1.
         /// <para>Ex : For GetTilesDiagonally(BottomRight, 2) it will return tiles at index (0,2), (1,1) and (2,0).</para>
 		/// </summary>
         /// <param name="pDirection"></param>
@@ -80,6 +91,7 @@ namespace Com.IsartDigital.WoolyWay
                 for (int x = 0; x < pGridSize.X; x++)
                 {
                     Tile lTile = Tile.Create(x, y, lGrid);
+                    lTile.debug.Text = x.ToString() + y.ToString();
                     lDict.Add(new Vector2I(x, y), lTile);
                 }
             lGrid.IndexDict = lDict.ToReadOnly();
@@ -101,7 +113,8 @@ namespace Com.IsartDigital.WoolyWay
             
             Grid lGrid = CreateEmpty(new Vector2I(lXSizeLevel, lYSizeLevel), pContainer, pPos);
 
-            TwoWayDictionary<Tile, GameObject> lTempDict = new();
+            TwoWayDictionary<Tile, GameObject> lTempDictObj = new();
+            TwoWayDictionary<Tile, Target> lTempDictTarget = new();
             PackedScene lPacked;
             GameObject lObj;
             char lChar;
@@ -130,15 +143,38 @@ namespace Com.IsartDigital.WoolyWay
                             //ici envoyer un truc au script chevre comme quoi celle la doit pas pouvoir gagner
                             //TODO : Replace default with sheep direction.
                             break;
+                        case LevelChar.TARGET:
+                            lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
+                            lTempDictTarget.Add(lGrid.IndexDict[new Vector2I(x, y)], (Target)lObj);
+                            break;
+
                         default:
                             lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
                             break;
                     }
-                    lTempDict.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
+                    lTempDictObj.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
                 }
             }
-            lGrid.ObjectDict = lTempDict.ToReadOnly();
+            lGrid.ObjectDict = lTempDictObj.ToReadOnly();
+            lGrid.IndexTarget = lTempDictTarget.ToReadOnly();
             return lGrid;
+        }
+
+        public List<Tile> Neighbors(Tile pCurrentTile)
+        {
+            List<Tile> lNeighbors = new List<Tile>();
+            List<Vector2I> lDirectionPossible = new List<Vector2I> { Vector2I.Up, Vector2I.Down, Vector2I.Left, Vector2I.Right };
+            int lSizeList = lDirectionPossible.Count;
+
+            for (int i = 0; i < lSizeList; i++)
+            {
+                Vector2I lPossibleNeighbor = IndexDict[pCurrentTile] + lDirectionPossible[i];
+                if (lPossibleNeighbor >= Vector2I.Zero && lPossibleNeighbor <= Size - Vector2I.One)
+                {
+                    lNeighbors.Add(IndexDict[lPossibleNeighbor]);
+                }
+            }
+            return lNeighbors;
         }
     }
 }

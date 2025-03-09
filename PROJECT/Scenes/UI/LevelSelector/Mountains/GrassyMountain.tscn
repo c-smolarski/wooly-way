@@ -1,0 +1,554 @@
+[gd_scene load_steps=126 format=3 uid="uid://b7gladitrornv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/Clickables/Mountain.cs" id="1_lux53"]
+[ext_resource type="Texture2D" uid="uid://dvrp112xk23ti" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0001.png" id="2_wi76m"]
+[ext_resource type="Texture2D" uid="uid://bkt4glseoofyb" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0002.png" id="3_ergy2"]
+[ext_resource type="PackedScene" uid="uid://dg7grrlqm3cbp" path="res://Scenes/UI/LevelSelector/LevelDisplayer.tscn" id="3_wchr8"]
+[ext_resource type="Texture2D" uid="uid://cs3p02f5hv74n" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0003.png" id="4_7rm13"]
+[ext_resource type="Texture2D" uid="uid://cbyn5mtavdvwe" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0004.png" id="5_drmf1"]
+[ext_resource type="Texture2D" uid="uid://dphg0t5lyf2xr" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0005.png" id="6_sqbap"]
+[ext_resource type="Texture2D" uid="uid://kpqb51smg3qn" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0006.png" id="7_fn6ue"]
+[ext_resource type="Texture2D" uid="uid://c6q5fevgouhcx" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0007.png" id="8_fimwq"]
+[ext_resource type="Texture2D" uid="uid://br5cjtiygluqa" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0008.png" id="9_yas7x"]
+[ext_resource type="Texture2D" uid="uid://wv1r5gg2kecw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0009.png" id="10_7t16r"]
+[ext_resource type="Texture2D" uid="uid://bjf68bjihqlt5" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0010.png" id="11_1c1uk"]
+[ext_resource type="Texture2D" uid="uid://ci8467qblyr5n" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0011.png" id="12_wtt7i"]
+[ext_resource type="Texture2D" uid="uid://bdy3gm02xatwa" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0012.png" id="13_6dw3p"]
+[ext_resource type="Texture2D" uid="uid://ce84lc73cvci2" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0013.png" id="14_uv6ml"]
+[ext_resource type="Texture2D" uid="uid://d1lt2kwrdtc1x" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0014.png" id="15_ju8g2"]
+[ext_resource type="Texture2D" uid="uid://ovja24ikck8l" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0015.png" id="16_djpdp"]
+[ext_resource type="Texture2D" uid="uid://bocknn0c4vn6v" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0016.png" id="17_q0omg"]
+[ext_resource type="Texture2D" uid="uid://dy10y1bhl4n5x" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0017.png" id="18_mhjv0"]
+[ext_resource type="Texture2D" uid="uid://cc22cg1v7a1en" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0018.png" id="19_q322e"]
+[ext_resource type="Texture2D" uid="uid://cnqns5p7ho6ls" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0019.png" id="20_rvn4p"]
+[ext_resource type="Texture2D" uid="uid://bkulf2y3wfqkx" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0020.png" id="21_a4cvq"]
+[ext_resource type="Texture2D" uid="uid://6j1npamifh1w" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0021.png" id="22_a41ej"]
+[ext_resource type="Texture2D" uid="uid://co31qicwl8ppj" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0022.png" id="23_0y1xh"]
+[ext_resource type="Texture2D" uid="uid://bibpwdc31qi2n" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0023.png" id="24_2gn1c"]
+[ext_resource type="Texture2D" uid="uid://j0sgcd1nkfex" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0024.png" id="25_8lyq5"]
+[ext_resource type="Texture2D" uid="uid://c80t1n26y4t1l" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0025.png" id="26_r6aw2"]
+[ext_resource type="Texture2D" uid="uid://b75dsgs6jlhq3" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0026.png" id="27_njfjw"]
+[ext_resource type="Texture2D" uid="uid://c5ifbgy0vpg28" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0027.png" id="28_m4bpu"]
+[ext_resource type="Texture2D" uid="uid://dd0i470wvh6rw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0028.png" id="29_yyvh8"]
+[ext_resource type="Texture2D" uid="uid://b5oduutfi38fm" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0029.png" id="30_76ni7"]
+[ext_resource type="Texture2D" uid="uid://coiyi76f8wqku" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0030.png" id="31_tqd06"]
+[ext_resource type="Texture2D" uid="uid://cwv68gyin50ff" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0031.png" id="32_k4vuq"]
+[ext_resource type="Texture2D" uid="uid://njry7v3amus8" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0032.png" id="33_jbs53"]
+[ext_resource type="Texture2D" uid="uid://b3t4abs8m3sak" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0033.png" id="34_i1xkb"]
+[ext_resource type="Texture2D" uid="uid://bymm436nj20pd" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0034.png" id="35_1a2nh"]
+[ext_resource type="Texture2D" uid="uid://45dvx475ay2u" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0035.png" id="36_exd0f"]
+[ext_resource type="Texture2D" uid="uid://b672slqsvqktd" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0036.png" id="37_rop5t"]
+[ext_resource type="Texture2D" uid="uid://eu77qr44105g" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0037.png" id="38_ogkh0"]
+[ext_resource type="Texture2D" uid="uid://d3grhy23mj467" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0038.png" id="39_p8uum"]
+[ext_resource type="Texture2D" uid="uid://c2i3erpw6x4ps" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0039.png" id="40_dhk8f"]
+[ext_resource type="Texture2D" uid="uid://b4t2jh6v13v5p" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0040.png" id="41_nt7n1"]
+[ext_resource type="Texture2D" uid="uid://sbu8ji1mb38h" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0041.png" id="42_uaecp"]
+[ext_resource type="Texture2D" uid="uid://chxht47kxl7g5" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0042.png" id="43_7v423"]
+[ext_resource type="Texture2D" uid="uid://bnme1vfd57ic" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0043.png" id="44_0jtnu"]
+[ext_resource type="Texture2D" uid="uid://d2vskaw5xtq4i" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0044.png" id="45_cxgic"]
+[ext_resource type="Texture2D" uid="uid://bir06k6vket4j" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0045.png" id="46_hvqwx"]
+[ext_resource type="Texture2D" uid="uid://my6343orwabq" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0046.png" id="47_8gdoh"]
+[ext_resource type="Texture2D" uid="uid://cwm821vuf4nvt" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0047.png" id="48_a11wu"]
+[ext_resource type="Texture2D" uid="uid://cp27armksp3eb" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0048.png" id="49_4q0xo"]
+[ext_resource type="Texture2D" uid="uid://beonj3rawm5uv" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0049.png" id="50_3jaw4"]
+[ext_resource type="Texture2D" uid="uid://chl4pfsrke5rw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0050.png" id="51_wd8gt"]
+[ext_resource type="Texture2D" uid="uid://cwqng4uwpwgkt" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0051.png" id="52_kqtdn"]
+[ext_resource type="Texture2D" uid="uid://bxr4otknnmjtu" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0052.png" id="53_db4td"]
+[ext_resource type="Texture2D" uid="uid://csvs0awsxsjuw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0053.png" id="54_c7pie"]
+[ext_resource type="Texture2D" uid="uid://owenqiuqkxyg" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0054.png" id="55_q2hln"]
+[ext_resource type="Texture2D" uid="uid://dj16rjova3wug" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0055.png" id="56_mh3k1"]
+[ext_resource type="Texture2D" uid="uid://l2tmld2k1jq4" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0056.png" id="57_7xrhi"]
+[ext_resource type="Texture2D" uid="uid://ce87dits0tepv" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0057.png" id="58_kvxjr"]
+[ext_resource type="Texture2D" uid="uid://dy7hat24k518q" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0058.png" id="59_5p435"]
+[ext_resource type="Texture2D" uid="uid://ckvr8xjcwg10b" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0059.png" id="60_sv76d"]
+[ext_resource type="Texture2D" uid="uid://cvxgb0knrra43" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0060.png" id="61_lercg"]
+[ext_resource type="Texture2D" uid="uid://cph0srk33pla7" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0061.png" id="62_l2ilh"]
+[ext_resource type="Texture2D" uid="uid://ddmhwefk0l1ks" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0062.png" id="63_88egm"]
+[ext_resource type="Texture2D" uid="uid://b7s1tn7eg21p0" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0063.png" id="64_3n3qb"]
+[ext_resource type="Texture2D" uid="uid://c8cpwmcnn7sr8" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0064.png" id="65_d3a5o"]
+[ext_resource type="Texture2D" uid="uid://coilh13dp3jjf" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0065.png" id="66_k8euc"]
+[ext_resource type="Texture2D" uid="uid://bh8spcaf4cllw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0066.png" id="67_yluhg"]
+[ext_resource type="Texture2D" uid="uid://b3ew4y7f55o1c" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0067.png" id="68_cysan"]
+[ext_resource type="Texture2D" uid="uid://coe86r88fe6vf" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0068.png" id="69_2itsj"]
+[ext_resource type="Texture2D" uid="uid://7wmqd1mr7iio" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0069.png" id="70_ssqy4"]
+[ext_resource type="Texture2D" uid="uid://dgy16eb7igoer" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0070.png" id="71_vvjgr"]
+[ext_resource type="Texture2D" uid="uid://b2memxb8afond" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0071.png" id="72_ox2x2"]
+[ext_resource type="Texture2D" uid="uid://cr6ode8w5v0xs" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0072.png" id="73_fp7gs"]
+[ext_resource type="Texture2D" uid="uid://c27yv6huvre0e" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0073.png" id="74_4fop7"]
+[ext_resource type="Texture2D" uid="uid://dgskra88wqvof" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0074.png" id="75_bcgh3"]
+[ext_resource type="Texture2D" uid="uid://bi4eprgaafs12" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0075.png" id="76_01knj"]
+[ext_resource type="Texture2D" uid="uid://brdmm10knfy6f" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0076.png" id="77_4relr"]
+[ext_resource type="Texture2D" uid="uid://rutwk0cmyxh2" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0077.png" id="78_daymh"]
+[ext_resource type="Texture2D" uid="uid://bjwgyw0178lo0" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0078.png" id="79_t5dky"]
+[ext_resource type="Texture2D" uid="uid://bki0fnrcgbvy4" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0079.png" id="80_aea3x"]
+[ext_resource type="Texture2D" uid="uid://huxajjnc0idu" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0080.png" id="81_c1ymp"]
+[ext_resource type="Texture2D" uid="uid://cw17vvsl3w2ns" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0081.png" id="82_271fe"]
+[ext_resource type="Texture2D" uid="uid://b0xdxv7js3ks5" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0082.png" id="83_7sv4s"]
+[ext_resource type="Texture2D" uid="uid://cua1xhhnhqc44" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0083.png" id="84_gxsuv"]
+[ext_resource type="Texture2D" uid="uid://cljq7gko8u3e0" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0084.png" id="85_kyf1x"]
+[ext_resource type="Texture2D" uid="uid://wekpp51cwvfo" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0085.png" id="86_4vxro"]
+[ext_resource type="Texture2D" uid="uid://chk3hgjeyray8" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0086.png" id="87_nkuri"]
+[ext_resource type="Texture2D" uid="uid://tfetqyakixeb" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0087.png" id="88_gul03"]
+[ext_resource type="Texture2D" uid="uid://c58snjmtugxg5" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0088.png" id="89_0mhsx"]
+[ext_resource type="Texture2D" uid="uid://bgebcr0kykpc3" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0089.png" id="90_i57x0"]
+[ext_resource type="Texture2D" uid="uid://c2i4aow0o6skm" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0090.png" id="91_uuhoa"]
+[ext_resource type="Texture2D" uid="uid://bbmcqyhs5qt6h" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0091.png" id="92_1fovv"]
+[ext_resource type="Texture2D" uid="uid://csq7pus730uu6" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0092.png" id="93_xp6oq"]
+[ext_resource type="Texture2D" uid="uid://hxx15psde1q8" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0093.png" id="94_obolg"]
+[ext_resource type="Texture2D" uid="uid://cmyaj7rwa255q" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0094.png" id="95_uenhp"]
+[ext_resource type="Texture2D" uid="uid://dhgqdnpfr0ixs" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0095.png" id="96_hvv6r"]
+[ext_resource type="Texture2D" uid="uid://bovujufr7koai" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0096.png" id="97_ibr5c"]
+[ext_resource type="Texture2D" uid="uid://bx7xyomph6gvc" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0097.png" id="98_kdcvp"]
+[ext_resource type="Texture2D" uid="uid://bjes8nqh3n7aj" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0098.png" id="99_skh3p"]
+[ext_resource type="Texture2D" uid="uid://b2lluabtrj5ll" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0099.png" id="100_tlocl"]
+[ext_resource type="Texture2D" uid="uid://cfvncs1qoee31" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0100.png" id="101_wb6y3"]
+[ext_resource type="Texture2D" uid="uid://cbdhvykjnr62b" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0101.png" id="102_0qcsm"]
+[ext_resource type="Texture2D" uid="uid://dp7ghhww43jk7" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0102.png" id="103_nubrv"]
+[ext_resource type="Texture2D" uid="uid://cnpf4wfyhm0g6" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0103.png" id="104_jb744"]
+[ext_resource type="Texture2D" uid="uid://bmbxlre666t2m" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0104.png" id="105_j1fqw"]
+[ext_resource type="Texture2D" uid="uid://uwhl6gq16bir" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0105.png" id="106_0awkt"]
+[ext_resource type="Texture2D" uid="uid://djc6bqg18u0p" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0106.png" id="107_g7lkb"]
+[ext_resource type="Texture2D" uid="uid://dgim5eie6upl7" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0107.png" id="108_vtwlw"]
+[ext_resource type="Texture2D" uid="uid://c3705ria2hqxf" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0108.png" id="109_rkpbf"]
+[ext_resource type="Texture2D" uid="uid://bl3yd00g5giei" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0109.png" id="110_l7uvw"]
+[ext_resource type="Texture2D" uid="uid://bplbmc2ajfk7p" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0110.png" id="111_5wa4w"]
+[ext_resource type="Texture2D" uid="uid://b7o281vlbw3ib" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0111.png" id="112_ib45g"]
+[ext_resource type="Texture2D" uid="uid://efw1f5de7cge" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0112.png" id="113_hbst2"]
+[ext_resource type="Texture2D" uid="uid://btyg0mjgfi2ui" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0113.png" id="114_puor7"]
+[ext_resource type="Texture2D" uid="uid://dy84q13ri6ivf" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0114.png" id="115_a04bt"]
+[ext_resource type="Texture2D" uid="uid://drrgjxgmwq17m" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0115.png" id="116_srtos"]
+[ext_resource type="Texture2D" uid="uid://f5rpcuq6o4os" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0116.png" id="117_cca1b"]
+[ext_resource type="Texture2D" uid="uid://djysr66fm7no5" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0117.png" id="118_exm7f"]
+[ext_resource type="Texture2D" uid="uid://bfgna10drlkst" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0118.png" id="119_1uoy2"]
+[ext_resource type="Texture2D" uid="uid://f7b71xmvijrw" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0119.png" id="120_wmmuy"]
+[ext_resource type="Texture2D" uid="uid://ceoc23lbsnd5p" path="res://Assets/LevelSelector/Mountains/GrassyMountain/0120.png" id="121_uurje"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="123_sxxu3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4d7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wi76m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ergy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7rm13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_drmf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sqbap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fn6ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fimwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yas7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7t16r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1c1uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wtt7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6dw3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uv6ml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ju8g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_djpdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_q0omg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_mhjv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q322e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rvn4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a4cvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a41ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_0y1xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_2gn1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8lyq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r6aw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_njfjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_m4bpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_yyvh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_76ni7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_tqd06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_k4vuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_jbs53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_i1xkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_1a2nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_exd0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_rop5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ogkh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_p8uum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_dhk8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_nt7n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_uaecp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_7v423")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_0jtnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_cxgic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_hvqwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_8gdoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_a11wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_4q0xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_3jaw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_wd8gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_kqtdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_db4td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_c7pie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_q2hln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_mh3k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_7xrhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_kvxjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_5p435")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_sv76d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_lercg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_l2ilh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_88egm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_3n3qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_d3a5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_k8euc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_yluhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_cysan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_2itsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_ssqy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_vvjgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_ox2x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_fp7gs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_4fop7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_bcgh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_01knj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_4relr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_daymh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_t5dky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_aea3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_c1ymp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_271fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_7sv4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_gxsuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_kyf1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_4vxro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_nkuri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_gul03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_0mhsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_i57x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_uuhoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_1fovv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_xp6oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_obolg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_uenhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_hvv6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_ibr5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_kdcvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_skh3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_tlocl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_wb6y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_0qcsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_nubrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_jb744")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_j1fqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_0awkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_g7lkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_vtwlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_rkpbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_l7uvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_5wa4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_ib45g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_hbst2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_puor7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_a04bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_srtos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_cca1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_exm7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_1uoy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_wmmuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_uurje")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_uyqpk"]
+points = PackedVector2Array(380, 327, 299, 423, 55, 462, -221, 423, -381, 353, -357, 200, -203, -18, -150, -80, -3, -215, 160, -80, 250, 50)
+
+[node name="Mountain" type="Node2D"]
+script = ExtResource("1_lux53")
+WorldNumber = 1
+
+[node name="renderer" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h4d7r")
+
+[node name="displayerContainer" type="Node2D" parent="."]
+
+[node name="LevelDisplayer6" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+position = Vector2(0, -90)
+LevelNumber = 6
+Mountain = NodePath("../..")
+DisplayFrame = 200
+radius = 250.0
+
+[node name="LevelDisplayer5" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+position = Vector2(0, -15)
+LevelNumber = 5
+Mountain = NodePath("../..")
+DisplayFrame = 160
+radius = 320.0
+
+[node name="LevelDisplayer4" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+position = Vector2(0, 60)
+LevelNumber = 4
+Mountain = NodePath("../..")
+DisplayFrame = 120
+radius = 290.0
+
+[node name="LevelDisplayer3" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+position = Vector2(0, 135)
+LevelNumber = 3
+Mountain = NodePath("../..")
+DisplayFrame = 80
+radius = 365.0
+
+[node name="LevelDisplayer2" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+position = Vector2(0, 210)
+LevelNumber = 2
+Mountain = NodePath("../..")
+DisplayFrame = 40
+radius = 420.0
+
+[node name="LevelDisplayer" parent="displayerContainer" node_paths=PackedStringArray("Mountain") instance=ExtResource("3_wchr8")]
+position = Vector2(0, 285)
+LevelNumber = 1
+Mountain = NodePath("../..")
+radius = 390.0
+
+[node name="mouseDetector" type="Area2D" parent="."]
+script = ExtResource("123_sxxu3")
+
+[node name="collider" type="CollisionShape2D" parent="mouseDetector"]
+position = Vector2(16, -93)
+scale = Vector2(1.4, 1.4)
+shape = SubResource("ConvexPolygonShape2D_uyqpk")

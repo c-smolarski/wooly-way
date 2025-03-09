@@ -1,4 +1,4 @@
-using Com.IsartDigital.WoolyWay.Scripts.Utils;
+using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 
 // Author : Camille Smolarski
@@ -13,6 +13,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] public Node2D GameContainer { get; private set; }
         [ExportGroup("PackedScenes")]
         [Export] public PackedScene TileScene { get; private set; }
+        [Export] public PackedScene LevelButtonScene { get; private set; }
         [ExportSubgroup("GameObjects")]
         [Export] public PackedScene WallScene { get; private set; }
         [Export] public PackedScene PlayerScene { get; private set; }
@@ -20,7 +21,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] public PackedScene SheepScene { get; private set; }
         [Export] public PackedScene TargetScene { get; private set; }
         #endregion
-
+        MapData mapData = new MapData();
+        LevelManager levelManager;
         public static GameManager Instance { get; private set; }
 
         public override void _Ready()
@@ -34,8 +36,9 @@ namespace Com.IsartDigital.WoolyWay.Managers
             }
             Instance = this;
             #endregion
+            levelManager = LevelManager.GetInstance();
             HudManager.Instance.CreateHud();
-            LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level6"]);
+            LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level1"]);
         }
 
         protected override void Dispose(bool pDisposing)
