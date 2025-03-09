@@ -17,7 +17,9 @@ namespace Com.IsartDigital.WoolyWay
         public Vector2 PixelSize => Tile.SIZE * Size * Scale;
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
-        
+        public ReadOnlyTwoWayDictionary<Tile, Target> IndexTarget { get; private set; } = new();
+
+
         private static Dictionary<string, Vector2I> Directions = new Dictionary<string, Vector2I>(){
             {"Left", Vector2I.Left},
             {"Right", Vector2I.Right},
@@ -111,7 +113,8 @@ namespace Com.IsartDigital.WoolyWay
             
             Grid lGrid = CreateEmpty(new Vector2I(lXSizeLevel, lYSizeLevel), pContainer, pPos);
 
-            TwoWayDictionary<Tile, GameObject> lTempDict = new();
+            TwoWayDictionary<Tile, GameObject> lTempDictObj = new();
+            TwoWayDictionary<Tile, Target> lTempDictTarget = new();
             PackedScene lPacked;
             GameObject lObj;
             char lChar;
@@ -140,15 +143,20 @@ namespace Com.IsartDigital.WoolyWay
                             //ici envoyer un truc au script chevre comme quoi celle la doit pas pouvoir gagner
                             //TODO : Replace default with sheep direction.
                             break;
+                        case LevelChar.TARGET:
+                            lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
+                            lTempDictTarget.Add(lGrid.IndexDict[new Vector2I(x, y)], (Target)lObj);
+                            break;
+
                         default:
                             lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
                             break;
                     }
-                    lTempDict.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
-                    GD.Print(lTempDict[lGrid.IndexDict[new Vector2I(x, y)]]);
+                    lTempDictObj.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
                 }
             }
-            lGrid.ObjectDict = lTempDict.ToReadOnly();
+            lGrid.ObjectDict = lTempDictObj.ToReadOnly();
+            lGrid.IndexTarget = lTempDictTarget.ToReadOnly();
             return lGrid;
         }
 

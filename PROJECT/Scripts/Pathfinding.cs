@@ -14,7 +14,6 @@ namespace Com.IsartDigital.ProjectName
         Grid grid;
         public override void _Ready()
         {
-            grid = LevelManager.currentLevel;
         }
 
         public List<Vector2I> GetPath(int pStartPosX, int pStartPosY, int pTargetPosX, int pTargetPosY)
@@ -81,16 +80,17 @@ namespace Com.IsartDigital.ProjectName
 
         public List<PathFindingCell> GetWalkableCell(PathFindingCell pCurrentCell, PathFindingCell pTargetCell)
         {
+            grid = LevelManager.currentLevel;
             List<PathFindingCell> lWalkableCell = new List<PathFindingCell>();
-            List<Tile> lPossibleCells = LevelManager.currentLevel.Neighbors(LevelManager.currentLevel.IndexDict[new Vector2I(pCurrentCell.posX, pCurrentCell.posY)]);
+            List<Tile> lPossibleCells = grid.Neighbors(grid.IndexDict[new Vector2I(pCurrentCell.posX, pCurrentCell.posY)]);
             int lNumPossibleCells = lPossibleCells.Count;
 
 
             for (int i = 0; i < lNumPossibleCells; i++)
             {
-                if (!LevelManager.currentLevel.ObjectDict.Contains(lPossibleCells[i]))
+                if (!grid.ObjectDict.Contains(lPossibleCells[i]) || grid.IndexTarget.Contains(lPossibleCells[i]))
                 {
-                    lWalkableCell.Add(new PathFindingCell { posX = LevelManager.currentLevel.IndexDict[lPossibleCells[i]].X, posY = LevelManager.currentLevel.IndexDict[lPossibleCells[i]].Y, lastCell = pCurrentCell });
+                    lWalkableCell.Add(new PathFindingCell { posX = grid.IndexDict[lPossibleCells[i]].X, posY = grid.IndexDict[lPossibleCells[i]].Y, lastCell = pCurrentCell });
                 }
             }
             lWalkableCell.ForEach(lCell => lCell.SetDistance(pTargetCell.posX, pTargetCell.posY));

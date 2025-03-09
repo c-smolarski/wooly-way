@@ -7,6 +7,7 @@ using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // Author : Camille SMOLARSKI & Tom BAGNARA && Alissa Delattre
 
@@ -59,10 +60,14 @@ namespace Com.IsartDigital.WoolyWay
         /// </summary>
         private void SendCoord()
         {
+            Player lPlayer = Player.GetInstance();
             Vector2I lTargetPos = Grid.IndexDict[this];
-            Vector2I LStartPos = Grid.IndexDict[Grid.ObjectDict[Player.GetInstance()]];
+            Vector2I LStartPos = Grid.IndexDict[Grid.ObjectDict[lPlayer]];
             List<Vector2I> lPath = pathfinding.GetPath(LStartPos.X, LStartPos.Y, lTargetPos.X, lTargetPos.Y);
-            Player.GetInstance().MoveStepByStep(lPath);
+            if (lPath.Count == 0) return; 
+            lPath.Remove(lPath.Last());
+            lPlayer.path = lPath;
+            lPlayer.MoveStepByStep();
         }
 
         public Vector2 GetPosFromIndex()

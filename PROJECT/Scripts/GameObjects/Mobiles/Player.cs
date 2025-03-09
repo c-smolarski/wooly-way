@@ -21,6 +21,8 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
         }
 
         #endregion
+
+        public List<Vector2I> path = new List<Vector2I>();
         public override void _Ready()
         {
             #region Singleton
@@ -43,15 +45,14 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
         }
 
         /// <summary>
-       ///Moves the player tile by tile until he reaches the target
+        ///Moves the player tile by tile until he reaches the target
         /// </summary>
-        public void MoveStepByStep(List<Vector2I> pWay)
+        public void MoveStepByStep()
         {
-            for (int i = pWay.Count-1; i >= 0; i--)
-            {
-                InitMove(pWay[i] - Grid.IndexDict[Grid.ObjectDict[this]]);
-                pWay.Remove(pWay[i]);
-            }
+            if (path.Count == 0) return;
+            int lIndex = path.Count-1;
+            InitMove(path[lIndex] - Grid.IndexDict[Grid.ObjectDict[this]]);
+            path.RemoveAt(lIndex);
         }
         protected override void Dispose(bool pDisposing)
         {
