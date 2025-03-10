@@ -25,14 +25,14 @@ namespace Com.IsartDigital.ProjectName
             username = usernameText.Text;
             password = passwordText.Text;
 
-            Object[] lDataUser = userManager.GetSecuredDataIfExists(username);
+            Object[] lDataUser = dataManager.GetSecuredDataIfExists(username);
             if ((bool)lDataUser[0])
             {
                 Object[] lProtectedData = (object[])lDataUser[1];
                 if (passwordManager.CheckPassword((string)lProtectedData[0], password, (string)lProtectedData[1]))
                 {
 
-                    userManager.LogIntoUserAccount(username);
+                    dataManager.LogIntoUserAccount(username);
                     GD.Print("logged in");
                     transition.Play(TRANSITION);
                     Transition.shake = true;

@@ -24,7 +24,7 @@ namespace Com.IsartDigital.ProjectName {
 			Object[] newUser;
 			username = usernameText.Text;
             (password, salt) = passwordManager.Encryption(passwordText.Text);
-			newUser = userManager.CreateUser(username, password, salt);
+			newUser = dataManager.CreateUser(username, password, salt);
 			if ((bool)newUser[0])
 			{
 				GD.Print("account created loading next scene");

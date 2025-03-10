@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="6_5ob0n"]
 [ext_resource type="Script" path="res://Scripts/AuthentificationJuiciness.cs" id="6_tds27"]
 [ext_resource type="Theme" uid="uid://mehsaxiv283s" path="res://Theme/AuthentificationButton.tres" id="8_gakyl"]
-[ext_resource type="Script" path="res://Scripts/Managers/UserManager.cs" id="8_qp8ly"]
+[ext_resource type="Script" path="res://Scripts/Managers/DataManager.cs" id="8_qp8ly"]
 [ext_resource type="Script" path="res://Scripts/Transition.cs" id="13_arho5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aub3m"]
