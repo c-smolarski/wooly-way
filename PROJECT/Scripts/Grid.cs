@@ -19,6 +19,8 @@ namespace Com.IsartDigital.WoolyWay
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Tile, Target> IndexTarget { get; private set; } = new();
+        
+        public List<Sheep> SheepList { get; private set; } = new();
 
 
         private static Dictionary<string, Vector2I> Directions = new Dictionary<string, Vector2I>(){
@@ -118,6 +120,7 @@ namespace Com.IsartDigital.WoolyWay
 
             TwoWayDictionary<Tile, GameObject> lTempDictObj = new();
             TwoWayDictionary<Tile, Target> lTempDictTarget = new();
+            List<Sheep> lSheepList = new();
             PackedScene lPacked;
             GameObject lObj;
             char lChar;
@@ -135,6 +138,7 @@ namespace Com.IsartDigital.WoolyWay
                     {
                         case LevelChar.SHEEP:
                             lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lSheepDirections[lSheepCount]]);
+                            lSheepList.Add((Sheep)lObj);
                             lSheepCount++;
                             break;
                         case LevelChar.FAKE_SHEEP:
@@ -159,7 +163,15 @@ namespace Com.IsartDigital.WoolyWay
             }
             lGrid.ObjectDict = lTempDictObj.ToReadOnly();
             lGrid.IndexTarget = lTempDictTarget.ToReadOnly();
+            lGrid.SheepList = lSheepList;
             return lGrid;
+        }
+
+        public void WinCheck()
+        {
+            if (SheepList.Any(lSheep => !lSheep.IsWin)) return;
+            
+            GD.Print("Level Win");
         }
 
         public List<Tile> Neighbors(Tile pCurrentTile)

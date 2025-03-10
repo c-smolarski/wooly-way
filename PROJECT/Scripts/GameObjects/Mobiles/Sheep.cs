@@ -69,6 +69,9 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             Tile lNextTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + pMoveDirection];
             Move(lNextTile);
             base.InitMove(Direction);
+
+            if (!IsUseful) return;
+            if (IsWin) Grid.WinCheck();
         }
 
         protected override void Move(Tile pTile)
@@ -76,7 +79,6 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             base.Move(pTile);
             
             if (!CurrentTile.IsDog) return;
-
             Rotate(); 
         }
         
