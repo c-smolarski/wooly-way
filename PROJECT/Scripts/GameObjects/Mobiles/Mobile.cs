@@ -24,7 +24,8 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
             if (!lNextTile.IsEmpty() && lNextTile.IsSheep())
             { 
                 Sheep lSheep = Grid.ObjectDict[lNextTile] as Sheep;
-                    
+                if (this is Sheep && lSheep.Direction == -pMoveDirection) return;
+                
                 Move(lNextTile);
 
                 lSheep?.InitMove(pMoveDirection);
@@ -32,7 +33,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
             else Move(lNextTile);
         }
 
-        protected void Move(Tile pTile)
+        protected virtual void Move(Tile pTile)
         {
             Grid.ObjectDict[this] = pTile;
             shouldMove = true;

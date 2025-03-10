@@ -23,6 +23,10 @@ namespace Com.IsartDigital.WoolyWay
         private Pathfinding pathfinding = new Pathfinding();
         public Grid Grid { get; private set; }
         public GameObject CurrentObject => Grid.ObjectDict[this];
+
+        public bool IsDog { get; private set; }
+        public bool IsFlag { get; private set; }
+        
         public override void _Ready()
         {
             base._Ready();
@@ -32,7 +36,7 @@ namespace Com.IsartDigital.WoolyWay
         /// Checks if an object can move on Tile. If the Tile has a Sheep on it, checks if the Sheep can move out of the Tile.
         /// </summary>
         /// <param name="pMoveDirection"></param>
-        /// <returns>Bool</returns>
+        /// <returns></returns>
         public bool IsWalkable(Vector2I pMoveDirection)
         {
             if (this.IsEmpty()) return true;
@@ -44,11 +48,19 @@ namespace Com.IsartDigital.WoolyWay
             return lSheep != null && lSheep.CanMove(pMoveDirection);
         }
         
+        /// <summary>
+        /// Checks if GameObjects are on this Tile.
+        /// </summary>
+        /// <returns>true if no GameObject are on this Tile</returns>
         public bool IsEmpty()
         {
             return !Grid.ObjectDict.Contains(this);
         }
 
+        /// <summary>
+        /// Chekcs if this Tile contains a Sheep.
+        /// </summary>
+        /// <returns>true if Tile contains a Sheep</returns>
 		public bool IsSheep()
         {
             if (!IsEmpty()) return (Grid.ObjectDict[this] is Sheep);
@@ -85,6 +97,18 @@ namespace Com.IsartDigital.WoolyWay
         private Vector2 GetPosFromIndex(int pIndexX, int pIndexY, Grid pGrid)
         {
             return MathS.IndexToPosition(SIZE, pIndexX, pIndexY) - 0.5f * MathS.PositionToIsoPosition((pGrid.Size - Vector2I.One) * SIZE);
+        }
+        
+        internal void SetDog(bool pDog)
+        {
+            IsDog = pDog;
+            if (IsDog) SelfModulate = Colors.Black;
+        }
+
+        internal void SetFlag(bool pFlag)
+        {
+            IsFlag = pFlag;
+            if (IsFlag) SelfModulate = Colors.Blue;
         }
 
         public static Tile Create(int pIndexX, int pIndexY, Grid pGrid)
