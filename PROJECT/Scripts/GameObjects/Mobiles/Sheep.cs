@@ -23,6 +23,8 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
         {
             base._Ready();
             clickable.Clicked += Clicked;
+
+            if (!IsUseful) Modulate = Colors.Aqua;
         }
 
         /// <summary>

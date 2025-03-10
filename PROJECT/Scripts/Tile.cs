@@ -102,12 +102,14 @@ namespace Com.IsartDigital.WoolyWay
         internal void SetDog(bool pDog)
         {
             IsDog = pDog;
+            // Todo replace with effect
             if (IsDog) SelfModulate = Colors.Black;
         }
 
         internal void SetFlag(bool pFlag)
         {
             IsFlag = pFlag;
+            // Todo replace with actual sprite
             if (IsFlag) SelfModulate = Colors.Blue;
         }
 

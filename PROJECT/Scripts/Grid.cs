@@ -147,8 +147,6 @@ namespace Com.IsartDigital.WoolyWay
                             break;
                         case LevelChar.TARGET:
                             lObj = null;
-                            //lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
-                            //lTempDictTarget.Add(lGrid.IndexDict[new Vector2I(x, y)], (Target)lObj);
                             lGrid.IndexDict[new Vector2I(x, y)].SetFlag(true);
                             break;
 
@@ -156,7 +154,7 @@ namespace Com.IsartDigital.WoolyWay
                             lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
                             break;
                     }
-                    lTempDictObj.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
+                    if (lObj != null) lTempDictObj.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
                 }
             }
             lGrid.ObjectDict = lTempDictObj.ToReadOnly();
