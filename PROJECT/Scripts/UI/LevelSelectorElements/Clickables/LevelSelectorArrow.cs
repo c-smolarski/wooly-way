@@ -1,7 +1,10 @@
 ﻿using Com.IsartDigital.WoolyWay.Components;
+using Com.IsartDigital.WoolyWay.Managers;
 using Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements;
 using Godot;
 using System;
+
+// Author : Camille Smolarski
 
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 {
@@ -36,7 +39,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 
         private void OnClick()
         {
-            displayer.Mountain.DisplayButton(displayer.LevelNumber + (right ? 1 : -1));
+            SignalBus.Instance.EmitSignal(SignalBus.SignalName.DisplayLevelButton, displayer.LevelNumber + (right ? 1 : -1));
         }
 
         private void OnHovered()

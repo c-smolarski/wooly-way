@@ -4,16 +4,17 @@ using Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements;
 using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 {
+    //Clickable Area displaying a level.
     public partial class LevelButton : ClickableLevelSelectorElement
     {
         [Export] public LevelButtonDisplayer Displayer { get; private set; }
         [ExportGroup("On focus")]
         [Export] private float sinusoidFreq = 2.5f;
         [Export] private float sinusoidIntensity = 0.45f;
-
-        public const int DISPLAY_NO_LEVEL = -1;
 
         public Grid LevelGrid { get; private set; }
 
@@ -52,6 +53,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
             };
         }
 
+        //Little wavy animation when level is displayed.
         private void FocusedAnim(float pDelta)
         {
             elapsedTime += pDelta;

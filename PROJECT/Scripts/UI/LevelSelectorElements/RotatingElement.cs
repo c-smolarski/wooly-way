@@ -2,17 +2,24 @@
 using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
 {
     public abstract partial class RotatingElement : LevelSelectorElement
     {
         [Export] public Mountain Mountain { get; private set; }
-        [Export] public int DisplayFrame { get; private set; }
+        [Export] public int DisplayFrame { get; private set; } //Frame at which object is displayed at center of screen.
         [Export] private float radius = 500f;
         [Export] private float cameraTilt = 75f;
 
+        //Pos of object when DisplayFrame is currently displayed.
         public Vector2 PosOnMountain => circleCenter + new Vector2(0, radius * EllipsisFactor);
+        
+        //As camera is not directiy pointing down we have to apply it's cosine to circle's sine to get the resulting ellipsis.
         private float EllipsisFactor => MathF.Cos(Mathf.DegToRad(cameraTilt));
+
+        //Gets angle from frame.
         private float FrameAngle
         {
             get => angle + Mathf.Pi * 0.5f;
@@ -35,6 +42,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
             ScaleModifierChanged += () => Move(Mountain.CurrentFrameIndex);
         }
 
+        //Updates Position before subscribing Move func.
         private void InitMove()
         {
             Move(Mountain.CurrentFrameIndex);
@@ -50,6 +58,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
             ZIndex = (int)(Position.Y - circleCenter.Y);
         }
 
+        // Stops moving when hidden for optimization.
         protected override void ChangeVisibilty(bool pDisplayed)
         {
             if (pDisplayed)

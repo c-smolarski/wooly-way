@@ -4,12 +4,13 @@ using Com.IsartDigital.WoolyWay.Utils.Tweens;
 using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 {
     public partial class Mountain : ClickableLevelSelectorElement
     {
         [Signal] public delegate void FrameChangedEventHandler(int pFrame);
-        [Signal] public delegate void LevelsVisibilityChangedEventHandler(int pLevelNumber);
 
         [Export(PropertyHint.Range, "1,1000")] public int WorldNumber { get; private set; }
         [ExportGroup("On Focus")]
@@ -18,7 +19,6 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 
         private const string RENDERER_PATH = "renderer";
 
-        public int FrameCount => renderer.SpriteFrames.GetFrameCount(renderer.Animation);
         public int CurrentFrameIndex 
         {
             get => renderer.Frame;
@@ -40,10 +40,12 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
             }
         }
 
+        public int FrameCount => renderer.SpriteFrames.GetFrameCount(renderer.Animation);
+        public bool IsFocused { get; private set; }
+
         private AnimatedSprite2D renderer;
         private Vector2 defaultPos, defaulScale;
         private int backingAnimIndex;
-        private bool focused;
 
         public override void _Ready()
         {
@@ -58,24 +60,19 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
         public override void _Input(InputEvent @event)
         {
             base._Input(@event);
-            if (!MouseDetector.IsHovered && focused && Input.IsActionJustPressed(InputManager.UI_CLICK))
+            if (!MouseDetector.IsHovered && IsFocused && Input.IsActionJustPressed(InputManager.UI_CLICK))
                 UnfocusMountain();
         }
 
         protected override void OnClick()
         {
-            if (MouseDetector.IsHovered && !focused)
+            if (MouseDetector.IsHovered && !IsFocused)
             {
-                focused = true;
+                IsFocused = true;
                 AnimFrameIndex = CurrentFrameIndex;
-                EmitSignal(SignalName.LevelsVisibilityChanged, defaultDisplayedLevel);
+                SignalBus.Instance.EmitSignal(SignalBus.SignalName.DisplayLevelButton, defaultDisplayedLevel);
             }
             base.OnClick();
-        }
-
-        public void DisplayButton(int pLevelNumber)
-        {
-            EmitSignal(SignalName.LevelsVisibilityChanged, pLevelNumber);
         }
 
         public void RotateToButton(LevelButtonDisplayer pButton)
@@ -91,13 +88,13 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 
         private void UnfocusMountain()
         {
-            focused = false;
+            IsFocused = false;
             renderer.Play();
             Tween lTween = CreateTween();
             lTween.SetParallel();
             lTween.TweenProperty(this, TweenProp.SCALE, defaulScale, AppearAnimDuration);
             lTween.TweenProperty(this, TweenProp.POSITION, defaultPos, AppearAnimDuration);
-            DisplayButton(LevelButton.DISPLAY_NO_LEVEL);
+            SignalBus.Instance.EmitSignal(SignalBus.SignalName.DisplayLevelButton, LevelButtonDisplayer.DISPLAY_NO_LEVEL);
         }
     }
 }

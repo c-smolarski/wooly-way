@@ -2,8 +2,13 @@
 using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
 {
+    /// <summary>
+    /// Base class for all LevelSelectorElement that contain a ClickableArea.
+    /// </summary>
     public abstract partial class ClickableLevelSelectorElement : LevelSelectorElement
     {
         protected ClickableArea MouseDetector { get; private set; }

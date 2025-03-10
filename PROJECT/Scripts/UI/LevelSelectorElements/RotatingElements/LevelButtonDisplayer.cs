@@ -4,8 +4,12 @@ using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements
 {
+    //Object containing LevelButton and LevelSelectorArrows.
+    //It is used to Display them correctly around Mountain.
     public partial class LevelButtonDisplayer : RotatingElement
     {
         [Export(PropertyHint.Range, "1,1000")] public int LevelNumber { get; private set; }
@@ -13,6 +17,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements
         private const string RIGHT_ARROW_PATH = "rightArrow";
         private const string LEFT_ARROW_PATH = "leftArrow";
         private const string LEVEL_BUTTON_PATH = "levelButton";
+        public const int DISPLAY_NO_LEVEL = -1;
 
         private LevelSelectorArrow leftArrow, rightArrow;
         private LevelButton levelButton;
@@ -23,7 +28,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements
             levelButton = GetNode<LevelButton>(LEVEL_BUTTON_PATH);
             levelButton.Scale = levelScale;
 
-            Mountain.LevelsVisibilityChanged += DisplayLevel;
+            SignalBus.Instance.DisplayLevelButton += DisplayLevel;
 
             ArrowsInit();
         }
@@ -48,15 +53,18 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements
 
         public void DisplayLevel(int pLevelToDisplay)
         {
-            ChangeVisibilty(IsNeighbour(pLevelToDisplay));
-
-            if (LevelNumber == pLevelToDisplay)
+            if (Mountain.IsFocused || pLevelToDisplay == DISPLAY_NO_LEVEL)
             {
-                Mountain.RotateToButton(this);
-                levelButton.StartFocusedAnim();
+                ChangeVisibilty(IsNeighbour(pLevelToDisplay));
+
+                if (LevelNumber == pLevelToDisplay)
+                {
+                    Mountain.RotateToButton(this);
+                    levelButton.StartFocusedAnim();
+                }
+                else
+                    levelButton.StopFocusedAnim();
             }
-            else
-                levelButton.StopFocusedAnim();
         }
 
         private bool IsNeighbour(int pFromLevel)

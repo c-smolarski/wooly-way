@@ -2,11 +2,13 @@
 using Godot;
 using System;
 
+// Author : Camille Smolarski
+
 namespace Com.IsartDigital.WoolyWay.Components
 {
-    public partial class ClickableArea: Area2D
+    //Button is only a rectangle. This, paired with a CollisionPolygon can be any shape.
+    public partial class ClickableArea : Area2D
     {
-
         [Signal] public delegate void ClickedEventHandler();
 
         private const string COLLIDER_PATH = "collider";
