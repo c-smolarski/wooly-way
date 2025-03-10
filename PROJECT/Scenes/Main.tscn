@@ -57,6 +57,7 @@ visible = false
 visible = false
 
 [node name="Settings" parent="." instance=ExtResource("13_tq18i")]
+visible = false
 script = ExtResource("14_22qqw")
 
 [node name="MainMenu" parent="." instance=ExtResource("12_eekqv")]
