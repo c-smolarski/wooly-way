@@ -8,7 +8,7 @@ using System;
 
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 {
-    public partial class LevelSelectorArrow : Node2D
+    public partial class LevelSelectorArrow : LevelSelectorElement
     {
         [Export] private LevelButtonDisplayer displayer;
         [Export] private Color hoverColor = new Color(1.0f, 1.0f, 0.812f, 1.0f);
@@ -24,7 +24,10 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 
         public override void _Ready()
         {
+            if (!right)
+                Scale *= new Vector2(-1, 1);
             base._Ready();
+
             mouseDetector = GetNode<ClickableArea>(AREA_PATH);
             polygon = GetNode<Polygon2D>(POLYGON_PATH);
             shadow = GetNode<Polygon2D>(SHADOW_PATH);
@@ -33,8 +36,10 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
             mouseDetector.MouseEntered += OnHovered;
             mouseDetector.MouseExited += OnUnhovered;
             mouseDetector.Clicked += OnClick;
-            if (!right)
-                Scale *= new Vector2(-1, 1);
+
+            ScaleModifierChanged += () => Scale = ScaleModifier;
+            displayer.Focused += ChangeVisibilty;
+            ChangeVisibilty(false);
         }
 
         private void OnClick()
@@ -46,9 +51,16 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
         {
             polygon.Color = hoverColor;
         }
+
         private void OnUnhovered()
         {
             polygon.Color = defaultColor;
+        }
+
+        protected override void Dispose(bool pDisposing)
+        {
+            displayer.Focused -= ChangeVisibilty;
+            base.Dispose(pDisposing);
         }
     }
 }

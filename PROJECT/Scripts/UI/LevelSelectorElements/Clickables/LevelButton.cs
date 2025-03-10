@@ -27,7 +27,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
         {
             base._Ready();
             levelInfo = LevelManager.GetLevel(Displayer.Mountain.WorldNumber, Displayer.LevelNumber);
-
+            Displayer.Focused += OnFocusChanged;
             GridInit();
         }
 
@@ -53,6 +53,12 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
             };
         }
 
+        private void OnFocusChanged(bool pFocus)
+        {
+            ResetFocusAnim();
+            focused = pFocus;
+        }
+
         //Little wavy animation when level is displayed.
         private void FocusedAnim(float pDelta)
         {
@@ -70,15 +76,8 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
             }
         }
 
-        public void StartFocusedAnim()
+        private void ResetFocusAnim()
         {
-            StopFocusedAnim();
-            focused = true;
-        }
-
-        public void StopFocusedAnim()
-        {
-            focused = false;
             elapsedTime = default;
             LevelGrid.ResetTilesPos();
         }

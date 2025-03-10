@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://drp46rmd8p8wd"]
+
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/RotatingElements/AssetDisplayer.cs" id="1_0n4gl"]
+
+[node name="AssetDisplayer" type="Node2D" node_paths=PackedStringArray("assets")]
+script = ExtResource("1_0n4gl")
+assets = []

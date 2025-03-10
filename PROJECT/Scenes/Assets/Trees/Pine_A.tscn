@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ol43dxbf6fhn"]
+
+[ext_resource type="Material" uid="uid://dxymmaqw8xchr" path="res://Resources/ShaderMaterials/Trees/pine_leaves_material.tres" id="1_dudny"]
+[ext_resource type="Script" path="res://Scripts/Assets/Tree.cs" id="2_wpam5"]
+[ext_resource type="Texture2D" uid="uid://dov45k1p8bvlk" path="res://Assets/Trees/Trunks/trunk_1.png" id="3_4qxst"]
+[ext_resource type="Texture2D" uid="uid://byx1awrt4egik" path="res://Assets/Trees/Leaves/pine_leaves_1.png" id="4_k5wf6"]
+
+[node name="PineA" type="Node2D" node_paths=PackedStringArray("trunk", "leaves")]
+material = ExtResource("1_dudny")
+script = ExtResource("2_wpam5")
+trunk = NodePath("trunk1")
+leaves = [NodePath("PineLeaves1")]
+
+[node name="trunk1" type="Sprite2D" parent="."]
+position = Vector2(0, 84)
+texture = ExtResource("3_4qxst")
+offset = Vector2(0, -379)
+
+[node name="PineLeaves1" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -745)
+texture = ExtResource("4_k5wf6")

@@ -9,13 +9,15 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
     public abstract partial class RotatingElement : LevelSelectorElement
     {
         [Export] public Mountain Mountain { get; private set; }
-        [Export] public int DisplayFrame { get; private set; } //Frame at which object is displayed at center of screen.
-        [Export] private float radius = 500f;
+        [Export] public float Radius { get; private set; } = 500f;
         [Export] private float cameraTilt = 75f;
 
+        //Frame at which object is displayed at center of screen.
+        public int DisplayFrame { get; protected set; }
+
         //Pos of object when DisplayFrame is currently displayed.
-        public Vector2 PosOnMountain => circleCenter + new Vector2(0, radius * EllipsisFactor);
-        
+        public Vector2 PosOnMountain => circleCenter + new Vector2(0, Radius * EllipsisFactor);
+
         //As camera is not directiy pointing down we have to apply it's cosine to circle's sine to get the resulting ellipsis.
         private float EllipsisFactor => MathF.Cos(Mathf.DegToRad(cameraTilt));
 
@@ -35,7 +37,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
         public override void _Ready()
         {
             base._Ready();
-            circleCenter = Position - new Vector2(0, radius * EllipsisFactor);
+            circleCenter = new Vector2(0, Position.Y) - new Vector2(0, Radius * EllipsisFactor);
 
             Scale *= ScaleModifier;
 
@@ -52,7 +54,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
         private void Move(int pFrame)
         {
             FrameAngle = pFrame;
-            Position = circleCenter + (radius * new Vector2(MathF.Cos(FrameAngle), MathF.Sin(FrameAngle) * EllipsisFactor));
+            Position = circleCenter + (Radius * new Vector2(MathF.Cos(FrameAngle), MathF.Sin(FrameAngle) * EllipsisFactor));
             Scale = levelScale * ScaleModifier * new Vector2(MathF.Cos(FrameAngle - Mathf.Pi / 2), 1) //Scale adjusted to have 0 on the sides and 1 at center.
                 * (MathF.Sin(FrameAngle) + 2); //Smallest value is 1, largest is 3.
             ZIndex = (int)(Position.Y - circleCenter.Y);
@@ -61,14 +63,14 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
         // Stops moving when hidden for optimization.
         protected override void ChangeVisibilty(bool pDisplayed)
         {
-            if (pDisplayed)
-                InitMove();
-            else
-                Mountain.FrameChanged -= Move;
-
             if (pDisplayed != alreadyDisplayed)
+            {
+                if (pDisplayed)
+                    InitMove();
+                else
+                    Mountain.FrameChanged -= Move;
                 base.ChangeVisibilty(pDisplayed);
-
+            }
             alreadyDisplayed = pDisplayed;
         }
 
