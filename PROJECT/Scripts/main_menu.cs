@@ -8,16 +8,15 @@ namespace Com.IsartDigital.ProjectName
 
     public partial class main_menu : Control
     {
-        //private CanvasLayer canvasLayer;
-
-
+        private Control Credits;
         public override void _Ready()
         {
-            //canvasLayer = GetNode<CanvasLayer>("CanvasLayer");
             GetNode<Button>("VBoxContainer/StartButton").Pressed += OnStartButtonPressed;
             GetNode<Button>("VBoxContainer/SettingsButton").Pressed += OnSettingsButtonPressed;
             GetNode<Button>("VBoxContainer/CreditsButton").Pressed += OnCreditsButtonPressed;
             GetNode<Button>("VBoxContainer/QuitButton").Pressed += OnQuitButtonPressed;
+            Credits = GetNode<Control>("Credits");
+            
         }
 
         private void OnStartButtonPressed()
@@ -33,12 +32,14 @@ namespace Com.IsartDigital.ProjectName
         private void OnCreditsButtonPressed()
         {
             GD.Print("Credits button pressed");
+            Credits.Show();
         }
 
         private void OnQuitButtonPressed()
         {
-            GD.Print("Quit button pressed");
+            GetTree().Quit();
         }
+
     }
 
 }

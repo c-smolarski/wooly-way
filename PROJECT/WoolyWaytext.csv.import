@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b432uc6aqjico"
+
+[deps]
+
+files=["res://WoolyWaytext.en.translation", "res://WoolyWaytext.fr.translation"]
+
+source_file="res://WoolyWaytext.csv"
+dest_files=["res://WoolyWaytext.en.translation", "res://WoolyWaytext.fr.translation"]
+
+[params]
+
+compress=true
+delimiter=0

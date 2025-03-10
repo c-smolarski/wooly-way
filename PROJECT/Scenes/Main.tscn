@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=18 format=3 uid="uid://owpjl3bk8b33"]
 
 [ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
 [ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bgo65s6xvkjhe" path="res://Scenes/main_menu.tscn" id="12_eekqv"]
 [ext_resource type="Script" path="res://Scripts/main_menu.cs" id="13_rvh2u"]
 [ext_resource type="PackedScene" uid="uid://t4dbwvcyidyd" path="res://Scenes/settings.tscn" id="13_tq18i"]
+[ext_resource type="Script" path="res://Scripts/settings.cs" id="14_22qqw"]
 [ext_resource type="PackedScene" uid="uid://cxta5c5yivgqd" path="res://Scenes/pause_menu.tscn" id="14_gcp1u"]
 [ext_resource type="PackedScene" uid="uid://crybx52snntvn" path="res://Scenes/credits.tscn" id="16_cwywt"]
 
@@ -56,9 +57,12 @@ visible = false
 visible = false
 
 [node name="Settings" parent="." instance=ExtResource("13_tq18i")]
-visible = false
-
-[node name="Credits" parent="." instance=ExtResource("16_cwywt")]
+script = ExtResource("14_22qqw")
 
 [node name="MainMenu" parent="." instance=ExtResource("12_eekqv")]
+visible = false
 script = ExtResource("13_rvh2u")
+
+[node name="Credits" parent="MainMenu" instance=ExtResource("16_cwywt")]
+visible = false
+layout_mode = 1
