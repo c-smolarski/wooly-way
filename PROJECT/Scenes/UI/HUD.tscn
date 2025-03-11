@@ -31,20 +31,20 @@ mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 26.0
-offset_top = 34.0
-offset_right = 147.0
-offset_bottom = 130.0
+offset_left = 26.32
+offset_top = 33.105
+offset_right = 147.32
+offset_bottom = 129.105
 pivot_offset = Vector2(58.13, 47.71)
 
-[node name="Steps" type="Label" parent="VBoxContainer"]
+[node name="Par" type="Label" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_eqrye")
 layout_mode = 2
 text = "Steps : 0"
 label_settings = SubResource("LabelSettings_jyqpm")
 language = "English"
 
-[node name="Par" type="Label" parent="VBoxContainer"]
+[node name="Steps" type="Label" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_y43c2")
 layout_mode = 2
 text = "Par : 0"
@@ -54,10 +54,9 @@ language = "en"
 [node name="Level" type="Label" parent="."]
 material = SubResource("ShaderMaterial_eqrye")
 layout_mode = 2
-offset_left = 998.0
-offset_top = 41.0
-offset_right = 1119.0
-offset_bottom = 84.0
-text = "Level : 1"
-label_settings = ExtResource("2_axtj7")
+offset_left = 992.0
+offset_top = 35.0
+offset_right = 1113.0
+offset_bottom = 78.0
+label_settings = SubResource("LabelSettings_jyqpm")
 language = "English"
