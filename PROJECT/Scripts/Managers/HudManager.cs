@@ -1,3 +1,4 @@
+using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
@@ -13,8 +14,13 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] CanvasLayer canvasLayer;
 
         private string pathPar = "Par";
-        private string pathSteps = "Steps";
         private string pathLevel = "Level";
+        private string pathSteps = "Steps";
+
+        private string prefixPar = " Par : ";
+        private string prefixSteps = " Steps : ";
+
+        public MapInfo currentLevelInfos;
 
         private VBoxContainer vBoxContainer;
         private Label parLabel;
@@ -44,16 +50,23 @@ namespace Com.IsartDigital.WoolyWay.Managers
             vBoxContainer.Position += new Vector2(0, -150);
             levelLabel.Position += new Vector2(0, -150);
             Tween lTween = CreateTween();
+            GD.Print(currentLevelInfos.Par);
+            ActualizeHud();
             lTween.TweenProperty(vBoxContainer, "position", new Vector2(0, 150), 3f).SetTrans(Tween.TransitionType.Back).AsRelative();
             lTween.Parallel().TweenProperty(levelLabel, "position", new Vector2(0, 150), 2.4f).SetTrans(Tween.TransitionType.Back).AsRelative();
         }
         public void ActualizeHud()
         {
-            var lCurrentLevel = MapManager.GetInstance().currentLevel;
-            parLabel.Text = "Par : " + lCurrentLevel.Par;
-            levelLabel.Text = lCurrentLevel.Title;
+            parLabel.Text = prefixPar + currentLevelInfos.Par;
+            levelLabel.Text = currentLevelInfos.LevelName;
         }
-		public override void _Process(double pDelta)
+        public void ActualizeHud(int pSteps)
+        {
+            parLabel.Text = "Par : " + currentLevelInfos.Par;
+            levelLabel.Text = currentLevelInfos.LevelName;
+            stepsLabel.Text = prefixSteps + pSteps;
+        }
+        public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
 		}

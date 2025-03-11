@@ -12,6 +12,7 @@ namespace Com.IsartDigital.WoolyWay.Utils
     public class MapInfo
     {   
         public string Author { get; set; }
+        public string LevelName { get; set; }
         public int Par { get; set; }
         public List<string> SheepDirection { get; set; }
         public List<string> DogDirection { get; set; }

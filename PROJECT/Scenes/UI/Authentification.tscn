@@ -91,7 +91,7 @@ offset_bottom = -649.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_tds27")
-title = [NodePath("W"), NodePath("O"), NodePath("O2"), NodePath("L"), NodePath("Y"), NodePath("W2"), NodePath("A"), NodePath("Y2")]
+title = []
 
 [node name="W" type="Label" parent="title"]
 layout_mode = 1
