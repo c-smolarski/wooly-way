@@ -1,7 +1,6 @@
-﻿using Com.IsartDigital.WoolyWay.Managers;
-using Godot;
+﻿using Godot;
 
-// Author : Camille Smolarski
+// Author : Camille SMOLARSKI
 
 namespace Com.IsartDigital.WoolyWay.Utils
 {

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmfbw723jsxf8"]
 
-[ext_resource type="Shader" path="res://Ressources/Wave.gdshader" id="1_2mkxa"]
-[ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Ressources/HudText.tres" id="2_axtj7"]
-[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Fonts/lumberjack.regular.otf" id="2_kisf5"]
+[ext_resource type="Shader" path="res://Resources/HUD.gdshader" id="1_x675v"]
+[ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Resources/HudText.tres" id="2_axtj7"]
+[ext_resource type="FontFile" uid="uid://dh6mbm4taom1i" path="res://Resources/Fonts/lumberjack.regular.otf" id="2_kisf5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eqrye"]
 shader = ExtResource("1_2mkxa")
@@ -27,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -1,0 +1,26 @@
+﻿namespace Com.IsartDigital.WoolyWay.Utils.Tweens
+{
+    public static class TweenProp
+    {
+        //TRANSFORM
+        public const string POSITION = "position";
+        public const string SCALE = "scale";
+        public const string ROTATION = "rotation";
+
+        //CANVAS ITEMS
+        public const string VISIBLE = "visible";
+
+        public const string SELF_MODULATE = "self_modulate";
+        public const string SELF_MODULATE_ALPHA = "self_modulate:a";
+        public const string MODULATE = "modulate";
+        public const string MODULATE_RED = "modulate:r";
+        public const string MODULATE_GREEN = "modulate:g";
+        public const string MODULATE_BLUE = "modulate:b";
+        public const string MODULATE_ALPHA = "modulate:a";
+        public const string COLOR = "color";
+
+        //ANIMATED SPRITE
+        public const string FRAME = "frame";
+
+    }
+}

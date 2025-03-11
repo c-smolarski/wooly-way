@@ -1,22 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=12 format=3 uid="uid://owpjl3bk8b33"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/GridManager.cs" id="1_jlmcb"]
-[ext_resource type="Script" path="res://Scripts/Managers/GameManger.cs" id="2_ov00f"]
 [ext_resource type="Script" path="res://Scripts/Managers/HudManager.cs" id="2_ri03q"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
-[ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
 [ext_resource type="Script" path="res://Scripts/Managers/SoundManager.cs" id="4_m2u61"]
 [ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/UI/HUD.tscn" id="4_ms4ov"]
+[ext_resource type="Script" path="res://Scripts/Managers/GameManager.cs" id="5_i7vo1"]
+[ext_resource type="Script" path="res://Scripts/Pathfinding.cs" id="7_2g3j7"]
+[ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/GameObjects/Wall.tscn" id="7_o77s2"]
+[ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/GameObjects/Player.tscn" id="8_vlh7r"]
+[ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/GameObjects/Dog.tscn" id="9_cb5no"]
+[ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/GameObjects/Sheep.tscn" id="10_bbdlh"]
+[ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/GameObjects/Target.tscn" id="11_y7xnn"]
 
 [node name="Main" type="Node"]
 
 [node name="Managers" type="Node" parent="."]
-
-[node name="GridManager" type="Node" parent="Managers"]
-script = ExtResource("1_jlmcb")
-tileOriginalSize = Vector2i(20, 20)
-tileScale = Vector2(4, 4)
-tileMargin = Vector2(2, 2)
 
 [node name="HudManager" type="Node" parent="Managers" node_paths=PackedStringArray("canvasLayer")]
 script = ExtResource("2_ri03q")
@@ -29,17 +27,23 @@ MusicPlayer = NodePath("MusicPlayer")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="Managers/SoundManager"]
 
-[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GridContainer", "GameContainer")]
-script = ExtResource("2_ov00f")
-GridContainer = NodePath("../../GridContainer")
+[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
+script = ExtResource("5_i7vo1")
 GameContainer = NodePath("../../GameContainer")
 TileScene = ExtResource("3_0uypt")
+WallScene = ExtResource("7_o77s2")
+PlayerScene = ExtResource("8_vlh7r")
+DogScene = ExtResource("9_cb5no")
+SheepScene = ExtResource("10_bbdlh")
+TargetScene = ExtResource("11_y7xnn")
 
-[node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
-gameContainer = NodePath("../../GameContainer")
+[node name="Pathfinding" type="Node2D" parent="Managers"]
+script = ExtResource("7_2g3j7")
 
 [node name="GridContainer" type="Node2D" parent="."]
 
 [node name="GameContainer" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
