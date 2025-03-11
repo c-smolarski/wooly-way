@@ -1,4 +1,5 @@
-﻿using Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries;
+﻿using Com.IsartDigital.WoolyWay.GameObjects;
+using Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
@@ -18,6 +19,8 @@ namespace Com.IsartDigital.WoolyWay
         public ReadOnlyTwoWayDictionary<Tile, GameObject> ObjectDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Vector2I, Tile> IndexDict { get; private set; } = new();
         public ReadOnlyTwoWayDictionary<Tile, Target> IndexTarget { get; private set; } = new();
+        
+        public List<Sheep> SheepList { get; private set; } = new();
 
 
         private static Dictionary<string, Vector2I> Directions = new Dictionary<string, Vector2I>(){
@@ -108,13 +111,16 @@ namespace Com.IsartDigital.WoolyWay
             int lXSizeLevel = pMap.Map[0].Length;
 
             int lSheepCount = 0;
+            int lDogCount = 0;
             
-            List<string> lDirections = pMap.SheepDirection;
+            List<string> lSheepDirections = pMap.SheepDirection;
+            List<string> lDogDirections = pMap.DogDirection;
             
             Grid lGrid = CreateEmpty(new Vector2I(lXSizeLevel, lYSizeLevel), pContainer, pPos);
 
             TwoWayDictionary<Tile, GameObject> lTempDictObj = new();
             TwoWayDictionary<Tile, Target> lTempDictTarget = new();
+            List<Sheep> lSheepList = new();
             PackedScene lPacked;
             GameObject lObj;
             char lChar;
@@ -131,33 +137,41 @@ namespace Com.IsartDigital.WoolyWay
                     switch (lChar)
                     {
                         case LevelChar.SHEEP:
-                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lDirections[lSheepCount]]);
+                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lSheepDirections[lSheepCount]]);
+                            lSheepList.Add((Sheep)lObj);
                             lSheepCount++;
-                            //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
-                            //TODO : Replace default with sheep direction.
                             break;
                         case LevelChar.FAKE_SHEEP:
-                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lDirections[lSheepCount]], false);
+                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lSheepDirections[lSheepCount]], false);
                             lSheepCount++;
-                            //Ici recuperer si la chevre va a gauche droit etc... quand le script existera
-                            //ici envoyer un truc au script chevre comme quoi celle la doit pas pouvoir gagner
-                            //TODO : Replace default with sheep direction.
+                            break;
+                        case LevelChar.DOG:
+                            lObj = Dog.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lDogDirections[lDogCount]]);
+                            lDogCount++;
                             break;
                         case LevelChar.TARGET:
-                            lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
-                            lTempDictTarget.Add(lGrid.IndexDict[new Vector2I(x, y)], (Target)lObj);
+                            lObj = null;
+                            lGrid.IndexDict[new Vector2I(x, y)].SetFlag(true);
                             break;
 
                         default:
                             lObj = GameObject.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)]);
                             break;
                     }
-                    lTempDictObj.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
+                    if (lObj != null) lTempDictObj.Add(lGrid.IndexDict[new Vector2I(x, y)], lObj);
                 }
             }
             lGrid.ObjectDict = lTempDictObj.ToReadOnly();
             lGrid.IndexTarget = lTempDictTarget.ToReadOnly();
+            lGrid.SheepList = lSheepList;
             return lGrid;
+        }
+
+        public void WinCheck()
+        {
+            if (SheepList.Any(lSheep => !lSheep.IsWin)) return;
+            
+            GD.Print("Level Win");
         }
 
         public List<Tile> Neighbors(Tile pCurrentTile)

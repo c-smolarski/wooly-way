@@ -11,13 +11,20 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
     public partial class Sheep : Mobile
     {
         public Vector2I Direction { get; private set; }
+        public bool IsWin => CurrentTile.IsFlag;
         public bool IsUseful;
         [Export] private ClickableArea clickable;
+        
+        private List<Vector2I> directions = new List<Vector2I>(){
+            Vector2I.Down, Vector2I.Left, Vector2I.Up, Vector2I.Right,
+        };
 
         public override void _Ready()
         {
             base._Ready();
             clickable.Clicked += Clicked;
+
+            if (!IsUseful) Modulate = Colors.Aqua;
         }
 
         /// <summary>
@@ -62,8 +69,29 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             Tile lNextTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + pMoveDirection];
             Move(lNextTile);
             base.InitMove(Direction);
+
+            if (!IsUseful) return;
+            if (IsWin) Grid.WinCheck();
         }
 
+        protected override void Move(Tile pTile)
+        {
+            base.Move(pTile);
+            
+            if (!CurrentTile.IsDog) return;
+            Rotate(); 
+        }
+        
+        /// <summary>
+        /// Changes the Direction of the Sheep. Should only be called if Sheep is on a Dog Tile.
+        /// </summary>
+        private void Rotate()
+        {
+            int lRotationIndex = directions.IndexOf(Direction);
+            lRotationIndex++;
+            if (lRotationIndex > directions.Count - 1) lRotationIndex = 0;
+            Direction = directions[lRotationIndex];
+        }
 
         public static Sheep Create(PackedScene pScene, Tile pTile, Vector2I pDirection, bool pUseful = true)
         {
