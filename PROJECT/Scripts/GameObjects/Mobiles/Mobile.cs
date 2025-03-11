@@ -1,4 +1,5 @@
 ﻿using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
+using Com.IsartDigital.WoolyWay.Managers;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
         public virtual void InitMove(Vector2I pMoveDirection)
         {
             if (this is Player && shouldMove) return;
+
+            if (this is Player && !shouldMove) Player.GetInstance().Step();
             Tile lNextTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + pMoveDirection];
 
             if (!lNextTile.IsWalkable(pMoveDirection)) return;

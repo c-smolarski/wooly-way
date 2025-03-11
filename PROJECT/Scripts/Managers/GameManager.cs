@@ -37,8 +37,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
             Instance = this;
             #endregion
             levelManager = LevelManager.GetInstance();
+            HudManager.Instance.currentLevelInfos = LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level1"]);
             HudManager.Instance.CreateHud();
-            LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level1"]);
         }
 
         protected override void Dispose(bool pDisposing)
