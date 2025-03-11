@@ -20,7 +20,6 @@ namespace Com.IsartDigital.WoolyWay.Managers
         private string prefixPar = " Par : ";
         private string prefixSteps = " Steps : ";
 
-        public MapInfo currentLevelInfos;
 
         private VBoxContainer vBoxContainer;
         private Label parLabel;
@@ -28,6 +27,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
         private Label levelLabel;
 
         public static HudManager Instance { get; private set; }
+
+        private GameManager gameManager;
         public override void _Ready()
 		{
             #region Singleton
@@ -42,7 +43,8 @@ namespace Com.IsartDigital.WoolyWay.Managers
         }
         public void CreateHud()
 		{
-			var lHud = NodeCreator.CreateNode(hudScene, canvasLayer);
+            gameManager = GameManager.Instance;
+            var lHud = NodeCreator.CreateNode(hudScene, canvasLayer);
             vBoxContainer = lHud.GetChild<VBoxContainer>(0);
             parLabel = vBoxContainer.GetNode<Label>(pathPar);
             stepsLabel = vBoxContainer.GetNode<Label>(pathSteps);
@@ -50,20 +52,20 @@ namespace Com.IsartDigital.WoolyWay.Managers
             vBoxContainer.Position += new Vector2(0, -150);
             levelLabel.Position += new Vector2(0, -150);
             Tween lTween = CreateTween();
-            GD.Print(currentLevelInfos.Par);
             ActualizeHud();
             lTween.TweenProperty(vBoxContainer, "position", new Vector2(0, 150), 3f).SetTrans(Tween.TransitionType.Back).AsRelative();
             lTween.Parallel().TweenProperty(levelLabel, "position", new Vector2(0, 150), 2.4f).SetTrans(Tween.TransitionType.Back).AsRelative();
+
         }
         public void ActualizeHud()
         {
-            parLabel.Text = prefixPar + currentLevelInfos.Par;
-            levelLabel.Text = currentLevelInfos.LevelName;
+            parLabel.Text = prefixPar + gameManager.currentLevelInfos.Par;
+            levelLabel.Text = gameManager.currentLevelInfos.LevelName.ToString();
         }
         public void ActualizeHud(int pSteps)
         {
-            parLabel.Text = "Par : " + currentLevelInfos.Par;
-            levelLabel.Text = currentLevelInfos.LevelName;
+            parLabel.Text = "Par : " + gameManager.currentLevelInfos.Par;
+            levelLabel.Text = gameManager.currentLevelInfos.LevelName.ToString();
             stepsLabel.Text = prefixSteps + pSteps;
         }
         public override void _Process(double pDelta)
