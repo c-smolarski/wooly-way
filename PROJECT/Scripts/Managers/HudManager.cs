@@ -1,3 +1,4 @@
+using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 using System;
@@ -13,11 +14,18 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] CanvasLayer canvasLayer;
 
         private string pathPar = "Par";
+        private string pathLevel = "Level";
         private string pathSteps = "Steps";
 
+        private string prefixPar = " Par : ";
+        private string prefixSteps = " Steps : ";
+
+        public MapInfo currentLevelInfos;
+
         private VBoxContainer vBoxContainer;
-        private Label par;
-        private Label steps;
+        private Label parLabel;
+        private Label stepsLabel;
+        private Label levelLabel;
 
         public static HudManager Instance { get; private set; }
         public override void _Ready()
@@ -36,14 +44,29 @@ namespace Com.IsartDigital.WoolyWay.Managers
 		{
 			var lHud = NodeCreator.CreateNode(hudScene, canvasLayer);
             vBoxContainer = lHud.GetChild<VBoxContainer>(0);
-            par = vBoxContainer.GetChild<Label>(0);
-            steps = vBoxContainer.GetNode<Label>(pathSteps);
+            parLabel = vBoxContainer.GetNode<Label>(pathPar);
+            stepsLabel = vBoxContainer.GetNode<Label>(pathSteps);
+            levelLabel = lHud.GetNode<Label>(pathLevel);
             vBoxContainer.Position += new Vector2(0, -150);
+            levelLabel.Position += new Vector2(0, -150);
             Tween lTween = CreateTween();
+            GD.Print(currentLevelInfos.Par);
+            ActualizeHud();
             lTween.TweenProperty(vBoxContainer, "position", new Vector2(0, 150), 3f).SetTrans(Tween.TransitionType.Back).AsRelative();
-
+            lTween.Parallel().TweenProperty(levelLabel, "position", new Vector2(0, 150), 2.4f).SetTrans(Tween.TransitionType.Back).AsRelative();
         }
-		public override void _Process(double pDelta)
+        public void ActualizeHud()
+        {
+            parLabel.Text = prefixPar + currentLevelInfos.Par;
+            levelLabel.Text = currentLevelInfos.LevelName;
+        }
+        public void ActualizeHud(int pSteps)
+        {
+            parLabel.Text = "Par : " + currentLevelInfos.Par;
+            levelLabel.Text = currentLevelInfos.LevelName;
+            stepsLabel.Text = prefixSteps + pSteps;
+        }
+        public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
 		}

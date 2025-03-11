@@ -1,4 +1,7 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://cm54fcf0whcc6"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cm54fcf0whcc6"]
+
+[ext_resource type="FontFile" uid="uid://dh6mbm4taom1i" path="res://Resources/Fonts/lumberjack.regular.otf" id="1_piixq"]
 
 [resource]
+font = ExtResource("1_piixq")
 font_size = 33

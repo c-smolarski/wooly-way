@@ -81,7 +81,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
         /// <summary>
         /// Call to generate grid from wanted level
         /// </summary>
-        public void GenerateLevel(MapInfo pMap)
+        public MapInfo GenerateLevel(MapInfo pMap)
         {
             currentLevel?.QueueFree();
             currentLevel = Grid.GenerateFromFile(
@@ -89,6 +89,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
                 GameManager.Instance.GameContainer,
                 GetViewport().GetVisibleRect().Size / 2f
             );
+            return pMap;
         }
 
         public static MapInfo GetLevel(int pWorld, int pLevel)

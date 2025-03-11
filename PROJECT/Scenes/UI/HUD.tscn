@@ -50,3 +50,13 @@ layout_mode = 2
 text = "Par : 0"
 label_settings = ExtResource("2_axtj7")
 language = "en"
+
+[node name="Level" type="Label" parent="."]
+material = SubResource("ShaderMaterial_eqrye")
+layout_mode = 2
+offset_left = 992.0
+offset_top = 35.0
+offset_right = 1113.0
+offset_bottom = 78.0
+label_settings = SubResource("LabelSettings_jyqpm")
+language = "English"

@@ -23,6 +23,7 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
         #endregion
 
         public List<Vector2I> path = new List<Vector2I>();
+        public int steps = 0;
         public override void _Ready()
         {
             #region Singleton
@@ -53,6 +54,11 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             int lIndex = path.Count-1;
             InitMove(path[lIndex] - Grid.IndexDict[Grid.ObjectDict[this]]);
             path.RemoveAt(lIndex);
+        }
+        public void Step()
+        {
+            steps++;
+            HudManager.Instance.ActualizeHud(steps);
         }
         protected override void Dispose(bool pDisposing)
         {
