@@ -21,14 +21,7 @@ namespace Com.IsartDigital.WoolyWay
         public ReadOnlyTwoWayDictionary<Tile, Target> IndexTarget { get; private set; } = new();
         
         public List<Sheep> SheepList { get; private set; } = new();
-
-
-        private static Dictionary<string, Vector2I> Directions = new Dictionary<string, Vector2I>(){
-            {"Left", Vector2I.Left},
-            {"Right", Vector2I.Right},
-            {"Up", Vector2I.Up},
-            {"Down", Vector2I.Down},
-        };
+        
 
         public void ResetTilesPos()
         {
@@ -137,16 +130,16 @@ namespace Com.IsartDigital.WoolyWay
                     switch (lChar)
                     {
                         case LevelChar.SHEEP:
-                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lSheepDirections[lSheepCount]]);
+                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], StringDirection.GetDirection(lSheepDirections[lSheepCount]));
                             lSheepList.Add((Sheep)lObj);
                             lSheepCount++;
                             break;
                         case LevelChar.FAKE_SHEEP:
-                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lSheepDirections[lSheepCount]], false);
+                            lObj = Sheep.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], StringDirection.GetDirection(lSheepDirections[lSheepCount]), false);
                             lSheepCount++;
                             break;
                         case LevelChar.DOG:
-                            lObj = Dog.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], Directions[lDogDirections[lDogCount]]);
+                            lObj = Dog.Create(lPacked, lGrid.IndexDict[new Vector2I(x, y)], StringDirection.GetDirection(lDogDirections[lDogCount]));
                             lDogCount++;
                             break;
                         case LevelChar.TARGET:
