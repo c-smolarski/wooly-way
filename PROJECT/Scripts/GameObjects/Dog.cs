@@ -11,10 +11,16 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
 	{
 		private const string IDLE_BACK = "IdleBack";
 		private const string IDLE_FRONT = "IdleFront";
+		private const string BREATH_TWEEN = "scale";
 		
 		private Vector2I Direction { get; set; }
 		
 		[Export] private AnimatedSprite2D Renderer;
+
+		private Tween tween;
+		private Vector2 tweenValues = new Vector2();
+		private bool breathOut = false;
+		private float breathTarget = .07f;
 
 		
 		public override void _Ready()
@@ -24,9 +30,32 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
 			Tile lTargetTile = Grid.IndexDict[Grid.IndexDict[CurrentTile] + Direction];
 
 			lTargetTile?.SetDog(true);
+
+			tweenValues = new Vector2(breathTarget, Renderer.Scale.X);
+            DogBreath(tweenValues.X);
+
+        }
+
+        private void DogBreath( float pTarget)
+		{
+			tween = CreateTween();
+			tween.TweenProperty(Renderer, BREATH_TWEEN, new Vector2(Renderer.Scale.X, pTarget), 1f);
+            tween.Finished += NextBreath;
+
+
+        }
+
+        private void NextBreath()
+		{
+			breathOut = !breathOut;
+			if (breathOut)
+			{
+				DogBreath(tweenValues.Y);
+				return;
+			}
+            DogBreath(tweenValues.X);
 		}
 
-		
     
 		public static Dog Create(PackedScene pScene, Tile pTile, Vector2I pDirection)
 		{

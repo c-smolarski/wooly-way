@@ -1,25 +1,25 @@
 [
   {
-    "username": "azesqd",
-    "hachedPassword": "11d5f019b9750e143949df141fcde998fc0c256e7fb8abbdafb26659c2bb9393",
-    "passwordSalt": "D2QRDHvDoA46oRfY",
-    "unlockedLevels": [
-      true,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false
-    ],
-    "levelScores": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
+	"username": "azesqd",
+	"hachedPassword": "11d5f019b9750e143949df141fcde998fc0c256e7fb8abbdafb26659c2bb9393",
+	"passwordSalt": "D2QRDHvDoA46oRfY",
+	"unlockedLevels": [
+	  true,
+	  false,
+	  false,
+	  false,
+	  false,
+	  false,
+	  false
+	],
+	"levelScores": [
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
   }
 ]
