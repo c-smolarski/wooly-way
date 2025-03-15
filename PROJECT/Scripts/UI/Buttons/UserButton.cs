@@ -9,13 +9,13 @@ namespace Com.IsartDigital.ProjectName {
 	public partial class UserButton : Button
 	{
         protected PasswordManager passwordManager;
-        protected UserManager userManager;
 
         [Export] protected LineEdit usernameText;
         [Export] protected LineEdit passwordText;
         [Export] protected Label errorMessage;
         [Export] protected AnimationPlayer transition;
 
+        protected DataManager dataManager;
 
         protected string username;
         protected string password;
@@ -27,7 +27,7 @@ namespace Com.IsartDigital.ProjectName {
 		{
             Pressed += OnPressed;
             passwordManager = PasswordManager.GetInstance();
-            userManager = UserManager.GetInstance();
+            dataManager = DataManager.GetInstance();
         }
 
         protected virtual void OnPressed()

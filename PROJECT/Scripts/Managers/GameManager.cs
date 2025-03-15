@@ -1,3 +1,4 @@
+using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 
@@ -21,8 +22,11 @@ namespace Com.IsartDigital.WoolyWay.Managers
         [Export] public PackedScene SheepScene { get; private set; }
         [Export] public PackedScene TargetScene { get; private set; }
         #endregion
+
         MapData mapData = new MapData();
         LevelManager levelManager;
+        public MapInfo currentLevelInfos;
+
         public static GameManager Instance { get; private set; }
 
         public override void _Ready()
@@ -37,7 +41,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
             Instance = this;
             #endregion
             levelManager = LevelManager.GetInstance();
-            HudManager.Instance.currentLevelInfos = LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level1"]);
+            currentLevelInfos = LevelManager.GetInstance().GenerateLevel(LevelManager.MapData.Worlds["World1"]["Level1"]);
             HudManager.Instance.CreateHud();
         }
 

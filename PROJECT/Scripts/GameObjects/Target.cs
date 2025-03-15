@@ -26,13 +26,16 @@ public partial class Target : GameObject
     private void Clicked()
     {
         Player lPlayer = Player.GetInstance();
+
         Vector2I lTargetPos = Grid.IndexDict[CurrentTile];
         Vector2I LStartPos = Grid.IndexDict[lPlayer.CurrentTile];
+
         List<Vector2I> lPath = pathfinding.GetPath(LStartPos.X, LStartPos.Y, lTargetPos.X, lTargetPos.Y);
+
         if (lPath.Count == 0) return;
+
         lPath.Remove(lPath.Last());
         lPlayer.path = lPath;
         lPlayer.MoveStepByStep();
-
     }
 }

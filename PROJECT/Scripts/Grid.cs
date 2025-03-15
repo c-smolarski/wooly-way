@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Com.IsartDigital.WoolyWay.GameObjects.Mobiles;
 using Com.IsartDigital.WoolyWay.Utils.Data;
 using System.Linq;
+using Com.IsartDigital.WoolyWay.Managers;
 
 // Author : Alissa DELATTRE & Camille SMOLARSKI
 
@@ -170,7 +171,8 @@ namespace Com.IsartDigital.WoolyWay
         public void WinCheck()
         {
             if (SheepList.Any(lSheep => !lSheep.IsWin)) return;
-            
+            LevelManager.GetInstance().StepToScore(Player.GetInstance().steps);
+
             GD.Print("Level Win");
         }
 
