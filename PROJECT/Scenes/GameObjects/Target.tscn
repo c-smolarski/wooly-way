@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://jjio4iqohw1"]
+[gd_scene load_steps=5 format=3 uid="uid://jjio4iqohw1"]
 
-[ext_resource type="Script" path="res://Scripts/GameObject.cs" id="1_a456q"]
+[ext_resource type="Script" path="res://Scripts/GameObjects/Target.cs" id="1_nbbrs"]
 [ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_pa2o5"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="3_p4jjd"]
 
-[node name="Target" type="Node2D"]
-script = ExtResource("1_a456q")
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlixl"]
+radius = 31.0161
+
+[node name="Target" type="Node2D" node_paths=PackedStringArray("clickable")]
+script = ExtResource("1_nbbrs")
+clickable = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_pa2o5")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_p4jjd")
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dlixl")

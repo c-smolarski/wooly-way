@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://5lilnhwf5nb8"]
 
-[ext_resource type="Script" path="res://Scripts/GameObject.cs" id="1_7yxt0"]
-[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_mixu5"]
+[ext_resource type="Script" path="res://Scripts/GameObjects/Dog.cs" id="1_gcqst"]
+[ext_resource type="Texture2D" uid="uid://cbo6wi4mk1nvq" path="res://Assets/chien1.png" id="2_xd1ux"]
 
 [node name="Dog" type="Node2D"]
-script = ExtResource("1_7yxt0")
+script = ExtResource("1_gcqst")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.921569, 1, 0.454902, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_mixu5")
+position = Vector2(1, -27)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_xd1ux")
+flip_h = true

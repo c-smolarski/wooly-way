@@ -12,7 +12,7 @@ namespace Com.IsartDigital.WoolyWay.Assets
         [Export] private Sprite2D trunk;
         [Export] private Sprite2D[] leaves;
 
-        protected override float AnimStepDuration => 0.2f;
+        protected override float AnimStepDuration => 0.25f;
         private Vector2 TrunkBouncyScale => trunk.Scale * new Vector2(0.5f, 1.5f);
 
         private static readonly Vector2 trunkHiddenScale = Vector2.Right;

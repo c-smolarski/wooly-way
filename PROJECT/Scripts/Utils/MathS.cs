@@ -7,11 +7,10 @@ namespace Com.IsartDigital.WoolyWay.Utils
 {
     public static class MathS
     {
-        private static Matrix2x2 IsoMatrix => new Matrix2x2(new Vector2(1, 0.5f), new Vector2(-1, 0.5f));
+        public static Matrix2x2 IsoMatrix => new Matrix2x2(new Vector2(0.5f, 0.25f), new Vector2(-0.5f, 0.25f));
 
         public static Vector2 PositionToIsoPosition(Vector2 pPos)
         {
-            pPos = pPos * 0.5f;
             return new Vector2(
                 pPos.X * IsoMatrix.A.X + pPos.Y * IsoMatrix.B.X,
                 pPos.X * IsoMatrix.A.Y + pPos.Y * IsoMatrix.B.Y);
@@ -24,10 +23,9 @@ namespace Com.IsartDigital.WoolyWay.Utils
         /// <returns>A world position according to a grid index and the given tile size</returns>
         public static Vector2 IndexToPosition(Vector2 pTileSize, int pIndexX, int pIndexY)
         {
-            Vector2 lScaledSize = pTileSize * 0.5f;
             return new Vector2(
-                lScaledSize.X * pIndexX * IsoMatrix.A.X + lScaledSize.Y * pIndexY * IsoMatrix.B.X,
-                lScaledSize.X * pIndexX * IsoMatrix.A.Y + lScaledSize.Y * pIndexY * IsoMatrix.B.Y);
+                pTileSize.X * pIndexX * IsoMatrix.A.X + pTileSize.Y * pIndexY * IsoMatrix.B.X,
+                pTileSize.X * pIndexX * IsoMatrix.A.Y + pTileSize.Y * pIndexY * IsoMatrix.B.Y);
         }
 
         /// <summary>

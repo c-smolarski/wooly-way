@@ -39,5 +39,12 @@ namespace Com.IsartDigital.WoolyWay.Utils
             float lBY = pA.B.X * pB.A.Y + pB.B.Y * pB.B.Y;
             return new Matrix2x2(lAX, lAY, lBX, lBY);
         }
+        public static Vector2 operator *(Matrix2x2 pM, Vector2 pV)
+        {
+            return new Vector2(
+                pV.X * pM.A.X + pV.Y * pM.B.X, 
+                pV.X * pM.A.Y + pV.Y * pM.B.Y
+                );
+        }
     }
 }

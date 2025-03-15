@@ -1,6 +1,5 @@
 ﻿using Com.IsartDigital.WoolyWay.Managers;
 using Com.IsartDigital.WoolyWay.Utils;
-using Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.RotatingElements;
 using Godot;
 using System;
 
@@ -8,78 +7,40 @@ using System;
 
 namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables
 {
-    //Clickable Area displaying a level.
     public partial class LevelButton : ClickableLevelSelectorElement
     {
-        [Export] public LevelButtonDisplayer Displayer { get; private set; }
-        [ExportGroup("On focus")]
-        [Export] private float sinusoidFreq = 2.5f;
-        [Export] private float sinusoidIntensity = 0.45f;
+        [Signal] public delegate void FocusedEventHandler(bool pFocused);
+
+        [Export] private LevelSelector mountain;
+        [Export(PropertyHint.Range, "1, 100, 1")] public int LevelNumber { get; private set; } = 1;
+
+        private const int SHAPE_POINT_NUMBER = 4;
 
         public Grid LevelGrid { get; private set; }
 
-        private float elapsedTime;
-        private bool focused;
         private MapInfo levelInfo;
-        private ConvexPolygonShape2D shape;
 
         public override void _Ready()
         {
             base._Ready();
-            levelInfo = LevelManager.GetLevel(Displayer.Mountain.WorldNumber, Displayer.LevelNumber);
-            Displayer.Focused += OnFocusChanged;
+            levelInfo = LevelManager.GetLevel(mountain.WorldNumber, LevelNumber);
             GridInit();
-        }
-
-        public override void _Process(double pDelta)
-        {
-            base._Process(pDelta);
-            float lDelta = (float)pDelta;
-            if (focused)
-                FocusedAnim(lDelta);
         }
 
         private void GridInit()
         {
             LevelGrid = Grid.GenerateFromFile(levelInfo, this);
 
-            Vector2 lSize = LevelGrid.PixelSize * 0.5f;
-            shape = (ConvexPolygonShape2D)MouseDetector.Collider.Shape;
-            shape.Points = new Vector2[4]{
-                new Vector2(lSize.X, 0),
-                new Vector2(0, lSize.Y),
-                new Vector2(-lSize.X, 0),
-                new Vector2(0, -lSize.Y)
-            };
-        }
+            Vector2 lSize = Vector2.One * Mathf.Max(LevelGrid.PixelSize.X, LevelGrid.PixelSize.Y) * 0.5f;
+            Vector2[] lPoints = new Vector2[4];
 
-        private void OnFocusChanged(bool pFocus)
-        {
-            ResetFocusAnim();
-            focused = pFocus;
-        }
-
-        //Little wavy animation when level is displayed.
-        private void FocusedAnim(float pDelta)
-        {
-            elapsedTime += pDelta;
-            float lSinusoid, lMaxValue = MathF.Max(LevelGrid.Size.X, LevelGrid.Size.Y) * 2f - 1;
-            for (int i = 0; i < lMaxValue; i++)
+            for (int i = 0; i < SHAPE_POINT_NUMBER; i++)
             {
-                lSinusoid = elapsedTime + (i / lMaxValue);
-                foreach (Tile lTile in LevelGrid.GetTilesDiagonally(DiagonalDirection.TOP_RIGHT, i))
-                {
-                    lTile.Position += Vector2.Down * Mathf.Sin(lSinusoid * sinusoidFreq) * sinusoidIntensity;
-                    if (LevelGrid.ObjectDict.Contains(lTile))
-                        LevelGrid.ObjectDict[lTile].Position = lTile.Position;
-                }
+                lPoints[i] = MathS.IsoMatrix * lSize;
+                lSize = lSize.Rotated(MathF.PI * 0.5f);
             }
-        }
 
-        private void ResetFocusAnim()
-        {
-            elapsedTime = default;
-            LevelGrid.ResetTilesPos();
+            ((ConvexPolygonShape2D)MouseDetector.Collider.Shape).Points = lPoints;
         }
     }
 }

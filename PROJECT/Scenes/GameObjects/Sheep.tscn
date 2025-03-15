@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlvqqrrxk1qyg"]
+[gd_scene load_steps=5 format=3 uid="uid://dlvqqrrxk1qyg"]
 
 [ext_resource type="Script" path="res://Scripts/GameObjects/Mobiles/Sheep.cs" id="1_c8tpx"]
-[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_d31kq"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="2_jtd8o"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="3_fakdr"]
 
-[node name="Sheep" type="Node2D"]
-scale = Vector2(0.25, 0.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ln817"]
+size = Vector2(128, 128)
+
+[node name="Sheep" type="Node2D" node_paths=PackedStringArray("clickable")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_c8tpx")
+clickable = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.219608, 1, 1)
-texture = ExtResource("2_d31kq")
+texture = ExtResource("2_jtd8o")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_fakdr")
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ln817")

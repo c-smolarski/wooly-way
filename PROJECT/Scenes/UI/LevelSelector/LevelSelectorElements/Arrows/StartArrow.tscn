@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://brtum3r5s3kl2"]
+
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/Clickables/SelectorArrows/StartSelectorArrow.cs" id="1_ktt36"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="2_dilaw"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_irfrd"]
+points = PackedVector2Array(-32, -23, -32, 28, 32, 6, 32, -2)
+
+[node name="StartArrow" type="Node2D"]
+script = ExtResource("1_ktt36")
+
+[node name="outline" type="Polygon2D" parent="."]
+position = Vector2(10, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-32, -23, -32, 28, 32, 6, 32, -2)
+
+[node name="shadow" type="Polygon2D" parent="."]
+color = Color(0.662452, 0.662452, 0.662452, 1)
+offset = Vector2(10, 0)
+polygon = PackedVector2Array(-30, -20, -30, 25, 30, 5, 30, 0)
+
+[node name="polygon" type="Polygon2D" parent="."]
+offset = Vector2(10, 0)
+polygon = PackedVector2Array(-30, -20, -30, 20, 30, 0)
+
+[node name="mouseDetector" type="Area2D" parent="."]
+script = ExtResource("2_dilaw")
+
+[node name="collider" type="CollisionShape2D" parent="mouseDetector"]
+position = Vector2(10, 0)
+shape = SubResource("ConvexPolygonShape2D_irfrd")

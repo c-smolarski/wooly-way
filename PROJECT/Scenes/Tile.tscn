@@ -1,28 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://sloiiv0qqxq0"]
+[gd_scene load_steps=5 format=3 uid="uid://sloiiv0qqxq0"]
 
 [ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_ks74t"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="2_qkgf3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_umbbd"]
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[node name="Tile" type="Polygon2D"]
-color = Color(0, 1, 0.329412, 1)
-offset = Vector2(-40, -20)
-polygon = PackedVector2Array(40, 0, 80, 20, 40, 40, 0, 20)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ksau1"]
+
+[node name="Tile" type="Node2D" node_paths=PackedStringArray("polygonContainer", "clickable", "debug")]
 script = ExtResource("1_ks74t")
+polygonContainer = NodePath("polygonContainer")
+clickable = NodePath("Area2D")
+debug = NodePath("DebugLabel")
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-use_parent_material = true
-color = Color(0, 0.556863, 0, 1)
-offset = Vector2(-40, -20)
-polygon = PackedVector2Array(80, 20, 40, 40, 40, 80, 80, 60)
+[node name="polygonContainer" type="Node2D" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="bottomright" type="Polygon2D" parent="polygonContainer"]
 use_parent_material = true
-color = Color(0, 0.415686, 0, 1)
-offset = Vector2(-40, -20)
-polygon = PackedVector2Array(0, 20, 40, 40, 40, 80, 0, 60)
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="bottomleft" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+rotation = 3.14159
+scale = Vector2(1, -1)
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="topright" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+scale = Vector2(1, -1)
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="topleft" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+antialiased = true
 
 [node name="DebugLabel" type="Label" parent="."]
 visible = false
@@ -33,3 +50,10 @@ offset_bottom = 21.0
 text = "0
 "
 label_settings = SubResource("LabelSettings_umbbd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_qkgf3")
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("ConvexPolygonShape2D_ksau1")

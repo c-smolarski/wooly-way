@@ -7,6 +7,7 @@ namespace Com.IsartDigital.WoolyWay.Managers
 {
     public partial class SignalBus : Node
     {
+        [Signal] public delegate void UnlockLevelEventHandler(int pLevelNumber);
         [Signal] public delegate void DisplayLevelButtonEventHandler(int pLevelNumber);
 
         public static SignalBus Instance { get; private set; }

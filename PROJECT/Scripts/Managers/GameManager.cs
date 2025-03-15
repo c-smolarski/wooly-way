@@ -1,3 +1,4 @@
+using Com.IsartDigital.WoolyWay.Utils;
 using Godot;
 
 // Author : Camille Smolarski
@@ -34,7 +35,6 @@ namespace Com.IsartDigital.WoolyWay.Managers
             }
             Instance = this;
             #endregion
-            HudManager.Instance.CreateHud();
         }
 
         protected override void Dispose(bool pDisposing)

@@ -9,7 +9,7 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
     /// <summary>
     /// Base class for all LevelSelectorElement that contain a ClickableArea.
     /// </summary>
-    public abstract partial class ClickableLevelSelectorElement : LevelSelectorElement
+    public abstract partial class ClickableLevelSelectorElement : Node2D
     {
         protected ClickableArea MouseDetector { get; private set; }
 
@@ -24,12 +24,11 @@ namespace Com.IsartDigital.WoolyWay.UI.LevelSelectorElements
 
         protected virtual void OnClick(){ }
 
-        protected override void ChangeVisibilty(bool pVisible)
+        protected void ChangeVisibilty(bool pVisible)
         {
             if (MouseDetector.IsHovered && !pVisible)
                 MouseDetector.SetUnhovered();
             MouseDetector.Collider.SetDeferred(nameof(MouseDetector.Collider.Disabled), !pVisible);
-            base.ChangeVisibilty(pVisible);
         }
     }
 }
