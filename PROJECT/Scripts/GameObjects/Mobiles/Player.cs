@@ -40,6 +40,13 @@ namespace Com.IsartDigital.WoolyWay.GameObjects.Mobiles
             InputManager.Instance.MoveInputPressed += InitMove;
         }
 
+        public override void InitMove(Vector2I pMoveDirection)
+        {
+            base.InitMove(pMoveDirection);
+            
+            this.Direction = pMoveDirection;
+        }
+
         public override void _Process(double delta)
         {
             base._Process(delta);

@@ -10,6 +10,9 @@ namespace Com.IsartDigital.WoolyWay.GameObjects
 {
     public abstract partial class Mobile : GameObject
     {
+
+        protected Vector2I Direction { get; set; }
+        
         /// <summary>
         /// Checks if current object can move in the specified direction by verifying if the next tile is walkable.
         /// If the next tile contains a sheep and is not blocked by another object, it moves it out of the way.
