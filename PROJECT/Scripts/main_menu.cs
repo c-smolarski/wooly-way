@@ -3,22 +3,26 @@ using System;
 
 // Author : Julien Lim
 
-namespace Com.IsartDigital.ProjectName
+namespace Com.IsartDigital.WoolyWay
 {
 
     public partial class main_menu : Control
     {
-        private Control Credits;
+        [Export] private Control Credits;
+        [Export] private Control Settings;
+        [Export] private Button StartButton;
+        [Export] private Button SettingsButton;
+        [Export] private Button CreditsButton;
+        [Export] private Button QuitButton;
+
         public override void _Ready()
         {
-            GetNode<Button>("VBoxContainer/StartButton").Pressed += OnStartButtonPressed;
-            GetNode<Button>("VBoxContainer/SettingsButton").Pressed += OnSettingsButtonPressed;
-            GetNode<Button>("VBoxContainer/CreditsButton").Pressed += OnCreditsButtonPressed;
-            GetNode<Button>("VBoxContainer/QuitButton").Pressed += OnQuitButtonPressed;
-            Credits = GetNode<Control>("Credits");
-            
+            CreditsButton.Pressed += OnCreditsButtonPressed;
+            SettingsButton.Pressed += OnSettingsButtonPressed;
+            StartButton.Pressed += OnStartButtonPressed;
+            QuitButton.Pressed += OnQuitButtonPressed;
         }
-
+        
         private void OnStartButtonPressed()
         {
             GD.Print("Start button pressed");
@@ -27,6 +31,7 @@ namespace Com.IsartDigital.ProjectName
         private void OnSettingsButtonPressed()
         {
             GD.Print("Settings button pressed");
+            Settings.Show();
         }
 
         private void OnCreditsButtonPressed()

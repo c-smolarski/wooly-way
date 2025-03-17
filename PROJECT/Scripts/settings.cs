@@ -3,33 +3,31 @@ using System;
 
 // Author : Julien Lim
 
-namespace Com.IsartDigital.ProjectName {
+namespace Com.IsartDigital.WoolyWay 
+{
 	
 	public partial class settings : Control
 	{
-		private Label MusicLabel;
-		private Label LanguageLabel;
-		private Button QuitButton;
-		private Button BackButton;
-        private Button EnglishButton;
-        private Button FrenchButton;
-        private HBoxContainer HBoxContainer;
+        [Export] private Label MusicLabel;
+        [Export] private Label LanguageLabel;
+        [Export] private Button QuitButton;
+        [Export] private Button BackButton;
+        [Export] private Button EnglishButton;
+        [Export] private Button FrenchButton;
         public override void _Ready()
 		{
-			MusicLabel = GetNode<Label>("VBoxContainer2/MusicLabel");
-            LanguageLabel = GetNode<Label>("VBoxContainer2/LanguageLabel");
-			QuitButton = GetNode<Button>("HBoxContainer2/QuitButton");
-			BackButton = GetNode<Button>("HBoxContainer2/BackButton");
-            EnglishButton = GetNode<Button>("HBoxContainer/EnglishButton");
-            FrenchButton = GetNode<Button>("HBoxContainer/FrenchButton");
-            HBoxContainer = GetNode<HBoxContainer>("HBoxContainer2");
-
+            BackButton.Pressed += BackButton_Pressed;
 			QuitButton.Pressed += OnQuitButtonPressed;
             EnglishButton.Pressed += OnEnglishButtonPressed;
             FrenchButton.Pressed += OnFrenchButtonPressed;
 
             TranslationServer.SetLocale("en");
             updateUI();
+        }
+
+        private void BackButton_Pressed()
+        {
+            QueueFree();
         }
 
         private void OnEnglishButtonPressed()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://crybx52snntvn"]
+[gd_scene load_steps=6 format=3 uid="uid://crybx52snntvn"]
 
+[ext_resource type="Script" path="res://Scenes/credits.cs" id="1_65pq7"]
 [ext_resource type="Texture2D" uid="uid://x0k4fijyj10u" path="res://Assets/test/4ksq1lo50tr51.png" id="1_mbvqb"]
 [ext_resource type="FontFile" uid="uid://cxtbu58rr8dns" path="res://Fonts/PatrickHand-Regular.ttf" id="2_sdjgo"]
 
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_65pq7")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
