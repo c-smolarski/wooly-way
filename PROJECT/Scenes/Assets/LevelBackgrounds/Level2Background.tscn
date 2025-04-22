@@ -35,7 +35,7 @@ shader_parameter/wind_speed = 0.09
 shader_parameter/wind_strength = 0.2
 shader_parameter/wind_angle_deg = -135.0
 shader_parameter/player_pos = Vector2(40, 40)
-shader_parameter/player_radius = 25.0
+shader_parameter/player_radius = 9.5
 shader_parameter/player_radius_blend = 40.0
 shader_parameter/size = 0.2
 shader_parameter/alpha = 1.0
@@ -54,7 +54,11 @@ shader_parameter/polygon_size = 0
 assetsContainers = [NodePath("Trees"), NodePath("assets"), NodePath("flowers"), NodePath("Lanterns")]
 grassList = [NodePath("Grass/GrassSystem/Grass")]
 
+[node name="Sprite2D" parent="." index="0"]
+z_index = -60
+
 [node name="Grass" type="Node2D" parent="." index="1"]
+z_index = -60
 
 [node name="GrassSystem" type="Node2D" parent="Grass" index="0"]
 
@@ -73,6 +77,7 @@ color = Color(1, 1, 1, 0.196078)
 polygon = PackedVector2Array(90, -592, 345, -545, 545, -449, 683, -312, 784, -175, 823, -33, 809, 129, 769, 269, 637, 341, 443, 361, 173, 401, -139, 407, -391, 361, -601, 295, -721, 120, -740, -201, -635, -411, -504, -539, -315, -597, -100, -582, -9, -814, -1142, -815, -1163, 852, 1431, 901, 1506, -477, 1249, -911, -9, -814, -100, -582)
 
 [node name="Trees" type="Node2D" parent="." index="2"]
+z_index = -60
 
 [node name="TreeG" parent="Trees" index="0" instance=ExtResource("7_m82x4")]
 position = Vector2(690, 114)
@@ -83,6 +88,7 @@ position = Vector2(-465, -266)
 scale = Vector2(0.24, 0.24)
 
 [node name="assets" type="Node2D" parent="." index="3"]
+z_index = -60
 
 [node name="YellowBale2" type="Sprite2D" parent="assets" index="0"]
 position = Vector2(54, -395)

@@ -150,7 +150,7 @@ layout_mode = 2
 size_flags_vertical = 5
 theme_override_fonts/font = ExtResource("3_2eq58")
 theme_override_font_sizes/font_size = 80
-text = "ANTHOINE Matthieu"
+text = "ANTHOINE Mathieu"
 label_settings = SubResource("LabelSettings_e4upw")
 
 [node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" index="2"]
@@ -233,7 +233,6 @@ layout_mode = 2
 size_flags_vertical = 5
 theme_override_fonts/font = ExtResource("3_2eq58")
 theme_override_font_sizes/font_size = 80
-text = "GARNAULT luka"
 label_settings = SubResource("LabelSettings_nn47q")
 
 [node name="Label4" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" index="5"]
@@ -241,6 +240,7 @@ layout_mode = 2
 size_flags_vertical = 5
 theme_override_fonts/font = ExtResource("3_2eq58")
 theme_override_font_sizes/font_size = 80
+text = "GARNAULT Luka"
 label_settings = SubResource("LabelSettings_cj4hp")
 
 [node name="Label5" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" index="6"]

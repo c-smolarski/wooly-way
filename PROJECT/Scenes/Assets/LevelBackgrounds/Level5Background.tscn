@@ -32,14 +32,14 @@ noise = SubResource("FastNoiseLite_0yw7g")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfnfe"]
 shader = ExtResource("19_dhhx8")
 shader_parameter/frames = 4
-shader_parameter/top_color = Color(1, 1, 1, 1)
-shader_parameter/bottom_color = Color(0.338401, 0.326058, 0.363005, 1)
+shader_parameter/top_color = Color(0.950661, 0.987366, 0.936582, 1)
+shader_parameter/bottom_color = Color(0.328343, 0.394942, 0.225192, 1)
 shader_parameter/wind_scale = 1200.0
 shader_parameter/wind_speed = 0.05
 shader_parameter/wind_strength = 0.2
 shader_parameter/wind_angle_deg = -135.0
 shader_parameter/player_pos = Vector2(40, 40)
-shader_parameter/player_radius = 25.0
+shader_parameter/player_radius = 9.5
 shader_parameter/player_radius_blend = 40.0
 shader_parameter/size = 0.2
 shader_parameter/alpha = 1.0
