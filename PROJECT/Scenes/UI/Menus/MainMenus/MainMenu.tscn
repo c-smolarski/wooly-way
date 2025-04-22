@@ -1,0 +1,281 @@
+[gd_scene load_steps=16 format=3 uid="uid://b7vmo0fe06kby"]
+
+[ext_resource type="PackedScene" uid="uid://bgo65s6xvkjhe" path="res://Scenes/UI/Menus/MainMenus/AbstractMenu.tscn" id="1_60wq1"]
+[ext_resource type="Texture2D" uid="uid://d3w88kot8mwuy" path="res://Assets/GameObjects/Dog/dog2.png" id="2_01s78"]
+[ext_resource type="AudioStream" uid="uid://cqmiysoc5ay4y" path="res://Sounds/Musics/MainMenu2.ogg" id="2_g0ty6"]
+[ext_resource type="Texture2D" uid="uid://bujljp6iml7o0" path="res://Assets/GameObjects/Sheep/Sheep2.png" id="2_l5vjm"]
+[ext_resource type="PackedScene" uid="uid://ctcfmrf2jwvem" path="res://Scenes/UI/Buttons/MenuButton.tscn" id="3_bt3kl"]
+[ext_resource type="Texture2D" uid="uid://d3xj13w1jmtxy" path="res://Assets/GameObjects/Player/player2.png" id="3_ca66d"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/QuitButton.cs" id="4_6iimw"]
+[ext_resource type="Script" path="res://Scenes/UI/Buttons/DogMenu.cs" id="4_l43om"]
+[ext_resource type="Shader" path="res://Scenes/UI/Menus/MainMenus/TitleScreen.gdshader" id="4_sgaou"]
+[ext_resource type="Script" path="res://Scenes/UI/Buttons/SheepMenu.cs" id="4_snv6f"]
+[ext_resource type="FontFile" uid="uid://p7bw16ifwqdo" path="res://Resources/Fonts/SpinHead-6dPM.ttf" id="5_qhlvk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymlfr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nh4qi"]
+shader = ExtResource("4_sgaou")
+shader_parameter/normal_offset = 2.0
+shader_parameter/time_influence = 6.0
+shader_parameter/y_div = 2.87
+
+[sub_resource type="LabelSettings" id="LabelSettings_te60u"]
+font = ExtResource("5_qhlvk")
+font_size = 250
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlovg"]
+
+[node name="MainMenu" instance=ExtResource("1_60wq1")]
+musicToPlay = ExtResource("2_g0ty6")
+
+[node name="Assets" parent="." index="0"]
+mouse_filter = 1
+
+[node name="Sun" parent="Assets" index="4"]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+
+[node name="Panel" type="Panel" parent="Assets" index="6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -850.0
+offset_top = -500.0
+offset_right = 850.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(847, 725)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ymlfr")
+
+[node name="Dog" type="TextureButton" parent="Assets/Panel" index="0" node_paths=PackedStringArray("barkPolygonContainer")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -269.0
+offset_right = 336.0
+offset_bottom = 617.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(332.41, 746)
+mouse_filter = 1
+texture_normal = ExtResource("2_01s78")
+script = ExtResource("4_l43om")
+barkPolygonContainer = NodePath("barkPolygons")
+
+[node name="barkPolygons" type="Node2D" parent="Assets/Panel/Dog" index="0"]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+position = Vector2(-108.46, 252.43)
+rotation = -3.17126
+scale = Vector2(4.295, 4.295)
+
+[node name="Polygon2D" type="Polygon2D" parent="Assets/Panel/Dog/barkPolygons" index="0"]
+position = Vector2(25, 0)
+scale = Vector2(0.783784, 1)
+color = Color(0, 0, 0, 1)
+offset = Vector2(-62, 27.5)
+polygon = PackedVector2Array(44, -29, 44, -26, 81, -26, 81, -29)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Assets/Panel/Dog/barkPolygons" index="1"]
+position = Vector2(21, -17)
+rotation = -0.523599
+scale = Vector2(0.783784, 1)
+color = Color(0, 0, 0, 1)
+offset = Vector2(-62, 27.5)
+polygon = PackedVector2Array(44, -29, 44, -26, 81, -26, 81, -29)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Assets/Panel/Dog/barkPolygons" index="2"]
+position = Vector2(21, 17)
+rotation = 0.523599
+scale = Vector2(0.783784, 1)
+color = Color(0, 0, 0, 1)
+offset = Vector2(-62, 27.5)
+polygon = PackedVector2Array(44, -29, 44, -26, 81, -26, 81, -29)
+
+[node name="Sheep" type="TextureButton" parent="Assets/Panel" index="1" node_paths=PackedStringArray("barkPolygonContainer")]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 601.0
+offset_right = 1381.0
+offset_bottom = 1201.0
+pivot_offset = Vector2(297, 310)
+texture_normal = ExtResource("2_l5vjm")
+flip_h = true
+script = ExtResource("4_snv6f")
+barkPolygonContainer = NodePath("barkPolygons")
+
+[node name="barkPolygons" type="Node2D" parent="Assets/Panel/Sheep" index="0"]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+position = Vector2(577, 297)
+rotation = -0.307178
+scale = Vector2(4.295, 4.295)
+
+[node name="Polygon2D" type="Polygon2D" parent="Assets/Panel/Sheep/barkPolygons" index="0"]
+position = Vector2(25, 0)
+scale = Vector2(0.783784, 1)
+color = Color(0, 0, 0, 1)
+offset = Vector2(-62, 27.5)
+polygon = PackedVector2Array(44, -29, 44, -26, 81, -26, 81, -29)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Assets/Panel/Sheep/barkPolygons" index="1"]
+position = Vector2(21, -17)
+rotation = -0.523599
+scale = Vector2(0.783784, 1)
+color = Color(0, 0, 0, 1)
+offset = Vector2(-62, 27.5)
+polygon = PackedVector2Array(44, -29, 44, -26, 81, -26, 81, -29)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Assets/Panel/Sheep/barkPolygons" index="2"]
+position = Vector2(21, 17)
+rotation = 0.523599
+scale = Vector2(0.783784, 1)
+color = Color(0, 0, 0, 1)
+offset = Vector2(-62, 27.5)
+polygon = PackedVector2Array(44, -29, 44, -26, 81, -26, 81, -29)
+
+[node name="Player" type="TextureRect" parent="Assets/Panel" index="2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -729.0
+offset_top = -411.0
+offset_right = 1319.0
+offset_bottom = 1637.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+mouse_filter = 2
+texture = ExtResource("3_ca66d")
+
+[node name="Title" type="Label" parent="." index="1"]
+material = SubResource("ShaderMaterial_nh4qi")
+layout_mode = 0
+offset_left = 259.0
+offset_top = -10.0
+offset_right = 1592.0
+offset_bottom = 559.0
+text = "Wooly Way"
+label_settings = SubResource("LabelSettings_te60u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Panel" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 329.0
+offset_top = -279.0
+offset_right = 1259.0
+offset_bottom = 521.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(465, 400)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nlovg")
+
+[node name="StartButton" parent="Buttons" index="0" node_paths=PackedStringArray("Transition") instance=ExtResource("3_bt3kl")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -466.0
+offset_right = 815.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BTN_START"
+pathSceneToLoad = "res://Scenes/Main.tscn"
+Transition = NodePath("../../Transition")
+
+[node name="Leaderboard" parent="Buttons" index="1" node_paths=PackedStringArray("Transition") instance=ExtResource("3_bt3kl")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -351.0
+offset_right = 815.0
+offset_bottom = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BTN_LEADERBOARD"
+pathSceneToLoad = "res://Scenes/UI/Menus/LeaderBoard.tscn"
+Transition = NodePath("../../Transition")
+
+[node name="SettingsButton" parent="Buttons" index="2" node_paths=PackedStringArray("Transition") instance=ExtResource("3_bt3kl")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -236.0
+offset_right = 815.0
+offset_bottom = 464.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BTN_SETTINGS"
+pathSceneToLoad = "res://Scenes/UI/Menus/MainMenus/SettingsMenu.tscn"
+Transition = NodePath("../../Transition")
+
+[node name="CreditsButton" parent="Buttons" index="3" node_paths=PackedStringArray("Transition") instance=ExtResource("3_bt3kl")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -121.0
+offset_right = 815.0
+offset_bottom = 579.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BTN_CREDITS"
+pathSceneToLoad = "res://Scenes/UI/Menus/MainMenus/CreditsMenu.tscn"
+Transition = NodePath("../../Transition")
+
+[node name="QuitButton" parent="Buttons" index="4" instance=ExtResource("3_bt3kl")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -6.0
+offset_right = 815.0
+offset_bottom = 694.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BTN_QUIT"
+script = ExtResource("4_6iimw")
+
+[node name="ResolutionRescaler" parent="." index="5" node_paths=PackedStringArray("targets")]
+targets = [NodePath("../Title"), NodePath("../Buttons"), NodePath("../Assets/Panel")]

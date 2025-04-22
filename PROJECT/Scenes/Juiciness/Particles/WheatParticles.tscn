@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://drk5crp16g1nb"]
+
+[ext_resource type="Script" path="res://Scripts/Juiciness/Grass.cs" id="1_087g2"]
+[ext_resource type="Shader" uid="uid://co6k524tk2tp0" path="res://WheatCanvasShader.tres" id="2_p5g2w"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="3_3boit"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="4_3c8fy"]
+[ext_resource type="Shader" uid="uid://dh62111ge71s2" path="res://Resources/Particles/WheatParticleSHader.tres" id="5_kh7bi"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="6_np5yu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yw7g"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cn62x"]
+seamless = true
+noise = SubResource("FastNoiseLite_0yw7g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a1ef"]
+shader = ExtResource("2_p5g2w")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.866667, 0.647059, 0.25098, 1)
+shader_parameter/bottom_color = Color(0.198306, 0.135127, 0.0204018, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.09
+shader_parameter/wind_strength = 0.2
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("4_3c8fy")
+shader_parameter/random_noise = ExtResource("3_3boit")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_cn62x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v05j"]
+shader = ExtResource("5_kh7bi")
+shader_parameter/rows = 750.0
+shader_parameter/spacing = 9.0
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Wheat" type="Node2D" node_paths=PackedStringArray("grassParticles")]
+script = ExtResource("1_087g2")
+grassParticles = NodePath("WheatParticles")
+
+[node name="WheatParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8a1ef")
+amount = 400000
+process_material = SubResource("ShaderMaterial_6v05j")
+texture = ExtResource("6_np5yu")
+explosiveness = 1.0
+fixed_fps = 0
+visibility_rect = Rect2(-5000, -5000, 10000, 10000)
+draw_order = 0

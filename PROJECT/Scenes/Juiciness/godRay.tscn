@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dot1sq8wff5mg"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/Godray.gdshader" id="1_4oedm"]
+
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pb57"]
+shader = ExtResource("1_4oedm")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.245
+shader_parameter/spread = 0.267
+shader_parameter/cutoff = 0.61
+shader_parameter/falloff = 0.01
+shader_parameter/edge_fade = 0.7
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/seed = 5.0
+
+[node name="GodRay" type="ColorRect"]
+material = SubResource("ShaderMaterial_4pb57")
+offset_left = 207.0
+offset_top = -62.0
+offset_right = 1236.0
+offset_bottom = 838.0

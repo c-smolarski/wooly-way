@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://opq1iw0xf3w6"]
+
+[ext_resource type="PackedScene" uid="uid://dfgpo5q1w422h" path="res://Scenes/UI/Menus/LevelSelector/LevelSelectorElements/LevelButton.tscn" id="1_dvel1"]
+[ext_resource type="PackedScene" uid="uid://c3m627g4cxi46" path="res://Scenes/Assets/LevelBackgrounds/Level6Background.tscn" id="2_s5yjg"]
+[ext_resource type="Texture2D" uid="uid://rqbjibyriuuh" path="res://Assets/UI/Menus/LevelSelector/Path/0007.png" id="3_yeced"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/LevelSelectorPathAsset.cs" id="4_px0cs"]
+[ext_resource type="Texture2D" uid="uid://cky3et3fnun32" path="res://Assets/UI/Menus/LevelSelector/Path/0006.png" id="5_flaju"]
+[ext_resource type="Texture2D" uid="uid://ter1rn1qjd1r" path="res://Assets/UI/Menus/LevelSelector/Path/0005.png" id="6_o40xb"]
+[ext_resource type="Texture2D" uid="uid://cyf4laktjrxuj" path="res://Assets/UI/Menus/LevelSelector/Path/0004.png" id="7_5ilep"]
+[ext_resource type="Texture2D" uid="uid://gtpa2ho28405" path="res://Assets/UI/Menus/LevelSelector/Path/0003.png" id="8_8njt6"]
+[ext_resource type="Texture2D" uid="uid://cc2tr5r2pcj2b" path="res://Assets/UI/Menus/LevelSelector/Path/level.png" id="9_l76bx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krjnk"]
+size = Vector2(152, 86)
+
+[sub_resource type="Curve2D" id="Curve2D_8b1wq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 310.25, 1132.5, 136.759, 156.975, -136.759, -156.975, 78, 975, 35.6762, 61.8388, -35.6762, -61.8388, -160, 667, 3.9685, 45.2409, -3.9685, -45.2409, -194, 524, 0, 0, 0, 0, -127.5, 338.75)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_3bmce"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 548.25, 1162.5, 178.909, 307.421, -178.909, -307.421, 350, 512, 0, 0, 0, 0, -2, 184)
+}
+point_count = 3
+
+[node name="level6" instance=ExtResource("1_dvel1")]
+Weather = 3
+sceneBackground = ExtResource("2_s5yjg")
+LevelNumber = 6
+
+[node name="collider" parent="levelMoveTo" index="0"]
+position = Vector2(-127, 350)
+shape = SubResource("RectangleShape2D_krjnk")
+
+[node name="playerPath" parent="paths" index="0"]
+curve = SubResource("Curve2D_8b1wq")
+
+[node name="playerFollow" parent="paths/playerPath" index="0"]
+position = Vector2(310.25, 1132.5)
+
+[node name="cameraPath" parent="paths" index="1"]
+curve = SubResource("Curve2D_3bmce")
+
+[node name="cameraFollow" parent="paths/cameraPath" index="0"]
+position = Vector2(548.25, 1162.5)
+
+[node name="path" type="Sprite2D" parent="assets" index="0"]
+position = Vector2(205.756, 1087.88)
+rotation = 0.115795
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_yeced")
+script = ExtResource("4_px0cs")
+
+[node name="path1" type="Sprite2D" parent="assets" index="1"]
+position = Vector2(123, 1017)
+rotation = 0.115795
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_yeced")
+script = ExtResource("4_px0cs")
+
+[node name="path2" type="Sprite2D" parent="assets" index="2"]
+position = Vector2(43, 941)
+rotation = 0.13724
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_yeced")
+script = ExtResource("4_px0cs")
+
+[node name="path3" type="Sprite2D" parent="assets" index="3"]
+position = Vector2(-15, 865)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_flaju")
+script = ExtResource("4_px0cs")
+
+[node name="path4" type="Sprite2D" parent="assets" index="4"]
+position = Vector2(-77.25, 789)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_flaju")
+script = ExtResource("4_px0cs")
+
+[node name="path5" type="Sprite2D" parent="assets" index="5"]
+position = Vector2(-137.25, 707)
+rotation = -0.171505
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_o40xb")
+script = ExtResource("4_px0cs")
+
+[node name="path6" type="Sprite2D" parent="assets" index="6"]
+position = Vector2(-178, 624)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_o40xb")
+script = ExtResource("4_px0cs")
+
+[node name="path7" type="Sprite2D" parent="assets" index="7"]
+position = Vector2(-191.25, 532.5)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_5ilep")
+script = ExtResource("4_px0cs")
+
+[node name="path8" type="Sprite2D" parent="assets" index="8"]
+position = Vector2(-177.25, 445)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("8_8njt6")
+script = ExtResource("4_px0cs")
+
+[node name="levelSix" type="Sprite2D" parent="assets" index="9"]
+position = Vector2(-127.5, 338.75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_l76bx")
+script = ExtResource("4_px0cs")
+
+[node name="ArrowNext" parent="arrows" index="0" node_paths=PackedStringArray("block")]
+position = Vector2(212.756, 1087.88)
+rotation = 0.682998
+scale = Vector2(-1.25, 1.25)
+block = NodePath("../../assets/path")
+
+[node name="ArrowPrev" parent="arrows" index="1" node_paths=PackedStringArray("block")]
+position = Vector2(-175, 431)
+rotation = 1.9524
+scale = Vector2(1.25, -1.25)
+block = NodePath("../../assets/path8")
+
+[node name="LevelSign" parent="." index="6"]
+position = Vector2(285, -65)

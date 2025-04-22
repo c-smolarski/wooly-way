@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=3 uid="uid://bgo65s6xvkjhe"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/MusicPlayingMenu.cs" id="1_0ifet"]
+[ext_resource type="Texture2D" uid="uid://bfv4xx1to8n50" path="res://Assets/UI/Menus/MainMenu/sky.png" id="1_key7f"]
+[ext_resource type="AudioStream" uid="uid://b3vmi5863aw7l" path="res://Sounds/Musics/mainmenu.ogg" id="2_5ktww"]
+[ext_resource type="Texture2D" uid="uid://cn6vvma7enyky" path="res://Assets/UI/Menus/MainMenu/bgHills.png" id="2_bfigl"]
+[ext_resource type="Texture2D" uid="uid://85ln856vfoba" path="res://Assets/UI/Menus/MainMenu/bgClouds.png" id="3_yk6qq"]
+[ext_resource type="Texture2D" uid="uid://cnaco2j7bo0wy" path="res://Assets/UI/Menus/MainMenu/mountain.png" id="4_30e04"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Godray.gdshader" id="5_oe7qw"]
+[ext_resource type="Texture2D" uid="uid://ckr4jbg8psvff" path="res://Assets/UI/Menus/MainMenu/fgClouds.png" id="6_a00jj"]
+[ext_resource type="PackedScene" uid="uid://otjvxjk3pk00" path="res://Scenes/UI/Transition.tscn" id="7_sn4jq"]
+[ext_resource type="Script" path="res://Scripts/Components/ResolutionRescaler.cs" id="8_7xr2h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yl57d"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_wr47k"]
+offsets = PackedFloat32Array(0, 0.0882353, 0.46789)
+colors = PackedColorArray(0.758191, 0.758192, 0.758192, 1, 0.856067, 0.856067, 0.856067, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_30k65"]
+gradient = SubResource("Gradient_wr47k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gpe32"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(2000, -650, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 500, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 20.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_30k65")
+anim_offset_max = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p07h"]
+shader = ExtResource("5_oe7qw")
+shader_parameter/angle = 0.68
+shader_parameter/position = 0.24
+shader_parameter/spread = 1.0
+shader_parameter/cutoff = 0.271
+shader_parameter/falloff = 1.0
+shader_parameter/edge_fade = 0.392
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 10.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/seed = 5.0
+
+[sub_resource type="Gradient" id="Gradient_n1hl0"]
+offsets = PackedFloat32Array(0, 0.110294, 0.352941)
+colors = PackedColorArray(0.762403, 0.762404, 0.762404, 1, 0.791999, 0.791999, 0.791999, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ftvlk"]
+gradient = SubResource("Gradient_n1hl0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3mjkx"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(2000, -500, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 275, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 45.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 0.9
+color_ramp = SubResource("GradientTexture1D_ftvlk")
+anim_offset_max = 1.0
+
+[node name="AbstractMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ifet")
+musicToPlay = ExtResource("2_5ktww")
+
+[node name="Assets" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sky" type="TextureRect" parent="Assets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_key7f")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="bgHills" type="TextureRect" parent="Assets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bfigl")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="BackParticlesContainer" type="Panel" parent="Assets"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Assets/BackParticlesContainer"]
+material = SubResource("CanvasItemMaterial_yl57d")
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_gpe32")
+texture = ExtResource("3_yk6qq")
+lifetime = 200.0
+preprocess = 200.0
+
+[node name="Mountain" type="TextureRect" parent="Assets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_30e04")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Sun" type="ColorRect" parent="Assets"]
+material = SubResource("ShaderMaterial_5p07h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FrontParticlesContainer" type="Panel" parent="Assets"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 95.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Assets/FrontParticlesContainer"]
+material = SubResource("CanvasItemMaterial_yl57d")
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_3mjkx")
+texture = ExtResource("6_a00jj")
+lifetime = 200.0
+preprocess = 200.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(962, 540)
+
+[node name="Transition" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("7_sn4jq")]
+camera = NodePath("../Camera2D")
+
+[node name="ResolutionRescaler" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("8_7xr2h")
+targets = []
+mode = 3

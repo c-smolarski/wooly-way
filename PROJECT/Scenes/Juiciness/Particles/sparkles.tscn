@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://crvj1pcmo835a"]
+
+[ext_resource type="Texture2D" uid="uid://c35bmees3u8mv" path="res://Assets/particles/Sans titre-1.png" id="1_d5i77"]
+
+[sub_resource type="Curve" id="Curve_6p0sw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.706186, 0.728261), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_13wyi"]
+curve = SubResource("Curve_6p0sw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_abr8f"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(133.04, 135.85, 125.615)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 313.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.1
+alpha_curve = SubResource("CurveTexture_13wyi")
+
+[node name="Sparkles" type="GPUParticles2D"]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_abr8f")
+texture = ExtResource("1_d5i77")

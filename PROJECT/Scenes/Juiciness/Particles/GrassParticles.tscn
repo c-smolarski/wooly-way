@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://bth21nmxqk51q"]
+
+[ext_resource type="Script" path="res://Scripts/Juiciness/Grass.cs" id="1_d6jxo"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassCanvasItem.gdshader" id="1_gvryh"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="3_yh80r"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="4_ubtkq"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassParticle.gdshader" id="4_xayr0"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="6_4hwgn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yw7g"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0l4xp"]
+seamless = true
+noise = SubResource("FastNoiseLite_0yw7g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4hdn"]
+shader = ExtResource("1_gvryh")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.715953, 0.783968, 3.85046e-07, 1)
+shader_parameter/bottom_color = Color(0.150533, 0.259301, 0.0125251, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.05
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_angle_deg = -135.0
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("4_ubtkq")
+shader_parameter/random_noise = ExtResource("3_yh80r")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_0l4xp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d40l2"]
+shader = ExtResource("4_xayr0")
+shader_parameter/rows = 750.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Grass" type="Node2D" node_paths=PackedStringArray("grassParticles")]
+script = ExtResource("1_d6jxo")
+grassParticles = NodePath("GrassParticles")
+
+[node name="GrassParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_u4hdn")
+amount = 400000
+process_material = SubResource("ShaderMaterial_d40l2")
+texture = ExtResource("6_4hwgn")
+explosiveness = 1.0
+fixed_fps = 0
+visibility_rect = Rect2(-5000, -5000, 10000, 10000)
+draw_order = 0

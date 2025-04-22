@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnbv4egyjg33a"]
+
+[ext_resource type="Material" uid="uid://dxymmaqw8xchr" path="res://Resources/ShaderMaterials/Trees/pine_leaves_material.tres" id="1_7ar0i"]
+[ext_resource type="Script" path="res://Scripts/Assets/Tree.cs" id="2_t316d"]
+[ext_resource type="Texture2D" uid="uid://ce46fxyudlf6d" path="res://Assets/Trees/Trunks/trunk_4.png" id="3_0xmod"]
+[ext_resource type="Texture2D" uid="uid://brxkdhbty5wkl" path="res://Assets/Trees/Leaves/pine_leaves_2.png" id="4_i7t3p"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="5_6yowv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h624l"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_rix00"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.746212, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_x4vc1"]
+curve = SubResource("Curve_rix00")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m81rl"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.75, 1.75, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 500.0
+emission_ring_inner_radius = 250.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(1, 0.2, 0)
+spread = 20.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_max = 300.0
+gravity = Vector3(0, 10, 0)
+scale_max = 1.5
+color = Color(0.415686, 0.65098, 0, 1)
+alpha_curve = SubResource("CurveTexture_x4vc1")
+anim_offset_max = 1.0
+
+[node name="PineC" type="Node2D" node_paths=PackedStringArray("trunk", "leaves", "leavesParticles")]
+material = ExtResource("1_7ar0i")
+script = ExtResource("2_t316d")
+trunk = NodePath("trunk")
+leaves = [NodePath("pineLeaves0")]
+leavesParticles = NodePath("GPUParticles2D")
+
+[node name="trunk" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_0xmod")
+offset = Vector2(0, -441)
+
+[node name="pineLeaves0" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(22, -1128)
+texture = ExtResource("4_i7t3p")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_h624l")
+position = Vector2(51, -1155)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_m81rl")
+texture = ExtResource("5_6yowv")
+lifetime = 4.0
+randomness = 0.4

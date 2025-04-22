@@ -1,0 +1,41 @@
+﻿keys;en;fr
+LABEL_PAUSED;Paused;En pause
+LABEL_WIN;You win!;Bravo!
+LABEL_WIN_GAME;Congrats you finished the game!;Bravo! Tu as terminé le jeu!
+LABEL_MASTER;Master;Master
+LABEL_MUSIC;Music;Musique
+LABEL_AMBIENT;Ambient;Ambience
+LABEL_SFX;SFX;SFX
+LABEL_FRENCH;French;Français
+LABEL_ENGLISH;English;Anglais
+LABEL_LEVEL;Level;Niveau
+LABEL_PAR;Par;Minimum
+LABEL_STEPS;Steps;Pas
+LABEL_FULLSCREEN;Fullscreen;Plein écran
+LABEL_LEADERBOARD;Leaderboard;Classement
+LABEL_CONTROL_SCHEME;Control scheme;Contrôles
+IL_CLASSIC;Classic;Classiques
+IL_ALTERNATIVE;Alternative;Alternatifs
+TAB_LOCALIZATION;Localization;Langue
+TB_LOGIN;Username;Nom d'utilisateur
+TB_PASSWORD;Password;Mot de passe
+BTN_LOGIN;Login;Se connecter
+BTN_CREATE;Create user;Créer utilisateur
+BTN_START;Start;Jouer
+BTN_LEADERBOARD;Leaderboard;Classement
+BTN_SETTINGS;Settings;Paramètres
+BTN_CREDITS;Credits;Crédits
+BTN_QUIT;Quit;Quitter
+BTN_MAIN_MENU;Main menu;Menu principal
+BTN_BACK;Back;Retour
+BTN_SELECT_LEVEL;Select level;Selection de niveau
+BTN_NEXT;Next level!;Niveau suivant!
+BTN_RESTART;Restart;Recommencer
+BTN_RESUME;Resume;Reprendre
+BTN_UNDO;Undo;Annuler
+BTN_REDO;Redo;Refaire
+FTUE1;Bring the sheep back to its pen !;Ramène le mouton dans son enclos!
+FTUE2;Beware of the dog they might\n  affect the sheep's reactions;Attention au chien !\n Il risque de tout chambouler
+FTUE3;This sheep might help me push\n the other…;Ce mouton pourrait m'aider à\n pousser l'autre…
+FTUE4;Congrats!\n You are now\n ready to play!;Bravo!\nTu es\n prêt·e à jouer!
+FTUE_HELP;Bring the sheeps back to their pens, but be carefull they won't alway obey you and might move away from you.\nThe dogs could help with changing their direction.\nSheeps may also push other sheeps and create chain reactions!;Ramène les moutons dans leurs enclos, mais attention, ils ne t'écouteront pas forcément.\nLes chiens t'aideront à changer leur comportement!\nLes moutons créent également des réactions en chaîne en se poussant les uns les autres!

@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfgpo5q1w422h"]
+
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/Clickables/LevelButton.cs" id="1_lkma4"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="3_osjjq"]
+[ext_resource type="PackedScene" uid="uid://drp46rmd8p8wd" path="res://Scenes/UI/Menus/LevelSelector/LevelSelectorElements/AssetDisplayer.tscn" id="3_udb10"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelectorElements/LevelSelectorPathFollow.cs" id="4_upb8f"]
+[ext_resource type="PackedScene" uid="uid://dpa0k6yogxm4i" path="res://Scenes/UI/Menus/LevelSelector/LevelSelectorElements/Arrow.tscn" id="5_6ipw8"]
+[ext_resource type="PackedScene" uid="uid://b71yptnbu7xsn" path="res://Scenes/UI/Menus/LevelSelector/LevelSelectorElements/LevelSign.tscn" id="6_s02qm"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_oe5va"]
+
+[node name="levelButton" type="Node2D"]
+script = ExtResource("1_lkma4")
+
+[node name="mouseDetector" type="Area2D" parent="."]
+script = ExtResource("3_osjjq")
+
+[node name="collider" type="CollisionShape2D" parent="mouseDetector"]
+shape = SubResource("ConvexPolygonShape2D_oe5va")
+
+[node name="levelMoveTo" type="Area2D" parent="."]
+script = ExtResource("3_osjjq")
+
+[node name="collider" type="CollisionShape2D" parent="levelMoveTo"]
+
+[node name="gridContainer" type="Node2D" parent="."]
+
+[node name="paths" type="Node2D" parent="."]
+
+[node name="playerPath" type="Path2D" parent="paths"]
+
+[node name="playerFollow" type="PathFollow2D" parent="paths/playerPath" node_paths=PackedStringArray("level", "cameraPath")]
+rotates = false
+loop = false
+script = ExtResource("4_upb8f")
+level = NodePath("../../..")
+cameraPath = NodePath("../../cameraPath/cameraFollow")
+
+[node name="cameraPath" type="Path2D" parent="paths"]
+
+[node name="cameraFollow" type="PathFollow2D" parent="paths/cameraPath"]
+rotates = false
+loop = false
+
+[node name="assets" parent="." node_paths=PackedStringArray("associatedLevel") instance=ExtResource("3_udb10")]
+associatedLevel = NodePath("..")
+
+[node name="arrows" type="Node2D" parent="."]
+
+[node name="ArrowNext" parent="arrows" node_paths=PackedStringArray("level") instance=ExtResource("5_6ipw8")]
+level = NodePath("../..")
+next = true
+
+[node name="ArrowPrev" parent="arrows" node_paths=PackedStringArray("level") instance=ExtResource("5_6ipw8")]
+level = NodePath("../..")
+
+[node name="LevelSign" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_s02qm")]
+level = NodePath("..")

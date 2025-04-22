@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://boohb57dhwqa1"]
+
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="1_5vmk0"]
+[ext_resource type="Texture2D" uid="uid://c23ayxhenmcaa" path="res://Assets/others/Bale/HBale.png" id="1_tbx74"]
+
+[node name="Bale" type="Node2D"]
+script = ExtResource("1_5vmk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_tbx74")

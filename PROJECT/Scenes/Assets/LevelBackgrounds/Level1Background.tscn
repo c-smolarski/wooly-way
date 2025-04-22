@@ -1,0 +1,233 @@
+[gd_scene load_steps=24 format=3 uid="uid://cenrq5qvvj2ms"]
+
+[ext_resource type="PackedScene" uid="uid://dt3vit8kfgtgx" path="res://Scenes/Assets/LevelBackgrounds/LevelBackgroundTemplate.tscn" id="1_qbfl1"]
+[ext_resource type="PackedScene" uid="uid://dnhrsgofl44j2" path="res://Scenes/Assets/Trees/TreeC.tscn" id="2_8c02y"]
+[ext_resource type="Texture2D" uid="uid://bqyu4kl512mf7" path="res://Assets/LevelBackgrounds/level1.png" id="2_cftyf"]
+[ext_resource type="Texture2D" uid="uid://b7yb2woce52rn" path="res://Assets/others/Bale/foin.png" id="3_mot3k"]
+[ext_resource type="PackedScene" uid="uid://dnnhj7wwsar8p" path="res://Scenes/Assets/Trees/TreeD.tscn" id="5_h8p14"]
+[ext_resource type="Texture2D" uid="uid://d07mdw6fuq7us" path="res://Assets/GameObjects/Obstacles/Rocks/rock4.png" id="5_n6gic"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="6_fi6dv"]
+[ext_resource type="Material" uid="uid://cnbgngrfkjnn3" path="res://Resources/ShaderMaterials/Trees/leaves_material.tres" id="7_qn871"]
+[ext_resource type="Texture2D" uid="uid://c5o8i1pp7ysu4" path="res://Assets/Bushes/Bush1.png" id="8_n0hts"]
+[ext_resource type="Texture2D" uid="uid://bk53lh46vd2qi" path="res://Assets/Buildings/Farm.png" id="9_ghx1t"]
+[ext_resource type="Texture2D" uid="uid://cotyd41wimm2v" path="res://Assets/Bushes/Bush2.png" id="9_o7cxi"]
+[ext_resource type="PackedScene" uid="uid://d1gbqcl11wnny" path="res://Scenes/Assets/Lantern.tscn" id="10_utba2"]
+[ext_resource type="PackedScene" uid="uid://bth21nmxqk51q" path="res://Scenes/Juiciness/Particles/GrassParticles.tscn" id="11_xqkpv"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassParticle.gdshader" id="12_273ym"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassCanvasItem.gdshader" id="12_ak3ot"]
+[ext_resource type="Texture2D" uid="uid://cato72hyfpsbe" path="res://Assets/Flowers/fleur.png" id="13_30ntg"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="13_pgqn4"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="14_vj146"]
+[ext_resource type="Texture2D" uid="uid://blasuiajn4phm" path="res://Assets/others/Niche/niche.png" id="16_u8e75"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yw7g"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0l4xp"]
+seamless = true
+noise = SubResource("FastNoiseLite_0yw7g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewjbe"]
+shader = ExtResource("12_ak3ot")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.715953, 0.783968, 3.85046e-07, 1)
+shader_parameter/bottom_color = Color(0.150533, 0.259301, 0.0125251, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.09
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_angle_deg = -135.0
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("14_vj146")
+shader_parameter/random_noise = ExtResource("13_pgqn4")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_0l4xp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkum1"]
+shader = ExtResource("12_273ym")
+shader_parameter/rows = 750.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Level1Background" node_paths=PackedStringArray("assetsContainers", "grassList") instance=ExtResource("1_qbfl1")]
+position = Vector2(-1, 1)
+assetsContainers = [NodePath("PenContainer"), NodePath("TreeContainer"), NodePath("RockContainer"), NodePath("BushContainer"), NodePath("LanternContainer"), NodePath("NicheContainer"), NodePath("BaleContainer"), NodePath("FlowerContainer")]
+grassList = [NodePath("GrassSystem/Grass")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-14, 1)
+texture = ExtResource("2_cftyf")
+
+[node name="BaleContainer" type="Node2D" parent="." index="1"]
+position = Vector2(-769, -241)
+
+[node name="Sprite2D5" type="Sprite2D" parent="BaleContainer" index="0"]
+position = Vector2(920, -401)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mot3k")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BaleContainer" index="1"]
+position = Vector2(875, -363)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mot3k")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BaleContainer" index="2"]
+position = Vector2(827, -320)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mot3k")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BaleContainer" index="3"]
+position = Vector2(922, -323)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mot3k")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D" type="Sprite2D" parent="BaleContainer" index="4"]
+position = Vector2(878, -285)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mot3k")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D6" type="Sprite2D" parent="BaleContainer" index="5"]
+position = Vector2(878, -347)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mot3k")
+script = ExtResource("6_fi6dv")
+
+[node name="PenContainer" type="Node2D" parent="." index="2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PenContainer" index="0"]
+position = Vector2(498, -545)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ghx1t")
+script = ExtResource("6_fi6dv")
+
+[node name="NicheContainer" type="Node2D" parent="." index="3"]
+position = Vector2(-33, -10)
+
+[node name="Sprite2D" type="Sprite2D" parent="NicheContainer" index="0"]
+position = Vector2(-445, -243)
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("16_u8e75")
+script = ExtResource("6_fi6dv")
+
+[node name="TreeContainer" type="Node2D" parent="." index="4"]
+
+[node name="TreeC" parent="TreeContainer" index="0" instance=ExtResource("2_8c02y")]
+position = Vector2(-558.075, -154)
+scale = Vector2(0.435, 0.435)
+
+[node name="TreeC2" parent="TreeContainer" index="1" instance=ExtResource("5_h8p14")]
+position = Vector2(679, 433)
+scale = Vector2(0.45, 0.45)
+
+[node name="RockContainer" type="Node2D" parent="." index="5"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="RockContainer" index="0"]
+position = Vector2(-592.075, -163)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_n6gic")
+script = ExtResource("6_fi6dv")
+
+[node name="BushContainer" type="Node2D" parent="." index="6"]
+
+[node name="Sprite2D" type="Sprite2D" parent="BushContainer" index="0"]
+material = ExtResource("7_qn871")
+position = Vector2(-490.075, -186)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("8_n0hts")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BushContainer" index="1"]
+material = ExtResource("7_qn871")
+position = Vector2(682, 370)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("9_o7cxi")
+script = ExtResource("6_fi6dv")
+
+[node name="FlowerContainer" type="Node2D" parent="." index="7"]
+position = Vector2(67, 87)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerContainer" index="0"]
+position = Vector2(-626, -245)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="FlowerContainer" index="1"]
+position = Vector2(-956, 21)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D3" type="Sprite2D" parent="FlowerContainer" index="2"]
+position = Vector2(-708, 203)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="FlowerContainer" index="3"]
+position = Vector2(-892, 157)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D5" type="Sprite2D" parent="FlowerContainer" index="4"]
+position = Vector2(-605, 375)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D6" type="Sprite2D" parent="FlowerContainer" index="5"]
+position = Vector2(-804, 291)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D7" type="Sprite2D" parent="FlowerContainer" index="6"]
+position = Vector2(-814, 73)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D8" type="Sprite2D" parent="FlowerContainer" index="7"]
+position = Vector2(-1023, 110)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="Sprite2D9" type="Sprite2D" parent="FlowerContainer" index="8"]
+position = Vector2(-801, 168)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("13_30ntg")
+script = ExtResource("6_fi6dv")
+
+[node name="LanternContainer" type="Node2D" parent="." index="8"]
+
+[node name="Lantern" parent="LanternContainer" index="0" instance=ExtResource("10_utba2")]
+position = Vector2(497, -84)
+scale = Vector2(0.095, 0.095)
+
+[node name="GrassSystem" type="Node2D" parent="." index="9"]
+
+[node name="Grass" parent="GrassSystem" index="0" node_paths=PackedStringArray("polygon") instance=ExtResource("11_xqkpv")]
+visible = false
+position = Vector2(-1344, -629)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="GrassSystem/Grass" index="0"]
+material = SubResource("ShaderMaterial_ewjbe")
+sub_emitter = NodePath(".")
+process_material = SubResource("ShaderMaterial_wkum1")
+
+[node name="Polygon2D" type="Polygon2D" parent="GrassSystem" index="1"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-1016, 20, -917, 30, -871, 37, -810, 56, -763, 82, -695, 125, -668, 149, -635, 183, -590, 229, -538, 289, -506, 336, -483, 405, -451, 458, -398, 484, -333, 496, -259, 498, -205, 514, -172, 555, -123, 601, -89, 632, -45, 672, 3, 683, 81, 687, 114, 720, 126, 754, -1016, 756)
+
+[editable path="GrassSystem/Grass"]

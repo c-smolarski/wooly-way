@@ -1,23 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://sloiiv0qqxq0"]
+[gd_scene load_steps=15 format=3 uid="uid://sloiiv0qqxq0"]
 
 [ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_ks74t"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="2_qkgf3"]
+[ext_resource type="Texture2D" uid="uid://bekrm48v82gj5" path="res://Assets/GameObjects/Pen/Pen2.0.png" id="3_xv5vl"]
+[ext_resource type="Texture2D" uid="uid://brhj5bf45vrns" path="res://Assets/GameObjects/Dog/dog_treat.png" id="3_yo1ir"]
+[ext_resource type="PackedScene" uid="uid://dmf8ubph5kqw1" path="res://Resources/Particles/butterfly.tscn" id="4_lvrjr"]
+[ext_resource type="Texture2D" uid="uid://bjxdpaefhyyax" path="res://Assets/GameObjects/Pen/Pen2.2.png" id="4_ytr02"]
+[ext_resource type="Texture2D" uid="uid://bn6eg8wyw567j" path="res://Assets/GameObjects/Pen/Pen2.3.png" id="5_83jbg"]
+[ext_resource type="Texture2D" uid="uid://8bhl74dotciy" path="res://Assets/GameObjects/Pen/Pen2.1.png" id="6_h1snb"]
+[ext_resource type="Texture2D" uid="uid://cvtfw24rub2w6" path="res://Assets/GameObjects/Pen/Pen1.0.png" id="7_3x8kx"]
+[ext_resource type="Texture2D" uid="uid://d05lcqw6pqjbp" path="res://Assets/GameObjects/Pen/Pen1.1.png" id="8_un7jq"]
+[ext_resource type="Texture2D" uid="uid://bcbx7mpp6lfrm" path="res://Assets/GameObjects/Pen/Pen1.2.png" id="9_iym2h"]
+[ext_resource type="PackedScene" uid="uid://d1gbqcl11wnny" path="res://Scenes/Assets/Lantern.tscn" id="12_f0a74"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ksau1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_umbbd"]
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[node name="Tile" type="Polygon2D"]
-color = Color(0, 1, 0.329412, 1)
-polygon = PackedVector2Array(10, 0, 20, 5, 10, 10, 0, 5)
+[node name="Tile" type="Node2D" node_paths=PackedStringArray("polygonContainer", "clickable", "debugLabel", "debugRect", "butterfly", "dogTreat", "polygon", "penBGParts", "penFGParts", "penSticks", "penBars")]
 script = ExtResource("1_ks74t")
+polygonContainer = NodePath("polygonContainer")
+clickable = NodePath("Area2D")
+debugLabel = NodePath("DebugLabel")
+debugRect = NodePath("DebugRect")
+butterfly = NodePath("Butterfly")
+dogTreat = NodePath("DogTreat")
+polygon = NodePath("Polygon2D")
+penBGParts = [NodePath("PenContainer/Pen1_2"), NodePath("PenContainer/PEN2_0"), NodePath("PenContainer/PEN2_3")]
+penFGParts = [NodePath("PenContainer/Pen1_0"), NodePath("PenContainer/Pen1_1"), NodePath("PenContainer/PEN2_1"), NodePath("PenContainer/PEN2_2")]
+penSticks = [NodePath("PenContainer/Pen1_0"), NodePath("PenContainer/Pen1_1"), NodePath("PenContainer/Pen1_2")]
+penBars = [NodePath("PenContainer/PEN2_0"), NodePath("PenContainer/PEN2_1"), NodePath("PenContainer/PEN2_2"), NodePath("PenContainer/PEN2_3")]
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-color = Color(0, 0.556863, 0, 1)
-polygon = PackedVector2Array(20, 5, 10, 10, 10, 20, 20, 15)
+[node name="polygonContainer" type="Node2D" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0, 0.415686, 0, 1)
-polygon = PackedVector2Array(0, 5, 10, 10, 10, 20, 0, 15)
+[node name="bottomright" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="bottomleft" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+rotation = 3.14159
+scale = Vector2(1, -1)
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="topright" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+scale = Vector2(1, -1)
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="topleft" type="Polygon2D" parent="polygonContainer"]
+use_parent_material = true
+rotation = 3.14159
+color = Color(0, 0, 0, 1)
+antialiased = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_qkgf3")
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("ConvexPolygonShape2D_ksau1")
 
 [node name="DebugLabel" type="Label" parent="."]
 visible = false
@@ -28,3 +74,83 @@ offset_bottom = 21.0
 text = "0
 "
 label_settings = SubResource("LabelSettings_umbbd")
+metadata/_edit_use_anchors_ = true
+
+[node name="DebugRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 50, 100, 0, 0, -50, -100, 0)
+
+[node name="DogTreat" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("3_yo1ir")
+
+[node name="PenContainer" type="Node2D" parent="."]
+
+[node name="PEN2_0" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = 1
+position = Vector2(1, -77)
+scale = Vector2(1e-05, 0.16)
+texture = ExtResource("3_xv5vl")
+
+[node name="PEN2_3" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = 1
+position = Vector2(-1, -75)
+scale = Vector2(1e-05, 0.16)
+texture = ExtResource("5_83jbg")
+
+[node name="PEN2_2" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = 1
+position = Vector2(2, -76)
+scale = Vector2(1e-05, 0.16)
+texture = ExtResource("4_ytr02")
+
+[node name="PEN2_1" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = 1
+position = Vector2(2, -76)
+scale = Vector2(1e-05, 0.16)
+texture = ExtResource("6_h1snb")
+
+[node name="Pen1_0" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = 1
+position = Vector2(1, -71)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("7_3x8kx")
+
+[node name="Pen1_1" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = 1
+position = Vector2(0, -70)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("8_un7jq")
+offset = Vector2(12, 0)
+
+[node name="Pen1_2" type="Sprite2D" parent="PenContainer"]
+visible = false
+z_index = -1
+position = Vector2(0, -70)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("9_iym2h")
+offset = Vector2(12, 0)
+
+[node name="Butterfly" parent="." instance=ExtResource("4_lvrjr")]
+z_index = 2
+position = Vector2(-6, -3)
+
+[node name="Lantern" parent="." instance=ExtResource("12_f0a74")]
+visible = false
+position = Vector2(0, -107)

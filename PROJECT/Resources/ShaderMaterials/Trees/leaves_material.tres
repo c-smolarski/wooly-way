@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnbgngrfkjnn3"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/leaves.gdshader" id="1_86qq8"]
+
+[resource]
+shader = ExtResource("1_86qq8")
+shader_parameter/lighterColor = Color(0.340743, 0.769439, 0.291845, 1)
+shader_parameter/darkerColor = Color(0, 0, 0, 1)

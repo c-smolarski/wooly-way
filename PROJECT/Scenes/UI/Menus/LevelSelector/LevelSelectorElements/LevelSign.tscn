@@ -1,0 +1,152 @@
+[gd_scene load_steps=17 format=3 uid="uid://b71yptnbu7xsn"]
+
+[ext_resource type="Texture2D" uid="uid://dr8phsk0vdptq" path="res://Assets/UI/Menus/LevelSelector/LevelSign.png" id="1_v6wmp"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/LevelSelectorSign.cs" id="2_garw4"]
+[ext_resource type="Shader" path="res://Resources/Shaders/HUD.gdshader" id="3_sm4ak"]
+[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Resources/Fonts/lumberjack.regular.otf" id="4_vtkt8"]
+[ext_resource type="Script" path="res://Scripts/UI/TranslatableLabel.cs" id="5_iqpbm"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="6_6jm67"]
+[ext_resource type="Shader" path="res://Resources/Shaders/WinSheepShine.gdshader" id="7_2bjx3"]
+[ext_resource type="Texture2D" uid="uid://dgoj34rqa3coi" path="res://Assets/WinScreen/bronze.png" id="8_5tnr8"]
+[ext_resource type="Texture2D" uid="uid://dibq2mav2iwjg" path="res://Assets/WinScreen/silver.png" id="9_yoyrp"]
+[ext_resource type="Texture2D" uid="uid://imheyr42pqxa" path="res://Assets/WinScreen/gold.png" id="10_x4d54"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwpix"]
+shader = ExtResource("3_sm4ak")
+shader_parameter/height = 30.0
+shader_parameter/frequency = 100.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wfqv"]
+font = ExtResource("4_vtkt8")
+font_size = 300
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c0h1"]
+size = Vector2(1360, 784)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc6la"]
+shader = ExtResource("7_2bjx3")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = -30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.3
+shader_parameter/Position = 0.5
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/alpha = 0.5
+shader_parameter/wait_cycles = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a01lm"]
+shader = ExtResource("7_2bjx3")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = -60.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.35
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/wait_cycles = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldbmy"]
+shader = ExtResource("7_2bjx3")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = -30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.5
+shader_parameter/Position = 0.3
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/alpha = 0.5
+shader_parameter/wait_cycles = 4.0
+
+[node name="LevelSign" type="Sprite2D" node_paths=PackedStringArray("area", "label", "sheepStars")]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_v6wmp")
+offset = Vector2(0, -765)
+script = ExtResource("2_garw4")
+area = NodePath("mouseDetector")
+label = NodePath("Label")
+sheepStars = [NodePath("Panel/Bronze"), NodePath("Panel/Silver"), NodePath("Panel/Gold")]
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_lwpix")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1176.0
+offset_top = -2065.0
+offset_right = -185.0
+offset_bottom = -1681.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level : X"
+label_settings = SubResource("LabelSettings_5wfqv")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_iqpbm")
+translationKey = "LABEL_LEVEL"
+
+[node name="mouseDetector" type="Area2D" parent="."]
+script = ExtResource("6_6jm67")
+
+[node name="collider" type="CollisionShape2D" parent="mouseDetector"]
+position = Vector2(0, -1136)
+shape = SubResource("RectangleShape2D_1c0h1")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -681.0
+offset_top = -1530.0
+offset_right = -681.0
+offset_bottom = -1530.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bronze" type="TextureRect" parent="Panel"]
+material = SubResource("ShaderMaterial_yc6la")
+layout_mode = 0
+offset_left = -1712.0
+offset_top = -1795.0
+offset_right = 336.0
+offset_bottom = 253.0
+rotation = -0.436332
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(1024, 1024)
+texture = ExtResource("8_5tnr8")
+
+[node name="Silver" type="TextureRect" parent="Panel"]
+material = SubResource("ShaderMaterial_a01lm")
+layout_mode = 0
+offset_left = -360.0
+offset_top = -1747.0
+offset_right = 1688.0
+offset_bottom = 301.0
+rotation = 0.436332
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(1024, 1024)
+texture = ExtResource("9_yoyrp")
+
+[node name="Gold" type="TextureRect" parent="Panel"]
+material = SubResource("ShaderMaterial_ldbmy")
+layout_mode = 0
+offset_left = -1024.0
+offset_top = -1931.0
+offset_right = 1024.0
+offset_bottom = 117.0
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(1024, 1024)
+texture = ExtResource("10_x4d54")

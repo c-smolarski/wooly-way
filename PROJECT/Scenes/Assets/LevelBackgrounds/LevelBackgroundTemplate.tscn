@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt3vit8kfgtgx"]
+
+[ext_resource type="Texture2D" uid="uid://cr7n65x4afafq" path="res://Assets/LevelBackgrounds/grassyBackground.png" id="1_i64q8"]
+[ext_resource type="Script" path="res://Scripts/Assets/LevelBackground.cs" id="1_jei02"]
+
+[node name="LevelBackgroundTemplate" type="Node2D" node_paths=PackedStringArray("assetsContainers")]
+script = ExtResource("1_jei02")
+assetsContainers = []
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i64q8")

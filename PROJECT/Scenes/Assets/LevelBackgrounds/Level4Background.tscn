@@ -1,0 +1,349 @@
+[gd_scene load_steps=32 format=3 uid="uid://ci44vfad76al"]
+
+[ext_resource type="PackedScene" uid="uid://dt3vit8kfgtgx" path="res://Scenes/Assets/LevelBackgrounds/LevelBackgroundTemplate.tscn" id="1_0xbni"]
+[ext_resource type="PackedScene" uid="uid://bth21nmxqk51q" path="res://Scenes/Juiciness/Particles/GrassParticles.tscn" id="2_io6e2"]
+[ext_resource type="PackedScene" uid="uid://d1gbqcl11wnny" path="res://Scenes/Assets/Lantern.tscn" id="2_q6ddb"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassCanvasItem.gdshader" id="3_qasn2"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="4_yvohr"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="5_k45cs"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassParticle.gdshader" id="6_21dly"]
+[ext_resource type="PackedScene" uid="uid://drk5crp16g1nb" path="res://Scenes/Juiciness/Particles/WheatParticles.tscn" id="7_rwhmt"]
+[ext_resource type="PackedScene" uid="uid://bdq3nytuj3fmq" path="res://Scenes/Assets/Silo.tscn" id="7_svnaj"]
+[ext_resource type="Shader" uid="uid://co6k524tk2tp0" path="res://WheatCanvasShader.tres" id="8_o4hv7"]
+[ext_resource type="PackedScene" uid="uid://boohb57dhwqa1" path="res://Scenes/Assets/Bale.tscn" id="8_yjelk"]
+[ext_resource type="Texture2D" uid="uid://c6qoseybe4nss" path="res://Assets/others/Bale/VBale.png" id="9_mlckx"]
+[ext_resource type="Shader" uid="uid://dh62111ge71s2" path="res://Resources/Particles/WheatParticleSHader.tres" id="9_nmvnr"]
+[ext_resource type="Texture2D" uid="uid://ipu12xtx058l" path="res://Assets/Flowers/flower.png" id="11_73iho"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="12_4lo2m"]
+[ext_resource type="Texture2D" uid="uid://2uske4xkav2o" path="res://Assets/Buildings/FarmRed.png" id="13_kmhcm"]
+[ext_resource type="Texture2D" uid="uid://cato72hyfpsbe" path="res://Assets/Flowers/fleur.png" id="13_sbph4"]
+[ext_resource type="Texture2D" uid="uid://chx6ryon51cpu" path="res://Assets/others/Niche/DogHouseLong.png" id="13_wxb6x"]
+[ext_resource type="Texture2D" uid="uid://djc7y0xsf6s3b" path="res://Assets/Flowers/Poppy.png" id="14_thqj2"]
+[ext_resource type="PackedScene" uid="uid://m0emis4g5ua0" path="res://Scenes/Assets/Trees/TreeF.tscn" id="15_0uc5d"]
+[ext_resource type="PackedScene" uid="uid://dnhrsgofl44j2" path="res://Scenes/Assets/Trees/TreeC.tscn" id="16_uvftw"]
+[ext_resource type="PackedScene" uid="uid://bhotyrci7a6d4" path="res://Scenes/Assets/Trees/TreeA.tscn" id="17_vm1d0"]
+[ext_resource type="PackedScene" uid="uid://dnnhj7wwsar8p" path="res://Scenes/Assets/Trees/TreeD.tscn" id="18_qv128"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_47x85"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0l4xp"]
+seamless = true
+noise = SubResource("FastNoiseLite_47x85")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xaj1c"]
+shader = ExtResource("3_qasn2")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.715953, 0.783968, 3.85046e-07, 1)
+shader_parameter/bottom_color = Color(0.150533, 0.259301, 0.0125251, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.09
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_angle_deg = -135.0
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("5_k45cs")
+shader_parameter/random_noise = ExtResource("4_yvohr")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_0l4xp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5ms5"]
+shader = ExtResource("6_21dly")
+shader_parameter/rows = 1000.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yw7g"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cn62x"]
+seamless = true
+noise = SubResource("FastNoiseLite_0yw7g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlfds"]
+shader = ExtResource("8_o4hv7")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.866667, 0.647059, 0.25098, 1)
+shader_parameter/bottom_color = Color(0.198306, 0.135127, 0.0204018, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.09
+shader_parameter/wind_strength = 0.2
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("5_k45cs")
+shader_parameter/random_noise = ExtResource("4_yvohr")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_cn62x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18jys"]
+shader = ExtResource("9_nmvnr")
+shader_parameter/rows = 750.0
+shader_parameter/spacing = 9.0
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Level4Background" node_paths=PackedStringArray("assetsContainers", "grassList") instance=ExtResource("1_0xbni")]
+assetsContainers = [NodePath("assets"), NodePath("lanterns"), NodePath("flowers"), NodePath("trees")]
+grassList = [NodePath("Grass/GrassSystem/Grass"), NodePath("Grass/wheatSystem/Wheat")]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+z_index = -2
+color = Color(0.386706, 0.314285, 0.0664667, 1)
+polygon = PackedVector2Array(233, 337, 530, 360, 770, 351, 1311, 340, 1319, 972, 188, 886, 209, 652)
+
+[node name="Sprite2D" parent="." index="1"]
+z_index = -60
+
+[node name="Grass" type="Node2D" parent="." index="2"]
+z_index = -1
+
+[node name="GrassSystem" type="Node2D" parent="Grass" index="0"]
+
+[node name="Grass" parent="Grass/GrassSystem" index="0" node_paths=PackedStringArray("polygon") instance=ExtResource("2_io6e2")]
+visible = false
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem/Grass" index="0"]
+material = SubResource("ShaderMaterial_xaj1c")
+position = Vector2(-1606, -941)
+amount = 600000
+process_material = SubResource("ShaderMaterial_r5ms5")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem" index="1"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(587, -609, 150, -564, -201, -480, -629, -213, -820, -60, -903, 98, -947, 533, -1163, 852, -1050, -903, -274, -967, 1249, -911, 1082, -710, 881, -654)
+
+[node name="wheatSystem" type="Node2D" parent="Grass" index="1"]
+
+[node name="Wheat" parent="Grass/wheatSystem" index="0" node_paths=PackedStringArray("polygon") instance=ExtResource("7_rwhmt")]
+visible = false
+position = Vector2(173, 324)
+polygon = NodePath("../Polygon2D")
+
+[node name="WheatParticles" parent="Grass/wheatSystem/Wheat" index="0"]
+material = SubResource("ShaderMaterial_tlfds")
+process_material = SubResource("ShaderMaterial_18jys")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/wheatSystem" index="1"]
+position = Vector2(215, 106)
+color = Color(1, 1, 0, 0.219608)
+polygon = PackedVector2Array(219, 237, 1089, 242, 1117, 733, -4, 736, 18, 232)
+
+[node name="assets" type="Node2D" parent="." index="3"]
+z_index = -60
+
+[node name="Silo" parent="assets" index="0" instance=ExtResource("7_svnaj")]
+position = Vector2(395, -452)
+
+[node name="Bale" parent="assets" index="1" instance=ExtResource("8_yjelk")]
+position = Vector2(-286, -367)
+
+[node name="Sprite2D" parent="assets/Bale" index="0"]
+position = Vector2(-69, -64)
+texture = ExtResource("9_mlckx")
+
+[node name="Bale6" parent="assets" index="2" instance=ExtResource("8_yjelk")]
+position = Vector2(1053, -244)
+scale = Vector2(1.435, 1.435)
+
+[node name="Sprite2D" parent="assets/Bale6" index="0"]
+position = Vector2(-69, -64)
+texture = ExtResource("13_kmhcm")
+region_enabled = true
+region_rect = Rect2(2028, 663, 2191, 2199)
+
+[node name="Bale3" parent="assets" index="3" instance=ExtResource("8_yjelk")]
+position = Vector2(-406, -284)
+
+[node name="Bale2" parent="assets" index="4" instance=ExtResource("8_yjelk")]
+position = Vector2(617, -452)
+
+[node name="Sprite2D" parent="assets/Bale2" index="0"]
+texture = ExtResource("9_mlckx")
+
+[node name="DogHouse" parent="assets" index="5" instance=ExtResource("8_yjelk")]
+position = Vector2(99, -497)
+
+[node name="Sprite2D" parent="assets/DogHouse" index="0"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("13_wxb6x")
+
+[node name="Bale4" parent="assets" index="6" instance=ExtResource("8_yjelk")]
+position = Vector2(701, -452)
+
+[node name="Sprite2D" parent="assets/Bale4" index="0"]
+texture = ExtResource("9_mlckx")
+
+[node name="Bale5" parent="assets" index="7" instance=ExtResource("8_yjelk")]
+position = Vector2(659, -500)
+
+[node name="Sprite2D" parent="assets/Bale5" index="0"]
+texture = ExtResource("9_mlckx")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="lanterns" type="Node2D" parent="." index="4"]
+z_index = -60
+
+[node name="Lantern" parent="lanterns" index="0" instance=ExtResource("2_q6ddb")]
+position = Vector2(542, -220)
+scale = Vector2(0.1, 0.1)
+
+[node name="Lantern4" parent="lanterns" index="1" instance=ExtResource("2_q6ddb")]
+position = Vector2(-117, -424)
+scale = Vector2(0.1, 0.1)
+
+[node name="Lantern2" parent="lanterns" index="2" instance=ExtResource("2_q6ddb")]
+position = Vector2(686, -113)
+scale = Vector2(0.1, 0.1)
+
+[node name="Lantern3" parent="lanterns" index="3" instance=ExtResource("2_q6ddb")]
+position = Vector2(-377, 304)
+scale = Vector2(0.1, 0.1)
+
+[node name="Lantern5" parent="lanterns" index="4" instance=ExtResource("2_q6ddb")]
+position = Vector2(-629, -163)
+scale = Vector2(0.1, 0.1)
+
+[node name="flowers" type="Node2D" parent="." index="5"]
+z_index = -60
+
+[node name="Flower" type="Sprite2D" parent="flowers" index="0"]
+position = Vector2(216, -412)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_73iho")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower15" type="Sprite2D" parent="flowers" index="1"]
+position = Vector2(-81, 394)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_73iho")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower12" type="Sprite2D" parent="flowers" index="2"]
+position = Vector2(667, 121)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_73iho")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower2" type="Sprite2D" parent="flowers" index="3"]
+position = Vector2(-502, -198)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_sbph4")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower3" type="Sprite2D" parent="flowers" index="4"]
+position = Vector2(-549, 281)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_73iho")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower4" type="Sprite2D" parent="flowers" index="5"]
+position = Vector2(-200, -339)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower5" type="Sprite2D" parent="flowers" index="6"]
+position = Vector2(-343, -306)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_sbph4")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower11" type="Sprite2D" parent="flowers" index="7"]
+position = Vector2(-469, 379)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_sbph4")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower6" type="Sprite2D" parent="flowers" index="8"]
+position = Vector2(167, 314)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower13" type="Sprite2D" parent="flowers" index="9"]
+position = Vector2(330, 396)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower14" type="Sprite2D" parent="flowers" index="10"]
+position = Vector2(195, -514)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower18" type="Sprite2D" parent="flowers" index="11"]
+position = Vector2(-757, 83)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower7" type="Sprite2D" parent="flowers" index="12"]
+position = Vector2(667, -196)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_73iho")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower8" type="Sprite2D" parent="flowers" index="13"]
+position = Vector2(515, -307)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower17" type="Sprite2D" parent="flowers" index="14"]
+position = Vector2(-254, 406)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_thqj2")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower9" type="Sprite2D" parent="flowers" index="15"]
+position = Vector2(709, -152)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_sbph4")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower16" type="Sprite2D" parent="flowers" index="16"]
+position = Vector2(-699, 193)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_sbph4")
+script = ExtResource("12_4lo2m")
+
+[node name="Flower10" type="Sprite2D" parent="flowers" index="17"]
+position = Vector2(-691, -98)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_sbph4")
+script = ExtResource("12_4lo2m")
+
+[node name="trees" type="Node2D" parent="." index="6"]
+
+[node name="TreeD" parent="trees" index="0" instance=ExtResource("18_qv128")]
+position = Vector2(-620, 378)
+scale = Vector2(0.2, 0.2)
+
+[node name="TreeF" parent="trees" index="1" instance=ExtResource("15_0uc5d")]
+position = Vector2(838, -110)
+scale = Vector2(0.3, 0.3)
+
+[node name="TreeC" parent="trees" index="2" instance=ExtResource("16_uvftw")]
+position = Vector2(-135, 522)
+scale = Vector2(0.3, 0.3)
+
+[node name="TreeA" parent="trees" index="3" instance=ExtResource("17_vm1d0")]
+position = Vector2(-529, 557)
+scale = Vector2(0.2, 0.2)
+
+[editable path="Grass/GrassSystem/Grass"]
+[editable path="Grass/wheatSystem/Wheat"]
+[editable path="assets/Bale"]
+[editable path="assets/Bale6"]
+[editable path="assets/Bale2"]
+[editable path="assets/DogHouse"]
+[editable path="assets/Bale4"]
+[editable path="assets/Bale5"]

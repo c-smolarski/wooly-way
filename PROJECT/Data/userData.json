@@ -1,0 +1,212 @@
+[
+  {
+	"username": "cc",
+	"hashedPassword": "e36580647d04fbff8d5e8298e8c9c953a1f00b0a800b34988b2317d5df6cf4bf",
+	"passwordSalt": "0Bnp3cD2IurgGuOY",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  true,
+	  true,
+	  true,
+	  true
+	],
+	"levelScores": [
+	  5000,
+	  5000,
+	  0,
+	  0,
+	  0,
+	  5000
+	]
+  },
+  {
+	"username": "zES",
+	"hashedPassword": "82a17da0be591a88afa18b9cf03242d920c97c8fdd78f7570a1fb902a8ccacd0",
+	"passwordSalt": "XUHmw4BR4113T0FU",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  true,
+	  true,
+	  true,
+	  true
+	],
+	"levelScores": [
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "DDSq",
+	"hashedPassword": "2a07d732a343451453ce8b7ff297bf2b6907b3c03ffe236c840cef6ac51c1d0e",
+	"passwordSalt": "GuovDQxQIjeAeMhK",
+	"unlockedLevels": [
+	  true,
+	  false,
+	  false,
+	  false,
+	  false,
+	  false
+	],
+	"levelScores": [
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "fef",
+	"hashedPassword": "66439806e95d96e84357af125ce619d9b17eb51ab56bb5b092222f35a0a79af1",
+	"passwordSalt": "6YzeYHBSqlXEVJRJ",
+	"unlockedLevels": [
+	  true,
+	  false,
+	  false,
+	  false,
+	  false,
+	  false
+	],
+	"levelScores": [
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "dsQF",
+	"hashedPassword": "f9f2c124e21444ae272635b5321559f77038d77b86dff95b79fde069d5a8ddd9",
+	"passwordSalt": "YIyWrO5E3wu40S8Y",
+	"unlockedLevels": [
+	  true,
+	  false,
+	  false,
+	  false,
+	  false,
+	  false
+	],
+	"levelScores": [
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "kln",
+	"hashedPassword": "3c4adbb4ba96dc791edad6eb4e1874a0ec65c0689201b0e61e3b1d30344feed0",
+	"passwordSalt": "S8lJWHw7ZpQGHrEs",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  false,
+	  false,
+	  false,
+	  false
+	],
+	"levelScores": [
+	  1954,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "dsq",
+	"hashedPassword": "508ce68accbae7045f05699878f7aed094175b2bd43afa6243079a6e4720e84a",
+	"passwordSalt": "wGNnwAfLOnMUVHOY",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  false,
+	  false,
+	  false,
+	  false
+	],
+	"levelScores": [
+	  1953,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "Clem",
+	"hashedPassword": "1f9bd21fe0088c20eb86cdc232d7c5aad02ccada354d6729fee98c572e06f55d",
+	"passwordSalt": "99ic8CeAPTk7Odal",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  true,
+	  true,
+	  true,
+	  true
+	],
+	"levelScores": [
+	  5000,
+	  1953,
+	  0,
+	  0,
+	  1918,
+	  1970
+	]
+  },
+  {
+	"username": "da",
+	"hashedPassword": "ce670a8d412e2afd9e2e4f85e31e65681e818aac53cd84f56e59e0c14fcd62c1",
+	"passwordSalt": "5XQjdLhYFykjyfYf",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  true,
+	  true,
+	  true,
+	  true
+	],
+	"levelScores": [
+	  0,
+	  0,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  },
+  {
+	"username": "alissa",
+	"hashedPassword": "e38c956b71d7d4a26682584381c1c4b7beba9cdb8102c62581351ab5fc54cfb7",
+	"passwordSalt": "wafnsOKjsfUA1a7f",
+	"unlockedLevels": [
+	  true,
+	  true,
+	  true,
+	  true,
+	  true,
+	  true
+	],
+	"levelScores": [
+	  1964,
+	  1940,
+	  0,
+	  0,
+	  0,
+	  0
+	]
+  }
+]

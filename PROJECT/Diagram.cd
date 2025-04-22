@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.JsonUtils">
+    <Position X="63.5" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\JsonUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.MapData">
+    <Position X="34.75" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\MapData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.MapInfo">
+    <Position X="34.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAABAAAgAAgBAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\MapData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.MathS">
+    <Position X="65.75" Y="13" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABAAABAAAAAEAAAgAAAAABIEAAAAAAAAACAAAAEAAA=</HashCode>
+      <FileName>Scripts\Utils\MathS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.NodeCreator">
+    <Position X="69.5" Y="16" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\NodeCreator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.StringDirection">
+    <Position X="65.75" Y="16.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAAAAAACIAgAAAAAAAAEACAICACAwBAAAEAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\StringDirection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Asset">
+    <Position X="19" Y="13.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Scripts\Asset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Grid">
+    <Position X="42.25" Y="3.25" Width="4" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Grid.FinishedTutorialGridEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Grid.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAQACAAAAGAAggAABACAAAEQACABAQEAIAAAIUAAAAA=</HashCode>
+      <FileName>Scripts\Grid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.History">
+    <Position X="31.25" Y="3.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>cIAAAQAAAiQAAAAAFwAAAAAAQkEgQAAJAhAAAQgAQZA=</HashCode>
+      <FileName>Scripts\History.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Pathfinding">
+    <Position X="31.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QAAEAAAAAAIAAAAAAAAAABAAAAACAAAAAgAAAAAAgAA=</HashCode>
+      <FileName>Scripts\Pathfinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.PathFindingCell">
+    <Position X="32.5" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAABAAAAAAAAAAAEAQAAAEAAAAwAAAAAA=</HashCode>
+      <FileName>Scripts\PathFindingCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Tile">
+    <Position X="38.5" Y="3.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>SYDBQiBgAECAQEFgIAAIEABkSAggAUAAAAFAAAoAAgE=</HashCode>
+      <FileName>Scripts\Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Tutorial">
+    <Position X="32.5" Y="10.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABBACAAAACAAAAAAAAAAAAABAAAQAAAAAAAEAg=</HashCode>
+      <FileName>Scripts\Tutorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries.ReadOnlyTwoWayDictionary&lt;TKey, TValue&gt;">
+    <Position X="23.75" Y="12.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\TwoWayDictionnaries\ReadOnlyTwoWayDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries.TwoWayDictionary&lt;TKey, TValue&gt;">
+    <Position X="27.5" Y="12.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Scripts\Utils\TwoWayDictionnaries\TwoWayDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries.TwoWayDictionaryBase&lt;TKey, TValue&gt;">
+    <Position X="25.5" Y="7.5" Width="3.75" />
+    <NestedTypes>
+      <Struct Name="Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries.TwoWayDictionaryBase&lt;TKey, TValue&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Utils\TwoWayDictionnaries\TwoWayDictionaryBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAADAABAACAAAEAQAAAAAAAAAAAAgAABQIAA=</HashCode>
+      <FileName>Scripts\Utils\TwoWayDictionnaries\TwoWayDictionaryBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.Tweens.TweenProp">
+    <Position X="69.5" Y="17.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>cMAAAQAAAABoAgADAACAAAAAAAEAAACAAAEAAACAAAI=</HashCode>
+      <FileName>Scripts\Utils\Tweens\TweenProp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.Data.FilePath">
+    <Position X="63" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAACAAAABACAAAAEBAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\Data\FilePath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.Data.LevelChar">
+    <Position X="69" Y="13" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAACAEAAAAAAAAACABAAAAgABAAAAAAEAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\Data\LevelChar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Utils.Data.SoundPath">
+    <Position X="62.75" Y="17.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAACAAAAACAQAAAAAAAAgAAAAAAAgAAAAQAABA=</HashCode>
+      <FileName>Scripts\Utils\Data\SoundPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Menus.PausingMenus.PauseMenu">
+    <Position X="21.25" Y="27.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAIAAAAAAAAAAAAAAAAIAAZAAQAAAABAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Menus\PausingMenus\PauseMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Menus.WinScreen">
+    <Position X="24.25" Y="27.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>REAAAAAAAAAAAQAQAAAIAACBKCCCBAAAAQECBAEAABE=</HashCode>
+      <FileName>Scripts\UI\Menus\PausingMenus\WinScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Menus.LevelSelector">
+    <Position X="49" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAACAAAKKAAAAAAAAAAIIBAQAIAAAAAICBIYUIEAg=</HashCode>
+      <FileName>Scripts\UI\Menus\LevelSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Menus.MusicPlayingMenu">
+    <Position X="34.75" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Scripts\UI\Menus\MusicPlayingMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Menus.PausingMenu">
+    <Position X="23.25" Y="24.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Menus\PausingMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.AuthentificationJuiciness">
+    <Position X="32.5" Y="14" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAgQAAAAAAAAAAAAAEAAAAAAAAAAAAAAAiAAAA=</HashCode>
+      <FileName>Scripts\UI\AuthentificationJuiciness.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Highscores">
+    <Position X="42.25" Y="9.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAgAgAAAAAAAAAAAAAIAQAAAgIEAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Highscores.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Transition">
+    <Position X="45.25" Y="13" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QAFAQJEEAyAAAAAAAAIAAEAAARgAQAAAEqAACQAAQQA=</HashCode>
+      <FileName>Scripts\UI\Transition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UsernameText">
+    <Position X="37.75" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAEQIAgAACAQAIAAAAABAAAAAAAAAAAgAACAAAgKA=</HashCode>
+      <FileName>Scripts\UI\UsernameText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.ControlsItemList">
+    <Position X="22" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACIAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\ControlsItemList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.TranslatableLabel">
+    <Position X="40" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\TranslatableLabel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.SoundSlider">
+    <Position X="19.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAVACAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\SoundSlider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables.LevelButton">
+    <Position X="13.5" Y="26" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAIAAYAACCAAACBABQQAAACAgIgAgAQAECAIgAAABA=</HashCode>
+      <FileName>Scripts\UI\LevelSelectorElements\Clickables\LevelButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.Clickables.SelectorArrow">
+    <Position X="17" Y="26" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAIiIGDKQQgAAIAAAIBACCCAEABAAQAAAAAAIYBAE=</HashCode>
+      <FileName>Scripts\UI\LevelSelectorElements\Clickables\SelectorArrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.AssetDisplayer">
+    <Position X="45.25" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAEAQCAAgAAAAAAAAAAAAAAAAAQIAAAAACAAAAA=</HashCode>
+      <FileName>Scripts\UI\LevelSelectorElements\AssetDisplayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.ClickableLevelSelectorElement">
+    <Position X="15.25" Y="22.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAABCAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Scripts\UI\LevelSelectorElements\ClickableLevelSelectorElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.LevelSelectorElements.LevelSelectorPathFollow">
+    <Position X="34.75" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAACAACKAAAAAAAAAQAAAAAAEQQQAAAgABIQAAQAA=</HashCode>
+      <FileName>Scripts\UI\LevelSelectorElements\LevelSelectorPathFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.MenuButtons.UserButtons.Create">
+    <Position X="4.75" Y="14.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAEAAAAACIAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\MenuButtons\UserButtons\Create.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.MenuButtons.UserButtons.Login">
+    <Position X="8.25" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\MenuButtons\UserButtons\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.MenuButtons.LevelSelectorMenuButton">
+    <Position X="1.5" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAQAAAAQKAAAAAAAAAAAAAAAEAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\MenuButtons\LevelSelectorMenuButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.MenuButtons.UserButton">
+    <Position X="6.25" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAEAQAAEAAAAAAAAAAEAAAAQIAAgAAAAAgAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\MenuButtons\UserButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.MenuButtons.RestartButton">
+    <Position X="11.25" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\RestartButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.MenuButton">
+    <Position X="5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAABAAAAAAiA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\MenuButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.QuitButton">
+    <Position X="16.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\QuitButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.UnlockLevelsButton">
+    <Position X="19" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\UnlockLevelsButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.AbstractButton">
+    <Position X="13.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QAAQAAAAAAAACAAAAAAAAAgAAEAAAABAAAAgAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AbstractButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.AnimatedButton">
+    <Position X="10" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAUCAAAAEAAAAAAAAAAAAAAAEAAAAABAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.CloseTutorial">
+    <Position X="51.75" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAIIAAAUACAAAACAYAAACCAAAECABRkiAAAoAQABEAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\CloseTutorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.LanguageButton">
+    <Position X="15.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\LanguageButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.Buttons.AnimatedButtons.NextButton">
+    <Position X="13.75" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAIAAAAAAAAAAAAAAAAAAUAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\NextButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Scripts.UI.Buttons.ResumeButton">
+    <Position X="12.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\AnimatedButtons\ResumeButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.UI.FullscreenButton">
+    <Position X="13.25" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Buttons\FullscreenButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.ProjectName.Help">
+    <Position X="17.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAQAAgAAAAAEAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Scripts\UI\Buttons\Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.DataManager">
+    <Position X="73.25" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QIkAGATVASCAACAAAhACABEABABAEEQIMAIAAEAQAAA=</HashCode>
+      <FileName>Scripts\Managers\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.EnvironmentManager">
+    <Position X="62.25" Y="0.5" Width="2.75" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.EnvironmentManager.WeatherChangedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\EnvironmentManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Enum Name="Com.IsartDigital.WoolyWay.Managers.EnvironmentManager.Weather" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\EnvironmentManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QGGAQAAIACCQAIBAIAkAAQAOBABAAAACABAEgAAAAAA=</HashCode>
+      <FileName>Scripts\Managers\EnvironmentManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.GameManager">
+    <Position X="53.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>aAAEAKBAAjAAAAAABCAABAAAACgAAAACQAAAQQAFAgA=</HashCode>
+      <FileName>Scripts\Managers\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.HudManager">
+    <Position X="48" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QECgQAgQEKAAIAAIACCAABAAQAASAAACQAAAAyAAABA=</HashCode>
+      <FileName>Scripts\Managers\HudManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.InputManager">
+    <Position X="50.75" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.InputManager.MoveInputPressedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\InputManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>SBEAAAAEACAAgAAAAAABAMAIIIAAACAUwgAAgQAEggA=</HashCode>
+      <FileName>Scripts\Managers\InputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.LevelManager">
+    <Position X="68.25" Y="0.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>QgAAAEAAACAAAACAAEAAQABFBABEAAAAAAAQAMAAAgA=</HashCode>
+      <FileName>Scripts\Managers\LevelManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.PasswordManager">
+    <Position X="65.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAIAAACEAAAQgAAAAAAAABAJAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>Scripts\Managers\PasswordManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.SignalBus">
+    <Position X="56.75" Y="0.5" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.MoveToLevelButtonEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.PausingMenuDisplayedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.AnyMenuButtonPressedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.TutorialFinishedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.LevelFinishedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.StartLevelEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.LevelClickedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.LanguageChangedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.UnlockLevelEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.TutorialChangedVisibilityEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.ArrivedAtLevelButtonEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.LevelRestartedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.UndoRedoParEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Managers.SignalBus.LevelLoadedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Managers\SignalBus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Managers\SignalBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Managers.SoundManager">
+    <Position X="58.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QGCAAAEAAOEIAQAAAAAAASFEzQJAoAuQgAhBQAREECA=</HashCode>
+      <FileName>Scripts\Managers\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Assets.SingleAssets.Bush">
+    <Position X="16.25" Y="19" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Scripts\Assets\SingleAssets\Bush.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Assets.SingleAssets.LevelSelectorPathAsset">
+    <Position X="19.25" Y="19" Width="2.25" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Assets.SingleAssets.LevelSelectorPathAsset.AppearAnimFinishedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Assets\SingleAssets\LevelSelectorPathAsset.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAABAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Scripts\Assets\SingleAssets\LevelSelectorPathAsset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Assets.SingleAssets.LevelSelectorSign">
+    <Position X="22.25" Y="19" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAABCQAABAABAAIAAACAAECAAAQASAAAAQQAAE=</HashCode>
+      <FileName>Scripts\Assets\SingleAssets\LevelSelectorSign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grass">
+    <Position X="42.25" Y="14.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIAQABCAAABAAAAAABAAEAAAAEAAAAhAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Assets\Grass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Assets.LevelBackground">
+    <Position X="25.25" Y="16.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAgAAAAAAAAABAAIAAAAAAAAAQAAAAAAAAAQAAA=</HashCode>
+      <FileName>Scripts\Assets\LevelBackground.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Assets.Tree">
+    <Position X="12.75" Y="16.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QEEAIAAAAAAAAAAABAgIAAAAAAAABAABAAAAAAAQgAA=</HashCode>
+      <FileName>Scripts\Assets\Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Scripts.Assets.SingleAsset">
+    <Position X="19.5" Y="16.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Scripts\Assets\SingleAsset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.GameObjects.Mobile">
+    <Position X="2.75" Y="20.75" Width="2.25" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.GameObjects.Mobile.FinishedMovingEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\GameObjects\Mobiles\Mobile.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAACQAAAYAAAAAAACAAAAAAAAAIIAEAAgCAIAAAAAA=</HashCode>
+      <FileName>Scripts\GameObjects\Mobiles\Mobile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.GameObjects.Dog">
+    <Position X="8.5" Y="25.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QQAEgAAAAACQAAAAACAAAAAEAEAAAEAAAACAEAAAAAE=</HashCode>
+      <FileName>Scripts\GameObjects\Dog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.GameObjects.Obstacle">
+    <Position X="8" Y="20.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAIIAAgAACAAAAAAAAAJAAAAABAAQAAAACAAABAA=</HashCode>
+      <FileName>Scripts\GameObjects\Obstacle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.GameObjects.Mobiles.Player">
+    <Position X="0.5" Y="25.5" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="Com.IsartDigital.WoolyWay.GameObjects.Mobiles.Player.ControlScheme" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\GameObjects\Mobiles\Player.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAABAACASAAAAIAKAACAAAAABAQAAEAIIAAIAAABAE=</HashCode>
+      <FileName>Scripts\GameObjects\Mobiles\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.GameObjects.Mobiles.Sheep">
+    <Position X="4" Y="25.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAUAAKgCACKgAAgABAYIAAADECEMCGIAECAAIAASAAE=</HashCode>
+      <FileName>Scripts\GameObjects\Mobiles\Sheep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Firefly">
+    <Position X="40" Y="14.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAEAAAAAAAAAAAACgAAAgAQAAAgQAAAAAAAA=</HashCode>
+      <FileName>Scripts\GameObjects\juiciness\Firefly.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.GameObject">
+    <Position X="4.5" Y="17.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAgAAAAAAAAAAAAAAEAAAAACAAEAAAAAAAAEAAAA=</HashCode>
+      <FileName>Scripts\GameObjects\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Components.AudioTransitioner">
+    <Position X="53.75" Y="16.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAASAAAAAAAAAAAAAAAAgAAEAAAgAAAACAIAA=</HashCode>
+      <FileName>Scripts\Components\AudioTransitioner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Components.ClickableArea">
+    <Position X="48.75" Y="16.75" Width="2.25" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.WoolyWay.Components.ClickableArea.ClickedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Components\ClickableArea.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAIAAAAAAAAAAgABAAAAAAAAAAAAQAAADAIACAAA=</HashCode>
+      <FileName>Scripts\Components\ClickableArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Components.ResolutionRescaler">
+    <Position X="51.25" Y="16.75" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="Com.IsartDigital.WoolyWay.Components.ResolutionRescaler.RescaleMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scripts\Components\ResolutionRescaler.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAACIAAADAAAAAAAAAAAIAAAAAAADAEAAAAAA=</HashCode>
+      <FileName>Scripts\Components\ResolutionRescaler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.WoolyWay.Data.UserData">
+    <Position X="73.25" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAEAAAAAAAAAQQAAABAAAAA=</HashCode>
+      <FileName>Scripts\Data\UserData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Com.IsartDigital.WoolyWay.Utils.Matrix2x2">
+    <Position X="43.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAEAAAAAAAAAAAAAAAAAIAEAAAA=</HashCode>
+      <FileName>Scripts\Utils\Matrix2x2.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Com.IsartDigital.WoolyWay.Utils.DiagonalDirection">
+    <Position X="41.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAGAAAAAAAABAgAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\DiagonalDirection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

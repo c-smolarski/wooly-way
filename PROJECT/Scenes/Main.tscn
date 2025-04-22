@@ -1,67 +1,392 @@
-[gd_scene load_steps=17 format=3 uid="uid://owpjl3bk8b33"]
+[gd_scene load_steps=105 format=3 uid="uid://cs44g50r6awo5"]
 
-[ext_resource type="Script" path="res://Scripts/GridManager.cs" id="1_jlmcb"]
-[ext_resource type="Script" path="res://Scripts/GameManger.cs" id="2_ov00f"]
+[ext_resource type="Script" path="res://Scripts/Managers/HudManager.cs" id="2_ri03q"]
 [ext_resource type="PackedScene" uid="uid://sloiiv0qqxq0" path="res://Scenes/Tile.tscn" id="3_0uypt"]
-[ext_resource type="Script" path="res://Scripts/HudManager.cs" id="3_5dmvo"]
-[ext_resource type="PackedScene" uid="uid://iv0tptn3q0sw" path="res://Scenes/MapManager.tscn" id="4_46173"]
-[ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/HUD.tscn" id="4_ms4ov"]
-[ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/Wall.tscn" id="5_7tm8l"]
-[ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/Player.tscn" id="6_ewwj7"]
-[ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/Dog.tscn" id="7_l4yf1"]
-[ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/Sheep.tscn" id="8_gvd0m"]
-[ext_resource type="PackedScene" uid="uid://jjio4iqohw1" path="res://Scenes/Arrival.tscn" id="9_nr5v7"]
-[ext_resource type="PackedScene" uid="uid://bgo65s6xvkjhe" path="res://Scenes/main_menu.tscn" id="12_eekqv"]
-[ext_resource type="Script" path="res://Scripts/main_menu.cs" id="13_rvh2u"]
-[ext_resource type="PackedScene" uid="uid://t4dbwvcyidyd" path="res://Scenes/settings.tscn" id="13_tq18i"]
-[ext_resource type="PackedScene" uid="uid://cxta5c5yivgqd" path="res://Scenes/pause_menu.tscn" id="14_gcp1u"]
-[ext_resource type="PackedScene" uid="uid://crybx52snntvn" path="res://Scenes/credits.tscn" id="16_cwywt"]
+[ext_resource type="Script" path="res://Scripts/Managers/EnvironmentManager.cs" id="4_3yiuv"]
+[ext_resource type="Script" path="res://Scripts/Managers/SoundManager.cs" id="4_m2u61"]
+[ext_resource type="PackedScene" uid="uid://dmfbw723jsxf8" path="res://Scenes/UI/HUD.tscn" id="4_ms4ov"]
+[ext_resource type="Script" path="res://Scripts/Managers/GameManager.cs" id="5_i7vo1"]
+[ext_resource type="PackedScene" uid="uid://dd8y2lm4xou7s" path="res://Scenes/Juiciness/Day.tscn" id="6_qcort"]
+[ext_resource type="Environment" uid="uid://x5fvru5rbtnw" path="res://Scenes/Juiciness/WorldEnvironnements/Day.tres" id="7_fcomb"]
+[ext_resource type="PackedScene" uid="uid://bdjosnm5b07xa" path="res://Scenes/Juiciness/WorldEnvironnements/Rain.tscn" id="7_nxxh4"]
+[ext_resource type="PackedScene" uid="uid://cug3oea2u0jih" path="res://Scenes/GameObjects/Wall.tscn" id="7_o77s2"]
+[ext_resource type="PackedScene" uid="uid://d0pk5jximafkh" path="res://Scenes/Juiciness/WorldEnvironnements/snow.tscn" id="8_dcqvb"]
+[ext_resource type="PackedScene" uid="uid://djdxw2ogabbea" path="res://Scenes/Juiciness/Particles/Fireflies.tscn" id="8_r063n"]
+[ext_resource type="PackedScene" uid="uid://dqkavg4d0hkn4" path="res://Scenes/GameObjects/Player.tscn" id="8_vlh7r"]
+[ext_resource type="PackedScene" uid="uid://5lilnhwf5nb8" path="res://Scenes/GameObjects/Dog.tscn" id="9_cb5no"]
+[ext_resource type="AudioStream" uid="uid://cqmiysoc5ay4y" path="res://Sounds/Musics/MainMenu2.ogg" id="9_cjk12"]
+[ext_resource type="AudioStream" uid="uid://cvv2aeuclx6oe" path="res://Sounds/SFX/Dog/dog1.ogg" id="9_o4xpa"]
+[ext_resource type="PackedScene" uid="uid://dlvqqrrxk1qyg" path="res://Scenes/GameObjects/Sheep.tscn" id="10_bbdlh"]
+[ext_resource type="AudioStream" uid="uid://bqiagtk6rpdqq" path="res://Sounds/Musics/Leaderbord2.ogg" id="10_g86pp"]
+[ext_resource type="AudioStream" uid="uid://c20us433awjvd" path="res://Sounds/SFX/plop.ogg" id="10_o7u5y"]
+[ext_resource type="AudioStream" uid="uid://jvon6a36o8cx" path="res://Sounds/SFX/Dog/dog2.ogg" id="10_ph1gs"]
+[ext_resource type="AudioStream" uid="uid://sxxp8snpcuk6" path="res://Sounds/Musics/Level2.ogg" id="11_hsoya"]
+[ext_resource type="AudioStream" uid="uid://b41wh7x6fcspy" path="res://Sounds/SFX/Dog/dog3.ogg" id="11_so2pl"]
+[ext_resource type="AudioStream" uid="uid://cp2riggylec5v" path="res://Sounds/SFX/pop.ogg" id="12_1smu3"]
+[ext_resource type="Script" path="res://Scripts/Managers/DataManager.cs" id="12_82234"]
+[ext_resource type="AudioStream" uid="uid://01t6jiyqp43y" path="res://Sounds/SFX/Sheep/sheep1.ogg" id="12_hh1pi"]
+[ext_resource type="AudioStream" uid="uid://b0q845jwauicg" path="res://Sounds/SFX/rooster.ogg" id="12_jxb2x"]
+[ext_resource type="AudioStream" uid="uid://drtug2l7md1yh" path="res://Sounds/SFX/Sheep/sheep2.ogg" id="13_k3sp8"]
+[ext_resource type="AudioStream" uid="uid://cyq3od5o53cdh" path="res://Sounds/SFX/fop.ogg" id="13_s0jlj"]
+[ext_resource type="AudioStream" uid="uid://j4ibs3bbbr6c" path="res://Sounds/SFX/Sheep/sheep3.ogg" id="14_cqvwt"]
+[ext_resource type="AudioStream" uid="uid://bjgnxe1u67kkg" path="res://Sounds/SFX/Ambient/day.ogg" id="19_hlisy"]
+[ext_resource type="AudioStream" uid="uid://dfsrlxtahh3ed" path="res://Sounds/SFX/Ambient/night_clear.ogg" id="20_xit3l"]
+[ext_resource type="AudioStream" uid="uid://ngppjme8scum" path="res://Sounds/SFX/Ambient/night_rainy.ogg" id="21_dwuow"]
+[ext_resource type="AudioStream" uid="uid://c4rigv4qwptmj" path="res://Sounds/SFX/Ambient/snow_windy.ogg" id="22_q7wnu"]
+[ext_resource type="AudioStream" uid="uid://ba2n57ra6t2xj" path="res://Sounds/SFX/Footsteps/grass/grass-01.ogg" id="23_wqx5x"]
+[ext_resource type="AudioStream" uid="uid://bo2xv8ixjdox1" path="res://Sounds/SFX/Footsteps/grass/grass-02.ogg" id="24_8fcbo"]
+[ext_resource type="AudioStream" uid="uid://btbecv2qjpyas" path="res://Sounds/SFX/Footsteps/grass/grass-03.ogg" id="25_v6qgx"]
+[ext_resource type="AudioStream" uid="uid://8ppyrrakcuk2" path="res://Sounds/SFX/Footsteps/grass/grass-04.ogg" id="26_14jog"]
+[ext_resource type="AudioStream" uid="uid://cqekj57kpeobh" path="res://Sounds/SFX/Footsteps/grass/grass-05.ogg" id="27_38bx3"]
+[ext_resource type="AudioStream" uid="uid://b4eiewsirgcni" path="res://Sounds/SFX/Footsteps/grass/grass-06.ogg" id="28_l0te6"]
+[ext_resource type="AudioStream" uid="uid://cy63gf6krt55v" path="res://Sounds/SFX/Footsteps/grass/grass-07.ogg" id="29_y7wgv"]
+[ext_resource type="AudioStream" uid="uid://bd3ino18o5dd6" path="res://Sounds/SFX/Footsteps/grass/grass-08.ogg" id="30_435em"]
+[ext_resource type="AudioStream" uid="uid://t11xysbxhrcv" path="res://Sounds/SFX/Footsteps/grass/grass-09.ogg" id="31_kh2x6"]
+[ext_resource type="AudioStream" uid="uid://du4m0oek6o3ch" path="res://Sounds/SFX/Footsteps/grass/grass-10.ogg" id="32_vb6kh"]
+[ext_resource type="AudioStream" uid="uid://blbajbf3yuffl" path="res://Sounds/SFX/Footsteps/grass/grass-11.ogg" id="33_4tggl"]
+[ext_resource type="AudioStream" uid="uid://capgc2cwrad8k" path="res://Sounds/SFX/Footsteps/grass/grass-12.ogg" id="34_876wi"]
+[ext_resource type="AudioStream" uid="uid://d2le4ytan7q31" path="res://Sounds/SFX/Footsteps/grass/grass-13.ogg" id="35_1lhuf"]
+[ext_resource type="AudioStream" uid="uid://cm2q70jsf1hsm" path="res://Sounds/SFX/Footsteps/grass/grass-14.ogg" id="36_r5mdg"]
+[ext_resource type="AudioStream" uid="uid://cpv07samq3xgk" path="res://Sounds/SFX/Footsteps/grass/grass-15.ogg" id="37_3h4yg"]
+[ext_resource type="AudioStream" uid="uid://c8gfnukab1c80" path="res://Sounds/SFX/Footsteps/snow/snow-01.ogg" id="37_5k3ff"]
+[ext_resource type="AudioStream" uid="uid://bh3ci1gjc87vb" path="res://Sounds/SFX/Footsteps/grass/grass-16.ogg" id="38_riauc"]
+[ext_resource type="AudioStream" uid="uid://b435xs2me0nus" path="res://Sounds/SFX/Footsteps/snow/snow-02.ogg" id="38_tor5n"]
+[ext_resource type="AudioStream" uid="uid://bffcm3wlcl3ag" path="res://Sounds/SFX/Footsteps/grass/grass-17.ogg" id="39_02qck"]
+[ext_resource type="AudioStream" uid="uid://woag4jsq6bly" path="res://Sounds/SFX/Footsteps/snow/snow-03.ogg" id="39_umj68"]
+[ext_resource type="AudioStream" uid="uid://h4iw488t50ie" path="res://Sounds/SFX/Footsteps/grass/grass-18.ogg" id="40_pl18l"]
+[ext_resource type="AudioStream" uid="uid://hs0nc534dou8" path="res://Sounds/SFX/Footsteps/snow/snow-04.ogg" id="40_vp65u"]
+[ext_resource type="AudioStream" uid="uid://d3wckscnmcwwt" path="res://Sounds/SFX/Footsteps/grass/grass-19.ogg" id="41_3slsf"]
+[ext_resource type="AudioStream" uid="uid://dcav2fjkhnjx" path="res://Sounds/SFX/Footsteps/snow/snow-05.ogg" id="41_t7sj8"]
+[ext_resource type="AudioStream" uid="uid://d22wbb4op52qj" path="res://Sounds/SFX/Footsteps/snow/snow-06.ogg" id="42_dk621"]
+[ext_resource type="AudioStream" uid="uid://ce6wuajievdve" path="res://Sounds/SFX/Footsteps/grass/grass-20.ogg" id="42_fw36k"]
+[ext_resource type="AudioStream" uid="uid://bytbrg3aq576m" path="res://Sounds/SFX/Footsteps/snow/snow-07.ogg" id="43_1oglk"]
+[ext_resource type="AudioStream" uid="uid://bextshsn60yue" path="res://Sounds/SFX/Footsteps/grass/grass-21.ogg" id="43_qmm1f"]
+[ext_resource type="AudioStream" uid="uid://d07axhexsbeys" path="res://Sounds/SFX/Footsteps/snow/snow-08.ogg" id="44_aj5wc"]
+[ext_resource type="AudioStream" uid="uid://da32hutc7rljf" path="res://Sounds/SFX/Footsteps/snow/snow-09.ogg" id="45_siiwd"]
+[ext_resource type="AudioStream" uid="uid://cee8bn3ooq4wh" path="res://Sounds/SFX/Footsteps/snow/snow-10.ogg" id="46_ncu2l"]
+[ext_resource type="AudioStream" uid="uid://ckvldc6nwf0lw" path="res://Sounds/SFX/UI/switch_on.ogg" id="47_3nm7u"]
+[ext_resource type="AudioStream" uid="uid://btt3mehn6tvur" path="res://Sounds/SFX/UI/switch_off.ogg" id="48_56hqo"]
+[ext_resource type="AudioStream" uid="uid://bbd1fylyqpw0w" path="res://Sounds/SFX/UI/Button/button_01.ogg" id="56_lb60x"]
+[ext_resource type="AudioStream" uid="uid://docia2awafx2x" path="res://Sounds/SFX/UI/Button/button_02.ogg" id="57_m346a"]
+[ext_resource type="AudioStream" uid="uid://btu01t0askfcb" path="res://Sounds/SFX/UI/Button/button_03.ogg" id="58_jswci"]
+[ext_resource type="PackedScene" uid="uid://bypkn6khmstrb" path="res://Scenes/UI/Menus/LevelSelector/LevelSelector.tscn" id="60_wgsxu"]
+[ext_resource type="PackedScene" uid="uid://cxta5c5yivgqd" path="res://Scenes/UI/Menus/PauseMenu.tscn" id="61_bhssv"]
+[ext_resource type="PackedScene" uid="uid://cjlmeer18k532" path="res://Scenes/UI/History.tscn" id="63_xkuqv"]
+[ext_resource type="PackedScene" uid="uid://10en2nctebfn" path="res://Scenes/UI/Menus/WinScreen.tscn" id="64_ijpr6"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/MainButtons/CloseTutorial.cs" id="71_4pu87"]
+[ext_resource type="Texture2D" uid="uid://cxbkgaxr3j0s1" path="res://Assets/icon.svg" id="71_b6b1m"]
+[ext_resource type="PackedScene" uid="uid://b84mnq5t2jvbb" path="res://Scenes/TutorialFrame.tscn" id="72_ecpei"]
+[ext_resource type="Texture2D" uid="uid://7r0oyvt3vj0c" path="res://Assets/particles/butterfly_spritesheet.png" id="74_8tn5f"]
+[ext_resource type="PackedScene" uid="uid://bw333fs0t3dlm" path="res://Scenes/UI/Buttons/MenuButtonSmall.tscn" id="74_wcvr6"]
+[ext_resource type="Texture2D" uid="uid://1saty3f6ei55" path="res://Assets/UI/Buttons/Icons/pause.png" id="75_4cfiv"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/MainButtons/PauseButton.cs" id="76_4c1hh"]
+[ext_resource type="Script" path="res://Scripts/Components/ResolutionRescaler.cs" id="78_n2g86"]
+[ext_resource type="PackedScene" uid="uid://otjvxjk3pk00" path="res://Scenes/UI/Transition.tscn" id="80_wp428"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_4palu"]
+script/source = "using Godot;
+using System;
+
+public partial class Target : Node
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[sub_resource type="PackedScene" id="PackedScene_2rb5q"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Target", "Node2D", "script", "Sprite2D", "Sprite2D", "scale", "texture"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 2, 5, 1, 6, 2, 0),
+"variants": [SubResource("CSharpScript_4palu"), Vector2(0.5, 0.5), ExtResource("71_b6b1m")],
+"version": 3
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j26hr"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_ceel1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.102273, 1), 0.0, 0.0, 0, 0, Vector2(0.901515, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_m608w"]
+curve = SubResource("Curve_ceel1")
+
+[sub_resource type="Gradient" id="Gradient_os1v7"]
+offsets = PackedFloat32Array(0, 0.241525, 0.491525, 0.70339, 0.864407, 1)
+colors = PackedColorArray(0.59512, 0.997959, 1, 1, 1, 0.764706, 1, 1, 0.999998, 0.997566, 0.584802, 1, 0.741353, 0.996738, 0.648662, 1, 0.907519, 0.771181, 0.541754, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_62a2u"]
+gradient = SubResource("Gradient_os1v7")
+
+[sub_resource type="Curve" id="Curve_n7bv6"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.234848, -1), 0.0, 0.0, 0, 0, Vector2(0.329545, 0.551724), 0.0, 0.0, 0, 0, Vector2(0.545455, -1), 0.0, 0.0, 0, 0, Vector2(0.761364, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.38558), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_lc47e"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.189394, 0.908307), 0.0, 0.0, 0, 0, Vector2(0.375, 0.225705), 0.0, 0.0, 0, 0, Vector2(0.560606, 0.704545), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_b0inq"]
+curve_x = SubResource("Curve_n7bv6")
+curve_y = SubResource("Curve_lc47e")
+
+[sub_resource type="Curve" id="Curve_wpwp0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xbe0e"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ojaf6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_r8ryr"]
+curve_x = SubResource("Curve_wpwp0")
+curve_y = SubResource("Curve_xbe0e")
+curve_z = SubResource("Curve_ojaf6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4v6cc"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2000, 2000, 1)
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 20.55
+initial_velocity_max = 109.59
+directional_velocity_min = 3.0
+directional_velocity_max = 6.0
+directional_velocity_curve = SubResource("CurveXYZTexture_b0inq")
+scale_min = 0.01
+scale_max = 0.03
+scale_curve = SubResource("CurveXYZTexture_r8ryr")
+color_initial_ramp = SubResource("GradientTexture1D_62a2u")
+alpha_curve = SubResource("CurveTexture_m608w")
+anim_speed_min = 25.0
+anim_speed_max = 45.0
+
+[sub_resource type="Curve" id="Curve_7w38o"]
+_data = [Vector2(0, 0.35), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_epd48"]
+curve = SubResource("Curve_7w38o")
+
+[sub_resource type="Curve" id="Curve_5cnsb"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.159091, 1), 0.0, 0.0, 0, 0, Vector2(0.314394, -0.996865), 0.0, 0.0, 0, 0, Vector2(0.503788, 1), 0.0, 0.0, 0, 0, Vector2(0.674242, -1), 0.0, 0.0, 0, 0, Vector2(0.852273, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_dntxh"]
+curve_x = SubResource("Curve_5cnsb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_50w7j"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4000, 1, 1)
+direction = Vector3(1, 1, 0)
+spread = 0.0
+initial_velocity_min = 175.0
+initial_velocity_max = 250.0
+directional_velocity_min = 25.0
+directional_velocity_max = 50.0
+directional_velocity_curve = SubResource("CurveXYZTexture_dntxh")
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+alpha_curve = SubResource("CurveTexture_epd48")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rlxuk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6l5cb"]
 
 [node name="Main" type="Node"]
 
 [node name="Managers" type="Node" parent="."]
 
-[node name="GridManager" type="Node" parent="Managers"]
-script = ExtResource("1_jlmcb")
-tileOriginalSize = Vector2i(20, 20)
-tileScale = Vector2(4, 4)
-tileMargin = Vector2(2, 2)
-tileScene = ExtResource("3_0uypt")
-
 [node name="HudManager" type="Node" parent="Managers" node_paths=PackedStringArray("canvasLayer")]
-script = ExtResource("3_5dmvo")
+script = ExtResource("2_ri03q")
 hudScene = ExtResource("4_ms4ov")
 canvasLayer = NodePath("../../CanvasLayer")
 
-[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("GameContainer")]
-script = ExtResource("2_ov00f")
+[node name="EnvironmentManager" type="Node" parent="Managers" node_paths=PackedStringArray("worldEnvironment", "canvasLayer")]
+script = ExtResource("4_3yiuv")
+worldEnvironment = NodePath("../../WorldEnvironment")
+sceneFireflies = ExtResource("8_r063n")
+sceneGodRay = ExtResource("6_qcort")
+sceneRain = ExtResource("7_nxxh4")
+sceneSnow = ExtResource("8_dcqvb")
+canvasLayer = NodePath("../../CanvasLayer")
+
+[node name="SoundManager" type="Node" parent="Managers"]
+process_mode = 3
+script = ExtResource("4_m2u61")
+musicMainMenu = ExtResource("9_cjk12")
+musicLeaderboad = ExtResource("10_g86pp")
+musicLevels = ExtResource("11_hsoya")
+PopSFX = ExtResource("12_1smu3")
+PlopSFX = ExtResource("10_o7u5y")
+FwopSFX = ExtResource("13_s0jlj")
+RoosterSFX = ExtResource("12_jxb2x")
+DogSFXList = Array[AudioStreamOggVorbis]([ExtResource("9_o4xpa"), ExtResource("10_ph1gs"), ExtResource("11_so2pl")])
+SheepSFXList = Array[AudioStreamOggVorbis]([ExtResource("12_hh1pi"), ExtResource("13_k3sp8"), ExtResource("14_cqvwt")])
+DayAmbient = ExtResource("19_hlisy")
+ClearNightAmbient = ExtResource("20_xit3l")
+RainyNightAmbient = ExtResource("21_dwuow")
+SnowAmbient = ExtResource("22_q7wnu")
+grassyFootsteps = Array[AudioStreamOggVorbis]([ExtResource("23_wqx5x"), ExtResource("24_8fcbo"), ExtResource("25_v6qgx"), ExtResource("26_14jog"), ExtResource("27_38bx3"), ExtResource("28_l0te6"), ExtResource("29_y7wgv"), ExtResource("30_435em"), ExtResource("31_kh2x6"), ExtResource("32_vb6kh"), ExtResource("33_4tggl"), ExtResource("34_876wi"), ExtResource("35_1lhuf"), ExtResource("36_r5mdg"), ExtResource("37_3h4yg"), ExtResource("38_riauc"), ExtResource("39_02qck"), ExtResource("40_pl18l"), ExtResource("41_3slsf"), ExtResource("42_fw36k"), ExtResource("43_qmm1f")])
+snowyFootsteps = Array[AudioStreamOggVorbis]([ExtResource("37_5k3ff"), ExtResource("38_tor5n"), ExtResource("39_umj68"), ExtResource("40_vp65u"), ExtResource("41_t7sj8"), ExtResource("42_dk621"), ExtResource("43_1oglk"), ExtResource("44_aj5wc"), ExtResource("45_siiwd"), ExtResource("46_ncu2l")])
+UISwitchOn = ExtResource("47_3nm7u")
+UISwitchOff = ExtResource("48_56hqo")
+UIButtonClick = Array[AudioStreamOggVorbis]([ExtResource("56_lb60x"), ExtResource("57_m346a"), ExtResource("58_jswci")])
+
+[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("AssetsContainer", "LevelSelectorContainer", "GameContainer", "TutorialContainer", "menusContainer", "canvasLayer", "camera", "buttonTuto")]
+script = ExtResource("5_i7vo1")
+AssetsContainer = NodePath("../../AssetsContainer")
+LevelSelectorContainer = NodePath("../../LevelSelectorContainer/LevelSelector")
 GameContainer = NodePath("../../GameContainer")
+TutorialContainer = NodePath("../../TutorialContainer")
+menusContainer = NodePath("../../MenuContainer")
+canvasLayer = NodePath("../../CanvasLayer")
+camera = NodePath("../../MainCamera")
+buttonTuto = NodePath("../../CanvasLayer/Control/BtnTuto")
+TileScene = ExtResource("3_0uypt")
+winScreenPacked = ExtResource("64_ijpr6")
+pauseScreenPacked = ExtResource("61_bhssv")
+history = ExtResource("63_xkuqv")
+WallScene = ExtResource("7_o77s2")
+PlayerScene = ExtResource("8_vlh7r")
+DogScene = ExtResource("9_cb5no")
+SheepScene = ExtResource("10_bbdlh")
+TargetScene = SubResource("PackedScene_2rb5q")
 
-[node name="MapManager" parent="Managers" node_paths=PackedStringArray("gameContainer") instance=ExtResource("4_46173")]
-visible = false
-wallPacked = ExtResource("5_7tm8l")
-gameContainer = NodePath("../../GameContainer")
-playerPacked = ExtResource("6_ewwj7")
-dogPacked = ExtResource("7_l4yf1")
-sheepPacked = ExtResource("8_gvd0m")
-arrivalPacked = ExtResource("9_nr5v7")
+[node name="DataManager" type="Node" parent="Managers"]
+script = ExtResource("12_82234")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="AssetsContainer" type="Node2D" parent="."]
+z_index = -200
+
+[node name="LevelSelectorContainer" type="Node2D" parent="."]
+z_index = -100
+
+[node name="LevelSelector" parent="LevelSelectorContainer" instance=ExtResource("60_wgsxu")]
 
 [node name="GameContainer" type="Node2D" parent="."]
-visible = false
 
-[node name="PauseMenu" parent="." instance=ExtResource("14_gcp1u")]
-visible = false
+[node name="butterflies" type="GPUParticles2D" parent="."]
+z_index = 70
+material = SubResource("CanvasItemMaterial_j26hr")
+position = Vector2(0, -517.5)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_4v6cc")
+texture = ExtResource("74_8tn5f")
+lifetime = 15.0
+preprocess = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-20000, -2500, 40000, 5000)
 
-[node name="MainMenu" parent="." instance=ExtResource("12_eekqv")]
-script = ExtResource("13_rvh2u")
+[node name="wind" type="GPUParticles2D" parent="."]
+z_index = 70
+position = Vector2(-3101, -4398)
+amount = 75
+process_material = SubResource("ParticleProcessMaterial_50w7j")
+lifetime = 50.0
+preprocess = 50.0
+speed_scale = 3.5
+visibility_rect = Rect2(0, 0, 10000, 7500)
+trail_enabled = true
 
-[node name="Credits" parent="MainMenu" instance=ExtResource("16_cwywt")]
-visible = false
+[node name="TutorialContainer" type="Node2D" parent="."]
+z_index = 100
+
+[node name="MenuContainer" type="Node2D" parent="."]
+z_index = 500
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_fcomb")
+camera_attributes = SubResource("CameraAttributesPractical_rlxuk")
+
+[node name="MainCamera" type="Camera2D" parent="."]
+
+[node name="Transition" parent="." instance=ExtResource("80_wp428")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 33.0
+offset_right = 247.0
+offset_bottom = 233.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6l5cb")
+
+[node name="BtnPauseMenu" parent="CanvasLayer/Control/Panel" node_paths=PackedStringArray("transition") instance=ExtResource("74_wcvr6")]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_filter = 1
+text = ""
+icon = ExtResource("75_4cfiv")
+icon_alignment = 1
+script = ExtResource("76_4c1hh")
+transition = NodePath("../../../../Transition")
 
-[node name="Settings" parent="MainMenu" instance=ExtResource("13_tq18i")]
-visible = false
+[node name="BtnTuto" parent="CanvasLayer/Control" node_paths=PackedStringArray("transition") instance=ExtResource("74_wcvr6")]
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -620.0
+offset_top = -214.0
+offset_right = 304.0
+offset_bottom = 482.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 400
+text = "?"
+script = ExtResource("71_4pu87")
+undoRedoPacked = ExtResource("63_xkuqv")
+framePacked = ExtResource("72_ecpei")
+transition = NodePath("../../../Transition")
+
+[node name="ResolutionRescaler" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("78_n2g86")
+targets = [NodePath("../AssetsContainer"), NodePath("../LevelSelectorContainer"), NodePath("../GameContainer"), NodePath("../TutorialContainer")]
+mode = 4

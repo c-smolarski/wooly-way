@@ -1,0 +1,687 @@
+[gd_scene load_steps=46 format=3 uid="uid://cxta5c5yivgqd"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/PausingMenus/PauseMenu.cs" id="1_di0nk"]
+[ext_resource type="Theme" uid="uid://cc4m66p3atd14" path="res://Resources/Theme/MenuButton.tres" id="1_f10c5"]
+[ext_resource type="Shader" path="res://Resources/Shaders/blur.gdshader" id="1_ikan5"]
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="3_oucxk"]
+[ext_resource type="PackedScene" uid="uid://ctcfmrf2jwvem" path="res://Scenes/UI/Buttons/MenuButton.tscn" id="4_46s5n"]
+[ext_resource type="PackedScene" uid="uid://otjvxjk3pk00" path="res://Scenes/UI/Transition.tscn" id="4_htqdc"]
+[ext_resource type="PackedScene" uid="uid://bw333fs0t3dlm" path="res://Scenes/UI/Buttons/MenuButtonSmall.tscn" id="5_j4vsk"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/ResumeButton.cs" id="6_34qcr"]
+[ext_resource type="Script" path="res://Scripts/Components/ResolutionRescaler.cs" id="6_dpbed"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/RestartButton.cs" id="7_goera"]
+[ext_resource type="Texture2D" uid="uid://dg7v5midychff" path="res://Assets/UI/Buttons/Icons/leaderboard.png" id="7_pp4at"]
+[ext_resource type="Texture2D" uid="uid://d3v50p1ty64d1" path="res://Assets/UI/Buttons/Icons/settings.png" id="8_5gubx"]
+[ext_resource type="Texture2D" uid="uid://can6jing0bcsy" path="res://Assets/UI/Buttons/Icons/unlock.png" id="9_0qd3e"]
+[ext_resource type="Texture2D" uid="uid://bd5x8mpwut6lw" path="res://Assets/UI/Buttons/Icons/quit.png" id="9_3h2vb"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/UnlockLevelsButton.cs" id="10_17ojm"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButton.cs" id="11_kx1xe"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/QuitButton.cs" id="13_0hamb"]
+[ext_resource type="Shader" path="res://Resources/Shaders/HUD.gdshader" id="15_hlgbn"]
+[ext_resource type="FontFile" uid="uid://cxtbu58rr8dns" path="res://Resources/Fonts/PatrickHand-Regular.ttf" id="16_8qfg2"]
+[ext_resource type="Script" path="res://Scripts/UI/ControlsItemList.cs" id="17_1j3sn"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/FullscreenButton.cs" id="17_yj6rd"]
+[ext_resource type="Script" path="res://Scripts/UI/SoundSlider.cs" id="18_fb8cb"]
+[ext_resource type="Texture2D" uid="uid://ds0h22owk0kia" path="res://Assets/UI/Settings/Flags/en.png" id="19_g0ldd"]
+[ext_resource type="Texture2D" uid="uid://g1epjbh0tp4y" path="res://Assets/UI/Settings/Flags/en_hovered.png" id="20_oe0u0"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/LanguageButton.cs" id="21_faqed"]
+[ext_resource type="Texture2D" uid="uid://onadqpwncfty" path="res://Assets/UI/Settings/Flags/fr.png" id="22_yilv1"]
+[ext_resource type="Texture2D" uid="uid://1a5r0vm3eq8a" path="res://Assets/UI/Settings/Flags/fr_hovered.png" id="23_bpcp8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijpb4"]
+shader = ExtResource("1_ikan5")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7tvsi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhhg2"]
+font = ExtResource("3_oucxk")
+font_size = 72
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4sdm"]
+shader = ExtResource("15_hlgbn")
+shader_parameter/height = 4.0
+shader_parameter/frequency = 30.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5q2bt"]
+font = ExtResource("16_8qfg2")
+font_size = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xlqou"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvek2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxc08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0lpc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hutea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8l01"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im1ps"]
+shader = ExtResource("15_hlgbn")
+shader_parameter/height = 4.0
+shader_parameter/frequency = 30.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_heogw"]
+font = ExtResource("16_8qfg2")
+font_size = 50
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbv5y"]
+shader = ExtResource("15_hlgbn")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 40.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2qmw"]
+font = ExtResource("16_8qfg2")
+font_size = 75
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jh54x"]
+shader = ExtResource("15_hlgbn")
+shader_parameter/height = 20.0
+shader_parameter/frequency = 80.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_b6fkp"]
+font = ExtResource("16_8qfg2")
+font_size = 250
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqgrw"]
+shader = ExtResource("15_hlgbn")
+shader_parameter/height = 20.0
+shader_parameter/frequency = 80.0
+shader_parameter/speed = 3.0
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("settingsButton", "backButton", "basePanel", "settingsPanel")]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_di0nk")
+settingsButton = NodePath("Panel/Panel/SettingsButton")
+backButton = NodePath("Panel2/MenuButton")
+basePanel = NodePath("Panel")
+settingsPanel = NodePath("Panel2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ijpb4")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -990.0
+offset_top = -570.0
+offset_right = 990.0
+offset_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(990, 570)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -542.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 500)
+theme = ExtResource("1_f10c5")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = 100.0
+offset_right = 175.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_7tvsi")
+text = "LABEL_PAUSED"
+label_settings = SubResource("LabelSettings_lhhg2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" parent="Panel" node_paths=PackedStringArray("menu") instance=ExtResource("4_46s5n")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -400.0
+offset_right = 1500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1500, 350)
+text = "BTN_RESUME"
+script = ExtResource("6_34qcr")
+menu = NodePath("../..")
+
+[node name="RestartButton" parent="Panel" node_paths=PackedStringArray("menu") instance=ExtResource("4_46s5n")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -250.0
+offset_right = 1500.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1500, 350)
+text = "BTN_RESTART"
+script = ExtResource("7_goera")
+menu = NodePath("../..")
+
+[node name="SelectLevelButton" parent="Panel" node_paths=PackedStringArray("Transition") instance=ExtResource("4_46s5n")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -100.0
+offset_right = 1500.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1500, 350)
+text = "BTN_SELECT_LEVEL"
+pathSceneToLoad = "res://Scenes/Main.tscn"
+Transition = NodePath("../../Transition")
+
+[node name="MainMenuButton" parent="Panel" node_paths=PackedStringArray("Transition") instance=ExtResource("4_46s5n")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = 50.0
+offset_right = 1500.0
+offset_bottom = 750.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1500, 350)
+text = "BTN_MAIN_MENU"
+text_overrun_behavior = 1
+pathSceneToLoad = "res://Scenes/UI/Menus/MainMenus/MainMenu.tscn"
+Transition = NodePath("../../Transition")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -350.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(150, 200)
+
+[node name="UnlockButton" parent="Panel/Panel" instance=ExtResource("5_j4vsk")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -500.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+text = "
+"
+icon = ExtResource("9_0qd3e")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("10_17ojm")
+
+[node name="LeaderboardButtonButton" parent="Panel/Panel" node_paths=PackedStringArray("Transition") instance=ExtResource("5_j4vsk")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -425.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+text = ""
+icon = ExtResource("7_pp4at")
+icon_alignment = 1
+expand_icon = true
+pathSceneToLoad = "res://Scenes/UI/Menus/LeaderBoard.tscn"
+Transition = NodePath("../../../Transition")
+
+[node name="SettingsButton" parent="Panel/Panel" instance=ExtResource("5_j4vsk")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -350.0
+offset_bottom = 346.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+text = ""
+icon = ExtResource("8_5gubx")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("11_kx1xe")
+
+[node name="QuitButton" parent="Panel/Panel" instance=ExtResource("5_j4vsk")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -275.0
+offset_bottom = 421.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+text = ""
+icon = ExtResource("9_3h2vb")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_0hamb")
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -500.0
+offset_right = 600.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 500)
+theme = ExtResource("1_f10c5")
+
+[node name="TabContainer" type="TabContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -675.0
+offset_top = -420.0
+offset_right = 675.0
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(675, 375)
+theme = ExtResource("1_f10c5")
+
+[node name="General" type="TabBar" parent="Panel2/TabContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="Panel2/TabContainer/General"]
+material = SubResource("ShaderMaterial_q4sdm")
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -203.5
+offset_right = -208.0
+offset_bottom = -134.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LABEL_FULLSCREEN"
+label_settings = SubResource("LabelSettings_5q2bt")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Panel2/TabContainer/General"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 160.0
+offset_right = 462.0
+offset_bottom = 176.0
+scale = Vector2(2, 2)
+theme = ExtResource("1_f10c5")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xlqou")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dvek2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yxc08")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g0lpc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hutea")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j8l01")
+script = ExtResource("17_yj6rd")
+
+[node name="ControlScheme" type="Label" parent="Panel2/TabContainer/General"]
+material = SubResource("ShaderMaterial_im1ps")
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -53.5
+offset_right = -86.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LABEL_CONTROL_SCHEME"
+label_settings = SubResource("LabelSettings_heogw")
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="Panel2/TabContainer/General"]
+material = SubResource("ShaderMaterial_im1ps")
+layout_mode = 0
+offset_left = 430.0
+offset_top = 260.0
+offset_right = 690.0
+offset_bottom = 380.0
+pivot_offset = Vector2(130, 60)
+theme = ExtResource("1_f10c5")
+allow_search = false
+text_overrun_behavior = 0
+item_count = 2
+item_0/text = "IL_CLASSIC"
+item_1/text = "IL_ALTERNATIVE"
+script = ExtResource("17_1j3sn")
+
+[node name="Audio" type="TabBar" parent="Panel2/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/TabContainer/Audio"]
+custom_minimum_size = Vector2(110, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -250.0
+offset_right = 550.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 250)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Master" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "LABEL_MASTER"
+label_settings = SubResource("LabelSettings_r2qmw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelValue")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_f10c5")
+script = ExtResource("18_fb8cb")
+audioBusName = "Master"
+labelValue = NodePath("../Value")
+
+[node name="Value" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_5q2bt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel2/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Music" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer2"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "LABEL_MUSIC"
+label_settings = SubResource("LabelSettings_r2qmw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("labelValue")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("18_fb8cb")
+audioBusName = "Music"
+labelValue = NodePath("../Value")
+
+[node name="Value" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer2"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_5q2bt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel2/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Ambient" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer3"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "LABEL_AMBIENT"
+label_settings = SubResource("LabelSettings_r2qmw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("labelValue")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("18_fb8cb")
+audioBusName = "Ambient"
+labelValue = NodePath("../Value")
+
+[node name="Value" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer3"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_5q2bt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel2/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="SFX" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer4"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "LABEL_SFX"
+label_settings = SubResource("LabelSettings_r2qmw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("labelValue")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("18_fb8cb")
+audioBusName = "SFX"
+labelValue = NodePath("../Value")
+
+[node name="Value" type="Label" parent="Panel2/TabContainer/Audio/VBoxContainer/HBoxContainer4"]
+material = SubResource("ShaderMaterial_tbv5y")
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_5q2bt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Localization" type="TabBar" parent="Panel2/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="EnglishButton" type="TextureButton" parent="Panel2/TabContainer/Localization"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -393.5
+offset_right = 320.0
+offset_bottom = 280.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(640, 337)
+texture_normal = ExtResource("19_g0ldd")
+texture_hover = ExtResource("20_oe0u0")
+script = ExtResource("21_faqed")
+language = "en"
+
+[node name="Label" type="Label" parent="Panel2/TabContainer/Localization/EnglishButton"]
+material = SubResource("ShaderMaterial_jh54x")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.0
+offset_top = 206.0
+offset_right = 434.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "LABEL_ENGLISH"
+label_settings = SubResource("LabelSettings_b6fkp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FrenchButton" type="TextureButton" parent="Panel2/TabContainer/Localization"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -393.5
+offset_right = 890.0
+offset_bottom = 280.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(640, 337)
+texture_normal = ExtResource("22_yilv1")
+texture_hover = ExtResource("23_bpcp8")
+script = ExtResource("21_faqed")
+language = "fr"
+
+[node name="Label" type="Label" parent="Panel2/TabContainer/Localization/FrenchButton"]
+material = SubResource("ShaderMaterial_nqgrw")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.0
+offset_top = 206.0
+offset_right = 434.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "LABEL_FRENCH"
+label_settings = SubResource("LabelSettings_b6fkp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" parent="Panel2" instance=ExtResource("4_46s5n")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = 75.0
+offset_right = 815.0
+offset_bottom = 775.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BTN_BACK"
+script = null
+
+[node name="Transition" parent="." instance=ExtResource("4_htqdc")]
+transIn = true
+
+[node name="RectRescaler" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("6_dpbed")
+targets = [NodePath("../ColorRect")]
+
+[node name="ResolutionRescaler" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("6_dpbed")
+targets = [NodePath("../Panel"), NodePath("../Panel2")]
+mode = 3

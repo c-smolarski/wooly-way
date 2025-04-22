@@ -1,0 +1,80 @@
+[gd_resource type="Shader" format=3 uid="uid://co6k524tk2tp0"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D spritesheet;
+uniform sampler2D random_noise : hint_default_black;
+uniform sampler2D wind_noise : repeat_enable;
+
+uniform int frames = 4;
+uniform vec4 top_color : source_color = vec4(0.2, 0.8, 0.0, 1.0);
+uniform vec4 bottom_color : source_color = vec4(0.15, 0.6, 0.0, 1.0);
+uniform float wind_scale = 1.0;
+uniform float wind_speed = 0.1;
+uniform float wind_strength = 0.1;
+uniform vec2 player_pos = vec2(0.0);
+uniform float player_radius = 20.0;
+uniform float player_radius_blend = 10.0;
+uniform float size = 1.0; // New size uniform
+uniform float alpha : hint_range(0.0, 1.0, 0.01) = 1.0;
+
+vec2 rotateUV(vec2 uv, float rotation, vec2 mid){
+    float cosAngle = cos(rotation);
+    float sinAngle = sin(rotation);
+    return vec2(
+        cosAngle * (uv.x - mid.x) + sinAngle * (uv.y - mid.y) + mid.x,
+        cosAngle * (uv.y - mid.y) - sinAngle * (uv.x - mid.x) + mid.y
+    );
+}
+
+varying vec2 world_pos;
+varying float player_mask;
+
+void vertex(){
+    world_pos = INSTANCE_CUSTOM.xy;
+
+    // Wind
+    highp float wind = texture(wind_noise, (world_pos / wind_scale) + TIME * wind_speed).r;
+    wind = wind * 2.0 - 1.0;
+
+    // Player interaction
+    float player_distance = distance(world_pos, player_pos);
+    float pm = smoothstep(player_radius, player_radius + player_radius_blend, player_distance);
+    player_mask = pm;
+    vec2 pd = normalize(world_pos - player_pos);
+    vec2 vup = vec2(0.0, 1.0);
+    float signed_angle = atan(vup.x * pd.y - vup.y * pd.x, vup.x * pd.x + vup.y * pd.y);
+
+    float rotation = mix(signed_angle, wind * wind_strength, pm);
+    VERTEX = rotateUV(VERTEX * size, rotation, vec2(0.0)); // Apply size scaling
+}
+
+void fragment(){
+    // Get random number using world position
+    vec2 rand_uv = world_pos;
+    vec2 rand_tex_size = vec2(textureSize(random_noise, 0));
+    rand_uv.x = mod(rand_uv.x, rand_tex_size.x);
+    rand_uv.y = mod(rand_uv.y, rand_tex_size.y);
+    float rand = texelFetch(random_noise, ivec2(rand_uv), 0).r;
+    float ff = float(frames);
+    rand = round(rand * ff);
+
+    // Pick a random grass blade type from spritesheet
+    float frame_number = rand;
+    float fr = 1.0 / float(max(frames, 1));
+    float x_coord = mix(fr * frame_number, fr * frame_number + fr, UV.x);
+    vec2 midpoint = vec2(fr * frame_number + fr * 0.5, 0.5);
+    vec2 uv = vec2(x_coord, UV.y);
+    vec2 tex_size = vec2(textureSize(spritesheet, 0));
+    uv = (floor(uv * tex_size) + 0.4) / tex_size;
+
+    // Coloring
+    vec4 tex_col = texture(spritesheet, uv);
+    vec3 color = mix(top_color.rgb, bottom_color.rgb, UV.y);
+    color *= tex_col.rgb;
+
+    float alpha_cut = step(0.5, tex_col.a);
+    COLOR = vec4(color.rgb * alpha_cut, alpha * (alpha_cut * player_mask));
+}
+"

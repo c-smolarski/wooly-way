@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://brmje6prhoe8e"]
+
+[ext_resource type="Texture2D" uid="uid://c6usabn5f5q3x" path="res://Assets/particles/Z.png" id="1_x600f"]
+
+[sub_resource type="Gradient" id="Gradient_khnei"]
+offsets = PackedFloat32Array(0, 0.477941, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0x5k5"]
+gradient = SubResource("Gradient_khnei")
+
+[sub_resource type="Curve" id="Curve_0cpjm"]
+min_value = -1024.0
+_data = [Vector2(0.0412371, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nps53"]
+curve = SubResource("Curve_0cpjm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qilo2"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -90, 0)
+scale_min = 0.0
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_nps53")
+color_ramp = SubResource("GradientTexture1D_0x5k5")
+
+[node name="Sleep" type="GPUParticles2D"]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_qilo2")
+texture = ExtResource("1_x600f")
+lifetime = 2.0

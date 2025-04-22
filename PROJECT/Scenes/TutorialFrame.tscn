@@ -1,0 +1,192 @@
+[gd_scene load_steps=10 format=3 uid="uid://b84mnq5t2jvbb"]
+
+[ext_resource type="Texture2D" uid="uid://bd7t2s1a04vc0" path="res://Assets/Tutorial/frameTutorial.png" id="1_7aydh"]
+[ext_resource type="Script" path="res://Scripts/Tutorial.cs" id="1_kxewo"]
+[ext_resource type="Theme" uid="uid://mehsaxiv283s" path="res://Resources/Theme/AuthentificationButton.tres" id="2_6q72k"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/MainButtons/CloseTutorial.cs" id="4_gu4ue"]
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="5_3i74h"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/Help.cs" id="6_v0o3o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nj4d"]
+font = ExtResource("5_3i74h")
+font_size = 20
+font_color = Color(0.25098, 0.137255, 0.0588235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w867o"]
+font = ExtResource("5_3i74h")
+font_size = 50
+font_color = Color(0.25098, 0.137255, 0.0588235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_htgfs"]
+font = ExtResource("5_3i74h")
+font_size = 25
+font_color = Color(0.25098, 0.137255, 0.0588235, 1)
+
+[node name="Sprite2D" type="Sprite2D" node_paths=PackedStringArray("tutoText", "marker")]
+position = Vector2(960, 540)
+scale = Vector2(1.66667, 1.66667)
+texture = ExtResource("1_7aydh")
+script = ExtResource("1_kxewo")
+tutoText = [NodePath("Control/A"), NodePath("Control/B"), NodePath("Control/C"), NodePath("Control/D")]
+marker = NodePath("Control/Marker2D")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = 0.23
+anchor_right = 0.73
+anchor_bottom = 0.316
+offset_left = -0.408325
+offset_top = -0.239746
+offset_right = -0.160339
+offset_bottom = 0.0323792
+theme = ExtResource("2_6q72k")
+text = "X"
+script = ExtResource("4_gu4ue")
+
+[node name="A" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -185.0
+offset_right = 249.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.902439, 0.904109)
+text = "FTUE1"
+label_settings = SubResource("LabelSettings_3nj4d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="B" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.199
+offset_top = -194.4
+offset_right = 230.801
+offset_bottom = -106.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.946262, 1.06579)
+text = "FTUE2"
+label_settings = SubResource("LabelSettings_3nj4d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.199
+offset_top = -194.4
+offset_right = 230.801
+offset_bottom = -106.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.939605, 1.01429)
+text = "FTUE3"
+label_settings = SubResource("LabelSettings_3nj4d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="D" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.284
+anchor_top = 0.343
+anchor_right = 0.657
+anchor_bottom = 0.649
+offset_left = -0.167511
+offset_top = -0.263809
+offset_right = 0.136475
+offset_bottom = -0.24585
+text = "FTUE4"
+label_settings = SubResource("LabelSettings_w867o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+visible = false
+z_index = 50
+position = Vector2(520.8, 289.8)
+scale = Vector2(0.678385, 0.682406)
+texture = ExtResource("1_7aydh")
+
+[node name="Label" type="Label" parent="Control/Sprite2D"]
+anchors_preset = -1
+anchor_left = 0.264
+anchor_top = 0.272
+anchor_right = 0.738
+anchor_bottom = 0.74
+offset_left = -576.539
+offset_top = -301.108
+offset_right = -575.587
+offset_bottom = -301.372
+text = "FTUE_HELP"
+label_settings = SubResource("LabelSettings_htgfs")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Control/Sprite2D"]
+anchors_preset = -1
+anchor_left = 0.683
+anchor_top = 0.219
+anchor_right = 0.734
+anchor_bottom = 0.306
+offset_left = -576.316
+offset_top = -323.915
+offset_right = -576.068
+offset_bottom = -324.29
+theme = ExtResource("2_6q72k")
+text = "X"
+
+[node name="Help" type="Button" parent="Control" node_paths=PackedStringArray("helpMenu", "closeMenu")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = 0.324
+anchor_right = 0.73
+anchor_bottom = 0.41
+offset_left = -0.408447
+offset_top = 0.0482483
+offset_right = -0.160461
+offset_bottom = 0.320343
+theme = ExtResource("2_6q72k")
+text = "?"
+script = ExtResource("6_v0o3o")
+helpMenu = NodePath("../Sprite2D")
+closeMenu = NodePath("../Sprite2D/Button")
+
+[node name="Marker2D" type="Marker2D" parent="Control"]
+position = Vector2(285.601, 133.801)

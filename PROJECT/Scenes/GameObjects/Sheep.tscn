@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlvqqrrxk1qyg"]
+
+[ext_resource type="Script" path="res://Scripts/GameObjects/Mobiles/Sheep.cs" id="1_c8tpx"]
+[ext_resource type="Texture2D" uid="uid://nxqplt01dse7" path="res://Assets/GameObjects/Sheep/sheep1.png" id="2_6mjke"]
+[ext_resource type="Script" path="res://Scripts/Components/ClickableArea.cs" id="3_fakdr"]
+[ext_resource type="Texture2D" uid="uid://bujljp6iml7o0" path="res://Assets/GameObjects/Sheep/Sheep2.png" id="4_suci8"]
+[ext_resource type="PackedScene" uid="uid://crvj1pcmo835a" path="res://Scenes/Juiciness/Particles/sparkles.tscn" id="5_xrbxp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j7ojb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6mjke")
+}],
+"loop": true,
+"name": &"IdleBack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_suci8")
+}],
+"loop": true,
+"name": &"IdleFront",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_gixl3"]
+
+[node name="Sheep" type="Node2D" node_paths=PackedStringArray("clickable", "exclamationPoint", "spark", "Renderer")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_c8tpx")
+clickable = NodePath("Area2D")
+exclamationPoint = NodePath("exclamationPoint")
+spark = NodePath("Sparkles")
+sheepColor = PackedColorArray(0.626363, 0.997416, 1, 1, 0.998646, 0.828614, 1, 1, 0.786578, 0.795524, 1, 1, 0.748267, 0.925204, 0.803449, 1, 0.949937, 0.90613, 0.704134, 1)
+Renderer = NodePath("Renderer")
+
+[node name="Renderer" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 10)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_j7ojb")
+animation = &"IdleFront"
+offset = Vector2(-16, -130)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_fakdr")
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("ConvexPolygonShape2D_gixl3")
+
+[node name="exclamationPoint" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+position = Vector2(0, -124)
+
+[node name="bWbg" type="Polygon2D" parent="exclamationPoint"]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(-10, -11, -15, -93, 15, -93, 10, -11)
+
+[node name="bB" type="Polygon2D" parent="exclamationPoint"]
+position = Vector2(0, -10)
+color = Color(0, 0.278431, 1, 1)
+offset = Vector2(0, -90)
+polygon = PackedVector2Array(-12, -1, 12, -1, 8, 77, -8, 77)
+
+[node name="bWfg" type="Polygon2D" parent="exclamationPoint"]
+position = Vector2(0, -10)
+offset = Vector2(0, -90)
+polygon = PackedVector2Array(-8, 2, 8, 2, 5, 74, -5, 74)
+
+[node name="sqWbg" type="Polygon2D" parent="exclamationPoint"]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="sqB" type="Polygon2D" parent="exclamationPoint"]
+position = Vector2(0, -10)
+color = Color(0, 0.278431, 1, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="sqWfg" type="Polygon2D" parent="exclamationPoint"]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Sparkles" parent="." instance=ExtResource("5_xrbxp")]
+visible = false
+position = Vector2(12, -82)

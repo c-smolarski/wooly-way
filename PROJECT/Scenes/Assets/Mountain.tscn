@@ -1,0 +1,385 @@
+[gd_scene load_steps=20 format=3 uid="uid://lvflc6fvy7ge"]
+
+[ext_resource type="Texture2D" uid="uid://bn6vthaunyjm" path="res://Assets/UI/Menus/LevelSelector/Mountain.png" id="1_q1i6a"]
+[ext_resource type="PackedScene" uid="uid://bth21nmxqk51q" path="res://Scenes/Juiciness/Particles/GrassParticles.tscn" id="2_84y20"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassParticle.gdshader" id="3_tkmsv"]
+[ext_resource type="Texture2D" uid="uid://d05lcqw6pqjbp" path="res://Assets/GameObjects/Pen/Pen1.1.png" id="4_6llch"]
+[ext_resource type="PackedScene" uid="uid://drk5crp16g1nb" path="res://Scenes/Juiciness/Particles/WheatParticles.tscn" id="4_kti1s"]
+[ext_resource type="Texture2D" uid="uid://8bhl74dotciy" path="res://Assets/GameObjects/Pen/Pen2.1.png" id="5_ut828"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxn4t"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 1000.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxj2n"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 1200.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtsi3"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 500.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1ydp"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 600.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfwa0"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 700.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npug3"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 800.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npbwy"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 375.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rok4m"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 1250.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsbpq"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 375.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28gqx"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 1000.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7s7y"]
+shader = ExtResource("3_tkmsv")
+shader_parameter/rows = 520.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[sub_resource type="Shader" id="Shader_hcxle"]
+code = "shader_type particles;
+
+uniform float rows = 16;
+uniform float spacing = 1.0;
+uniform vec2 polygon[32]; // array of vector2 of the exported polygon's vertices
+uniform int polygon_size; //polygon.length
+
+bool isInsidePolygon(vec2 point)
+{
+    bool inside = false;
+    for (int i = 0, j = polygon_size - 1; i < polygon_size; j = i++)
+    {
+        vec2 vi = polygon[i];
+        vec2 vj = polygon[j];
+
+        if (((vi.y > point.y) != (vj.y > point.y)) &&
+            (point.x < (vj.x - vi.x) * (point.y - vi.y) / (vj.y - vi.y) + vi.x))
+        {
+            inside = !inside;
+        }
+    }
+    return inside;
+}
+
+void start() {
+    // Base grid setup
+    vec3 pos = vec3(0.0, 0.0, 0.0);
+    pos.y = float(INDEX);
+    pos.x = mod(pos.y, rows);
+    pos.y = (pos.y - pos.x) / rows;
+
+    // Apply spacing
+    pos *= spacing;
+
+    // Move the particles based on the upper-left corner (without centering)
+    // align them to the top-left corner
+    pos.x += EMISSION_TRANSFORM[3][0];
+    pos.y += EMISSION_TRANSFORM[3][1];
+
+	//TRANSFORM[3][0] = pos.x;
+    //TRANSFORM[3][1] = pos.y;
+    if (isInsidePolygon(pos.xy) || polygon_size < 4)
+	{
+    TRANSFORM[3][0] = pos.x;
+    TRANSFORM[3][1] = pos.y;
+	}
+	else
+	{
+    // Move off-screen
+    TRANSFORM[3][0] = -10000.0;
+    TRANSFORM[3][1] = -10000.0;
+	}
+
+    // Pass the position to instances for custom use
+    CUSTOM.xy = pos.xy;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67c5m"]
+shader = SubResource("Shader_hcxle")
+shader_parameter/rows = 150.0
+shader_parameter/spacing = 9.0
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Mountain" type="Sprite2D"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_q1i6a")
+offset = Vector2(-30, -2200)
+
+[node name="dirt" type="Polygon2D" parent="."]
+color = Color(0.388235, 0.313726, 0.0666667, 1)
+polygon = PackedVector2Array(-2600, -2592.5, -2616.25, -3330, -3308.75, -3333.75, -3327.5, -2603.75)
+
+[node name="Grass" type="Node2D" parent="."]
+
+[node name="GrassSystem" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-3253.75, -843.75)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem/Grass" index="0"]
+amount = 500000
+process_material = SubResource("ShaderMaterial_pxn4t")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-201.25, 1010, -87.5, 273.75, -201.25, 236.25, -357.5, 206.25, -452.5, 160, -467.5, 85, -365, 37.5, -276.25, 21.25, -213.75, -23.75, -197.5, -80, -211.25, -167.5, -271.25, -230, -437.5, -271.25, -553.75, -395, -645, -520, -838, -568, -1127, -483, -1320, -355, -1508.75, -342.5, -1662.5, -313.75, -1818.75, -331.25, -1941.25, -407.5, -2273.75, -572.5, -2661.25, -577.5, -3007.5, -321.25, -2365, 988.75)
+
+[node name="GrassSystem2" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem2" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-758.75, -571.25)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem2/Grass" index="0"]
+amount = 600000
+process_material = SubResource("ShaderMaterial_mxj2n")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem2"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(1375, -332.5, 1227.5, -333.75, 1090, -220, 1048.75, -38.75, 963.75, 30, 726.25, 187.5, 235, 285, -87.5, 273.75, -201.25, 1010, 953.75, 1358.75, 2953.75, 1342.5, 2912.5, -62.5, 2161.25, -22.5, 1693.75, -228.75)
+
+[node name="GrassSystem3" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem3" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-508.75, -1268.75)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem3/Grass" index="0"]
+amount = 75000
+process_material = SubResource("ShaderMaterial_gtsi3")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem3"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-225, -981.25, -153.75, -952.5, -46.25, -947.5, 215, -962.5, 483.75, -995, 597.5, -1032.5, 793.75, -1028.75, 961.25, -1012.5, 1143.75, -1005, 1211.25, -986.25, 1200, -961.25, 1152.5, -946.25, 1041.25, -938.75, 875, -882.5, 732.5, -865, 593.75, -887.5, 302.5, -873.75, 46.25, -852.5, -115, -871.25, -211.25, -912.5)
+
+[node name="GrassSystem4" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem4" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-1035, -2042.5)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem4/Grass" index="0"]
+amount = 100000
+process_material = SubResource("ShaderMaterial_m1ydp")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem4"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-581.25, -1730, -717.5, -1767.5, -801.25, -1735, -840, -1686.25, -828.75, -1586.25, -733.75, -1550, -538.75, -1565, -361.25, -1603.75, -216.25, -1628.75, 15, -1595, 515, -1523.75, 795, -1528.75, 936.25, -1577.5, 1045, -1646.25, 1093.75, -1731.25, 1082.5, -1833.75, 1022.5, -1887.5, 917.5, -1903.75, 763.75, -1898.75, 641.25, -1872.5, 505, -1807.5, 336.25, -1757.5, 192.5, -1701.25, 1.25, -1705, -221.25, -1722.5, -306.25, -1695, -368.75, -1678.75, -427.5, -1685)
+
+[node name="GrassSystem5" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem5" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(1470, -2023.75)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem5/Grass" index="0"]
+amount = 320000
+process_material = SubResource("ShaderMaterial_xfwa0")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem5"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(3096.25, -1697.5, 4108.75, -1095, 3013.75, -477.5, 2926.25, -498.75, 2610, -473.75, 2548.75, -473.75, 2487.5, -452.5, 2378.75, -455, 2312.5, -442.5, 1786.25, -652.5, 1801.25, -667.5, 1932.5, -710, 2021.25, -776.25, 2080, -905, 2083.75, -1007.5, 2075, -1146.25, 2156.25, -1286.25, 2297.5, -1440, 2498.75, -1586.25, 2760, -1670)
+
+[node name="GrassSystem6" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem6" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-3983.75, -2236.25)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem6/Grass" index="0"]
+amount = 350000
+process_material = SubResource("ShaderMaterial_npug3")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem6"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-1916.25, -1592.5, -1685, -1668.75, -1516.25, -1732.5, -1416.25, -1821.25, -1343.75, -1853.75, -1252.5, -1848.75, -1175, -1820, -1195, -1770, -1326.25, -1736.25, -1461.25, -1630, -1575, -1477.5, -1551.25, -1343.75, -1452.5, -1242.5, -1265, -1196.25, -1058.75, -1217.5, -983.75, -1173.75, -978.75, -1041.25, -1006.25, -923.75, -1105, -852.5, -1232.5, -787.5, -1351.25, -761.25, -1670, -757.5, -2148.75, -998.75, -2243.75, -1015, -2346.25, -996.25, -2730, -1007.5, -3230, -617.5, -3705, -855, -3670, -1267.5, -3560, -1492.5, -3127.5, -1717.5, -2515, -1617.5)
+
+[node name="GrassSystem7" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem7" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(302.5, -2720)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem7/Grass" index="0"]
+position = Vector2(-63.75, -13.75)
+amount = 40000
+process_material = SubResource("ShaderMaterial_npbwy")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem7"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(793.75, -2553.75, 656.25, -2528.75, 533.75, -2476.25, 480, -2435, 458.75, -2385, 498.75, -2381.25, 553.75, -2396.25, 631.25, -2433.75, 733.75, -2463.75, 855, -2490, 942.5, -2501.25, 1128.75, -2495, 1268.75, -2481.25, 1422.5, -2481.25, 1553.75, -2473.75, 1531.25, -2498.75, 1355, -2536.25, 1158.75, -2562.5, 967.5, -2566.25)
+
+[node name="GrassSystem8" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem8" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-6000, -4053.75)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem8/Grass" index="0"]
+amount = 900000
+process_material = SubResource("ShaderMaterial_rok4m")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem8"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-1542.5, -3541.25, -1416.25, -3501.25, -1352.5, -3462.5, -1340, -3405, -1308.75, -3366.25, -1302.5, -3316.25, -1327.5, -3265, -1407.5, -3202.5, -1537.5, -3133.75, -1797.5, -3098.75, -2118.75, -3161.25, -2311.25, -3260, -2608.75, -3350, -3003.75, -3361.25, -3301.25, -3396.25, -3422.5, -3288.75, -3472.5, -3073.75, -3435, -2837.5, -3448.75, -2718.75, -3406.25, -2606.25, -3353.75, -2473.75, -3233.75, -2356.25, -3193.75, -2193.75, -3275, -2025, -3757.5, -1792.5, -3968.75, -1246.25, -5682.5, -2086.25, -3125, -3705, -2527.5, -3632.5, -1970, -3592.5)
+
+[node name="GrassSystem9" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem9" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(-1316.25, -3482.5)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem9/Grass" index="0"]
+amount = 60000
+process_material = SubResource("ShaderMaterial_fsbpq")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem9"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-1117.5, -3403.75, -1072.5, -3383.75, -1036.25, -3357.5, -628.75, -3235, -543.75, -3226.25, -423.75, -3228.75, -255, -3213.75, -188.75, -3197.5, -125, -3172.5, -62.5, -3126.25, -57.5, -3050, -73.75, -2988.75, -101.25, -2951.25, -191.25, -2926.25, -346.25, -2930, -431.25, -2941.25, -530, -2955, -580, -2953.75, -630, -2965, -640, -3007.5, -666.25, -3037.5, -748.75, -3116.25, -851.25, -3165, -1002.5, -3208.75, -1121.25, -3256.25, -1142.5, -3283.75, -1140, -3378.75)
+
+[node name="GrassSystem10" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem10" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(1645, -3418.75)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem10/Grass" index="0"]
+amount = 500000
+process_material = SubResource("ShaderMaterial_28gqx")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem10"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(2062.5, -2452.5, 2218.75, -2477.5, 2353.75, -2537.5, 2612.5, -2616.25, 2690, -2658.75, 2805, -2861.25, 2901.25, -3003.75, 3312.5, -3246.25, 5587.5, -2107.5, 5600, -2017.5, 4340, -1378.75, 4277.5, -1376.25, 3346.25, -1940, 3227.5, -2005, 3105, -2091.25, 3028.75, -2127.5, 2926.25, -2198.75, 2458.75, -2333.75, 2162.5, -2402.5, 2086.25, -2423.75, 2051.25, -2438.75)
+
+[node name="GrassSystem11" type="Node2D" parent="Grass"]
+
+[node name="Grass" parent="Grass/GrassSystem11" node_paths=PackedStringArray("polygon") instance=ExtResource("2_84y20")]
+visible = false
+position = Vector2(756.25, -3421.25)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem11/Grass" index="0"]
+amount = 100000
+process_material = SubResource("ShaderMaterial_y7s7y")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem11"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(1066.25, -2905, 1233.75, -2892.5, 1478.75, -2856.25, 1641.25, -2835, 1798.75, -2797.5, 2023.75, -2797.5, 2147.5, -2791.25, 2238.75, -2806.25, 2417.5, -2875, 2521.25, -2961.25, 2652.5, -3215, 2518.08, -3246.44, 2352.5, -3168.75, 2262.5, -3125, 2120, -3137.5, 1945, -3121.25, 1812.5, -3086.25, 1718.75, -3037.5, 1523.75, -2991.25, 1425, -3000, 1325, -2975, 1146.25, -2956.25, 1030, -2958.75, 933.75, -2942.5, 868.75, -2895)
+
+[node name="WheatSystem" type="Node2D" parent="Grass"]
+
+[node name="Wheat" parent="Grass/WheatSystem" node_paths=PackedStringArray("polygon") instance=ExtResource("4_kti1s")]
+visible = false
+position = Vector2(-3546.25, -3361.25)
+polygon = NodePath("../Polygon2D")
+
+[node name="WheatParticles" parent="Grass/WheatSystem/Wheat" index="0"]
+position = Vector2(-37.5, -23.75)
+amount = 12000
+process_material = SubResource("ShaderMaterial_67c5m")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/WheatSystem"]
+scale = Vector2(1.08009, 1.11491)
+color = Color(1, 1, 0.101961, 0.286275)
+polygon = PackedVector2Array(-3080.76, -2335.38, -3061.09, -2989.02, -2422.25, -2984.53, -2409.52, -2328.65)
+
+[node name="Assets" type="Node2D" parent="."]
+
+[node name="Pen1_1" type="Sprite2D" parent="Assets"]
+position = Vector2(-1122.5, -1998.75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6llch")
+
+[node name="Pen1_2" type="Sprite2D" parent="Assets"]
+position = Vector2(-993.75, -1933.75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6llch")
+
+[node name="Pen1_3" type="Sprite2D" parent="Assets"]
+position = Vector2(-862.5, -1868.75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6llch")
+
+[node name="Pen2_1" type="Sprite2D" parent="Assets"]
+position = Vector2(-1001.25, -1948.75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_ut828")
+
+[node name="Pen2_2" type="Sprite2D" parent="Assets"]
+position = Vector2(-870, -1885)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_ut828")
+
+[editable path="Grass/GrassSystem/Grass"]
+[editable path="Grass/GrassSystem2/Grass"]
+[editable path="Grass/GrassSystem3/Grass"]
+[editable path="Grass/GrassSystem4/Grass"]
+[editable path="Grass/GrassSystem5/Grass"]
+[editable path="Grass/GrassSystem6/Grass"]
+[editable path="Grass/GrassSystem7/Grass"]
+[editable path="Grass/GrassSystem8/Grass"]
+[editable path="Grass/GrassSystem9/Grass"]
+[editable path="Grass/GrassSystem10/Grass"]
+[editable path="Grass/GrassSystem11/Grass"]
+[editable path="Grass/WheatSystem/Wheat"]

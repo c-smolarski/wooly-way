@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Godot;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,8 +48,32 @@ namespace Com.IsartDigital.WoolyWay.Utils.TwoWayDictionnaries
         protected KeyValuePair<TKey, TValue>[] pairs = Array.Empty<KeyValuePair<TKey, TValue>>();
 
         //You might not be familiar with this writing. Its to return a value when myDict[object] is called. Like you would do with a List.
-        public TValue this[TKey pKey] => FindPair(pKey).Value;
-        public TKey this[TValue pValue] => FindPair(pValue).Key;
+        public TValue this[TKey pKey]
+        {
+            get
+            {
+                return FindPair(pKey).Value;
+            }
+
+            set
+            {
+                pairs[Array.IndexOf(pairs, FindPair(pKey))] = new KeyValuePair<TKey, TValue>(pKey, value);
+            }
+        }
+
+        public TKey this[TValue pValue]
+        {
+            get
+            {
+                return FindPair(pValue).Key;
+            }
+
+            set
+            {
+                pairs[Array.IndexOf(pairs, FindPair(pValue))] = new KeyValuePair<TKey, TValue>(value, pValue);
+            }
+        }
+
         public KeyValuePair<TKey, TValue> this[int pIndex] => pairs[pIndex];
 
         /// <summary></summary>

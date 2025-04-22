@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cm54fcf0whcc6"]
+
+[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Resources/Fonts/lumberjack.regular.otf" id="1_ukte1"]
+
+[resource]
+font = ExtResource("1_ukte1")
+font_size = 33

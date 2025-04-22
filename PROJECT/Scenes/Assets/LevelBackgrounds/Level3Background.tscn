@@ -1,0 +1,244 @@
+[gd_scene load_steps=19 format=3 uid="uid://b8omaico4t15i"]
+
+[ext_resource type="PackedScene" uid="uid://dt3vit8kfgtgx" path="res://Scenes/Assets/LevelBackgrounds/LevelBackgroundTemplate.tscn" id="1_we6au"]
+[ext_resource type="PackedScene" uid="uid://bth21nmxqk51q" path="res://Scenes/Juiciness/Particles/GrassParticles.tscn" id="2_xmccm"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassCanvasItem.gdshader" id="3_rnn4n"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="4_ea3mh"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="5_3bfbj"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassParticle.gdshader" id="6_bdmav"]
+[ext_resource type="PackedScene" uid="uid://boohb57dhwqa1" path="res://Scenes/Assets/Bale.tscn" id="7_tqe74"]
+[ext_resource type="Texture2D" uid="uid://ipu12xtx058l" path="res://Assets/Flowers/flower.png" id="8_olrqk"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="9_u7th0"]
+[ext_resource type="Texture2D" uid="uid://cato72hyfpsbe" path="res://Assets/Flowers/fleur.png" id="10_0dp8n"]
+[ext_resource type="Texture2D" uid="uid://djc7y0xsf6s3b" path="res://Assets/Flowers/Poppy.png" id="11_jg532"]
+[ext_resource type="PackedScene" uid="uid://bdq3nytuj3fmq" path="res://Scenes/Assets/Silo.tscn" id="12_hmiqa"]
+[ext_resource type="Texture2D" uid="uid://bnhaurqyda86k" path="res://Assets/Bales/wood_bundle.png" id="13_hsd50"]
+[ext_resource type="PackedScene" uid="uid://d1gbqcl11wnny" path="res://Scenes/Assets/Lantern.tscn" id="14_dkb5l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4mq34"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ilc0n"]
+seamless = true
+noise = SubResource("FastNoiseLite_4mq34")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8srny"]
+shader = ExtResource("3_rnn4n")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.715953, 0.783968, 3.85046e-07, 1)
+shader_parameter/bottom_color = Color(0.150533, 0.259301, 0.0125251, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.09
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_angle_deg = -135.0
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("5_3bfbj")
+shader_parameter/random_noise = ExtResource("4_ea3mh")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_ilc0n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ys1nw"]
+shader = ExtResource("6_bdmav")
+shader_parameter/rows = 1000.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Level3Background" node_paths=PackedStringArray("assetsContainers", "grassList") instance=ExtResource("1_we6au")]
+assetsContainers = [NodePath("assets"), NodePath("bales"), NodePath("flowers"), NodePath("lanterns")]
+grassList = [NodePath("Grass/GrassSystem/Grass")]
+
+[node name="Sprite2D" parent="." index="0"]
+z_index = -60
+
+[node name="Grass" type="Node2D" parent="." index="1"]
+z_index = -60
+
+[node name="GrassSystem" type="Node2D" parent="Grass" index="0"]
+
+[node name="Grass" parent="Grass/GrassSystem" index="0" node_paths=PackedStringArray("polygon") instance=ExtResource("2_xmccm")]
+visible = false
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem/Grass" index="0"]
+material = SubResource("ShaderMaterial_8srny")
+position = Vector2(-1606, -941)
+amount = 600000
+process_material = SubResource("ShaderMaterial_ys1nw")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem" index="1"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(839, -299, 845, -100, 907, 25, 888, 184, 754, 288, 470, 351, 30, 398, -466, 409, -904, 552, -1163, 852, 1431, 901, 1506, -477, 1249, -911, 1002, -797, 888, -590)
+
+[node name="bales" type="Node2D" parent="." index="2"]
+
+[node name="Bale" parent="bales" index="0" instance=ExtResource("7_tqe74")]
+position = Vector2(-714, -345)
+
+[node name="Bale2" parent="bales" index="1" instance=ExtResource("7_tqe74")]
+position = Vector2(-614, -375)
+
+[node name="Bale3" parent="bales" index="2" instance=ExtResource("7_tqe74")]
+position = Vector2(-506, -407)
+
+[node name="Bale4" parent="bales" index="3" instance=ExtResource("7_tqe74")]
+position = Vector2(422, -504)
+
+[node name="Bale5" parent="bales" index="4" instance=ExtResource("7_tqe74")]
+position = Vector2(541, -468)
+
+[node name="Bale6" parent="bales" index="5" instance=ExtResource("7_tqe74")]
+position = Vector2(615, -343)
+
+[node name="Bale7" parent="bales" index="6" instance=ExtResource("7_tqe74")]
+position = Vector2(-469, 316)
+
+[node name="Bale8" parent="bales" index="7" instance=ExtResource("7_tqe74")]
+position = Vector2(-594, 305)
+
+[node name="flowers" type="Node2D" parent="." index="3"]
+z_index = -60
+
+[node name="Flower" type="Sprite2D" parent="flowers" index="0"]
+position = Vector2(400, -393)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_olrqk")
+script = ExtResource("9_u7th0")
+
+[node name="Flower15" type="Sprite2D" parent="flowers" index="1"]
+position = Vector2(-673, 160)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_olrqk")
+script = ExtResource("9_u7th0")
+
+[node name="Flower12" type="Sprite2D" parent="flowers" index="2"]
+position = Vector2(-851, -208)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_olrqk")
+script = ExtResource("9_u7th0")
+
+[node name="Flower2" type="Sprite2D" parent="flowers" index="3"]
+position = Vector2(-695, -240)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_0dp8n")
+script = ExtResource("9_u7th0")
+
+[node name="Flower3" type="Sprite2D" parent="flowers" index="4"]
+position = Vector2(-407, -484)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_olrqk")
+script = ExtResource("9_u7th0")
+
+[node name="Flower4" type="Sprite2D" parent="flowers" index="5"]
+position = Vector2(-372, -339)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower5" type="Sprite2D" parent="flowers" index="6"]
+position = Vector2(263, -520)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_0dp8n")
+script = ExtResource("9_u7th0")
+
+[node name="Flower11" type="Sprite2D" parent="flowers" index="7"]
+position = Vector2(-546, 207)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_0dp8n")
+script = ExtResource("9_u7th0")
+
+[node name="Flower6" type="Sprite2D" parent="flowers" index="8"]
+position = Vector2(666, -453)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower13" type="Sprite2D" parent="flowers" index="9"]
+position = Vector2(-686, 322)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower14" type="Sprite2D" parent="flowers" index="10"]
+position = Vector2(-195, -256)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower18" type="Sprite2D" parent="flowers" index="11"]
+position = Vector2(233, -313)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower7" type="Sprite2D" parent="flowers" index="12"]
+position = Vector2(497, -268)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_olrqk")
+script = ExtResource("9_u7th0")
+
+[node name="Flower8" type="Sprite2D" parent="flowers" index="13"]
+position = Vector2(70.0001, -360)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower17" type="Sprite2D" parent="flowers" index="14"]
+position = Vector2(-663, -99)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_jg532")
+script = ExtResource("9_u7th0")
+
+[node name="Flower9" type="Sprite2D" parent="flowers" index="15"]
+position = Vector2(632, -236)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_0dp8n")
+script = ExtResource("9_u7th0")
+
+[node name="Flower16" type="Sprite2D" parent="flowers" index="16"]
+position = Vector2(636, 206)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_0dp8n")
+script = ExtResource("9_u7th0")
+
+[node name="Flower10" type="Sprite2D" parent="flowers" index="17"]
+position = Vector2(155, 315)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_0dp8n")
+script = ExtResource("9_u7th0")
+
+[node name="assets" type="Node2D" parent="." index="4"]
+position = Vector2(-47, 13)
+
+[node name="Silo" parent="assets" index="0" instance=ExtResource("12_hmiqa")]
+position = Vector2(110, -528)
+scale = Vector2(-1, 1)
+
+[node name="WoodBundle" type="Sprite2D" parent="assets" index="1"]
+position = Vector2(-27.9999, -410)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("13_hsd50")
+script = ExtResource("9_u7th0")
+
+[node name="lanterns" type="Node2D" parent="." index="5"]
+z_index = -60
+
+[node name="Lantern" parent="lanterns" index="0" instance=ExtResource("14_dkb5l")]
+position = Vector2(168, -358)
+
+[node name="Lantern2" parent="lanterns" index="1" instance=ExtResource("14_dkb5l")]
+position = Vector2(352, 318)
+
+[node name="Lantern3" parent="lanterns" index="2" instance=ExtResource("14_dkb5l")]
+position = Vector2(-592, 162)
+
+[node name="Lantern4" parent="lanterns" index="3" instance=ExtResource("14_dkb5l")]
+position = Vector2(-334, -231)
+
+[node name="Lantern5" parent="lanterns" index="4" instance=ExtResource("14_dkb5l")]
+position = Vector2(735, -141)
+
+[editable path="Grass/GrassSystem/Grass"]

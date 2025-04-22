@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://djdxw2ogabbea"]
+
+[ext_resource type="Texture2D" uid="uid://bxww2a6oi87hp" path="res://Assets/particles/particle.png" id="1_gg58l"]
+
+[sub_resource type="Curve" id="Curve_txisc"]
+_data = [Vector2(0.0487805, 0), 0.0, 0.0, 0, 0, Vector2(0.121951, 1), -0.0391784, -0.0391784, 0, 0, Vector2(0.451219, 0.901099), 0.0, 0.0, 0, 0, Vector2(0.719512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_cwwlv"]
+curve = SubResource("Curve_txisc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wkmin"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.04
+alpha_curve = SubResource("CurveTexture_cwwlv")
+
+[node name="Fireflies" type="GPUParticles2D"]
+modulate = Color(0.501961, 0.839216, 0.443137, 1)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_wkmin")
+texture = ExtResource("1_gg58l")
+lifetime = 60.0
+preprocess = 40.0
+explosiveness = 0.4
+randomness = 1.0

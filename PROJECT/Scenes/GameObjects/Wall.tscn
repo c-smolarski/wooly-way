@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cug3oea2u0jih"]
+
+[ext_resource type="Script" path="res://Scripts/GameObjects/Obstacle.cs" id="1_0k2js"]
+[ext_resource type="Texture2D" uid="uid://db04lwd8i6fmj" path="res://Assets/GameObjects/Obstacles/Rocks/rock2.png" id="2_s33bt"]
+[ext_resource type="Material" uid="uid://cdmifp2pmm52s" path="res://Resources/ShaderMaterials/Trees/bush_leaves.tres" id="3_mtemd"]
+[ext_resource type="Texture2D" uid="uid://4ltokfapvwtl" path="res://Assets/GameObjects/Obstacles/Bushes/bush_1.png" id="4_6f0b1"]
+
+[node name="Wall" type="Node2D" node_paths=PackedStringArray("rock", "bush")]
+script = ExtResource("1_0k2js")
+rock = NodePath("Rock")
+bush = NodePath("Bush")
+
+[node name="Polygon" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 0.196078)
+polygon = PackedVector2Array(0, 50, 100, 0, 0, -50, -100, 0)
+
+[node name="Bush" type="Sprite2D" parent="."]
+visible = false
+material = ExtResource("3_mtemd")
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("4_6f0b1")
+offset = Vector2(0, -82.5)
+
+[node name="Rock" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_s33bt")
+offset = Vector2(0, -100)

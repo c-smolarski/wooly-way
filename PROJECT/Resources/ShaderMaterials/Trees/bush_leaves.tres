@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdmifp2pmm52s"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/leaves.gdshader" id="1_dt5lm"]
+
+[resource]
+shader = ExtResource("1_dt5lm")
+shader_parameter/lighterColor = Color(0.186984, 0.565074, 0.25623, 1)
+shader_parameter/darkerColor = Color(0, 0, 0, 1)

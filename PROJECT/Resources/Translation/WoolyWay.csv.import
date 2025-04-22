@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://derovtxt2ndf4"
+
+[deps]
+
+files=["res://Resources/Translation/WoolyWay.en.translation", "res://Resources/Translation/WoolyWay.fr.translation"]
+
+source_file="res://Resources/Translation/WoolyWay.csv"
+dest_files=["res://Resources/Translation/WoolyWay.en.translation", "res://Resources/Translation/WoolyWay.fr.translation"]
+
+[params]
+
+compress=true
+delimiter=1

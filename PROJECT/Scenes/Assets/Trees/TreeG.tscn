@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciwijudw5b43f"]
+
+[ext_resource type="Material" uid="uid://cnbgngrfkjnn3" path="res://Resources/ShaderMaterials/Trees/leaves_material.tres" id="1_tm865"]
+[ext_resource type="Script" path="res://Scripts/Assets/Tree.cs" id="2_kbi2g"]
+[ext_resource type="Texture2D" uid="uid://5fwbmdd4vmh2" path="res://Assets/Trees/Trunks/trunk_5.png" id="3_lhlff"]
+[ext_resource type="Texture2D" uid="uid://kbdabm6bntep" path="res://Assets/Trees/Leaves/leaves_2.png" id="4_b0hg2"]
+[ext_resource type="Texture2D" uid="uid://c17wvjgdujp6f" path="res://Assets/Trees/Leaves/small_leaves_5.png" id="5_vdkj4"]
+[ext_resource type="Texture2D" uid="uid://c4gnbr2avwnoo" path="res://Assets/Trees/others/bird_nest.png" id="7_waqb5"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="9_2jd0l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3612h"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_lksrk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.746212, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ip7iv"]
+curve = SubResource("Curve_lksrk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_va7hr"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 300.0
+emission_ring_inner_radius = 150.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(1, 0.2, 0)
+spread = 15.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_max = 300.0
+gravity = Vector3(0, 10, 0)
+scale_max = 1.5
+color = Color(0.643137, 0.823529, 0, 1)
+alpha_curve = SubResource("CurveTexture_ip7iv")
+anim_offset_max = 1.0
+
+[node name="TreeG" type="Node2D" node_paths=PackedStringArray("trunk", "leaves", "leavesParticles")]
+material = ExtResource("1_tm865")
+script = ExtResource("2_kbi2g")
+trunk = NodePath("Trunk")
+leaves = [NodePath("Leaves12"), NodePath("SmallLeaves12"), NodePath("BirdNest")]
+leavesParticles = NodePath("GPUParticles2D")
+
+[node name="Trunk" type="Sprite2D" parent="."]
+texture = ExtResource("3_lhlff")
+offset = Vector2(2, -539)
+
+[node name="Leaves12" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-299, -1197)
+texture = ExtResource("4_b0hg2")
+
+[node name="SmallLeaves12" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(257, -775)
+texture = ExtResource("5_vdkj4")
+
+[node name="BirdNest" type="Sprite2D" parent="."]
+position = Vector2(-56, -1424)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("7_waqb5")
+region_enabled = true
+region_rect = Rect2(1072, 606, 144, 88)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_3612h")
+position = Vector2(-347, -1240)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_va7hr")
+texture = ExtResource("9_2jd0l")
+lifetime = 4.0
+randomness = 0.4

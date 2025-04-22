@@ -1,0 +1,164 @@
+[gd_scene load_steps=24 format=3 uid="uid://bq4elmjhnsvy0"]
+
+[ext_resource type="Texture2D" uid="uid://i3wt3ygks8gi" path="res://Assets/GameObjects/Player/Idle/Back/PlayerIdleBack0.png" id="1_vxua3"]
+[ext_resource type="Texture2D" uid="uid://7umubh5vbuwt" path="res://Assets/GameObjects/Player/Idle/Back/PlayerIdleBack1.png" id="2_qk5vr"]
+[ext_resource type="Texture2D" uid="uid://duwc1q2xx85q8" path="res://Assets/GameObjects/Player/Idle/Front/PlayerIdleFront0.png" id="3_oem3j"]
+[ext_resource type="Texture2D" uid="uid://n8yhdhg7pxpd" path="res://Assets/GameObjects/Player/Idle/Front/PlayerIdleFront1.png" id="4_oevia"]
+[ext_resource type="Texture2D" uid="uid://c57uhb1tintvf" path="res://Assets/GameObjects/Player/Walk/Back/PlayerWalkBack1.png" id="5_6bum8"]
+[ext_resource type="Texture2D" uid="uid://c0qmf06mru7se" path="res://Assets/GameObjects/Player/Walk/Back/PlayerWalkBack2.png" id="6_4yop6"]
+[ext_resource type="Texture2D" uid="uid://cn8irmhtqovgi" path="res://Assets/GameObjects/Player/Walk/Back/PlayerWalkBack3.png" id="7_4upgg"]
+[ext_resource type="Texture2D" uid="uid://ckp5jlb4se5g7" path="res://Assets/GameObjects/Player/Walk/Front/PlayerWalkFront1.png" id="8_vvn5u"]
+[ext_resource type="Texture2D" uid="uid://cu2lnx65r44v2" path="res://Assets/GameObjects/Player/Walk/Front/PlayerWalkFront2.png" id="9_jvijo"]
+[ext_resource type="Texture2D" uid="uid://c6w6ixrxfh2n7" path="res://Assets/GameObjects/Player/Walk/Front/PlayerWalkFront3.png" id="10_hv11n"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="11_8qqt5"]
+[ext_resource type="Script" path="res://Scripts/PlayerRenderer.cs" id="11_u8wa2"]
+[ext_resource type="Texture2D" uid="uid://ckr4jbg8psvff" path="res://Assets/UI/Menus/MainMenu/fgClouds.png" id="12_guq1h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yx4ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vxua3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qk5vr")
+}],
+"loop": true,
+"name": &"IdleBack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oem3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oevia")
+}],
+"loop": true,
+"name": &"IdleFront",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6bum8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4yop6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_4upgg")
+}],
+"loop": false,
+"name": &"WalkBack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vvn5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jvijo")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_hv11n")
+}],
+"loop": false,
+"name": &"WalkFront",
+"speed": 8.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yw8kg"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_n3y78"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wdjbo"]
+curve = SubResource("Curve_n3y78")
+
+[sub_resource type="Curve" id="Curve_xuc2x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_i77ai"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_od32j"]
+curve_x = SubResource("Curve_xuc2x")
+curve_y = SubResource("Curve_i77ai")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qbdrj"]
+particle_flag_disable_z = true
+direction = Vector3(0.5, -1, 0)
+spread = 40.0
+initial_velocity_min = 300.0
+initial_velocity_max = 550.0
+angular_velocity_max = 50.0
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_od32j")
+gravity = Vector3(0, 30, 0)
+scale_min = 1.5
+scale_max = 1.5
+color = Color(0.824937, 0.90086, 1.54018e-06, 1)
+alpha_curve = SubResource("CurveTexture_wdjbo")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvjjp"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fhkpc"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 300.0
+initial_velocity_max = 550.0
+angular_velocity_max = 50.0
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_od32j")
+gravity = Vector3(0, 30, 0)
+scale_min = 0.1
+scale_max = 0.1
+alpha_curve = SubResource("CurveTexture_wdjbo")
+anim_offset_max = 1.0
+
+[node name="Player" type="AnimatedSprite2D" node_paths=PackedStringArray("grassParticles", "snowParticles")]
+scale = Vector2(0.12, 0.12)
+sprite_frames = SubResource("SpriteFrames_yx4ml")
+animation = &"IdleBack"
+offset = Vector2(0, -490)
+script = ExtResource("11_u8wa2")
+grassParticles = NodePath("grass")
+snowParticles = NodePath("snow")
+
+[node name="grass" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_yw8kg")
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_qbdrj")
+texture = ExtResource("11_8qqt5")
+speed_scale = 4.0
+explosiveness = 0.75
+randomness = 0.33
+
+[node name="snow" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_yvjjp")
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_fhkpc")
+texture = ExtResource("12_guq1h")
+preprocess = 1.0
+speed_scale = 4.0
+explosiveness = 0.75
+randomness = 0.33

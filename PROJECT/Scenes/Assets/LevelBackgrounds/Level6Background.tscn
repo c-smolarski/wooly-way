@@ -1,0 +1,203 @@
+[gd_scene load_steps=18 format=3 uid="uid://c3m627g4cxi46"]
+
+[ext_resource type="PackedScene" uid="uid://dt3vit8kfgtgx" path="res://Scenes/Assets/LevelBackgrounds/LevelBackgroundTemplate.tscn" id="1_4p7hh"]
+[ext_resource type="Texture2D" uid="uid://xl7y5w1xk28j" path="res://Assets/LevelBackgrounds/snowyBackground.png" id="2_d6tnr"]
+[ext_resource type="PackedScene" uid="uid://4gejw4fbhypn" path="res://Scenes/Assets/Trees/PineA.tscn" id="3_1grtv"]
+[ext_resource type="PackedScene" uid="uid://cv8jcwwe0nj8c" path="res://Scenes/Assets/Trees/PineB.tscn" id="3_xisie"]
+[ext_resource type="PackedScene" uid="uid://cnbv4egyjg33a" path="res://Scenes/Assets/Trees/PineC.tscn" id="5_jse83"]
+[ext_resource type="Texture2D" uid="uid://0dk6mnqvldf3" path="res://Assets/GameObjects/Obstacles/Rocks/rock_0.png" id="6_6vbuh"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="7_gk6lb"]
+[ext_resource type="Texture2D" uid="uid://6pwr1u0ppcgq" path="res://Assets/GameObjects/Obstacles/Rocks/rock_7.png" id="9_yrpgc"]
+[ext_resource type="Texture2D" uid="uid://byg6nh6rxj5sb" path="res://Assets/GameObjects/Obstacles/Rocks/rock_8.png" id="10_2urwb"]
+[ext_resource type="Material" uid="uid://cdmifp2pmm52s" path="res://Resources/ShaderMaterials/Trees/bush_leaves.tres" id="13_nu7hy"]
+[ext_resource type="Texture2D" uid="uid://4ltokfapvwtl" path="res://Assets/GameObjects/Obstacles/Bushes/bush_1.png" id="14_fpwdc"]
+[ext_resource type="PackedScene" uid="uid://dkm8g1vw553kx" path="res://Scenes/Assets/Woodhouse.tscn" id="14_xr3ju"]
+[ext_resource type="Texture2D" uid="uid://bxr2ajfn38bm5" path="res://Assets/GameObjects/Obstacles/Bushes/bush_2.png" id="15_l54qv"]
+[ext_resource type="Texture2D" uid="uid://s78hb4pbpin1" path="res://Assets/Buildings/max_house.png" id="15_t3sly"]
+[ext_resource type="Texture2D" uid="uid://bnhaurqyda86k" path="res://Assets/Bales/wood_bundle.png" id="16_gsiwh"]
+[ext_resource type="Texture2D" uid="uid://15cqvplbu5yc" path="res://Assets/GameObjects/Obstacles/Bushes/bush_3.png" id="16_pltyf"]
+[ext_resource type="Texture2D" uid="uid://byquj8t5srkhu" path="res://Assets/Flowers/edelweiss.png" id="17_ungif"]
+
+[node name="Level6Background" node_paths=PackedStringArray("assetsContainers", "grassList") instance=ExtResource("1_4p7hh")]
+assetsContainers = [NodePath("treeContainer"), NodePath("treeContainer2"), NodePath("rocks"), NodePath("bushes"), NodePath("others"), NodePath("treeContainer3")]
+grassList = []
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_d6tnr")
+
+[node name="treeContainer2" type="Node2D" parent="." index="1"]
+
+[node name="PineC" parent="treeContainer2" index="0" instance=ExtResource("5_jse83")]
+position = Vector2(-880, -169)
+scale = Vector2(0.45, 0.45)
+
+[node name="PineA" parent="treeContainer2" index="1" instance=ExtResource("3_1grtv")]
+position = Vector2(-498, -471)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineB" parent="treeContainer2" index="2" instance=ExtResource("3_xisie")]
+position = Vector2(-94, -538)
+scale = Vector2(0.4, 0.4)
+
+[node name="treeContainer" type="Node2D" parent="." index="2"]
+
+[node name="PineB" parent="treeContainer" index="0" instance=ExtResource("3_xisie")]
+position = Vector2(-656, -232.94)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineC2" parent="treeContainer" index="1" instance=ExtResource("5_jse83")]
+position = Vector2(-298, -458)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineB3" parent="treeContainer" index="2" instance=ExtResource("3_xisie")]
+position = Vector2(144, -507.94)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineC3" parent="treeContainer" index="3" instance=ExtResource("5_jse83")]
+position = Vector2(345, -386)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineA" parent="treeContainer" index="4" instance=ExtResource("3_1grtv")]
+position = Vector2(-784, 347.06)
+scale = Vector2(0.4, 0.4)
+
+[node name="rocks" type="Node2D" parent="." index="3"]
+
+[node name="Rock" type="Sprite2D" parent="rocks" index="0"]
+position = Vector2(550, 342)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_6vbuh")
+script = ExtResource("7_gk6lb")
+
+[node name="Rock3" type="Sprite2D" parent="rocks" index="1"]
+position = Vector2(-476, -241.94)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("9_yrpgc")
+script = ExtResource("7_gk6lb")
+
+[node name="Rock4" type="Sprite2D" parent="rocks" index="2"]
+position = Vector2(-677, 402)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("10_2urwb")
+script = ExtResource("7_gk6lb")
+
+[node name="Rock5" type="Sprite2D" parent="rocks" index="3"]
+position = Vector2(361, 541)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("10_2urwb")
+script = ExtResource("7_gk6lb")
+
+[node name="Rock6" type="Sprite2D" parent="rocks" index="4"]
+position = Vector2(-443, 204)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("10_2urwb")
+script = ExtResource("7_gk6lb")
+
+[node name="bushes" type="Node2D" parent="." index="4"]
+
+[node name="Bush" type="Sprite2D" parent="bushes" index="0"]
+material = ExtResource("13_nu7hy")
+position = Vector2(-452, -392.94)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("14_fpwdc")
+script = ExtResource("7_gk6lb")
+
+[node name="Bush2" type="Sprite2D" parent="bushes" index="1"]
+material = ExtResource("13_nu7hy")
+position = Vector2(721, 200)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("15_l54qv")
+script = ExtResource("7_gk6lb")
+
+[node name="Bush3" type="Sprite2D" parent="bushes" index="2"]
+material = ExtResource("13_nu7hy")
+position = Vector2(-533, 28)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("16_pltyf")
+script = ExtResource("7_gk6lb")
+
+[node name="Bush4" type="Sprite2D" parent="bushes" index="3"]
+material = ExtResource("13_nu7hy")
+position = Vector2(242, -469)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("16_pltyf")
+script = ExtResource("7_gk6lb")
+
+[node name="others" type="Node2D" parent="." index="5"]
+
+[node name="Woodhouse" parent="others" index="0" instance=ExtResource("14_xr3ju")]
+position = Vector2(842.712, -430.412)
+scale = Vector2(0.175, 0.175)
+
+[node name="MaxHouse" type="Sprite2D" parent="others" index="1"]
+position = Vector2(-577, -243)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_t3sly")
+script = ExtResource("7_gk6lb")
+
+[node name="WoodBundle" type="Sprite2D" parent="others" index="2"]
+position = Vector2(472.712, -218.412)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("16_gsiwh")
+script = ExtResource("7_gk6lb")
+
+[node name="WoodBundle2" type="Sprite2D" parent="others" index="3"]
+position = Vector2(-263, -464)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("16_gsiwh")
+flip_h = true
+script = ExtResource("7_gk6lb")
+
+[node name="treeContainer3" type="Node2D" parent="." index="6"]
+
+[node name="PineA" parent="treeContainer3" index="0" instance=ExtResource("3_1grtv")]
+position = Vector2(743, 159)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineB" parent="treeContainer3" index="1" instance=ExtResource("3_xisie")]
+position = Vector2(977, 357)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineB3" parent="treeContainer3" index="2" instance=ExtResource("3_xisie")]
+position = Vector2(-582, 663)
+scale = Vector2(0.4, 0.4)
+
+[node name="PineC3" parent="treeContainer3" index="3" instance=ExtResource("5_jse83")]
+position = Vector2(833, 657)
+scale = Vector2(0.4, 0.4)
+
+[node name="Edelweiss" type="Sprite2D" parent="treeContainer3" index="4"]
+position = Vector2(371, -394)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_ungif")
+script = ExtResource("7_gk6lb")
+
+[node name="Edelweiss2" type="Sprite2D" parent="treeContainer3" index="5"]
+position = Vector2(-342, -367)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_ungif")
+script = ExtResource("7_gk6lb")
+
+[node name="Edelweiss3" type="Sprite2D" parent="treeContainer3" index="6"]
+position = Vector2(629, 265)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_ungif")
+script = ExtResource("7_gk6lb")
+
+[node name="Edelweiss4" type="Sprite2D" parent="treeContainer3" index="7"]
+position = Vector2(-494, -103)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_ungif")
+script = ExtResource("7_gk6lb")
+
+[node name="Edelweiss5" type="Sprite2D" parent="treeContainer3" index="8"]
+position = Vector2(-219, 471)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_ungif")
+script = ExtResource("7_gk6lb")
+
+[node name="Edelweiss6" type="Sprite2D" parent="treeContainer3" index="9"]
+position = Vector2(461, 452)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_ungif")
+script = ExtResource("7_gk6lb")

@@ -1,0 +1,185 @@
+[gd_scene load_steps=25 format=3 uid="uid://bqv8ul05kfbcg"]
+
+[ext_resource type="PackedScene" uid="uid://dt3vit8kfgtgx" path="res://Scenes/Assets/LevelBackgrounds/LevelBackgroundTemplate.tscn" id="1_2sgj8"]
+[ext_resource type="Texture2D" uid="uid://bf3jdxh6jokh" path="res://Assets/LevelBackgrounds/grassAndSnowBackground.png" id="2_5kilt"]
+[ext_resource type="Texture2D" uid="uid://ih2xpqrkixbq" path="res://Assets/GameObjects/Obstacles/Rocks/rock_2.png" id="3_ws1p4"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="4_lbdg3"]
+[ext_resource type="Material" uid="uid://cdmifp2pmm52s" path="res://Resources/ShaderMaterials/Trees/bush_leaves.tres" id="5_0d07c"]
+[ext_resource type="Texture2D" uid="uid://4ltokfapvwtl" path="res://Assets/GameObjects/Obstacles/Bushes/bush_1.png" id="6_bbla1"]
+[ext_resource type="Texture2D" uid="uid://digrvd2xnyv1e" path="res://Assets/GameObjects/Obstacles/Rocks/rock_9.png" id="7_ofpin"]
+[ext_resource type="PackedScene" uid="uid://dh3gkft70v8i8" path="res://Scenes/Assets/Trees/PineD.tscn" id="8_ciair"]
+[ext_resource type="Texture2D" uid="uid://xfpp7hi5eg8x" path="res://Assets/GameObjects/Obstacles/Bushes/bush_8.png" id="9_sddg0"]
+[ext_resource type="Texture2D" uid="uid://bxr2ajfn38bm5" path="res://Assets/GameObjects/Obstacles/Bushes/bush_2.png" id="10_mrhoa"]
+[ext_resource type="Texture2D" uid="uid://ccmpcw6blub80" path="res://Assets/GameObjects/Obstacles/Bushes/bush_9.png" id="11_ip410"]
+[ext_resource type="Texture2D" uid="uid://c0ta6ec6ywiks" path="res://Assets/Buildings/fullfarm_cycles_corrected_yellow.png" id="12_nmt2d"]
+[ext_resource type="Texture2D" uid="uid://dl22q3pxq6c33" path="res://Assets/Bales/green_bale.png" id="13_c6rol"]
+[ext_resource type="Texture2D" uid="uid://drpyjtv5p5ae5" path="res://Assets/Bales/yellow_bale.png" id="14_bwvuk"]
+[ext_resource type="PackedScene" uid="uid://d1gbqcl11wnny" path="res://Scenes/Assets/Lantern.tscn" id="15_yclf4"]
+[ext_resource type="Texture2D" uid="uid://bxgec6hcdp8jw" path="res://Assets/Buildings/kennel.png" id="16_1y4dt"]
+[ext_resource type="Texture2D" uid="uid://ipu12xtx058l" path="res://Assets/Flowers/flower.png" id="17_pjfpa"]
+[ext_resource type="PackedScene" uid="uid://bth21nmxqk51q" path="res://Scenes/Juiciness/Particles/GrassParticles.tscn" id="18_sljvf"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassCanvasItem.gdshader" id="19_dhhx8"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="20_qf4mp"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="21_5pcmy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yw7g"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0l4xp"]
+seamless = true
+noise = SubResource("FastNoiseLite_0yw7g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfnfe"]
+shader = ExtResource("19_dhhx8")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(1, 1, 1, 1)
+shader_parameter/bottom_color = Color(0.338401, 0.326058, 0.363005, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.05
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_angle_deg = -135.0
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("21_5pcmy")
+shader_parameter/random_noise = ExtResource("20_qf4mp")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_0l4xp")
+
+[node name="Level5Background" node_paths=PackedStringArray("assetsContainers", "grassList") instance=ExtResource("1_2sgj8")]
+assetsContainers = [NodePath("RockContainer"), NodePath("TreeContainer"), NodePath("BushContainer"), NodePath("BuildingsContainer")]
+grassList = [NodePath("GrassSystem/Grass")]
+
+[node name="Sprite2D" parent="." index="0"]
+z_index = -60
+texture = ExtResource("2_5kilt")
+
+[node name="RockContainer" type="Node2D" parent="." index="1"]
+z_index = -60
+
+[node name="rock2" type="Sprite2D" parent="RockContainer" index="0"]
+position = Vector2(-587.76, 382.54)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("3_ws1p4")
+script = ExtResource("4_lbdg3")
+
+[node name="rock" type="Sprite2D" parent="RockContainer" index="1"]
+position = Vector2(493.66, -230.69)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("7_ofpin")
+script = ExtResource("4_lbdg3")
+
+[node name="TreeContainer" type="Node2D" parent="." index="2"]
+z_index = -60
+
+[node name="PineD" parent="TreeContainer" index="0" instance=ExtResource("8_ciair")]
+position = Vector2(566.16, -188.19)
+scale = Vector2(0.25, 0.25)
+
+[node name="PineD3" parent="TreeContainer" index="1" instance=ExtResource("8_ciair")]
+position = Vector2(28.55, -320.1)
+scale = Vector2(0.22, 0.22)
+
+[node name="PineD2" parent="TreeContainer" index="2" instance=ExtResource("8_ciair")]
+z_index = 1
+position = Vector2(696.16, -115.69)
+scale = Vector2(0.22, 0.22)
+
+[node name="BushContainer" type="Node2D" parent="." index="3"]
+z_index = -60
+
+[node name="bush" type="Sprite2D" parent="BushContainer" index="0"]
+material = ExtResource("5_0d07c")
+position = Vector2(-445.26, 396.29)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_bbla1")
+script = ExtResource("4_lbdg3")
+
+[node name="bush4" type="Sprite2D" parent="BushContainer" index="1"]
+material = ExtResource("5_0d07c")
+position = Vector2(-37.7, -312.6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_ip410")
+script = ExtResource("4_lbdg3")
+
+[node name="bush2" type="Sprite2D" parent="BushContainer" index="2"]
+material = ExtResource("5_0d07c")
+position = Vector2(-658, -67)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("9_sddg0")
+script = ExtResource("4_lbdg3")
+
+[node name="bush3" type="Sprite2D" parent="BushContainer" index="3"]
+material = ExtResource("5_0d07c")
+position = Vector2(599.91, -163.19)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("10_mrhoa")
+script = ExtResource("4_lbdg3")
+
+[node name="BuildingsContainer" type="Node2D" parent="." index="4"]
+z_index = -60
+
+[node name="Farmhouse" type="Sprite2D" parent="BuildingsContainer" index="0"]
+z_index = 1
+position = Vector2(-690, -444)
+scale = Vector2(0.368286, 0.368286)
+texture = ExtResource("12_nmt2d")
+script = ExtResource("4_lbdg3")
+
+[node name="Bale2" type="Sprite2D" parent="BuildingsContainer" index="1"]
+z_index = 1
+position = Vector2(-863, -176)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_c6rol")
+script = ExtResource("4_lbdg3")
+
+[node name="Bale3" type="Sprite2D" parent="BuildingsContainer" index="2"]
+z_index = 1
+position = Vector2(-766, -120)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_bwvuk")
+script = ExtResource("4_lbdg3")
+
+[node name="Bale" type="Sprite2D" parent="BuildingsContainer" index="3"]
+z_index = 1
+position = Vector2(-808, -202)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_bwvuk")
+script = ExtResource("4_lbdg3")
+
+[node name="Lantern" parent="BuildingsContainer" index="4" instance=ExtResource("15_yclf4")]
+z_index = 1
+position = Vector2(-856, -98)
+
+[node name="kennel" type="Sprite2D" parent="BuildingsContainer" index="5"]
+position = Vector2(-355, -326)
+scale = Vector2(0.087, 0.0869999)
+texture = ExtResource("16_1y4dt")
+script = ExtResource("4_lbdg3")
+
+[node name="Lantern3" parent="BuildingsContainer" index="6" instance=ExtResource("15_yclf4")]
+position = Vector2(-268, 373)
+
+[node name="flower" type="Sprite2D" parent="BuildingsContainer" index="7"]
+position = Vector2(40, -293)
+scale = Vector2(0.0562392, 0.0562393)
+texture = ExtResource("17_pjfpa")
+script = ExtResource("4_lbdg3")
+
+[node name="GrassSystem" type="Node2D" parent="." index="5"]
+z_index = -60
+
+[node name="Grass" parent="GrassSystem" index="0" node_paths=PackedStringArray("polygon") instance=ExtResource("18_sljvf")]
+visible = false
+position = Vector2(-1064, -792)
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="GrassSystem/Grass" index="0"]
+material = SubResource("ShaderMaterial_dfnfe")
+
+[node name="Polygon2D" type="Polygon2D" parent="GrassSystem" index="1"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(-1040, -788, 1036, -779, 1014, 800, -1022, 784, -1029, -18, -886, -18, -768, 11, -707, 112, -702, 247, -737, 408, -661, 489, -429, 514, -303, 484, -184, 476, -9, 422, 188, 397, 365, 412, 491, 378, 587, 286, 697, 151, 745, 16, 738, -138, 652, -274, 282, -310, -59, -379, -312, -412, -562, -396, -851, -342, -1023, -331)
+
+[editable path="GrassSystem/Grass"]

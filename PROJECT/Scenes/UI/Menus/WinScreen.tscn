@@ -1,0 +1,422 @@
+[gd_scene load_steps=27 format=3 uid="uid://10en2nctebfn"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/PausingMenus/WinScreen.cs" id="1_dd0ao"]
+[ext_resource type="Shader" path="res://Resources/Shaders/blur.gdshader" id="2_5nb4i"]
+[ext_resource type="Shader" path="res://Resources/Shaders/WinSheepShine.gdshader" id="3_40hui"]
+[ext_resource type="Texture2D" uid="uid://dgoj34rqa3coi" path="res://Assets/WinScreen/bronze.png" id="3_tpp47"]
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="4_pe5u3"]
+[ext_resource type="Theme" uid="uid://cc4m66p3atd14" path="res://Resources/Theme/MenuButton.tres" id="5_3s0oq"]
+[ext_resource type="Theme" uid="uid://mehsaxiv283s" path="res://Resources/Theme/AuthentificationButton.tres" id="5_dwg83"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/SheepButton.cs" id="5_ojkkd"]
+[ext_resource type="AudioStream" uid="uid://01t6jiyqp43y" path="res://Sounds/SFX/Sheep/sheep1.ogg" id="6_as0mn"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/NextButton.cs" id="7_v85s8"]
+[ext_resource type="Texture2D" uid="uid://dibq2mav2iwjg" path="res://Assets/WinScreen/silver.png" id="7_wdbk3"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/MenuButton.cs" id="8_5swto"]
+[ext_resource type="AudioStream" uid="uid://drtug2l7md1yh" path="res://Sounds/SFX/Sheep/sheep2.ogg" id="8_cul7o"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/RestartButton.cs" id="8_sjmwd"]
+[ext_resource type="PackedScene" uid="uid://otjvxjk3pk00" path="res://Scenes/UI/Transition.tscn" id="8_yqu4k"]
+[ext_resource type="Texture2D" uid="uid://imheyr42pqxa" path="res://Assets/WinScreen/gold.png" id="9_bsojy"]
+[ext_resource type="Script" path="res://Scripts/Components/ResolutionRescaler.cs" id="10_4v6uv"]
+[ext_resource type="AudioStream" uid="uid://j4ibs3bbbr6c" path="res://Sounds/SFX/Sheep/sheep3.ogg" id="10_i3a40"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8218"]
+shader = ExtResource("2_5nb4i")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dkm6h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfbrx"]
+shader = ExtResource("3_40hui")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = -30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.3
+shader_parameter/Position = 0.5
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/alpha = 0.5
+shader_parameter/wait_cycles = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ukfm"]
+shader = ExtResource("3_40hui")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = -60.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.35
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/wait_cycles = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v0qc"]
+shader = ExtResource("3_40hui")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = -30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.5
+shader_parameter/Position = 0.3
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/alpha = 0.5
+shader_parameter/wait_cycles = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgxbg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_atgt5"]
+font = ExtResource("4_pe5u3")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2i1a"]
+font = ExtResource("4_pe5u3")
+font_size = 60
+
+[node name="WinScreen" type="Control" node_paths=PackedStringArray("sheepStars", "creditsButton", "scoreText", "container", "winMessage")]
+z_index = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dd0ao")
+sheepStars = [NodePath("MainContainer/Bronze"), NodePath("MainContainer/Silver"), NodePath("MainContainer/Gold")]
+creditsButton = NodePath("MainContainer/ButtonContainer/Panel/Credits")
+scoreText = NodePath("MainContainer/ButtonContainer/Panel/Score")
+container = NodePath("MainContainer/ButtonContainer")
+winMessage = NodePath("MainContainer/ButtonContainer/Label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_j8218")
+custom_minimum_size = Vector2(3.16, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -990.0
+offset_top = -570.0
+offset_right = 990.0
+offset_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(990, 570)
+
+[node name="MainContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -475.0
+offset_right = 700.0
+offset_bottom = 475.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(700, 475)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dkm6h")
+
+[node name="Bronze" type="TextureButton" parent="MainContainer"]
+material = SubResource("ShaderMaterial_xfbrx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1425.0
+offset_top = -1275.0
+offset_right = 623.0
+offset_bottom = 773.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.523599
+scale = Vector2(0.18, 0.18)
+pivot_offset = Vector2(1024, 1024)
+focus_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("3_tpp47")
+texture_pressed = ExtResource("3_tpp47")
+texture_hover = ExtResource("3_tpp47")
+texture_disabled = ExtResource("3_tpp47")
+texture_focused = ExtResource("3_tpp47")
+script = ExtResource("5_ojkkd")
+overrideSounds = Array[AudioStreamOggVorbis]([ExtResource("6_as0mn")])
+
+[node name="Silver" type="TextureButton" parent="MainContainer"]
+material = SubResource("ShaderMaterial_7ukfm")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -1275.0
+offset_right = 1448.0
+offset_bottom = 773.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.523599
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(1024, 1024)
+focus_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("7_wdbk3")
+texture_pressed = ExtResource("7_wdbk3")
+texture_hover = ExtResource("7_wdbk3")
+texture_disabled = ExtResource("7_wdbk3")
+texture_focused = ExtResource("7_wdbk3")
+script = ExtResource("5_ojkkd")
+overrideSounds = Array[AudioStreamOggVorbis]([ExtResource("8_cul7o")])
+
+[node name="Gold" type="TextureButton" parent="MainContainer"]
+material = SubResource("ShaderMaterial_7v0qc")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1025.0
+offset_top = -1375.0
+offset_right = 1023.0
+offset_bottom = 673.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(1024, 1024)
+focus_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("9_bsojy")
+texture_pressed = ExtResource("9_bsojy")
+texture_hover = ExtResource("9_bsojy")
+texture_disabled = ExtResource("9_bsojy")
+texture_focused = ExtResource("9_bsojy")
+script = ExtResource("5_ojkkd")
+overrideSounds = Array[AudioStreamOggVorbis]([ExtResource("10_i3a40")])
+
+[node name="ButtonContainer" type="Panel" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -201.0
+offset_right = 375.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(375, 375)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rgxbg")
+
+[node name="Label" type="Label" parent="MainContainer/ButtonContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.5
+offset_top = 75.0
+offset_right = 260.5
+offset_bottom = 175.0
+grow_horizontal = 2
+pivot_offset = Vector2(260, 50)
+text = "LABEL_WIN"
+label_settings = SubResource("LabelSettings_atgt5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="MainContainer/ButtonContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -175.0
+offset_right = 245.0
+offset_bottom = 345.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 260)
+theme = ExtResource("5_3s0oq")
+
+[node name="Score" type="Label" parent="MainContainer/ButtonContainer/Panel"]
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 76.0
+text = "Score : "
+label_settings = SubResource("LabelSettings_s2i1a")
+horizontal_alignment = 1
+
+[node name="Credits" type="Button" parent="MainContainer/ButtonContainer/Panel" node_paths=PackedStringArray("Transition")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -178.0
+offset_right = 250.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 27.5)
+size_flags_vertical = 2
+theme = ExtResource("5_dwg83")
+theme_override_font_sizes/font_size = 35
+text = "BTN_CREDITS"
+script = ExtResource("8_5swto")
+pathSceneToLoad = "res://Scenes/UI/Menus/MainMenus/CreditsMenu.tscn"
+Transition = NodePath("../../../../Transition")
+hoverScaleMult = 1.2
+hoverScaleTime = 0.25
+
+[node name="Next" type="Button" parent="MainContainer/ButtonContainer/Panel" node_paths=PackedStringArray("menu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -178.0
+offset_right = 250.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 27.5)
+size_flags_vertical = 2
+theme = ExtResource("5_dwg83")
+theme_override_font_sizes/font_size = 35
+text = "BTN_NEXT"
+script = ExtResource("7_v85s8")
+menu = NodePath("../../../..")
+animationStartDelay = 0.5
+
+[node name="Restart" type="Button" parent="MainContainer/ButtonContainer/Panel" node_paths=PackedStringArray("menu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -100.0
+offset_right = 250.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 27.5)
+size_flags_vertical = 2
+theme = ExtResource("5_dwg83")
+theme_override_font_sizes/font_size = 35
+text = "BTN_RESTART"
+script = ExtResource("8_sjmwd")
+menu = NodePath("../../../..")
+animationStartDelay = 0.5
+
+[node name="SelectLevel" type="Button" parent="MainContainer/ButtonContainer/Panel" node_paths=PackedStringArray("Transition")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -22.0
+offset_right = 250.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 27.5)
+size_flags_vertical = 2
+theme = ExtResource("5_dwg83")
+theme_override_font_sizes/font_size = 35
+text = "BTN_SELECT_LEVEL"
+script = ExtResource("8_5swto")
+pathSceneToLoad = "res://Scenes/Main.tscn"
+Transition = NodePath("../../../../Transition")
+animationStartDelay = 0.5
+hoverScaleMult = 1.2
+hoverScaleTime = 0.25
+
+[node name="Leaderboard" type="Button" parent="MainContainer/ButtonContainer/Panel" node_paths=PackedStringArray("Transition")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 64.0
+offset_right = 250.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 27.5)
+size_flags_vertical = 2
+theme = ExtResource("5_dwg83")
+theme_override_font_sizes/font_size = 35
+text = "BTN_LEADERBOARD"
+script = ExtResource("8_5swto")
+pathSceneToLoad = "res://Scenes/UI/Menus/LeaderBoard.tscn"
+Transition = NodePath("../../../../Transition")
+animationStartDelay = 0.5
+hoverScaleMult = 1.2
+hoverScaleTime = 0.25
+
+[node name="BackButton" type="Button" parent="MainContainer/ButtonContainer/Panel" node_paths=PackedStringArray("Transition")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 160.0
+offset_right = 250.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 27.5)
+size_flags_vertical = 2
+theme = ExtResource("5_dwg83")
+theme_override_font_sizes/font_size = 35
+text = "BTN_MAIN_MENU"
+script = ExtResource("8_5swto")
+pathSceneToLoad = "res://Scenes/UI/Menus/MainMenus/MainMenu.tscn"
+Transition = NodePath("../../../../Transition")
+animationStartDelay = 0.5
+hoverScaleMult = 1.2
+hoverScaleTime = 0.25
+
+[node name="Transition" parent="." instance=ExtResource("8_yqu4k")]
+transIn = true
+
+[node name="ResolutionRescaler" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("10_4v6uv")
+targets = [NodePath("../MainContainer")]
+mode = 3
+
+[node name="RectRescaler" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("10_4v6uv")
+targets = [NodePath("../ColorRect")]

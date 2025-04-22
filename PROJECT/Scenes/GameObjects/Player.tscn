@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqkavg4d0hkn4"]
+
+[ext_resource type="Script" path="res://Scripts/GameObjects/Mobiles/Player.cs" id="1_oi0go"]
+[ext_resource type="PackedScene" uid="uid://bq4elmjhnsvy0" path="res://Scenes/Assets/PlayerRenderer.tscn" id="2_cegmf"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("Renderer")]
+script = ExtResource("1_oi0go")
+Renderer = NodePath("Renderer")
+
+[node name="Renderer" parent="." instance=ExtResource("2_cegmf")]

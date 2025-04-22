@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctcfmrf2jwvem"]
+
+[ext_resource type="Theme" uid="uid://cc4m66p3atd14" path="res://Resources/Theme/MenuButton.tres" id="1_gjylw"]
+[ext_resource type="Script" path="res://Scripts/UI/Buttons/ButtonsWithHoverAnim/AnimatedButtons/MenuButton.cs" id="3_6imep"]
+
+[node name="MenuButton" type="Button"]
+offset_right = 1630.0
+offset_bottom = 700.0
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(815, 350)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_gjylw")
+text = "Button"
+script = ExtResource("3_6imep")

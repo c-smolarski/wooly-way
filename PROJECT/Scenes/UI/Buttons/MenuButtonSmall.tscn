@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw333fs0t3dlm"]
+
+[ext_resource type="PackedScene" uid="uid://ctcfmrf2jwvem" path="res://Scenes/UI/Buttons/MenuButton.tscn" id="1_vn8mq"]
+[ext_resource type="Texture2D" uid="uid://bdk2gnkc6l6x4" path="res://Assets/UI/Buttons/small_default.png" id="2_0xlke"]
+[ext_resource type="Texture2D" uid="uid://d0mmmp8g2eugw" path="res://Assets/UI/Buttons/small_hovered.png" id="3_siyum"]
+[ext_resource type="Texture2D" uid="uid://byyikmb7mcvsh" path="res://Assets/UI/Buttons/small_disabled.png" id="4_hf4gl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_63i8d"]
+texture = ExtResource("2_0xlke")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tbq2"]
+texture = ExtResource("3_siyum")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_me0vb"]
+texture = ExtResource("4_hf4gl")
+
+[node name="MenuButton" instance=ExtResource("1_vn8mq")]
+offset_left = -462.0
+offset_top = -348.0
+offset_right = 462.0
+offset_bottom = 348.0
+pivot_offset = Vector2(462, 348)
+theme_override_font_sizes/font_size = 250
+theme_override_styles/normal = SubResource("StyleBoxTexture_63i8d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1tbq2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1tbq2")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_me0vb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1tbq2")

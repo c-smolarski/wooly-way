@@ -1,0 +1,137 @@
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://cc4m66p3atd14"]
+
+[ext_resource type="FontFile" uid="uid://cxtbu58rr8dns" path="res://Resources/Fonts/PatrickHand-Regular.ttf" id="1_w0nyd"]
+[ext_resource type="Texture2D" uid="uid://cskwq7nu6nfry" path="res://Assets/UI/Buttons/disabled.png" id="2_vu3vw"]
+[ext_resource type="Texture2D" uid="uid://b1l88fcifsc00" path="res://Assets/UI/Buttons/hovered.png" id="3_4bksd"]
+[ext_resource type="Texture2D" uid="uid://dn7w2xvne3tbd" path="res://Assets/UI/Buttons/default.png" id="4_6yp8v"]
+[ext_resource type="Texture2D" uid="uid://cwome7qainin8" path="res://Assets/UI/Settings/Sliders/grabber_default.png" id="5_klkre"]
+[ext_resource type="Texture2D" uid="uid://c6vh7ougckhrg" path="res://Assets/UI/Settings/Sliders/slider.png" id="5_ywnq1"]
+[ext_resource type="Texture2D" uid="uid://bry62adwrj2pp" path="res://Assets/UI/Settings/Sliders/grabber_hovered.png" id="6_0u76x"]
+[ext_resource type="Texture2D" uid="uid://ckok1b7ln15x2" path="res://Assets/UI/Settings/Tabs/panel.png" id="6_c7t1s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8riq1"]
+texture = ExtResource("2_vu3vw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iynpg"]
+texture = ExtResource("2_vu3vw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1x7i"]
+texture = ExtResource("3_4bksd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54xv"]
+texture = ExtResource("4_6yp8v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdoek"]
+texture = ExtResource("2_vu3vw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwrop"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8ny1"]
+texture = ExtResource("5_ywnq1")
+texture_margin_top = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hpc4t"]
+texture = ExtResource("5_ywnq1")
+texture_margin_top = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a11cs"]
+texture = ExtResource("5_ywnq1")
+texture_margin_top = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wb2n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6j3u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcdgy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6lby"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xnw84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40vvy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_20wxt"]
+texture = ExtResource("6_c7t1s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sk4u"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_vu3vw")
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gu1sn"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = ExtResource("3_4bksd")
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_41w8a"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_vu3vw")
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1mbb"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = ExtResource("4_6yp8v")
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_focus_color = Color(1, 1, 0.811765, 1)
+Button/colors/font_hover_color = Color(1, 1, 0.811765, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(1, 1, 0.811765, 1)
+Button/colors/icon_hover_color = Color(1, 1, 0.811765, 1)
+Button/font_sizes/font_size = 300
+Button/fonts/font = ExtResource("1_w0nyd")
+Button/styles/disabled = SubResource("StyleBoxTexture_8riq1")
+Button/styles/focus = SubResource("StyleBoxTexture_iynpg")
+Button/styles/hover = SubResource("StyleBoxTexture_m1x7i")
+Button/styles/normal = SubResource("StyleBoxTexture_e54xv")
+Button/styles/pressed = SubResource("StyleBoxTexture_fdoek")
+CheckButton/icons/checked = null
+CheckButton/icons/unchecked = null
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_gwrop")
+HSlider/constants/center_grabber = 1
+HSlider/icons/grabber = ExtResource("5_klkre")
+HSlider/icons/grabber_highlight = ExtResource("6_0u76x")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_n8ny1")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_hpc4t")
+HSlider/styles/slider = SubResource("StyleBoxTexture_a11cs")
+ItemList/colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+ItemList/colors/font_hovered_color = Color(1, 1, 0.811765, 1)
+ItemList/colors/guide_color = Color(0.701961, 0.701961, 0.701961, 0)
+ItemList/font_sizes/font_size = 40
+ItemList/fonts/font = ExtResource("1_w0nyd")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxEmpty_6wb2n")
+ItemList/styles/focus = SubResource("StyleBoxEmpty_i6j3u")
+ItemList/styles/panel = SubResource("StyleBoxEmpty_bcdgy")
+ItemList/styles/selected = SubResource("StyleBoxEmpty_d6lby")
+ItemList/styles/selected_focus = SubResource("StyleBoxEmpty_xnw84")
+Panel/styles/panel = SubResource("StyleBoxEmpty_40vvy")
+TabContainer/colors/font_hovered_color = Color(1, 1, 0.811765, 1)
+TabContainer/colors/font_selected_color = Color(0.724641, 0.724643, 0.724643, 1)
+TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
+TabContainer/font_sizes/font_size = 40
+TabContainer/fonts/font = ExtResource("1_w0nyd")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_20wxt")
+TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_1sk4u")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_gu1sn")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_41w8a")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_d1mbb")

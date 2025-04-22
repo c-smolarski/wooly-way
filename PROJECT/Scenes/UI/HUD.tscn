@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmfbw723jsxf8"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/HUD.gdshader" id="1_hkvdc"]
+[ext_resource type="FontFile" uid="uid://b8ha87l6ot216" path="res://Resources/Fonts/lumberjack.regular.otf" id="2_cw864"]
+[ext_resource type="Script" path="res://Scripts/UI/TranslatableLabel.cs" id="3_fjbja"]
+[ext_resource type="LabelSettings" uid="uid://cm54fcf0whcc6" path="res://Resources/HudText.tres" id="3_u3q7h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqrye"]
+shader = ExtResource("1_hkvdc")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jyqpm"]
+font = ExtResource("2_cw864")
+font_size = 33
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y43c2"]
+shader = ExtResource("1_hkvdc")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 250.0
+offset_top = 65.0
+offset_right = 410.0
+offset_bottom = 202.0
+mouse_filter = 2
+
+[node name="Author" type="Label" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_eqrye")
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jyqpm")
+language = "English"
+script = ExtResource("3_fjbja")
+
+[node name="Steps" type="Label" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_eqrye")
+layout_mode = 2
+text = "Steps : 0"
+label_settings = SubResource("LabelSettings_jyqpm")
+language = "English"
+script = ExtResource("3_fjbja")
+translationKey = "LABEL_STEPS"
+
+[node name="Par" type="Label" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_y43c2")
+layout_mode = 2
+text = "Par : 0"
+label_settings = ExtResource("3_u3q7h")
+language = "en"
+script = ExtResource("3_fjbja")
+translationKey = "LABEL_PAR"
+
+[node name="Level" type="Label" parent="."]
+material = SubResource("ShaderMaterial_eqrye")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -255.0
+offset_top = 30.0
+offset_right = -105.0
+offset_bottom = 75.0
+grow_horizontal = 0
+text = "1"
+label_settings = SubResource("LabelSettings_jyqpm")
+horizontal_alignment = 2
+vertical_alignment = 1
+language = "English"
+script = ExtResource("3_fjbja")
+translationKey = "LABEL_LEVEL"

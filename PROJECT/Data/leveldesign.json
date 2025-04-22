@@ -1,0 +1,155 @@
+{
+  "Worlds": {
+	"Tutorial": {
+	  "1": {
+		"LevelName": 1,
+		"Author": "Alissa Delattre",
+		"SheepDirection": ["Down"],
+		"Map": [
+		  "#####",
+		  "#@$ #",
+		  "### #",
+		  "###.#",
+		  "#####"
+		]
+	  },
+	  "2": {
+		"LevelName": 2,
+		"Author": "Alissa Delattre",
+		"SheepDirection": ["Right"],
+		"DogDirection": ["Left"],
+		"Map": [
+		  "#####",
+		  "#@$ o",
+		  "### #",
+		  "###.#",
+		  "#####"
+		]
+	  },
+	  "3": {
+		"LevelName": 3,
+		"Author": "Alissa Delattre",
+		"SheepDirection": ["Right", "Up"],
+		"Map": [
+		  "#####.#",
+		  "# N $ #",
+		  "# @####",
+		  "#######"
+		]
+	  }
+	},
+	"World1": {
+	  "Level1": {
+		"LevelName": 1,
+		"Author": "Alissa Delattre",
+		"Par": 34,
+		"SheepDirection": ["Up", "Left"],
+		"DogDirection": ["Right"],
+		"Map": [
+		  "#######",
+		  "#  #  #",
+		  "#$    #",
+		  "#   @ #",
+		  "o  #$ #",
+		  "#. # .#",
+		  "#######"
+		]
+	  },
+	  "Level2": {
+		"LevelName": 2,
+		"Author": "Tom Bagnara",
+		"Par": 43,
+		"SheepDirection": ["Down", "Left", "Up"],
+		"DogDirection": ["Down", "Right"],
+		"Map": [
+		  "#######",
+		  "##  ###",
+		  "#@ $o.#",
+		  "#     #",
+		  "#. # $#",
+		  "#o    #",
+		  "#. $ ##",
+		  "#######"
+		]
+	  },
+	  "Level3": {
+		"LevelName": 3,
+		"Author": "Julien Lim",
+		"Par": 101,
+		"SheepDirection": ["Right", "Up", "Left"],
+		"DogDirection": ["Down", "Up"],
+		"Map": [
+		  "##########",
+		  "######.  #",
+		  "####  #  #",
+		  "##    o ##",
+		  "##   @   #",
+		  "##.#     #",
+		  "#.#  o  ##",
+		  "#   $$$ ##",
+		  "#    #  ##",
+		  "##########"
+		]
+	  },
+	  "Level4": {
+		"LevelName": 4,
+		"Author": "Daniel Moussouni-Lepilliez",
+		"Par": 89,
+		"SheepDirection": ["Left", "Up", "Left", "Up", "Up"],
+		"DogDirection": [],
+		"Map": [
+		  "##########",
+		  "#        #",
+		  "#  ## #N##",
+		  "# #.     #",
+		  "#  #N#N# #",
+		  "##   N   #",
+		  "#  ##    #",
+		  "### $ ####",
+		  "# @   ####",
+		  "##########"
+		]
+	  },
+	  "Level5": {
+		"LevelName": 5,
+		"Author": "Clément Ducroquet",
+		"Par": 42,
+		"SheepDirection": ["Up", "Down", "Down", "Right", "Left", "Up"],
+		"DogDirection": ["Down", "Left", "Left", "Up", "Up"],
+		"Map": [
+		  "#########",
+		  "####.o# #",
+		  "# #@    o",
+		  "# NN#  N#",
+		  "#       o",
+		  "#$#N#  ##",
+		  "# N  oo##",
+		  "#########"
+		]
+	  },
+	  "Level6": {
+		"LevelName": 6,
+		"Author": "Camille Smolarski-Janda",
+		"Par": 22,
+		"SheepDirection": [
+		  "Left", "Left", "Right", "Left", "Left", "Left",
+		  "Right", "Up", "Left", "Left", "Up", "Up", "Up",
+		  "Left", "Left"
+		],
+		"DogDirection": ["Right", "Right", "Up"],
+		"Map": [
+		  "#. ########",
+		  "##$ N #####",
+		  "## N N N  #",
+		  "##N o N # #",
+		  "## N N#N  #",
+		  "##o N N N #",
+		  "###  N N#@#",
+		  "######o   #",
+		  "######    #",
+		  "###########"
+		]
+	  }
+	}
+  }
+}

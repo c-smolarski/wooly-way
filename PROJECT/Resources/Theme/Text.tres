@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bbc4m1dcv8rv5"]
+
+[ext_resource type="FontFile" uid="uid://b8tf37kkqpu3l" path="res://Resources/Fonts/Straw Milky.otf" id="1_hxwk2"]
+
+[resource]
+font = ExtResource("1_hxwk2")
+font_size = 55
+font_color = Color(0.25098, 0.137255, 0.0588235, 1)

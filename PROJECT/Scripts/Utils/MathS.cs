@@ -1,13 +1,13 @@
 ﻿using Godot;
 using System;
 
-// Author : Camille Smolarski
+// Author : Camille SMOLARSKI
 
 namespace Com.IsartDigital.WoolyWay.Utils
 {
     public static class MathS
     {
-        private static Matrix2x2 IsoMatrix => new Matrix2x2(new Vector2(1, 0.5f), new Vector2(-1, 0.5f));
+        public static Matrix2x2 IsoMatrix => new Matrix2x2(new Vector2(0.5f, 0.25f), new Vector2(-0.5f, 0.25f));
 
         public static Vector2 PositionToIsoPosition(Vector2 pPos)
         {
@@ -23,10 +23,9 @@ namespace Com.IsartDigital.WoolyWay.Utils
         /// <returns>A world position according to a grid index and the given tile size</returns>
         public static Vector2 IndexToPosition(Vector2 pTileSize, int pIndexX, int pIndexY)
         {
-            Vector2 lScaledSize = pTileSize * 0.5f;
             return new Vector2(
-                lScaledSize.X * pIndexX * IsoMatrix.A.X + lScaledSize.Y * pIndexY * IsoMatrix.B.X,
-                lScaledSize.X * pIndexX * IsoMatrix.A.Y + lScaledSize.Y * pIndexY * IsoMatrix.B.Y);
+                pTileSize.X * pIndexX * IsoMatrix.A.X + pTileSize.Y * pIndexY * IsoMatrix.B.X,
+                pTileSize.X * pIndexX * IsoMatrix.A.Y + pTileSize.Y * pIndexY * IsoMatrix.B.Y);
         }
 
         /// <summary>
@@ -108,6 +107,18 @@ namespace Com.IsartDigital.WoolyWay.Utils
         public static float InverseBetweenValues(float pValue, float pStart, float pEnd)
         {
             return pStart + pEnd - pValue;
+        }
+
+        public static Vector2I Rotate(this Vector2I pVec, float pAgnleDeg)
+        {
+            float lAngleRad = Mathf.DegToRad(pAgnleDeg);
+            float lCos = Mathf.Cos(lAngleRad);
+            float lSin = Mathf.Sin(lAngleRad);
+
+            return new Vector2I(
+                (int)(pVec.X * lCos - pVec.Y * lSin),
+                (int)(pVec.X * lSin + pVec.Y * lCos)
+                );
         }
     }
 }

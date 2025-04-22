@@ -1,0 +1,142 @@
+[gd_scene load_steps=14 format=3 uid="uid://bwspy1i5353a4"]
+
+[ext_resource type="PackedScene" uid="uid://dfgpo5q1w422h" path="res://Scenes/UI/Menus/LevelSelector/LevelSelectorElements/LevelButton.tscn" id="1_roqee"]
+[ext_resource type="PackedScene" uid="uid://b8omaico4t15i" path="res://Scenes/Assets/LevelBackgrounds/Level3Background.tscn" id="2_gcw3c"]
+[ext_resource type="Texture2D" uid="uid://dqlxo0e2rx1pk" path="res://Assets/UI/Menus/LevelSelector/Path/0011.png" id="2_yqfgw"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/LevelSelectorPathAsset.cs" id="3_76uh5"]
+[ext_resource type="Texture2D" uid="uid://jpmg5cuf7rvg" path="res://Assets/UI/Menus/LevelSelector/Path/0010.png" id="4_ojapt"]
+[ext_resource type="Texture2D" uid="uid://5vxweh2bbp8p" path="res://Assets/UI/Menus/LevelSelector/Path/0009.png" id="5_deisl"]
+[ext_resource type="Texture2D" uid="uid://bkg6ixy188pp7" path="res://Assets/UI/Menus/LevelSelector/Path/0008.png" id="6_er6h3"]
+[ext_resource type="Texture2D" uid="uid://cnyigwximd0xw" path="res://Assets/UI/Menus/LevelSelector/Path/0012.png" id="7_pvhtr"]
+[ext_resource type="Texture2D" uid="uid://bf11al01p7k5l" path="res://Assets/UI/Menus/LevelSelector/Path/0001.png" id="8_16fl1"]
+[ext_resource type="Texture2D" uid="uid://cc2tr5r2pcj2b" path="res://Assets/UI/Menus/LevelSelector/Path/level.png" id="9_np5si"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfrbb"]
+size = Vector2(142, 82)
+
+[sub_resource type="Curve2D" id="Curve2D_ungkw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2043.75, 162.5, -89.9808, 1.7818, 89.9808, -1.7818, -1807, 94, -56.1266, -11.5817, 56.1266, 11.5817, -1635, 106, -119.38, -8.90899, 119.38, 8.90899, -1366, 165, -125.617, 5.34539, 125.617, -5.34539, -1105, 171, -85.5263, 30.2906, 85.5263, -30.2906, -869, 118, 0, 0, 0, 0, -690, -13)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_pqp3m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2388.5, 208.75, -252.152, 8.4757, 252.152, -8.4757, -1855, 137, -542.445, 25.4271, 542.445, -25.4271, -1101, 250, 0, 0, 0, 0, -297, 18)
+}
+point_count = 4
+
+[node name="level3" instance=ExtResource("1_roqee")]
+Weather = 1
+sceneBackground = ExtResource("2_gcw3c")
+LevelNumber = 3
+
+[node name="collider" parent="levelMoveTo" index="0"]
+position = Vector2(-689, -2)
+shape = SubResource("RectangleShape2D_nfrbb")
+
+[node name="playerPath" parent="paths" index="0"]
+curve = SubResource("Curve2D_ungkw")
+
+[node name="playerFollow" parent="paths/playerPath" index="0"]
+position = Vector2(-2043.75, 162.5)
+
+[node name="cameraPath" parent="paths" index="1"]
+curve = SubResource("Curve2D_pqp3m")
+
+[node name="cameraFollow" parent="paths/cameraPath" index="0"]
+position = Vector2(-2388.5, 208.75)
+
+[node name="path" type="Sprite2D" parent="assets" index="0"]
+position = Vector2(-1930, 120)
+rotation = -0.0715024
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_yqfgw")
+script = ExtResource("3_76uh5")
+
+[node name="path2" type="Sprite2D" parent="assets" index="1"]
+position = Vector2(-1807.5, 98.75)
+rotation = -0.0715024
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_ojapt")
+script = ExtResource("3_76uh5")
+
+[node name="path3" type="Sprite2D" parent="assets" index="2"]
+position = Vector2(-1692.5, 100)
+rotation = -0.0715024
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_deisl")
+script = ExtResource("3_76uh5")
+
+[node name="path4" type="Sprite2D" parent="assets" index="3"]
+position = Vector2(-1586.25, 121.25)
+rotation = -0.0715024
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_er6h3")
+script = ExtResource("3_76uh5")
+
+[node name="path5" type="Sprite2D" parent="assets" index="4"]
+position = Vector2(-1477.5, 150)
+rotation = -0.0715024
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_er6h3")
+script = ExtResource("3_76uh5")
+
+[node name="path6" type="Sprite2D" parent="assets" index="5"]
+position = Vector2(-1366.25, 167.5)
+rotation = -0.0715024
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_deisl")
+script = ExtResource("3_76uh5")
+
+[node name="path7" type="Sprite2D" parent="assets" index="6"]
+position = Vector2(-1238.75, 176.25)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_ojapt")
+script = ExtResource("3_76uh5")
+
+[node name="path8" type="Sprite2D" parent="assets" index="7"]
+position = Vector2(-1105, 176.25)
+rotation = 0.0700141
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_yqfgw")
+script = ExtResource("3_76uh5")
+
+[node name="path9" type="Sprite2D" parent="assets" index="8"]
+position = Vector2(-980, 155)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_pvhtr")
+script = ExtResource("3_76uh5")
+
+[node name="path10" type="Sprite2D" parent="assets" index="9"]
+position = Vector2(-868.75, 121.25)
+rotation = 0.128375
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("8_16fl1")
+script = ExtResource("3_76uh5")
+
+[node name="path11" type="Sprite2D" parent="assets" index="10"]
+position = Vector2(-776.25, 73.75)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("8_16fl1")
+script = ExtResource("3_76uh5")
+
+[node name="levelThree" type="Sprite2D" parent="assets" index="11"]
+position = Vector2(-696.25, -12.5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_np5si")
+script = ExtResource("3_76uh5")
+
+[node name="ArrowNext" parent="arrows" index="0" node_paths=PackedStringArray("block")]
+position = Vector2(-1941, 119)
+rotation = -0.215019
+block = NodePath("../../assets/path")
+
+[node name="ArrowPrev" parent="arrows" index="1" node_paths=PackedStringArray("block")]
+position = Vector2(-779, 62)
+rotation = 2.38101
+scale = Vector2(1.25, -1.25)
+block = NodePath("../../assets/path11")
+
+[node name="LevelSign" parent="." index="6"]
+position = Vector2(-478, -69)

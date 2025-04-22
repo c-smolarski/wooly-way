@@ -1,0 +1,232 @@
+[gd_scene load_steps=22 format=3 uid="uid://dvc5a417jybp"]
+
+[ext_resource type="PackedScene" uid="uid://dt3vit8kfgtgx" path="res://Scenes/Assets/LevelBackgrounds/LevelBackgroundTemplate.tscn" id="1_nnxoh"]
+[ext_resource type="PackedScene" uid="uid://d1gbqcl11wnny" path="res://Scenes/Assets/Lantern.tscn" id="2_nijyo"]
+[ext_resource type="PackedScene" uid="uid://bth21nmxqk51q" path="res://Scenes/Juiciness/Particles/GrassParticles.tscn" id="2_ycl76"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassCanvasItem.gdshader" id="3_f883w"]
+[ext_resource type="Texture2D" uid="uid://dhkxfac4ybjr5" path="res://Assets/particles/random_noise.png" id="4_sv7cj"]
+[ext_resource type="Texture2D" uid="uid://6lgv11baeyqw" path="res://Assets/particles/pixel_art_grass_spritesheet.png" id="5_hdd3t"]
+[ext_resource type="Shader" path="res://Resources/Shaders/GrassParticle.gdshader" id="6_54udk"]
+[ext_resource type="Texture2D" uid="uid://dqosk3xux62eq" path="res://Assets/Buildings/Farm_1.png" id="7_c1ay5"]
+[ext_resource type="PackedScene" uid="uid://3dpmy6njap12" path="res://Scenes/Assets/Trees/TreeH.tscn" id="7_m82x4"]
+[ext_resource type="Script" path="res://Scripts/Assets/SingleAssets/Bush.cs" id="8_gin38"]
+[ext_resource type="Texture2D" uid="uid://cfdy27sa6bv7o" path="res://Assets/Bales/bale_02.png" id="11_4ly0l"]
+[ext_resource type="Texture2D" uid="uid://b1x1v23h3xlu7" path="res://Assets/GameObjects/Obstacles/Rocks/rock_10.png" id="12_2yjky"]
+[ext_resource type="Texture2D" uid="uid://b1bfyfp8k3lhk" path="res://Assets/Bales/bale_01.png" id="12_x7244"]
+[ext_resource type="Texture2D" uid="uid://b2jhe4f75ushn" path="res://Assets/Buildings/DogHouse.png" id="13_jw6ob"]
+[ext_resource type="Texture2D" uid="uid://kcu4oyftefco" path="res://Assets/Flowers/flower_1.png" id="14_mmwko"]
+[ext_resource type="Texture2D" uid="uid://7i5av1sy16vq" path="res://Assets/GameObjects/Obstacles/Rocks/rock_11.png" id="14_py2oq"]
+[ext_resource type="Texture2D" uid="uid://djc7y0xsf6s3b" path="res://Assets/Flowers/Poppy.png" id="15_d12pb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bhg4c"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6blb1"]
+seamless = true
+noise = SubResource("FastNoiseLite_bhg4c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbvnn"]
+shader = ExtResource("3_f883w")
+shader_parameter/frames = 4
+shader_parameter/top_color = Color(0.715953, 0.783968, 3.85046e-07, 1)
+shader_parameter/bottom_color = Color(0.150533, 0.259301, 0.0125251, 1)
+shader_parameter/wind_scale = 1200.0
+shader_parameter/wind_speed = 0.09
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_angle_deg = -135.0
+shader_parameter/player_pos = Vector2(40, 40)
+shader_parameter/player_radius = 25.0
+shader_parameter/player_radius_blend = 40.0
+shader_parameter/size = 0.2
+shader_parameter/alpha = 1.0
+shader_parameter/spritesheet = ExtResource("5_hdd3t")
+shader_parameter/random_noise = ExtResource("4_sv7cj")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_6blb1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_provg"]
+shader = ExtResource("6_54udk")
+shader_parameter/rows = 1000.0
+shader_parameter/spacing = 3.34
+shader_parameter/polygon = PackedVector2Array()
+shader_parameter/polygon_size = 0
+
+[node name="Level2Background" node_paths=PackedStringArray("assetsContainers", "grassList") instance=ExtResource("1_nnxoh")]
+assetsContainers = [NodePath("Trees"), NodePath("assets"), NodePath("flowers"), NodePath("Lanterns")]
+grassList = [NodePath("Grass/GrassSystem/Grass")]
+
+[node name="Grass" type="Node2D" parent="." index="1"]
+
+[node name="GrassSystem" type="Node2D" parent="Grass" index="0"]
+
+[node name="Grass" parent="Grass/GrassSystem" index="0" node_paths=PackedStringArray("polygon") instance=ExtResource("2_ycl76")]
+visible = false
+polygon = NodePath("../Polygon2D")
+
+[node name="GrassParticles" parent="Grass/GrassSystem/Grass" index="0"]
+material = SubResource("ShaderMaterial_gbvnn")
+position = Vector2(-1606, -941)
+amount = 600000
+process_material = SubResource("ShaderMaterial_provg")
+
+[node name="Polygon2D" type="Polygon2D" parent="Grass/GrassSystem" index="1"]
+color = Color(1, 1, 1, 0.196078)
+polygon = PackedVector2Array(90, -592, 345, -545, 545, -449, 683, -312, 784, -175, 823, -33, 809, 129, 769, 269, 637, 341, 443, 361, 173, 401, -139, 407, -391, 361, -601, 295, -721, 120, -740, -201, -635, -411, -504, -539, -315, -597, -100, -582, -9, -814, -1142, -815, -1163, 852, 1431, 901, 1506, -477, 1249, -911, -9, -814, -100, -582)
+
+[node name="Trees" type="Node2D" parent="." index="2"]
+
+[node name="TreeG" parent="Trees" index="0" instance=ExtResource("7_m82x4")]
+position = Vector2(690, 114)
+scale = Vector2(0.24, 0.24)
+
+[node name="TreeG1" parent="Trees" index="1" instance=ExtResource("7_m82x4")]
+position = Vector2(-465, -266)
+scale = Vector2(0.24, 0.24)
+
+[node name="assets" type="Node2D" parent="." index="3"]
+
+[node name="YellowBale2" type="Sprite2D" parent="assets" index="0"]
+position = Vector2(54, -395)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("12_x7244")
+script = ExtResource("8_gin38")
+
+[node name="farm" type="Sprite2D" parent="assets" index="1"]
+position = Vector2(307, -500)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_c1ay5")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale" type="Sprite2D" parent="assets" index="2"]
+position = Vector2(-244, -476)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("11_4ly0l")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale3" type="Sprite2D" parent="assets" index="3"]
+position = Vector2(-277, -462)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("11_4ly0l")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale4" type="Sprite2D" parent="assets" index="4"]
+position = Vector2(-262, -514)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("11_4ly0l")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale5" type="Sprite2D" parent="assets" index="5"]
+position = Vector2(626, -310)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("11_4ly0l")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale8" type="Sprite2D" parent="assets" index="6"]
+position = Vector2(169, -294)
+scale = Vector2(0.105263, 0.105263)
+texture = ExtResource("11_4ly0l")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale6" type="Sprite2D" parent="assets" index="7"]
+position = Vector2(205, -264)
+scale = Vector2(0.105263, 0.105263)
+texture = ExtResource("12_x7244")
+script = ExtResource("8_gin38")
+
+[node name="Rock10" type="Sprite2D" parent="assets" index="8"]
+position = Vector2(-444, -185)
+scale = Vector2(0.0893848, 0.0893848)
+texture = ExtResource("12_2yjky")
+script = ExtResource("8_gin38")
+
+[node name="DogHouse" type="Sprite2D" parent="assets" index="9"]
+position = Vector2(-525, -212)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_jw6ob")
+script = ExtResource("8_gin38")
+
+[node name="Rock11" type="Sprite2D" parent="assets" index="10"]
+position = Vector2(-449, -163)
+scale = Vector2(0.0950692, 0.0950692)
+texture = ExtResource("14_py2oq")
+script = ExtResource("8_gin38")
+
+[node name="YellowBale7" type="Sprite2D" parent="assets" index="11"]
+position = Vector2(205, -294)
+scale = Vector2(0.105263, 0.105263)
+texture = ExtResource("12_x7244")
+script = ExtResource("8_gin38")
+
+[node name="Rock12" type="Sprite2D" parent="assets" index="12"]
+position = Vector2(-252, -430)
+scale = Vector2(0.0950692, 0.0950692)
+texture = ExtResource("14_py2oq")
+script = ExtResource("8_gin38")
+
+[node name="flowers" type="Node2D" parent="." index="4"]
+
+[node name="Flower" type="Sprite2D" parent="flowers" index="0"]
+position = Vector2(-85.0001, -431)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_mmwko")
+script = ExtResource("8_gin38")
+
+[node name="Flower15" type="Sprite2D" parent="flowers" index="1"]
+position = Vector2(117, 266)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_mmwko")
+script = ExtResource("8_gin38")
+
+[node name="Flower12" type="Sprite2D" parent="flowers" index="2"]
+position = Vector2(-436, 228)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_mmwko")
+script = ExtResource("8_gin38")
+
+[node name="Flower3" type="Sprite2D" parent="flowers" index="3"]
+position = Vector2(-357, -371)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_mmwko")
+script = ExtResource("8_gin38")
+
+[node name="Flower4" type="Sprite2D" parent="flowers" index="4"]
+position = Vector2(-109, -337)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_d12pb")
+script = ExtResource("8_gin38")
+
+[node name="Flower6" type="Sprite2D" parent="flowers" index="5"]
+position = Vector2(516, -178)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_d12pb")
+script = ExtResource("8_gin38")
+
+[node name="Flower13" type="Sprite2D" parent="flowers" index="6"]
+position = Vector2(393, 200)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_d12pb")
+script = ExtResource("8_gin38")
+
+[node name="Flower14" type="Sprite2D" parent="flowers" index="7"]
+position = Vector2(-591, -88)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("14_mmwko")
+script = ExtResource("8_gin38")
+
+[node name="Flower7" type="Sprite2D" parent="flowers" index="8"]
+position = Vector2(550, 226)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_mmwko")
+script = ExtResource("8_gin38")
+
+[node name="Lanterns" type="Node2D" parent="." index="5"]
+
+[node name="Lantern" parent="Lanterns" index="0" instance=ExtResource("2_nijyo")]
+position = Vector2(698, 189)
+
+[node name="Lantern2" parent="Lanterns" index="1" instance=ExtResource("2_nijyo")]
+position = Vector2(430, -241)
+
+[node name="Lantern3" parent="Lanterns" index="2" instance=ExtResource("2_nijyo")]
+position = Vector2(-595, -368)
+
+[editable path="Grass/GrassSystem/Grass"]
